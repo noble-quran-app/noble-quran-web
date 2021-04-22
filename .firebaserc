@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "noble-quran": {
+      "hosting": {
+        "noble-quran": [
+          "noble-quran"
+        ]
+      }
+    }
+  }
+}
