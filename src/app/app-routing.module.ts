@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
-import {
-  RouterModule,
-  Routes,
-  UrlMatchResult,
-  UrlSegment,
-} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { SurahMatcher } from './core/routematch';
+import { EmptyComponent } from './components/empty/empty.component';
 import { DefaultComponent } from './pages/default/default.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SurahComponent } from './pages/surah/surah.component';
@@ -15,12 +12,7 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    matcher: (url): UrlMatchResult => {
-      if (url[0].path.match(/^([1-9][0-9]?|10[0-9]|11[0-4])$/gm)) {
-        return { consumed: url };
-      }
-      return null;
-    },
+    matcher: SurahMatcher,
     component: SurahComponent,
   },
   {
@@ -30,7 +22,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'disabled' }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

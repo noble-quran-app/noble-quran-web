@@ -1,0 +1,13 @@
+import { UrlMatchResult, UrlSegment } from '@angular/router';
+
+export const SurahMatcher = (url: UrlSegment[]): UrlMatchResult => {
+  if (url.length && url[0].path.match(/^([1-9][0-9]?|10[0-9]|11[0-4])$/gm)) {
+    return {
+      consumed: url,
+      posParams: {
+        surahId: new UrlSegment(url[0].path, {}),
+      },
+    };
+  }
+  return null;
+};

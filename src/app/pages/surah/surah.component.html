@@ -1,1 +1,33 @@
-<p>surah works!</p>
+<header [class.elevated]="headerElevated">
+  <button routerLink="/" mat-button>Noble Quran</button>
+  <button
+    mat-button
+    (menuClosed)="menuOpen = false"
+    (menuOpened)="menuOpen = true"
+    [matMenuTriggerFor]="menu"
+    [matMenuTriggerRestoreFocus]="true"
+  >
+    {{ menuList[surahId - 1]?.englishName }}
+    <mat-icon *ngIf="!menuOpen">arrow_drop_down</mat-icon>
+    <mat-icon *ngIf="menuOpen">arrow_drop_up</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" xPosition="before">
+    <button
+      *ngFor="let menuListItem of menuList"
+      [routerLink]="menuListItem.route"
+      mat-menu-item
+    >
+      {{ menuListItem.englishName }}
+    </button>
+  </mat-menu>
+</header>
+
+<!-- Observer for controling header's elevation -->
+<div class="observer" #observer></div>
+
+<!-- Ayah List for surah -->
+<nq-ayah-list-builder
+  *ngIf="range.length"
+  [start]="range[0]"
+  [end]="range[1]"
+></nq-ayah-list-builder>

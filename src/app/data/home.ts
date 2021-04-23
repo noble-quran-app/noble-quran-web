@@ -1,4 +1,4 @@
-import { Surah, Juz, Sajda } from './models';
+import { Surah, Juz, Sajda } from '../core/models';
 
 export const Surahs = <Surah[]>[
   {
@@ -8,6 +8,7 @@ export const Surahs = <Surah[]>[
     english: 'The Opening',
     place: 'Mecca',
     index: 1,
+    range: '1-7',
   },
   {
     englishName: 'Al-Baqara',
@@ -16,6 +17,7 @@ export const Surahs = <Surah[]>[
     english: 'The Cow',
     place: 'Medina',
     index: 2,
+    range: '8-293',
   },
   {
     englishName: 'Aal-i-Imraan',
@@ -24,6 +26,7 @@ export const Surahs = <Surah[]>[
     english: 'The Family of Imran',
     place: 'Medina',
     index: 3,
+    range: '294-493',
   },
   {
     englishName: 'An-Nisaa',
@@ -32,6 +35,7 @@ export const Surahs = <Surah[]>[
     english: 'Women',
     place: 'Medina',
     index: 4,
+    range: '494-669',
   },
   {
     englishName: 'Al-Maaida',
@@ -40,6 +44,7 @@ export const Surahs = <Surah[]>[
     english: 'The Food',
     place: 'Medina',
     index: 5,
+    range: '670-789',
   },
   {
     englishName: "Al-An'aam",
@@ -48,6 +53,7 @@ export const Surahs = <Surah[]>[
     english: 'The Cattle',
     place: 'Mecca',
     index: 6,
+    range: '790-954',
   },
   {
     englishName: "Al-A'raaf",
@@ -56,6 +62,7 @@ export const Surahs = <Surah[]>[
     english: 'The Elevated Place',
     place: 'Mecca',
     index: 7,
+    range: '955-1160',
   },
   {
     englishName: 'Al-Anfaal',
@@ -64,6 +71,7 @@ export const Surahs = <Surah[]>[
     english: 'The Spoils of War',
     place: 'Medina',
     index: 8,
+    range: '1161-1235',
   },
   {
     englishName: 'At-Tawba',
@@ -72,6 +80,7 @@ export const Surahs = <Surah[]>[
     english: 'Repentance',
     place: 'Medina',
     index: 9,
+    range: '1236-1364',
   },
   {
     englishName: 'Yunus',
@@ -80,6 +89,7 @@ export const Surahs = <Surah[]>[
     english: 'Yunus',
     place: 'Mecca',
     index: 10,
+    range: '1365-1473',
   },
   {
     englishName: 'Hud',
@@ -88,6 +98,7 @@ export const Surahs = <Surah[]>[
     english: 'Hud',
     place: 'Mecca',
     index: 11,
+    range: '1474-1596',
   },
   {
     englishName: 'Yusuf',
@@ -96,6 +107,7 @@ export const Surahs = <Surah[]>[
     english: 'Yusuf',
     place: 'Mecca',
     index: 12,
+    range: '1597-1707',
   },
   {
     englishName: "Ar-Ra'd",
@@ -104,6 +116,7 @@ export const Surahs = <Surah[]>[
     english: 'The Thunder',
     place: 'Medina',
     index: 13,
+    range: '1708-1750',
   },
   {
     englishName: 'Ibrahim',
@@ -112,6 +125,7 @@ export const Surahs = <Surah[]>[
     english: 'Ibrahim',
     place: 'Mecca',
     index: 14,
+    range: '1751-1802',
   },
   {
     englishName: 'Al-Hijr',
@@ -120,6 +134,7 @@ export const Surahs = <Surah[]>[
     english: 'The Rock',
     place: 'Mecca',
     index: 15,
+    range: '1803-1901',
   },
   {
     englishName: 'An-Nahl',
@@ -128,6 +143,7 @@ export const Surahs = <Surah[]>[
     english: 'The Bee',
     place: 'Mecca',
     index: 16,
+    range: '1902-2029',
   },
   {
     englishName: 'Al-Israa',
@@ -136,6 +152,7 @@ export const Surahs = <Surah[]>[
     english: 'The Night Journey',
     place: 'Mecca',
     index: 17,
+    range: '2030-2140',
   },
   {
     englishName: 'Al-Kahf',
@@ -144,6 +161,7 @@ export const Surahs = <Surah[]>[
     english: 'The Cave',
     place: 'Mecca',
     index: 18,
+    range: '2141-2250',
   },
   {
     englishName: 'Maryam',
@@ -152,6 +170,7 @@ export const Surahs = <Surah[]>[
     english: 'Marium',
     place: 'Mecca',
     index: 19,
+    range: '2251-2348',
   },
   {
     englishName: 'Taa-Haa',
@@ -160,6 +179,7 @@ export const Surahs = <Surah[]>[
     english: 'Ta Ha',
     place: 'Mecca',
     index: 20,
+    range: '2349-2483',
   },
   {
     englishName: 'Al-Anbiyaa',
@@ -168,6 +188,7 @@ export const Surahs = <Surah[]>[
     english: 'The Prophets',
     place: 'Mecca',
     index: 21,
+    range: '2484-2595',
   },
   {
     englishName: 'Al-Hajj',
@@ -176,6 +197,7 @@ export const Surahs = <Surah[]>[
     english: 'The Pilgrimage',
     place: 'Medina',
     index: 22,
+    range: '2596-2673',
   },
   {
     englishName: 'Al-Muminoon',
@@ -184,6 +206,7 @@ export const Surahs = <Surah[]>[
     english: 'The Believers',
     place: 'Mecca',
     index: 23,
+    range: '2674-2791',
   },
   {
     englishName: 'An-Noor',
@@ -192,6 +215,7 @@ export const Surahs = <Surah[]>[
     english: 'The Light',
     place: 'Medina',
     index: 24,
+    range: '2792-2855',
   },
   {
     englishName: 'Al-Furqaan',
@@ -200,6 +224,7 @@ export const Surahs = <Surah[]>[
     english: 'The Criterion',
     place: 'Mecca',
     index: 25,
+    range: '2856-2932',
   },
   {
     englishName: "Ash-Shu'araa",
@@ -208,6 +233,7 @@ export const Surahs = <Surah[]>[
     english: 'The Poets',
     place: 'Mecca',
     index: 26,
+    range: '2933-3159',
   },
   {
     englishName: 'An-Naml',
@@ -216,6 +242,7 @@ export const Surahs = <Surah[]>[
     english: 'The Ant',
     place: 'Mecca',
     index: 27,
+    range: '3160-3252',
   },
   {
     englishName: 'Al-Qasas',
@@ -224,6 +251,7 @@ export const Surahs = <Surah[]>[
     english: 'The Narrative',
     place: 'Mecca',
     index: 28,
+    range: '3253-3340',
   },
   {
     englishName: 'Al-Ankaboot',
@@ -232,6 +260,7 @@ export const Surahs = <Surah[]>[
     english: 'The Spider',
     place: 'Mecca',
     index: 29,
+    range: '3341-3409',
   },
   {
     englishName: 'Ar-Room',
@@ -240,6 +269,7 @@ export const Surahs = <Surah[]>[
     english: 'The Romans',
     place: 'Mecca',
     index: 30,
+    range: '3410-3469',
   },
   {
     englishName: 'Luqman',
@@ -248,6 +278,7 @@ export const Surahs = <Surah[]>[
     english: 'Luqman',
     place: 'Mecca',
     index: 31,
+    range: '3470-3503',
   },
   {
     englishName: 'As-Sajda',
@@ -256,6 +287,7 @@ export const Surahs = <Surah[]>[
     english: 'The Adoration',
     place: 'Mecca',
     index: 32,
+    range: '3504-3533',
   },
   {
     englishName: 'Al-Ahzaab',
@@ -264,6 +296,7 @@ export const Surahs = <Surah[]>[
     english: 'The Allies',
     place: 'Medina',
     index: 33,
+    range: '3534-3606',
   },
   {
     englishName: 'Saba',
@@ -272,6 +305,7 @@ export const Surahs = <Surah[]>[
     english: 'Saba',
     place: 'Mecca',
     index: 34,
+    range: '3607-3660',
   },
   {
     englishName: 'Faatir',
@@ -280,6 +314,7 @@ export const Surahs = <Surah[]>[
     english: 'The Originator',
     place: 'Mecca',
     index: 35,
+    range: '3661-3705',
   },
   {
     englishName: 'Yaseen',
@@ -288,6 +323,7 @@ export const Surahs = <Surah[]>[
     english: 'Ya Seen',
     place: 'Mecca',
     index: 36,
+    range: '3706-3788',
   },
   {
     englishName: 'As-Saaffaat',
@@ -296,6 +332,7 @@ export const Surahs = <Surah[]>[
     english: 'The Rangers',
     place: 'Mecca',
     index: 37,
+    range: '3789-3970',
   },
   {
     englishName: 'Saad',
@@ -304,6 +341,7 @@ export const Surahs = <Surah[]>[
     english: 'Suad',
     place: 'Mecca',
     index: 38,
+    range: '3971-4058',
   },
   {
     englishName: 'Az-Zumar',
@@ -312,6 +350,7 @@ export const Surahs = <Surah[]>[
     english: 'The Companies',
     place: 'Mecca',
     index: 39,
+    range: '4059-4133',
   },
   {
     englishName: 'Ghaafir',
@@ -320,6 +359,7 @@ export const Surahs = <Surah[]>[
     english: 'The All-Forgiving',
     place: 'Mecca',
     index: 40,
+    range: '4134-4218',
   },
   {
     englishName: 'Fussilat',
@@ -328,6 +368,7 @@ export const Surahs = <Surah[]>[
     english: 'Ha Mim',
     place: 'Mecca',
     index: 41,
+    range: '4219-4272',
   },
   {
     englishName: 'Ash-Shura',
@@ -336,6 +377,7 @@ export const Surahs = <Surah[]>[
     english: 'The Counsel',
     place: 'Mecca',
     index: 42,
+    range: '4273-4325',
   },
   {
     englishName: 'Az-Zukhruf',
@@ -344,6 +386,7 @@ export const Surahs = <Surah[]>[
     english: 'The Embellishment',
     place: 'Mecca',
     index: 43,
+    range: '4326-4414',
   },
   {
     englishName: 'Ad-Dukhaan',
@@ -352,6 +395,7 @@ export const Surahs = <Surah[]>[
     english: 'The Evident Smoke',
     place: 'Mecca',
     index: 44,
+    range: '4415-4473',
   },
   {
     englishName: 'Al-Jaathiya',
@@ -360,6 +404,7 @@ export const Surahs = <Surah[]>[
     english: 'The Kneeling',
     place: 'Mecca',
     index: 45,
+    range: '4474-4510',
   },
   {
     englishName: 'Al-Ahqaf',
@@ -368,6 +413,7 @@ export const Surahs = <Surah[]>[
     english: 'The Sandhills',
     place: 'Mecca',
     index: 46,
+    range: '4511-4545',
   },
   {
     englishName: 'Muhammad',
@@ -376,6 +422,7 @@ export const Surahs = <Surah[]>[
     english: 'Muhammad',
     place: 'Medina',
     index: 47,
+    range: '4546-4583',
   },
   {
     englishName: 'Al-Fath',
@@ -384,6 +431,7 @@ export const Surahs = <Surah[]>[
     english: 'The Victory',
     place: 'Medina',
     index: 48,
+    range: '4584-4612',
   },
   {
     englishName: 'Al-Hujuraat',
@@ -392,6 +440,7 @@ export const Surahs = <Surah[]>[
     english: 'The Chambers',
     place: 'Medina',
     index: 49,
+    range: '4613-4630',
   },
   {
     englishName: 'Qaaf',
@@ -400,6 +449,7 @@ export const Surahs = <Surah[]>[
     english: 'Qaf',
     place: 'Mecca',
     index: 50,
+    range: '4631-4675',
   },
   {
     englishName: 'Adh-Dhaariyat',
@@ -408,6 +458,7 @@ export const Surahs = <Surah[]>[
     english: 'The Scatterers',
     place: 'Mecca',
     index: 51,
+    range: '4676-4735',
   },
   {
     englishName: 'At-Tur',
@@ -416,6 +467,7 @@ export const Surahs = <Surah[]>[
     english: 'The Mountain',
     place: 'Mecca',
     index: 52,
+    range: '4736-4784',
   },
   {
     englishName: 'An-Najm',
@@ -424,6 +476,7 @@ export const Surahs = <Surah[]>[
     english: 'The Star',
     place: 'Mecca',
     index: 53,
+    range: '4785-4846',
   },
   {
     englishName: 'Al-Qamar',
@@ -432,6 +485,7 @@ export const Surahs = <Surah[]>[
     english: 'The Moon',
     place: 'Mecca',
     index: 54,
+    range: '4847-4901',
   },
   {
     englishName: 'Ar-Rahmaan',
@@ -440,6 +494,7 @@ export const Surahs = <Surah[]>[
     english: 'The Beneficient',
     place: 'Medina',
     index: 55,
+    range: '4902-4979',
   },
   {
     englishName: 'Al-Waaqia',
@@ -448,6 +503,7 @@ export const Surahs = <Surah[]>[
     english: 'The Great Event',
     place: 'Mecca',
     index: 56,
+    range: '4980-5075',
   },
   {
     englishName: 'Al-Hadid',
@@ -456,6 +512,7 @@ export const Surahs = <Surah[]>[
     english: 'The Iron',
     place: 'Medina',
     index: 57,
+    range: '5076-5104',
   },
   {
     englishName: 'Al-Mujaadila',
@@ -464,6 +521,7 @@ export const Surahs = <Surah[]>[
     english: 'The Pleading One',
     place: 'Medina',
     index: 58,
+    range: '5105-5126',
   },
   {
     englishName: 'Al-Hashr',
@@ -472,6 +530,7 @@ export const Surahs = <Surah[]>[
     english: 'The Banishment',
     place: 'Manidah',
     index: 59,
+    range: '5127-5150',
   },
   {
     englishName: 'Al-Mumtahana',
@@ -480,6 +539,7 @@ export const Surahs = <Surah[]>[
     english: 'The Examined One',
     place: 'Medina',
     index: 60,
+    range: '5151-5163',
   },
   {
     englishName: 'As-Saff',
@@ -488,6 +548,7 @@ export const Surahs = <Surah[]>[
     english: 'The Ranks',
     place: 'Medina',
     index: 61,
+    range: '5164-5177',
   },
   {
     englishName: "Al-Jumu'a",
@@ -496,6 +557,7 @@ export const Surahs = <Surah[]>[
     english: 'Friday',
     place: 'Medina',
     index: 62,
+    range: '5178-5188',
   },
   {
     englishName: 'Al-Munaafiqoon',
@@ -504,6 +566,7 @@ export const Surahs = <Surah[]>[
     english: 'The Hypocrites',
     place: 'Medina',
     index: 63,
+    range: '5189-5199',
   },
   {
     englishName: 'At-Taghaabun',
@@ -512,6 +575,7 @@ export const Surahs = <Surah[]>[
     english: 'Loss and Gain',
     place: 'Medina',
     index: 64,
+    range: '5200-5217',
   },
   {
     englishName: 'At-Talaaq',
@@ -520,6 +584,7 @@ export const Surahs = <Surah[]>[
     english: 'The Divorce',
     place: 'Medina',
     index: 65,
+    range: '5218-5229',
   },
   {
     englishName: 'At-Tahrim',
@@ -528,6 +593,7 @@ export const Surahs = <Surah[]>[
     english: 'The Prohibition',
     place: 'Medina',
     index: 66,
+    range: '5230-5241',
   },
   {
     englishName: 'Al-Mulk',
@@ -536,6 +602,7 @@ export const Surahs = <Surah[]>[
     english: 'The Kingdom',
     place: 'Mecca',
     index: 67,
+    range: '5242-5271',
   },
   {
     englishName: 'Al-Qalam',
@@ -544,6 +611,7 @@ export const Surahs = <Surah[]>[
     english: 'The Pen',
     place: 'Mecca',
     index: 68,
+    range: '5272-5323',
   },
   {
     englishName: 'Al-Haaqqa',
@@ -552,6 +620,7 @@ export const Surahs = <Surah[]>[
     english: 'The Sure Calamity',
     place: 'Mecca',
     index: 69,
+    range: '5324-5375',
   },
   {
     englishName: "Al-Ma'aarij",
@@ -560,6 +629,7 @@ export const Surahs = <Surah[]>[
     english: 'The Ways of Ascent',
     place: 'Mecca',
     index: 70,
+    range: '5376-5419',
   },
   {
     englishName: 'Nooh',
@@ -568,6 +638,7 @@ export const Surahs = <Surah[]>[
     english: 'Nuh',
     place: 'Mecca',
     index: 71,
+    range: '5420-5447',
   },
   {
     englishName: 'Al-Jinn',
@@ -576,6 +647,7 @@ export const Surahs = <Surah[]>[
     english: 'The Jinn',
     place: 'Mecca',
     index: 72,
+    range: '5448-5475',
   },
   {
     englishName: 'Al-Muzzammil',
@@ -584,6 +656,7 @@ export const Surahs = <Surah[]>[
     english: 'The Wrapped Up',
     place: 'Mecca',
     index: 73,
+    range: '5476-5495',
   },
   {
     englishName: 'Al-Muddaththir',
@@ -592,6 +665,7 @@ export const Surahs = <Surah[]>[
     english: 'The Clothed One',
     place: 'Mecca',
     index: 74,
+    range: '5496-5551',
   },
   {
     englishName: 'Al-Qiyaama',
@@ -600,6 +674,7 @@ export const Surahs = <Surah[]>[
     english: 'The Resurrection',
     place: 'Mecca',
     index: 75,
+    range: '5552-5591',
   },
   {
     englishName: 'Al-Insaan',
@@ -608,6 +683,7 @@ export const Surahs = <Surah[]>[
     english: 'The Man',
     place: 'Medina',
     index: 76,
+    range: '5592-5622',
   },
   {
     englishName: 'Al-Mursalaat',
@@ -616,6 +692,7 @@ export const Surahs = <Surah[]>[
     english: 'The Emissaries',
     place: 'Mecca',
     index: 77,
+    range: '5623-5672',
   },
   {
     englishName: 'An-Naba',
@@ -624,6 +701,7 @@ export const Surahs = <Surah[]>[
     english: 'The Great Event',
     place: 'Mecca',
     index: 78,
+    range: '5673-5712',
   },
   {
     englishName: "An-Naazi'aat",
@@ -632,6 +710,7 @@ export const Surahs = <Surah[]>[
     english: 'Those Who Pull Out',
     place: 'Mecca',
     index: 79,
+    range: '5713-5758',
   },
   {
     englishName: 'Abasa',
@@ -640,6 +719,7 @@ export const Surahs = <Surah[]>[
     english: 'He Frowned',
     place: 'Mecca',
     index: 80,
+    range: '5759-5800',
   },
   {
     englishName: 'At-Takwir',
@@ -648,6 +728,7 @@ export const Surahs = <Surah[]>[
     english: 'The Covering Up',
     place: 'Mecca',
     index: 81,
+    range: '5801-5829',
   },
   {
     englishName: 'Al-Infitaar',
@@ -656,6 +737,7 @@ export const Surahs = <Surah[]>[
     english: 'The Cleaving Asund',
     place: 'Mecca',
     index: 82,
+    range: '5830-5848',
   },
   {
     englishName: 'Al-Mutaffifin',
@@ -664,6 +746,7 @@ export const Surahs = <Surah[]>[
     english: 'The Defrauders',
     place: 'Mecca',
     index: 83,
+    range: '5849-5884',
   },
   {
     englishName: 'Al-Inshiqaaq',
@@ -672,6 +755,7 @@ export const Surahs = <Surah[]>[
     english: 'The Bursting Asund',
     place: 'Mecca',
     index: 84,
+    range: '5885-5909',
   },
   {
     englishName: 'Al-Burooj',
@@ -680,6 +764,7 @@ export const Surahs = <Surah[]>[
     english: 'The Mansions of the Stars',
     place: 'Mecca',
     index: 85,
+    range: '5910-5931',
   },
   {
     englishName: 'At-Taariq',
@@ -688,6 +773,7 @@ export const Surahs = <Surah[]>[
     english: 'The Night Comer',
     place: 'Mecca',
     index: 86,
+    range: '5932-5948',
   },
   {
     englishName: "Al-A'laa",
@@ -696,6 +782,7 @@ export const Surahs = <Surah[]>[
     english: 'The Most High',
     place: 'Mecca',
     index: 87,
+    range: '5949-5967',
   },
   {
     englishName: 'Al-Ghaashiya',
@@ -704,6 +791,7 @@ export const Surahs = <Surah[]>[
     english: 'The Overwhelming',
     place: 'Mecca',
     index: 88,
+    range: '5968-5993',
   },
   {
     englishName: 'Al-Fajr',
@@ -712,6 +800,7 @@ export const Surahs = <Surah[]>[
     english: 'The Daybreak',
     place: 'Mecca',
     index: 89,
+    range: '5994-6023',
   },
   {
     englishName: 'Al-Balad',
@@ -720,6 +809,7 @@ export const Surahs = <Surah[]>[
     english: 'The City',
     place: 'Mecca',
     index: 90,
+    range: '6024-6043',
   },
   {
     englishName: 'Ash-Shams',
@@ -728,6 +818,7 @@ export const Surahs = <Surah[]>[
     english: 'The Sun',
     place: 'Mecca',
     index: 91,
+    range: '6044-6058',
   },
   {
     englishName: 'Al-Lail',
@@ -736,6 +827,7 @@ export const Surahs = <Surah[]>[
     english: 'The Night',
     place: 'Mecca',
     index: 92,
+    range: '6059-6079',
   },
   {
     englishName: 'Ad-Dhuhaa',
@@ -744,6 +836,7 @@ export const Surahs = <Surah[]>[
     english: 'The Early Hours',
     place: 'Mecca',
     index: 93,
+    range: '6080-6090',
   },
   {
     englishName: 'Ash-Sharh',
@@ -752,6 +845,7 @@ export const Surahs = <Surah[]>[
     english: 'The Expansion',
     place: 'Mecca',
     index: 94,
+    range: '6091-6098',
   },
   {
     englishName: 'At-Tin',
@@ -760,6 +854,7 @@ export const Surahs = <Surah[]>[
     english: 'The Fig',
     place: 'Mecca',
     index: 95,
+    range: '6099-6106',
   },
   {
     englishName: 'Al-Alaq',
@@ -768,6 +863,7 @@ export const Surahs = <Surah[]>[
     english: 'The Clot',
     place: 'Mecca',
     index: 96,
+    range: '6107-6125',
   },
   {
     englishName: 'Al-Qadr',
@@ -776,6 +872,7 @@ export const Surahs = <Surah[]>[
     english: 'The Majesty',
     place: 'Mecca',
     index: 97,
+    range: '6126-6130',
   },
   {
     englishName: 'Al-Bayyina',
@@ -784,6 +881,7 @@ export const Surahs = <Surah[]>[
     english: 'The Clear Evidence',
     place: 'Medina',
     index: 98,
+    range: '6131-6138',
   },
   {
     englishName: 'Az-Zalzala',
@@ -792,6 +890,7 @@ export const Surahs = <Surah[]>[
     english: 'The Shaking',
     place: 'Medina',
     index: 99,
+    range: '6139-6146',
   },
   {
     englishName: 'Al-Aadiyaat',
@@ -800,6 +899,7 @@ export const Surahs = <Surah[]>[
     english: 'The Assaulters',
     place: 'Mecca',
     index: 100,
+    range: '6147-6157',
   },
   {
     englishName: "Al-Qaari'a",
@@ -808,6 +908,7 @@ export const Surahs = <Surah[]>[
     english: 'The Terrible Calam',
     place: 'Mecca',
     index: 101,
+    range: '6158-6168',
   },
   {
     englishName: 'At-Takaathur',
@@ -816,6 +917,7 @@ export const Surahs = <Surah[]>[
     english: 'The Multiplication',
     place: 'Mecca',
     index: 102,
+    range: '6169-6176',
   },
   {
     englishName: 'Al-Asr',
@@ -824,6 +926,7 @@ export const Surahs = <Surah[]>[
     english: 'Time',
     place: 'Mecca',
     index: 103,
+    range: '6177-6179',
   },
   {
     englishName: 'Al-Humaza',
@@ -832,6 +935,7 @@ export const Surahs = <Surah[]>[
     english: 'The Slanderer',
     place: 'Mecca',
     index: 104,
+    range: '6180-6188',
   },
   {
     englishName: 'Al-Fil',
@@ -840,6 +944,7 @@ export const Surahs = <Surah[]>[
     english: 'The Elephant',
     place: 'Mecca',
     index: 105,
+    range: '6189-6193',
   },
   {
     englishName: 'Quraish',
@@ -848,6 +953,7 @@ export const Surahs = <Surah[]>[
     english: 'The Qureaish',
     place: 'Mecca',
     index: 106,
+    range: '6194-6197',
   },
   {
     englishName: "Al-Maa'un",
@@ -856,6 +962,7 @@ export const Surahs = <Surah[]>[
     english: 'The Daily Necessary',
     place: 'Mecca',
     index: 107,
+    range: '6198-6204',
   },
   {
     englishName: 'Al-Kawthar',
@@ -864,6 +971,7 @@ export const Surahs = <Surah[]>[
     english: 'The Heavenly Fount',
     place: 'Mecca',
     index: 108,
+    range: '6205-6207',
   },
   {
     englishName: 'Al-Kaafiroon',
@@ -872,6 +980,7 @@ export const Surahs = <Surah[]>[
     english: 'The Unbelievers',
     place: 'Mecca',
     index: 109,
+    range: '6208-6213',
   },
   {
     englishName: 'An-Nasr',
@@ -880,6 +989,7 @@ export const Surahs = <Surah[]>[
     english: 'The Help',
     place: 'Medina',
     index: 110,
+    range: '6214-6216',
   },
   {
     englishName: 'Al-Masad',
@@ -888,6 +998,7 @@ export const Surahs = <Surah[]>[
     english: 'The Palm Fiber',
     place: 'Mecca',
     index: 111,
+    range: '6217-6221',
   },
   {
     englishName: 'Al-Ikhlaas',
@@ -896,6 +1007,7 @@ export const Surahs = <Surah[]>[
     english: 'The Unity',
     place: 'Mecca',
     index: 112,
+    range: '6222-6225',
   },
   {
     englishName: 'Al-Falaq',
@@ -904,6 +1016,7 @@ export const Surahs = <Surah[]>[
     english: 'The Dawn',
     place: 'Mecca',
     index: 113,
+    range: '6226-6230',
   },
   {
     englishName: 'An-Naas',
@@ -912,6 +1025,7 @@ export const Surahs = <Surah[]>[
     english: 'The Men',
     place: 'Mecca',
     index: 114,
+    range: '6231-6236',
   },
 ];
 

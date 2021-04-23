@@ -1,0 +1,14 @@
+<div class="ayah-box" *ngIf="ayah" [class.alternate]="ayahId % 2 != 0">
+  <div class="ayah-text">
+    {{ ayah.text }}
+    <div class="ayah-end-box">
+      <div class="ayah-index-box">
+        {{ ayah.numberInSurah | toArabicNumber }}
+      </div>
+      <div class="ayah-icon-box">
+        <ayah-end-icon></ayah-end-icon>
+      </div>
+    </div>
+  </div>
+  <div class="translation-text">{{ ayah.translation }}</div>
+</div>
