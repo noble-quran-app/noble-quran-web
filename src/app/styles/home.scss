@@ -1,4 +1,11 @@
 .home {
+  .toolbar svg {
+    fill: #dddddd !important;
+    &:hover {
+      fill: #ffffff !important;
+    }
+  }
+
   .mat-tab-group {
     border-radius: inherit;
   }
@@ -10,7 +17,7 @@
   .mat-tab-header {
     position: sticky !important;
     top: 0;
-    background: white;
+    background: var(--secondary-background-color);
     z-index: 100;
     border-radius: inherit;
   }

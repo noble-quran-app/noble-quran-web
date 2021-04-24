@@ -16,6 +16,7 @@ import { ToArabicNumberPipe } from './pipes/to-arabic-number.pipe';
 import { AyahEndComponent } from './components/icons/ayahEnd.component';
 import { AyahListBuilderComponent } from './components/ayah-list-builder/ayah-list-builder.component';
 import { AyahRendererComponent } from './components/ayah-renderer/ayah-renderer.component';
+import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AyahRendererComponent } from './components/ayah-renderer/ayah-renderer.
     AyahEndComponent,
     AyahListBuilderComponent,
     AyahRendererComponent,
+    ThemeSwitcherComponent,
   ],
   imports: [
     BrowserModule,

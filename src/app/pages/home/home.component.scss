@@ -1,18 +1,41 @@
 // Top Section Starts
 .section-top {
   min-height: 500px;
-  background: linear-gradient(135deg, #00754e, #01a295);
+  background: var(--banner-background);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 60px;
+  padding-bottom: 40px;
+
+  .toolbar {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 24px;
+
+    &::after {
+      content: "";
+      background: var(--secondary-background-color);
+      opacity: 0.2;
+      height: 100%;
+      width: 100%;
+      border-radius: 40px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+  }
 }
 
 .primary-heading {
   font-size: 80px;
   font-weight: 100;
-  color: #ffffff;
+  color: var(--primary-heading-color);
   direction: rtl;
   font-family: "myriad", "Material Icons";
   letter-spacing: 3px;
@@ -22,7 +45,7 @@
 .secondary-heading {
   font-size: 22px;
   font-family: "Poppins", "Roboto", Arial, Helvetica, sans-serif;
-  color: #eaeaea;
+  color: var(--secondary-heading-color);
   direction: ltr;
   font-weight: 400;
   user-select: none;
@@ -36,7 +59,7 @@
   box-shadow: 0 4px 8px 1px rgba(33, 33, 33, 0.28);
   width: calc(100% - 7.14286vw);
   margin: -85px auto auto;
-  background: #ffffff;
+  background: var(--secondary-background-color);
   border-radius: 20px 20px 0 0;
   min-height: 500px;
 
@@ -61,7 +84,7 @@ mat-list-item {
   height: 64px;
 
   &:hover {
-    background: whitesmoke;
+    background: var(--secondary-background-color-hover);
   }
 
   .mat-list-icon {

@@ -1,28 +1,17 @@
-.use {
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid #dadce0;
-}
-
 .ayah-box {
   font-size: 35px;
   direction: rtl;
   padding: 10px 48px 25px;
   margin: 16px 0;
   font-family: "Indopak", "Material Icons";
-  color: #000;
+  color: var(--primary-text-color);
   -webkit-user-select: auto;
   -ms-user-select: auto;
   user-select: auto;
   letter-spacing: 0;
   line-height: 1.9;
   word-spacing: 2px;
-}
-
-.ayah-box.alternate {
-  background: rgba(229, 234, 236, 0.3607843137254902);
+  background: var(--primary-background-color);
 }
 
 .ayah-text {
@@ -42,7 +31,7 @@
   &::after {
     content: attr(text);
     font-family: "indopak", "Material Icons";
-    color: #7c5e09;
+    color: var(--primary-stroke-color);
     font-size: 20px;
     line-height: 20px;
     position: absolute;
@@ -50,16 +39,6 @@
     left: 50%;
     transform: translate(-50%, -58%);
   }
-}
-
-.ayah-index-box {
-  font-family: "indopak", "Material Icons";
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #7c5e09;
-  font-size: 20px;
-  transform: translateY(7%);
 }
 
 .ayah-icon-box {
@@ -77,7 +56,7 @@
   font-size: 18px;
   font-family: Roboto;
   font-weight: 400;
-  color: #252525;
+  color: var(--secondary-text-color);
   margin-top: 25px;
   line-height: 1.5;
   margin-right: auto;

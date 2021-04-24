@@ -1,25 +1,29 @@
 <header [class.elevated]="headerElevated">
-  <button routerLink="/" mat-button>Noble Quran</button>
-  <button
-    mat-button
-    (menuClosed)="menuOpen = false"
-    (menuOpened)="menuOpen = true"
-    [matMenuTriggerFor]="menu"
-    [matMenuTriggerRestoreFocus]="true"
-  >
-    {{ menuList[surahId - 1]?.englishName }}
-    <mat-icon *ngIf="!menuOpen">arrow_drop_down</mat-icon>
-    <mat-icon *ngIf="menuOpen">arrow_drop_up</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu" xPosition="before">
+  <div class="left">
+    <button routerLink="/" mat-button>Noble Quran</button>
+  </div>
+  <div class="right">
+    <nq-theme-switcher></nq-theme-switcher>
     <button
-      *ngFor="let menuListItem of menuList"
-      [routerLink]="menuListItem.route"
-      mat-menu-item
+      mat-button
+      (menuClosed)="menuOpen = false"
+      (menuOpened)="menuOpen = true"
+      [matMenuTriggerFor]="menu"
     >
-      {{ menuListItem.englishName }}
+      {{ surahs[surahId - 1]?.englishName }}
+      <mat-icon *ngIf="!menuOpen">arrow_drop_down</mat-icon>
+      <mat-icon *ngIf="menuOpen">arrow_drop_up</mat-icon>
     </button>
-  </mat-menu>
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button
+        *ngFor="let menuListItem of surahs"
+        [routerLink]="'/' + menuListItem.index"
+        mat-menu-item
+      >
+        {{ menuListItem.englishName }}
+      </button>
+    </mat-menu>
+  </div>
 </header>
 
 <!-- Observer for controling header's elevation -->
