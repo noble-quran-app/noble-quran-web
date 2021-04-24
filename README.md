@@ -1,4 +1,4 @@
-# NobleQuran
+# The Noble Quran
 
 I made this app so that everyone can read Noble Quran for free and without ads.
 
