@@ -8,5 +8,8 @@ export const range = (x: number, y: number): number[] => {
 export const getRangeForSurah = (surahNumber: number) => {
   const surah = Surahs.find((surah) => surah.index == surahNumber);
   const [start, end] = surah?.range?.split('-');
-  return [parseInt(start), parseInt(end)];
+  return {
+    start: parseInt(start),
+    end: parseInt(end),
+  };
 };

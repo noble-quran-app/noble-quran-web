@@ -10,6 +10,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { AyahRange } from 'src/app/core/models';
 
 @Component({
   selector: 'app-surah',
@@ -27,9 +28,9 @@ export class SurahComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('observer') bottomObserver: ElementRef;
   public surahId: number;
-  private subscription: Subscription;
-  public range: number[];
+  public range: AyahRange;
   public menuOpen = false;
+  private subscription: Subscription;
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe((params) => {

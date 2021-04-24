@@ -26,3 +26,10 @@ header {
     }
   }
 }
+
+@media (max-width: 600px) {
+  header {
+    min-height: 56px;
+    padding: 0 8px;
+  }
+}

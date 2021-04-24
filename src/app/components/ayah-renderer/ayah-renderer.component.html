@@ -1,10 +1,10 @@
-<div class="ayah-box" *ngIf="ayah" [class.alternate]="ayahId % 2 != 0">
+<div class="ayah-box" *ngIf="ayah" [class.alternate]="ayahId % 2 == 0">
   <div class="ayah-text">
     {{ ayah.text }}
-    <div class="ayah-end-box">
-      <div class="ayah-index-box">
-        {{ ayah.numberInSurah | toArabicNumber }}
-      </div>
+    <div
+      class="ayah-end-box"
+      attr.text="{{ ayah.numberInSurah | toArabicNumber }}"
+    >
       <div class="ayah-icon-box">
         <ayah-end-icon></ayah-end-icon>
       </div>

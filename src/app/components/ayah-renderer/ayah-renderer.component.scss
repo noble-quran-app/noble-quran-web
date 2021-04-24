@@ -37,7 +37,19 @@
   display: inline-block;
   height: 45px;
   width: 45px;
-  transform: translate(-20%, -8%);
+  transform: translate(-6%, 35%);
+
+  &::after {
+    content: attr(text);
+    font-family: "indopak", "Material Icons";
+    color: #7c5e09;
+    font-size: 20px;
+    line-height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -58%);
+  }
 }
 
 .ayah-index-box {
@@ -72,4 +84,13 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+@media (max-width: 600px) {
+  .ayah-end-box::after {
+    transform: translate(-50%, -62%);
+  }
+  .ayah-box {
+    padding: 10px 24px 25px;
+  }
 }

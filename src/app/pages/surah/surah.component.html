@@ -26,8 +26,4 @@
 <div class="observer" #observer></div>
 
 <!-- Ayah List for surah -->
-<nq-ayah-list-builder
-  *ngIf="range.length"
-  [start]="range[0]"
-  [end]="range[1]"
-></nq-ayah-list-builder>
+<nq-ayah-list-builder *ngIf="range" [range]="range"></nq-ayah-list-builder>

@@ -21,3 +21,8 @@ export interface Sajda {
   isObligatory: boolean;
   index: number;
 }
+
+export interface AyahRange {
+  start: number;
+  end: number;
+}

@@ -1,2 +1,5 @@
-<nq-ayah-renderer *ngFor="let ayah of ayahs" [ayahId]="ayah"></nq-ayah-renderer>
-<div class="use" #observer>I'm here for observing</div>
+<nq-ayah-renderer
+  *ngFor="let ayah of ayahsToRender"
+  [ayahId]="ayah"
+></nq-ayah-renderer>
+<div class="observer" #observer></div>
