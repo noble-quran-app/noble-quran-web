@@ -1,33 +1,35 @@
-<header [class.elevated]="headerElevated">
-  <div class="left">
-    <button routerLink="/" mat-button>Noble Quran</button>
-  </div>
-  <div class="right">
-    <button
-      mat-button
-      (menuClosed)="menuOpen = false"
-      (menuOpened)="menuOpen = true"
-      [matMenuTriggerFor]="menu"
-    >
-      {{ surahs[surahId - 1]?.englishName }}
-      <mat-icon *ngIf="!menuOpen">arrow_drop_down</mat-icon>
-      <mat-icon *ngIf="menuOpen">arrow_drop_up</mat-icon>
-    </button>
-    <nq-theme-switcher></nq-theme-switcher>
-    <mat-menu #menu="matMenu" xPosition="before">
+<main class="surah-page">
+  <header [class.elevated]="headerElevated">
+    <div class="left">
+      <button routerLink="/" mat-button>Noble Quran</button>
+    </div>
+    <div class="right">
       <button
-        *ngFor="let menuListItem of surahs"
-        [routerLink]="'/' + menuListItem.index"
-        mat-menu-item
+        mat-button
+        (menuClosed)="menuOpen = false"
+        (menuOpened)="menuOpen = true"
+        [matMenuTriggerFor]="menu"
+        [class.menuOpen]="menuOpen"
       >
-        {{ menuListItem.englishName }}
+        {{ surahs[surahId - 1]?.englishName }}
+        <mat-icon>arrow_drop_down</mat-icon>
       </button>
-    </mat-menu>
-  </div>
-</header>
+      <!-- <nq-theme-switcher></nq-theme-switcher> -->
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button
+          *ngFor="let menuListItem of surahs"
+          [routerLink]="'/' + menuListItem.index"
+          mat-menu-item
+        >
+          {{ menuListItem.englishName }}
+        </button>
+      </mat-menu>
+    </div>
+  </header>
 
-<!-- Observer for controling header's elevation -->
-<div class="observer" #observer></div>
+  <!-- Observer for controling header's elevation -->
+  <div class="observer" #observer></div>
 
-<!-- Ayah List for surah -->
-<nq-ayah-list-builder *ngIf="range" [range]="range"></nq-ayah-list-builder>
+  <!-- Ayah List for surah -->
+  <nq-ayah-list-builder *ngIf="range" [range]="range"></nq-ayah-list-builder>
+</main>

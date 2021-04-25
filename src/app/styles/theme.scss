@@ -46,8 +46,10 @@ html body,
   --primary-background-color: #ffffff;
   --secondary-background-color: #ffffff;
   --secondary-background-color-hover: #5f63680a;
+  --alternate-background-color: #f6f8f7;
 
   --primary-border-color: #dadce0;
+  --secondary-border-color: #00000000;
 
   --primary-icon-color: #5f6368;
   --secondary-icon-color: rgb(95, 99, 104);
@@ -74,14 +76,16 @@ html body,
 }
 
 html.nq-dark-theme body,
-.nq-light-theme {
+.nq-dark-theme {
   --primary-theme-color: #81bfb9;
 
-  --primary-background-color: #161616;
+  --primary-background-color: #000000;
   --secondary-background-color: #1d1d1d;
   --secondary-background-color-hover: #272727;
+  --alternate-background-color: #121212;
 
-  --primary-border-color: #5f6368;
+  --primary-border-color: #333333;
+  --secondary-border-color: #1f1f1f;
 
   --primary-icon-color: #e8eaed;
   --secondary-icon-color: rgb(154, 160, 166);
@@ -100,8 +104,8 @@ html.nq-dark-theme body,
   --secondary-box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%),
     0 1px 3px 1px rgb(60 64 67 / 15%);
 
-  --secondary-stroke-color: #d5d5d5;
-  --primary-stroke-color: #b6a36b;
+  --secondary-stroke-color: #ececec;
+  --primary-stroke-color: #908e8e;
 
-  --banner-background: linear-gradient(180deg, #4dfaea75, #00000000);
+  --banner-background: linear-gradient(180deg, #00ffe77a, #00796d30);
 }

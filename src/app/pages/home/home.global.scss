@@ -1,7 +1,8 @@
-body {
-  background: red;
+.nq-dark-theme .home-page {
+  background: #121212;
 }
-.home {
+
+.home-page {
   .toolbar svg {
     fill: #dddddd !important;
     &:hover {
@@ -23,6 +24,7 @@ body {
     background: var(--secondary-background-color);
     z-index: 100;
     border-radius: inherit;
+    border-bottom: 1px solid var(--primary-border-color);
   }
 
   .mat-tab-label,
@@ -43,30 +45,4 @@ body {
       justify-content: center;
     }
   }
-}
-
-.mat-menu-item {
-  height: 36px !important;
-  font-size: 16px;
-  line-height: 36px !important;
-  padding-right: 8px !important;
-}
-.cdk-overlay-container .mat-menu-panel {
-  overflow-x: hidden;
-  border-radius: 8px;
-  margin-top: 8px;
-  max-height: 412px;
-}
-
-.cdk-overlay-container .mat-menu-panel::-webkit-scrollbar {
-  width: 5px;
-}
-
-.cdk-overlay-container .mat-menu-panel::-webkit-scrollbar-thumb {
-  background: #dadce0;
-  border-radius: 8px;
-}
-
-.cdk-overlay-container .mat-menu-panel::-webkit-scrollbar-track {
-  border-radius: 8px;
 }

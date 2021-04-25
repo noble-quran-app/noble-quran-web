@@ -1,5 +1,6 @@
 @import "./theme.scss";
 @import "../pages/home/home.global.scss";
+@import "../pages/surah/surah.global.scss";
 
 /* You can add global styles to this file, and also import other style files */
 
@@ -15,7 +16,9 @@
 
 body {
   background: var(--primary-background-color);
+  overflow-x: hidden;
 }
+
 button:not([disabled]) svg,
 button:not([disabled]) mat-icon {
   height: 24px;
@@ -36,8 +39,15 @@ a:not([disabled]):hover mat-icon {
   color: var(--secondary-icon-color-hover);
 }
 
+nq-ayah-renderer:nth-child(1) {
+  .ayah-box {
+    padding-top: 10px;
+    padding-bottom: 25px;
+  }
+}
+
 nq-ayah-renderer:nth-child(2n) {
   .ayah-box {
-    background: var(--secondary-background-color);
+    background: var(--alternate-background-color);
   }
 }
