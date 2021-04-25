@@ -5,6 +5,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {
   MatRippleModule,
   MAT_RIPPLE_GLOBAL_OPTIONS,
@@ -19,6 +20,7 @@ const MaterialComponents = [
   MatProgressBarModule,
   MatMenuModule,
   MatIconModule,
+  MatSnackBarModule,
 ];
 
 const globalRippleConfig: RippleGlobalOptions = {
