@@ -1,9 +1,10 @@
-<main class="surah-page">
+<main class="juz-page">
+  <!-- Header for navigation -->
   <read-header
     [menuList]="menuList"
-    [currentMenuItemIndex]="surahId - 1"
+    [currentMenuItemIndex]="juzId - 1"
   ></read-header>
 
-  <!-- Ayah List for surah -->
+  <!-- Ayah List for juz -->
   <nq-ayah-list-builder *ngIf="range" [range]="range"></nq-ayah-list-builder>
 </main>

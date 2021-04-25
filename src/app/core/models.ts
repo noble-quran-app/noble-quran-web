@@ -13,6 +13,7 @@ export interface Juz {
   subTitle: string;
   ayahCount: number;
   index: number;
+  range: string;
 }
 export interface Sajda {
   surahNo: number;
@@ -25,4 +26,11 @@ export interface Sajda {
 export interface AyahRange {
   start: number;
   end: number;
+}
+
+export interface Theme {
+  id: string;
+  className: string;
+  primary_theme_color: string;
+  appbar_background_color: string;
 }

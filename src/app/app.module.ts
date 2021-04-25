@@ -16,18 +16,22 @@ import { AyahListBuilderComponent } from './components/ayah-list-builder/ayah-li
 import { AyahRendererComponent } from './components/ayah-renderer/ayah-renderer.component';
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
 import { NqIconComponent } from './components/nq-icon/nq-icon.component';
+import { JuzComponent } from './pages/juz/juz.component';
+import { ReadHeaderComponent } from './components/read-header/read-header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DefaultComponent,
     SurahComponent,
+    JuzComponent,
+    DefaultComponent,
     ToArabicNumberPipe,
     AyahListBuilderComponent,
     AyahRendererComponent,
     ThemeSwitcherComponent,
     NqIconComponent,
+    ReadHeaderComponent,
   ],
   imports: [
     BrowserModule,

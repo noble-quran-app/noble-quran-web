@@ -11,3 +11,20 @@ export const SurahMatcher = (url: UrlSegment[]): UrlMatchResult => {
   }
   return null;
 };
+
+export const JuzMatcher = (url: UrlSegment[]): UrlMatchResult => {
+  const identifiers = ['juz', 'para', 'sipara'];
+  if (
+    url.length &&
+    identifiers.includes(url[0].path) &&
+    url[1].path.match(/(^[1-9]|10|1[1-9]|2[0-9]|30)$/gm)
+  ) {
+    return {
+      consumed: url,
+      posParams: {
+        juzId: new UrlSegment(url[1].path, {}),
+      },
+    };
+  }
+  return null;
+};

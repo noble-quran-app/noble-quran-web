@@ -1,37 +1,55 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { NobleQuranThemes } from '../data/theme';
+import { LightTheme, DarkTheme } from '../data/theme';
+import { Meta } from '@angular/platform-browser';
+import { Theme } from '../core/models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
-  constructor() {}
+  constructor(private metaService: Meta) {}
 
   private themeStorage = 'theme';
-  private themeSource = new BehaviorSubject<string>(NobleQuranThemes.light);
+  private themeSource = new BehaviorSubject<string>(LightTheme.className);
   public theme = this.themeSource.asObservable();
 
-  setTheme(theme: string) {
-    document.querySelector('html').className = theme;
-    localStorage.setItem(this.themeStorage, theme);
-    this.themeSource.next(theme);
+  setTheme(theme: Theme): void {
+    document.querySelector('html').className = theme.className;
+    this.metaService.updateTag({
+      name: 'theme-color',
+      content: theme.appbar_background_color,
+    });
+    localStorage.setItem(this.themeStorage, JSON.stringify(theme));
+    this.themeSource.next(theme.className);
   }
 
-  toggleTheme() {
-    if (localStorage.getItem(this.themeStorage) == NobleQuranThemes.light) {
-      this.setTheme(NobleQuranThemes.dark);
+  storedThemeIsDark(): boolean {
+    const storedTheme = JSON.parse(localStorage.getItem(this.themeStorage));
+    if (storedTheme.id === DarkTheme.id) {
+      return true;
+    }
+    return false;
+  }
+
+  toggleTheme(): void {
+    if (this.storedThemeIsDark()) {
+      this.setTheme(LightTheme);
     } else {
-      this.setTheme(NobleQuranThemes.light);
+      this.setTheme(DarkTheme);
     }
   }
 
   init() {
     const storedTheme = localStorage.getItem(this.themeStorage);
     if (!storedTheme) {
-      this.setTheme(NobleQuranThemes.light);
+      this.setTheme(LightTheme);
     } else {
-      this.setTheme(storedTheme);
+      if (this.storedThemeIsDark()) {
+        this.setTheme(DarkTheme);
+      } else {
+        this.setTheme(LightTheme);
+      }
     }
   }
 }
