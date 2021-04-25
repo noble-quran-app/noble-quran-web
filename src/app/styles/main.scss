@@ -1,0 +1,43 @@
+@import "./theme.scss";
+@import "../pages/home/home.global.scss";
+
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: var(--primary-background-color);
+}
+button:not([disabled]) svg,
+button:not([disabled]) mat-icon {
+  height: 24px;
+  width: 24px;
+  fill: var(--secondary-icon-color);
+  color: var(--secondary-icon-color);
+  &:hover {
+    fill: var(--secondary-icon-color-hover);
+    color: var(--secondary-icon-color-hover);
+  }
+}
+
+button:not([disabled]):hover svg,
+button:not([disabled]):hover mat-icon,
+a:not([disabled]):hover svg,
+a:not([disabled]):hover mat-icon {
+  fill: var(--secondary-icon-color-hover);
+  color: var(--secondary-icon-color-hover);
+}
+
+nq-ayah-renderer:nth-child(2n) {
+  .ayah-box {
+    background: var(--secondary-background-color);
+  }
+}

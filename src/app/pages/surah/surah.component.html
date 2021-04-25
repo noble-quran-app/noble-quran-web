@@ -3,7 +3,6 @@
     <button routerLink="/" mat-button>Noble Quran</button>
   </div>
   <div class="right">
-    <nq-theme-switcher></nq-theme-switcher>
     <button
       mat-button
       (menuClosed)="menuOpen = false"
@@ -14,6 +13,7 @@
       <mat-icon *ngIf="!menuOpen">arrow_drop_down</mat-icon>
       <mat-icon *ngIf="menuOpen">arrow_drop_up</mat-icon>
     </button>
+    <nq-theme-switcher></nq-theme-switcher>
     <mat-menu #menu="matMenu" xPosition="before">
       <button
         *ngFor="let menuListItem of surahs"

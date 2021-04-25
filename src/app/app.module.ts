@@ -11,12 +11,11 @@ import { MaterialModule } from './material/material.module';
 import { HomeComponent } from './pages/home/home.component';
 import { DefaultComponent } from './pages/default/default.component';
 import { SurahComponent } from './pages/surah/surah.component';
-import { EmptyComponent } from './components/empty/empty.component';
 import { ToArabicNumberPipe } from './pipes/to-arabic-number.pipe';
-import { AyahEndComponent } from './components/icons/ayahEnd.component';
 import { AyahListBuilderComponent } from './components/ayah-list-builder/ayah-list-builder.component';
 import { AyahRendererComponent } from './components/ayah-renderer/ayah-renderer.component';
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
+import { NqIconComponent } from './components/nq-icon/nq-icon.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +23,11 @@ import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switch
     HomeComponent,
     DefaultComponent,
     SurahComponent,
-    EmptyComponent,
     ToArabicNumberPipe,
-    AyahEndComponent,
     AyahListBuilderComponent,
     AyahRendererComponent,
     ThemeSwitcherComponent,
+    NqIconComponent,
   ],
   imports: [
     BrowserModule,

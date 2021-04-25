@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SurahMatcher } from './core/routematch';
-import { EmptyComponent } from './components/empty/empty.component';
 import { DefaultComponent } from './pages/default/default.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SurahComponent } from './pages/surah/surah.component';
