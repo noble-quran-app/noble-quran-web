@@ -21,12 +21,10 @@ export class AppComponent {
       this.swUpdate.available.subscribe(() => {
         this.snackBar
           .open('New version available.', 'Update', {
-            duration: 5000,
+            duration: 15000,
           })
           .onAction()
-          .subscribe(() => {
-            window.location.reload();
-          });
+          .subscribe(() => window.location.reload());
       });
     }
   }
