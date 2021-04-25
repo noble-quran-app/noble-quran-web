@@ -1,0 +1,27 @@
+<header [class.elevated]="headerElevated">
+  <div class="left">
+    <button routerLink="/" mat-button>Noble Quran</button>
+  </div>
+  <div class="right">
+    <button
+      mat-button
+      (menuClosed)="menuOpen = false"
+      (menuOpened)="menuOpen = true"
+      [matMenuTriggerFor]="menu"
+      [class.menuOpen]="menuOpen"
+    >
+      {{ menuList[menuItemIndex]?.title }}
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <!-- <nq-theme-switcher></nq-theme-switcher> -->
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button
+        *ngFor="let menuListItem of menuList"
+        [routerLink]="menuListItem.link"
+        mat-menu-item
+      >
+        {{ menuListItem.title }}
+      </button>
+    </mat-menu>
+  </div>
+</header>

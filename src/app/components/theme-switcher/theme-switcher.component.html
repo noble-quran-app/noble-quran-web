@@ -1,5 +1,5 @@
 <button
-  *ngIf="(theme.theme | async) == darkTheme; else lightThemeButton"
+  *ngIf="(theme.theme | async) == darkThemeClass; else lightThemeButton"
   mat-icon-button
   matTooltip="Switch to light theme"
   (click)="theme.toggleTheme()"

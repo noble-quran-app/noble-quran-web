@@ -1,4 +1,4 @@
-import { Surahs } from '../data/home';
+import { Juzs, Surahs } from '../data/home';
 
 /** Returns an array from a number x to a number y. */
 export const range = (x: number, y: number): number[] => {
@@ -12,4 +12,30 @@ export const getRangeForSurah = (surahNumber: number) => {
     start: parseInt(start),
     end: parseInt(end),
   };
+};
+
+export const getRangeForJuz = (juzNumber: number) => {
+  const juz = Juzs.find((juz) => juz.index == juzNumber);
+  const [start, end] = juz?.range?.split('-');
+  return {
+    start: parseInt(start),
+    end: parseInt(end),
+  };
+};
+
+export const generateMenuList = {
+  forSurah: () => {
+    return Surahs.map(({ englishName, index }) => ({
+      index,
+      link: `/${index}`,
+      title: englishName,
+    }));
+  },
+  forJuz: () => {
+    return Juzs.map(({ title, index }) => ({
+      index,
+      title,
+      link: `/juz/${index}`,
+    }));
+  },
 };

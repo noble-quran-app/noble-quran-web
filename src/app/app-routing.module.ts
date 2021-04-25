@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SurahMatcher } from './core/routematch';
+import { JuzMatcher, SurahMatcher } from './core/routematch';
 import { DefaultComponent } from './pages/default/default.component';
 import { HomeComponent } from './pages/home/home.component';
+import { JuzComponent } from './pages/juz/juz.component';
 import { SurahComponent } from './pages/surah/surah.component';
 
 const routes: Routes = [
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     matcher: SurahMatcher,
     component: SurahComponent,
+  },
+  {
+    matcher: JuzMatcher,
+    component: JuzComponent,
   },
   {
     path: '**',
