@@ -1,11 +1,11 @@
 {
   "name": "Noble Quran",
   "short_name": "Noble Quran",
-  "theme_color": "#00866a",
-  "background_color": "#ffffff",
-  "display": "standalone",
-  "scope": "./",
-  "start_url": "./",
+  "theme_color": "#ffffff",
+  "background_color": "#008C72",
+  "display": "minimal-ui",
+  "scope": "/",
+  "start_url": "/",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
