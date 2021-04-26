@@ -30,7 +30,10 @@
   .mat-tab-label,
   .mat-tab-link {
     color: var(--primary-text-color);
-    text-transform: uppercase;
+    font-size: 15px;
+    font-family: "Poppins", "Roboto", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
     user-select: none;
   }
 

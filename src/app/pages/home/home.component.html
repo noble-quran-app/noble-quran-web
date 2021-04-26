@@ -6,9 +6,14 @@
       <nq-theme-switcher></nq-theme-switcher>
     </div>
   </section>
-  <section class="section-bottom" [class.expanded]="!upperSectionVisible">
+  <section
+    class="section-bottom"
+    #bottomSection
+    [class.expanded]="!upperSectionVisible"
+  >
     <mat-tab-group
       #matTabsGroup
+      [disablePagination]="true"
       animationDuration="0ms"
       mat-align-tabs="center"
       (selectedTabChange)="handleTabChange($event)"

@@ -26,7 +26,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {}
 
   @ViewChild('upperSection') upperSection: ElementRef;
-  @ViewChild('matTabsGroup') matTabGroup: MatTabGroup;
+  @ViewChild('bottomSection') bottomSection: ElementRef;
+  @ViewChild('matTabsGroup')
+  matTabGroup: MatTabGroup;
 
   surahs = <Surah[]>Surahs;
   juzs = <Juz[]>Juzs;
@@ -35,13 +37,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private routeSubscription: Subscription;
   private activeRoute: string;
-  private intersectionOptions = { rootMargin: '-80px' };
+  private intersectionOptions = { rootMargin: '-86px 0px 0px 0px' };
 
   handleTabChange(e: MatTabChangeEvent) {
     const routeToNavigate = TabsData.find((tab) => {
       return tab.textLabel.toLowerCase() == e.tab.textLabel.toLowerCase();
     });
     this.router.navigate([routeToNavigate.path], { replaceUrl: true });
+    if (!this.upperSectionVisible) {
+      window.scrollTo(0, this.upperSection.nativeElement.offsetHeight - 80);
+    }
   }
 
   observer = new IntersectionObserver((entries) => {
@@ -63,7 +68,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.titleService.setTitleForHome();
     this.routeSubscription = this.route.url.subscribe((url: UrlSegment[]) => {
       this.activeRoute = url.length ? `/${url[0].path}` : '/';
-      console.log(url);
     });
   }
 
