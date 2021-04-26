@@ -1,5 +1,20 @@
 import { Surah, Juz, Sajda } from '../core/models';
 
+export const TabsData = [
+  {
+    textLabel: 'Surah',
+    path: '/',
+  },
+  {
+    textLabel: 'Juz',
+    path: '/juz',
+  },
+  {
+    textLabel: 'Sajda',
+    path: '/sajda',
+  },
+];
+
 export const Surahs = <Surah[]>[
   {
     englishName: 'Al-Faatiha',

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { JuzMatcher, SurahMatcher } from './core/routematch';
+import { HomeMatcher, JuzMatcher, SurahMatcher } from './core/routematch';
 import { DefaultComponent } from './pages/default/default.component';
 import { HomeComponent } from './pages/home/home.component';
 import { JuzComponent } from './pages/juz/juz.component';
@@ -8,7 +8,7 @@ import { SurahComponent } from './pages/surah/surah.component';
 
 const routes: Routes = [
   {
-    path: '',
+    matcher: HomeMatcher,
     component: HomeComponent,
   },
   {

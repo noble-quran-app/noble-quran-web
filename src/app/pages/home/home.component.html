@@ -7,12 +7,17 @@
     </div>
   </section>
   <section class="section-bottom" [class.expanded]="!upperSectionVisible">
-    <mat-tab-group animationDuration="0ms" mat-align-tabs="center">
+    <mat-tab-group
+      #matTabsGroup
+      animationDuration="0ms"
+      mat-align-tabs="center"
+      (selectedTabChange)="handleTabChange($event)"
+    >
       <mat-tab label="Surah">
         <mat-list>
           <mat-list-item
             *ngFor="let surah of surahs"
-            [routerLink]="surah.index"
+            [routerLink]="'/' + surah.index"
             matRipple
           >
             <div mat-list-icon>{{ surah.index }}.</div>
@@ -25,7 +30,7 @@
         <mat-list>
           <mat-list-item
             *ngFor="let juz of juzs"
-            [routerLink]="['juz', juz.index]"
+            [routerLink]="['/juz', juz.index]"
             matRipple
           >
             <div mat-list-icon>{{ juz.index }}.</div>
@@ -38,7 +43,7 @@
         <mat-list>
           <mat-list-item
             *ngFor="let sajda of sajdas"
-            [routerLink]="['sajda', sajda.index]"
+            [routerLink]="['/sajda', sajda.index]"
             matRipple
           >
             <div mat-list-icon>{{ sajda.index }}.</div>

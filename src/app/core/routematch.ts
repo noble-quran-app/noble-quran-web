@@ -1,5 +1,12 @@
 import { UrlMatchResult, UrlSegment } from '@angular/router';
 
+export const HomeMatcher = (url: UrlSegment[]): UrlMatchResult => {
+  const identifiers = ['surah', 'juz', 'sajda'];
+  if (!url.length || (url.length == 1 && identifiers.includes(url[0].path))) {
+    return { consumed: url };
+  }
+  return null;
+};
 export const SurahMatcher = (url: UrlSegment[]): UrlMatchResult => {
   if (url.length && url[0].path.match(/^([1-9][0-9]?|10[0-9]|11[0-4])$/gm)) {
     return {
