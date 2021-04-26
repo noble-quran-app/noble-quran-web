@@ -2,8 +2,8 @@
   "name": "Noble Quran",
   "short_name": "Noble Quran",
   "theme_color": "#ffffff",
-  "background_color": "#008C72",
-  "display": "minimal-ui",
+  "background_color": "#ffffff",
+  "display": "standalone",
   "scope": "/",
   "start_url": "/",
   "icons": [

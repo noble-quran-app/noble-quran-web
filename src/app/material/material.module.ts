@@ -6,11 +6,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {
-  MatRippleModule,
-  MAT_RIPPLE_GLOBAL_OPTIONS,
-  RippleGlobalOptions,
-} from '@angular/material/core';
+import { MatRippleModule } from '@angular/material/core';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -23,19 +19,8 @@ const MaterialComponents = [
   MatSnackBarModule,
 ];
 
-const globalRippleConfig: RippleGlobalOptions = {
-  disabled: true,
-  animation: {
-    enterDuration: 300,
-    exitDuration: 0,
-  },
-};
-
 @NgModule({
   imports: [MaterialComponents],
   exports: [MaterialComponents],
-  providers: [
-    // { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig },
-  ],
 })
 export class MaterialModule {}

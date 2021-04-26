@@ -38,11 +38,18 @@
     opacity: 1 !important;
     color: var(--primary-theme-color) !important;
   }
+}
 
-  @media (max-width: 480px) {
-    .mat-tab-list {
-      display: flex;
-      justify-content: center;
-    }
+snack-bar-container {
+  background: #323232 !important;
+  color: #f0f0f0 !important;
+  button {
+    color: #0fb5a7 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .mat-snack-bar-handset .mat-snack-bar-container {
+    margin: 12px !important;
   }
 }

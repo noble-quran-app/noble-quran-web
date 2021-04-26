@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   surahs = <Surah[]>Surahs;
   juzs = <Juz[]>Juzs;
   sajdas = <Sajda[]>Sajdas;
-  upperSectionVisible = false;
+  upperSectionVisible = window.pageYOffset <= 420;
 
   private routeSubscription: Subscription;
   private activeRoute: string;
@@ -63,6 +63,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.titleService.setTitleForHome();
     this.routeSubscription = this.route.url.subscribe((url: UrlSegment[]) => {
       this.activeRoute = url.length ? `/${url[0].path}` : '/';
+      console.log(url);
     });
   }
 

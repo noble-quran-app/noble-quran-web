@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomeMatcher, JuzMatcher, SurahMatcher } from './core/routematch';
 import { DefaultComponent } from './pages/default/default.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -27,7 +27,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'disabled' }),
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'disabled',
+      preloadingStrategy: PreloadAllModules,
+    }),
   ],
   exports: [RouterModule],
 })

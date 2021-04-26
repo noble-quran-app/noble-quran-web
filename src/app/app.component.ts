@@ -16,11 +16,12 @@ export class AppComponent {
 
   ngOnInit() {
     this.themeService.init();
+    history.scrollRestoration = 'manual';
 
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(() => {
         this.snackBar
-          .open('New version available.', 'Update', {
+          .open('New version is available.', 'Update', {
             duration: 15000,
           })
           .onAction()
