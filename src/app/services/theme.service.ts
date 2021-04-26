@@ -25,11 +25,15 @@ export class ThemeService {
   }
 
   storedThemeIsDark(): boolean {
-    const storedTheme = JSON.parse(localStorage.getItem(this.themeStorage));
-    if (storedTheme.id === DarkTheme.id) {
-      return true;
+    try {
+      const storedTheme = JSON.parse(localStorage.getItem(this.themeStorage));
+      if (storedTheme.id === DarkTheme.id) {
+        return true;
+      }
+      return false;
+    } catch (error) {
+      return false;
     }
-    return false;
   }
 
   toggleTheme(): void {
