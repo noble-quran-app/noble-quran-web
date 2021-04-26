@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/noble-quran",
+    "public": "dist/assets",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
