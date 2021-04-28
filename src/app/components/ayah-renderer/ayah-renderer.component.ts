@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { getAyahURL } from 'src/assets/quran/helpers';
+import { IdbService } from 'src/app/services/idb.service';
 
 @Component({
   selector: 'nq-ayah-renderer',
@@ -9,14 +8,18 @@ import { getAyahURL } from 'src/assets/quran/helpers';
 })
 export class AyahRendererComponent implements OnInit {
   @Input('ayahId') ayahId: number;
+  @Input('ayahIndex') ayahIndex: number;
   public ayah;
-  constructor(private http: HttpClient) {}
+  constructor(private idb: IdbService) {}
 
   async ngOnInit() {
-    const [ar, tr] = await Promise.all([
-      this.http.get(getAyahURL(this.ayahId, 'ar')).toPromise(),
-      this.http.get(getAyahURL(this.ayahId, 'tr')).toPromise(),
-    ]);
-    this.ayah = { ...ar, ...tr };
+    try {
+      this.ayah = await this.idb.getAyahWithEditons(this.ayahId, [
+        'quran.simple',
+        'en.sahih',
+      ]);
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

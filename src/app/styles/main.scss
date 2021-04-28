@@ -70,3 +70,7 @@ button.menu-trigger {
     }
   }
 }
+
+.nq-dark-theme .mat-progress-bar-buffer.mat-progress-bar-element {
+  background: var(--secondary-background-color);
+}

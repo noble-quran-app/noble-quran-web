@@ -21,25 +21,39 @@
   .mat-tab-header {
     position: sticky !important;
     top: 0;
+    height: 52px;
     background: var(--secondary-background-color);
     z-index: 100;
     border-radius: inherit;
     border-bottom: 1px solid var(--primary-border-color);
   }
 
+  .mat-tab-labels {
+    height: 100%;
+  }
+
   .mat-tab-label,
   .mat-tab-link {
+    height: 100%;
     color: var(--primary-text-color);
-    font-size: 15px;
-    font-family: "Poppins", "Roboto", Arial, Helvetica, sans-serif;
-    font-weight: 400;
-    letter-spacing: 1px;
+    font-size: 14px;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-weight: 500;
     user-select: none;
+    text-transform: uppercase;
   }
 
   .mat-tab-label-active {
     opacity: 1 !important;
     color: var(--primary-theme-color) !important;
+  }
+
+  @media (max-width: 600px) {
+    .mat-tab-label,
+    .mat-tab-link {
+      width: 30%;
+      max-width: 110px;
+    }
   }
 }
 

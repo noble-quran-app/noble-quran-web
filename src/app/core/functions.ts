@@ -39,3 +39,8 @@ export const generateMenuList = {
     }));
   },
 };
+
+export const Timer = (time: number) =>
+  new Promise((resolve) => {
+    setTimeout(() => resolve(null), time);
+  });

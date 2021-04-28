@@ -23,7 +23,6 @@
           <mat-list-item
             *ngFor="let surah of surahs"
             [routerLink]="'/' + surah.index"
-            matRipple
           >
             <div mat-list-icon>{{ surah.index }}.</div>
             <div class="primary-text" mat-line>{{ surah.englishName }}</div>

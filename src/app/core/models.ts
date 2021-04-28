@@ -34,3 +34,17 @@ export interface Theme {
   primary_theme_color: string;
   appbar_background_color: string;
 }
+
+export interface QuranEdition {
+  edition: Edition;
+  ayahs: string[];
+}
+
+export interface Edition {
+  identifier: string;
+  language: string;
+  name: string;
+  englishName: string;
+  format: string;
+  type: string;
+}

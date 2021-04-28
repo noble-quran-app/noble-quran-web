@@ -1,9 +1,9 @@
 <header [class.elevated]="headerElevated">
   <div class="left">
-    <button mat-icon-button (click)="location.back()">
+    <button class="back-btn" mat-icon-button (click)="location.back()">
       <mat-icon>arrow_back</mat-icon>
     </button>
-    <h1>Noble Quran</h1>
+    <h1 routerLink="/">Noble Quran</h1>
   </div>
   <div class="right">
     <button

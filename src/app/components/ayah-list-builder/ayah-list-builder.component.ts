@@ -3,12 +3,12 @@ import {
   ElementRef,
   Input,
   OnChanges,
-  OnInit,
   ViewChild,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { chunk, range } from 'lodash';
+import range from 'lodash-es/range';
+import chunk from 'lodash-es/chunk';
 import { AyahRange } from 'src/app/core/models';
+import { IdbService } from 'src/app/services/idb.service';
 
 @Component({
   selector: 'nq-ayah-list-builder',
@@ -23,7 +23,7 @@ export class AyahListBuilderComponent implements OnChanges {
 
   @ViewChild('observer') bottomObserver: ElementRef;
 
-  constructor() {}
+  constructor(public idb: IdbService) {}
 
   appendAyahs() {
     if (this.totalAyahs.length && !this.appendingAyahs) {
