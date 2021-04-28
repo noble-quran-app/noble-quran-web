@@ -8,6 +8,6 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./theme-switcher.component.scss'],
 })
 export class ThemeSwitcherComponent {
-  constructor(public theme: ThemeService) {}
+  constructor(public themeService: ThemeService) {}
   public darkThemeClass = DarkTheme.className;
 }

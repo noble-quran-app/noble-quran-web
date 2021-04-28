@@ -1,39 +1,34 @@
 <button
-  *ngIf="(theme.theme | async) == darkThemeClass; else lightThemeButton"
   mat-icon-button
-  matTooltip="Switch to light theme"
-  (click)="theme.toggleTheme()"
-  [matTooltipPosition]="'below'"
+  [matTooltip]="
+    (themeService.theme | async) == darkThemeClass
+      ? 'Switch to light theme (Ctrl + x)'
+      : 'Switch to dark theme (Ctrl + x)'
+  "
+  (click)="themeService.toggleTheme()"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height="24px"
     viewBox="0 0 24 24"
     width="24px"
+    *ngIf="(themeService.theme | async) == darkThemeClass"
   >
     <path
       d="M 20,8.69 V 4 H 15.31 L 12,0.69 8.69,4 H 4 V 8.69 L 0.69,12 4,15.31 V 20 H 8.69 L 12,23.31 15.31,20 H 20 V 15.31 L 23.31,12 Z m -2,5.79 V 18 H 14.48 L 12,20.48 9.52,18 H 6 V 14.48 L 3.52,12 6,9.52 V 6 H 9.52 L 12,3.52 14.48,6 H 18 V 9.52 L 20.48,12 Z M 12,7.5285714 c -3.03,0 -4.6121758,2.3286722 -4.6183674,4.4714286 -0.00642,2.223408 1.7353062,4.667347 4.7653064,4.667347 3.03,0 4.572252,-2.461359 4.520408,-4.667347 C 16.615504,9.794012 15.03,7.5285714 12,7.5285714 Z"
     ></path>
   </svg>
-</button>
-<ng-template #lightThemeButton>
-  <button
-    mat-icon-button
-    matTooltip="Switch to dark theme"
-    (click)="theme.toggleTheme()"
-    [matTooltipPosition]="'below'"
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    enable-background="new 0 0 24 24"
+    height="24px"
+    viewBox="0 0 24 24"
+    width="24px"
+    *ngIf="(themeService.theme | async) != darkThemeClass"
   >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      enable-background="new 0 0 24 24"
-      height="24px"
-      viewBox="0 0 24 24"
-      width="24px"
-      fill="#000000"
-    >
-      <path
-        d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"
-      />
-    </svg>
-  </button>
-</ng-template>
+    <path
+      d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"
+    />
+  </svg>
+</button>

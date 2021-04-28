@@ -25,4 +25,9 @@ export class TitleService {
     const newTitle = `${Juzs[juzId - 1].title} - ${this.baseTitle}`;
     this.title.setTitle(newTitle);
   }
+
+  setTitleForDefault() {
+    const newTitle = `Not found - ${this.baseTitle}`;
+    this.title.setTitle(newTitle);
+  }
 }

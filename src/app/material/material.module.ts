@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatRippleModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -19,6 +20,7 @@ const MaterialComponents = [
   MatIconModule,
   MatSnackBarModule,
   MatProgressSpinnerModule,
+  MatTooltipModule,
 ];
 
 @NgModule({

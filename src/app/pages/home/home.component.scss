@@ -10,25 +10,10 @@
 
   .toolbar {
     position: relative;
-    // height: 50px;
-    // width: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 24px;
-
-    &::after {
-      //   content: "";
-      background: var(--secondary-background-color);
-      opacity: 0.1;
-      height: 100%;
-      width: 100%;
-      border-radius: 40px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-    }
   }
 }
 

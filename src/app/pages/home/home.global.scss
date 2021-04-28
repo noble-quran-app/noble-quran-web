@@ -3,9 +3,11 @@
 }
 
 .home-page {
-  .toolbar svg {
-    fill: #dddddd !important;
-    &:hover {
+  .toolbar button {
+    svg {
+      fill: #dddddd !important;
+    }
+    &:hover svg {
       fill: #ffffff !important;
     }
   }
