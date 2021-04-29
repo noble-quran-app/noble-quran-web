@@ -18,6 +18,7 @@ import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switch
 import { NqIconComponent } from './components/nq-icon/nq-icon.component';
 import { JuzComponent } from './pages/juz/juz.component';
 import { ReadHeaderComponent } from './components/read-header/read-header.component';
+import { ListItemComponent } from './pages/home/list-item/list-item.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ReadHeaderComponent } from './components/read-header/read-header.compon
     ThemeSwitcherComponent,
     NqIconComponent,
     ReadHeaderComponent,
+    ListItemComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,7 @@
 body {
   background: var(--primary-background-color);
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 button:not([disabled]) svg,

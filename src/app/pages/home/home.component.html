@@ -20,42 +20,38 @@
     >
       <mat-tab label="Surah">
         <mat-list>
-          <mat-list-item
+          <home-list-item
             *ngFor="let surah of surahs"
-            [routerLink]="'/' + surah.index"
+            [link]="['/', surah.index]"
+            index="{{ surah.index }}"
+            primaryText="{{ surah.englishName }}"
+            secondaryText="{{ surah.english }}"
           >
-            <div mat-list-icon>{{ surah.index }}.</div>
-            <div class="primary-text" mat-line>{{ surah.englishName }}</div>
-            <div class="secondary-text" mat-line>{{ surah.english }}</div>
-          </mat-list-item>
+          </home-list-item>
         </mat-list>
       </mat-tab>
       <mat-tab label="Juz">
         <mat-list>
-          <mat-list-item
+          <home-list-item
             *ngFor="let juz of juzs"
-            [routerLink]="['/juz', juz.index]"
-            matRipple
+            [link]="['/juz', juz.index]"
+            index="{{ juz.index }}"
+            primaryText="{{ juz.title }}"
+            secondaryText="{{ juz.subTitle }}"
           >
-            <div mat-list-icon>{{ juz.index }}.</div>
-            <div class="primary-text" mat-line>{{ juz.title }}</div>
-            <div class="secondary-text" mat-line>{{ juz.subTitle }}</div>
-          </mat-list-item>
+          </home-list-item>
         </mat-list>
       </mat-tab>
       <mat-tab label="Sajda">
         <mat-list>
-          <mat-list-item
+          <home-list-item
             *ngFor="let sajda of sajdas"
-            [routerLink]="['/sajda', sajda.index]"
-            matRipple
+            [link]="['/sajda', sajda.index]"
+            index="{{ sajda.index }}"
+            primaryText="Ayah {{ sajda.ayahNo }}"
+            secondaryText="of {{ surahs[sajda.surahNo].englishName }}"
           >
-            <div mat-list-icon>{{ sajda.index }}.</div>
-            <div class="primary-text" mat-line>
-              {{ surahs[sajda.surahNo].englishName }}
-            </div>
-            <div class="secondary-text" mat-line>Verse {{ sajda.ayahNo }}</div>
-          </mat-list-item>
+          </home-list-item>
         </mat-list>
       </mat-tab>
     </mat-tab-group>
