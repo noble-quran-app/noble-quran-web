@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AyahReadyStateChange } from 'src/app/core/models';
 import { IdbService } from 'src/app/services/idb.service';
 
 @Component({
@@ -7,10 +8,12 @@ import { IdbService } from 'src/app/services/idb.service';
   styleUrls: ['./ayah-renderer.component.scss'],
 })
 export class AyahRendererComponent implements OnInit {
+  constructor(private idb: IdbService) {}
+
   @Input('ayahId') ayahId: number;
   @Input('ayahIndex') ayahIndex: number;
-  public ayah;
-  constructor(private idb: IdbService) {}
+  @Output() onStateChange = new EventEmitter<AyahReadyStateChange>();
+  public ayah: any;
 
   async ngOnInit() {
     try {
@@ -18,7 +21,17 @@ export class AyahRendererComponent implements OnInit {
         'quran.simple',
         'en.sahih',
       ]);
+      this.onStateChange.emit({
+        ready: true,
+        error: '',
+        index: this.ayahIndex,
+      });
     } catch (error) {
+      this.onStateChange.emit({
+        ready: false,
+        error: error.message,
+        index: this.ayahIndex,
+      });
       console.error(error);
     }
   }

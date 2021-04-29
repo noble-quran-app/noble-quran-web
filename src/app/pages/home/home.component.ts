@@ -12,6 +12,7 @@ import { TitleService } from 'src/app/services/title.service';
 import { MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private titleService: TitleService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackbar: MatSnackBar
   ) {}
 
   @ViewChild('upperSection') upperSection: ElementRef;
@@ -55,6 +57,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       this.upperSectionVisible = e.isIntersecting;
     });
   }, this.intersectionOptions);
+
+  openSnackbar(message: string, duration = 3000) {
+    this.snackbar.open(message, 'Close', {
+      duration: duration,
+    });
+  }
 
   selectCorrectTab(url: string) {
     const correctIndex = TabsData.findIndex((i) => i.path == url);

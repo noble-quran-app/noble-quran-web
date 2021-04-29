@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
 import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
-  selector: 'read-header',
+  selector: 'nq-read-header',
   templateUrl: './read-header.component.html',
   styleUrls: ['./read-header.component.scss'],
 })

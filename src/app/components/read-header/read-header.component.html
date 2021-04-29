@@ -23,6 +23,7 @@
       <button
         *ngFor="let menuListItem of menuList"
         [routerLink]="menuListItem.link"
+        [replaceUrl]="true"
         mat-menu-item
       >
         {{ menuListItem.title }}

@@ -19,6 +19,7 @@ import { NqIconComponent } from './components/nq-icon/nq-icon.component';
 import { JuzComponent } from './pages/juz/juz.component';
 import { ReadHeaderComponent } from './components/read-header/read-header.component';
 import { ListItemComponent } from './pages/home/list-item/list-item.component';
+import { ReadToolbarComponent } from './components/read-toolbar/read-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ListItemComponent } from './pages/home/list-item/list-item.component';
     NqIconComponent,
     ReadHeaderComponent,
     ListItemComponent,
+    ReadToolbarComponent,
   ],
   imports: [
     BrowserModule,

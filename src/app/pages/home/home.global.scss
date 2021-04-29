@@ -1,8 +1,17 @@
 .nq-dark-theme .home-page {
-  background: #121212;
+  background: #080808;
+
+  .section-bottom {
+    box-shadow: none;
+  }
 }
 
 .home-page {
+  .primary-heading svg {
+    width: 330px;
+    margin: 8px;
+    fill: var(--primary-heading-color);
+  }
   .toolbar button {
     svg {
       fill: #dddddd !important;
@@ -55,6 +64,10 @@
     .mat-tab-link {
       width: 30%;
       max-width: 110px;
+    }
+
+    .primary-heading svg {
+      width: 260px;
     }
   }
 }

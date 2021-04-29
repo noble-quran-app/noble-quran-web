@@ -2,8 +2,6 @@
 @import "../pages/home/home.global.scss";
 @import "../pages/surah/surah.global.scss";
 
-/* You can add global styles to this file, and also import other style files */
-
 * {
   margin: 0;
   padding: 0;
@@ -79,10 +77,11 @@ button.menu-trigger {
 .cdk-overlay-container .mat-tooltip {
   background: #3c4043e6 !important;
   font-size: 14px;
+  padding: 6px 10px !important;
 }
 
 .nq-dark-theme .cdk-overlay-container .mat-tooltip {
-  background: #292929 !important;
+  background: #121212 !important;
 }
 
 [hidden] {
@@ -91,4 +90,10 @@ button.menu-trigger {
 
 [hidden="false"] {
   display: unset !important;
+}
+
+nq-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

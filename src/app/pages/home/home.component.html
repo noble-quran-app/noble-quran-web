@@ -1,6 +1,9 @@
 <main class="home-page">
   <section class="section-top" #upperSection>
-    <h1 class="primary-heading">القران الكريم</h1>
+    <h1 class="primary-heading">
+      <span>القران الكريم</span>
+      <nq-icon icon="primary_heading"></nq-icon>
+    </h1>
     <h2 class="secondary-heading">The Noble Quran</h2>
     <div class="toolbar">
       <nq-theme-switcher></nq-theme-switcher>
@@ -46,7 +49,7 @@
         <mat-list>
           <home-list-item
             *ngFor="let sajda of sajdas"
-            [link]="['/sajda', sajda.index]"
+            (click)="openSnackbar('Comming soon')"
             index="{{ sajda.index }}"
             primaryText="Ayah {{ sajda.ayahNo }}"
             secondaryText="of {{ surahs[sajda.surahNo].englishName }}"

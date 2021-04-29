@@ -6,14 +6,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 40px;
+  padding-bottom: 50px;
 
   .toolbar {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 24px;
+    margin: 16px;
   }
 }
 
@@ -25,6 +25,10 @@
   font-family: "myriad", "Material Icons";
   letter-spacing: 3px;
   user-select: none;
+
+  span {
+    display: none;
+  }
 }
 
 .secondary-heading {
@@ -69,6 +73,7 @@
 
   .section-top {
     min-height: 400px;
+    padding-bottom: 60px;
   }
 
   .section-bottom {

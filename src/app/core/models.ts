@@ -48,3 +48,9 @@ export interface Edition {
   format: string;
   type: string;
 }
+
+export interface AyahReadyStateChange {
+  ready: boolean;
+  error: string;
+  index: number;
+}

@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import range from 'lodash-es/range';
 import chunk from 'lodash-es/chunk';
-import { AyahRange } from 'src/app/core/models';
+import { AyahRange, AyahReadyStateChange } from 'src/app/core/models';
 import { IdbService } from 'src/app/services/idb.service';
 
 @Component({
@@ -20,6 +20,7 @@ export class AyahListBuilderComponent implements OnChanges {
   private totalAyahs = [];
   public ayahsToRender = [];
   private appendingAyahs: boolean;
+  public ready = false;
 
   @ViewChild('observer') bottomObserver: ElementRef;
 
@@ -34,7 +35,22 @@ export class AyahListBuilderComponent implements OnChanges {
     }
   }
 
+  handleAyahStateChange(state: AyahReadyStateChange) {
+    if (!this.ready) {
+      if (state.error) {
+        console.error(state.error);
+        return false;
+      }
+      const totalLengthOfAyahs = this.range.end - this.range.start + 1;
+
+      if (state.index > 5 || state.index == totalLengthOfAyahs) {
+        this.ready = true;
+      }
+    }
+  }
+
   ngOnChanges() {
+    this.ready = false;
     this.ayahsToRender = [];
     this.totalAyahs = chunk(range(this.range.start, this.range.end + 1), 10);
     this.appendAyahs();
