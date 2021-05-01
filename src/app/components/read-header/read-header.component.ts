@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -12,13 +12,7 @@ export class ReadHeaderComponent {
 
   @Input('menuList') menuList: any;
   @Input('currentMenuItemIndex') menuItemIndex: number;
-  public headerElevated = false;
   public menuOpen = false;
-
-  @HostListener('window:scroll')
-  onWindowScroll() {
-    this.headerElevated = Boolean(window.pageYOffset);
-  }
 
   async goBack() {
     if (history.length > 2) {

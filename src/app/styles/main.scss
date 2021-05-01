@@ -13,7 +13,7 @@
 }
 
 body {
-  background: var(--primary-background-color);
+  background: var(--secondary-background-color);
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -38,23 +38,11 @@ a:not([disabled]):hover mat-icon {
   color: var(--primary-icon-color-hover);
 }
 
-nq-ayah-renderer:nth-child(1) {
-  .ayah-box {
-    padding-top: 10px;
-    padding-bottom: 25px;
-  }
-}
-
-nq-ayah-renderer:nth-child(2n) {
-  .ayah-box {
-    background: var(--alternate-background-color);
-  }
-}
-
 button.menu-trigger {
-  padding-left: 12px;
-  padding-right: 5px;
-  color: var(--primary-text-color);
+  padding-left: 14px !important;
+  padding-right: 6px !important;
+  border-radius: 50px;
+  color: var(--primary-text-color) !important;
 
   mat-icon {
     color: var(--primary-icon-color);
@@ -62,6 +50,7 @@ button.menu-trigger {
 
   &.menuOpen {
     color: var(--primary-text-color-hover);
+    background: var(--primary-background-color-hover);
 
     mat-icon {
       transform: rotateZ(180deg);
@@ -78,6 +67,10 @@ button.menu-trigger {
   background: #3c4043e6 !important;
   font-size: 14px;
   padding: 6px 10px !important;
+}
+
+.list-item-active {
+  background: var(--primary-background-color-hover) !important;
 }
 
 .nq-dark-theme .cdk-overlay-container .mat-tooltip {

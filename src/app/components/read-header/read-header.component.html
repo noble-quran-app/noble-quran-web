@@ -1,4 +1,4 @@
-<header [class.elevated]="headerElevated">
+<header>
   <div class="left">
     <button class="back-btn" mat-icon-button (click)="goBack()">
       <mat-icon>arrow_back</mat-icon>
@@ -14,7 +14,6 @@
       (menuOpened)="menuOpen = true"
       [matMenuTriggerFor]="navMenu"
       [class.menuOpen]="menuOpen"
-      [class.cdk-keyboard-focused]="menuOpen"
     >
       {{ menuList[menuItemIndex]?.title }}
       <mat-icon>arrow_drop_down</mat-icon>
@@ -23,6 +22,7 @@
       <button
         *ngFor="let menuListItem of menuList"
         [routerLink]="menuListItem.link"
+        routerLinkActive="list-item-active"
         [replaceUrl]="true"
         mat-menu-item
       >

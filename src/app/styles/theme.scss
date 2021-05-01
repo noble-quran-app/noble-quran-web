@@ -44,14 +44,16 @@ html body,
   --primary-theme-color: #00866a;
 
   --primary-background-color: #ffffff;
-  --secondary-background-color: #ffffff;
+  --secondary-background-color: #fafafa;
   --secondary-background-color-hover: #5f63680a;
   --alternate-background-color: #f9f9f9;
+
+  --primary-background-color-hover: #00000015;
 
   --header-background-color: #ffffff;
   --header-elevated-background-color: #f9f9f9;
 
-  --primary-border-color: #dadce0;
+  --primary-border-color: #e5e5e5;
   --secondary-border-color: #00000000;
 
   --primary-icon-color: #5f6368;
@@ -80,15 +82,17 @@ html.nq-dark-theme body,
 .nq-dark-theme {
   --primary-theme-color: #81bfb9;
 
-  --primary-background-color: #040404;
+  --primary-background-color: #151515;
   --secondary-background-color: #121212;
-  --secondary-background-color-hover: #272727;
+  --secondary-background-color-hover: #221e1e;
   --alternate-background-color: #0a0a0a;
 
-  --header-background-color: #0e0e0e;
-  --header-elevated-background-color: #0e0e0e;
+  --primary-background-color-hover: #ffffff15;
 
-  --primary-border-color: #ffffff1a;
+  --header-background-color: #121212;
+  --header-elevated-background-color: #212121;
+
+  --primary-border-color: #363636;
   --secondary-border-color: #1f1f1f;
 
   --primary-icon-color: #ffffff;

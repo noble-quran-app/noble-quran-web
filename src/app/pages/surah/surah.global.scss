@@ -9,20 +9,22 @@
   border-radius: 8px;
   margin-top: 8px;
   max-height: 412px;
-  background: var(--secondary-background-color);
+  background: var(--primary-background-color);
 }
 
-.cdk-overlay-container .mat-menu-panel::-webkit-scrollbar {
-  width: 5px;
-}
+.cdk-overlay-container .mat-menu-panel {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
 
-.cdk-overlay-container .mat-menu-panel::-webkit-scrollbar-thumb {
-  background: #dadce0;
-  border-radius: 8px;
-}
+  &::-webkit-scrollbar-thumb {
+    background: var(--primary-border-color);
+    border-radius: 8px;
+  }
 
-.cdk-overlay-container .mat-menu-panel::-webkit-scrollbar-track {
-  border-radius: 8px;
+  &::-webkit-scrollbar-track {
+    border-radius: 8px;
+  }
 }
 
 @media (max-width: 720px) {
