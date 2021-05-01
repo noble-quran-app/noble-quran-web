@@ -1,0 +1,15 @@
+<div class="ayah-box" *ngIf="ayah">
+  <div class="ayah-text" *ngIf="ayah.arabicText">
+    {{ ayah.arabicText }}
+    <div
+      *ngIf="ayah.numberInSurah"
+      class="ayah-end-box"
+      attr.text="{{ ayah.numberInSurah | toArabicNumber }}"
+    >
+      <nq-icon icon="ayah_end"></nq-icon>
+    </div>
+  </div>
+  <div class="translation-text" *ngIf="ayah.translation">
+    {{ ayah.translation }}
+  </div>
+</div>

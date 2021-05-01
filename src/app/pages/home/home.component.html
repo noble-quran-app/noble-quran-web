@@ -1,0 +1,62 @@
+<main class="home-page">
+  <section class="section-top" #upperSection>
+    <h1 class="primary-heading">
+      <span>القران الكريم</span>
+      <nq-icon icon="primary_heading"></nq-icon>
+    </h1>
+    <h2 class="secondary-heading">The Noble Quran</h2>
+    <div class="toolbar">
+      <nq-theme-switcher></nq-theme-switcher>
+    </div>
+  </section>
+  <section
+    class="section-bottom"
+    #bottomSection
+    [class.expanded]="!upperSectionVisible"
+  >
+    <mat-tab-group
+      #matTabsGroup
+      [disablePagination]="true"
+      animationDuration="0ms"
+      mat-align-tabs="center"
+      (selectedTabChange)="handleTabChange($event)"
+    >
+      <mat-tab label="Surah">
+        <mat-list>
+          <home-list-item
+            *ngFor="let surah of surahs"
+            [link]="['/', surah.index]"
+            index="{{ surah.index }}"
+            primaryText="{{ surah.englishName }}"
+            secondaryText="{{ surah.english }}"
+          >
+          </home-list-item>
+        </mat-list>
+      </mat-tab>
+      <mat-tab label="Juz">
+        <mat-list>
+          <home-list-item
+            *ngFor="let juz of juzs"
+            [link]="['/juz', juz.index]"
+            index="{{ juz.index }}"
+            primaryText="{{ juz.title }}"
+            secondaryText="{{ juz.subTitle }}"
+          >
+          </home-list-item>
+        </mat-list>
+      </mat-tab>
+      <mat-tab label="Sajda">
+        <mat-list>
+          <home-list-item
+            *ngFor="let sajda of sajdas"
+            (click)="openSnackbar('Comming soon')"
+            index="{{ sajda.index }}"
+            primaryText="Ayah {{ sajda.ayahNo }}"
+            secondaryText="of {{ surahs[sajda.surahNo].englishName }}"
+          >
+          </home-list-item>
+        </mat-list>
+      </mat-tab>
+    </mat-tab-group>
+  </section>
+</main>

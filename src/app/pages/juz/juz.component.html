@@ -1,0 +1,10 @@
+<main class="juz-page">
+  <!-- Header for navigation -->
+  <nq-read-header
+    [menuList]="menuList"
+    [currentMenuItemIndex]="juzId - 1"
+  ></nq-read-header>
+
+  <!-- Ayah List for juz -->
+  <nq-ayah-list-builder *ngIf="range" [range]="range"></nq-ayah-list-builder>
+</main>

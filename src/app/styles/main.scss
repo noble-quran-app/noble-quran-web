@@ -1,0 +1,99 @@
+@import "./theme.scss";
+@import "../pages/home/home.global.scss";
+@import "../pages/surah/surah.global.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: var(--primary-background-color);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+button:not([disabled]) svg,
+button:not([disabled]) mat-icon {
+  height: 24px;
+  width: 24px;
+  fill: var(--primary-icon-color);
+  color: var(--primary-icon-color);
+  &:hover {
+    fill: var(--primary-icon-color-hover);
+    color: var(--primary-icon-color-hover);
+  }
+}
+
+button:not([disabled]):hover svg,
+button:not([disabled]):hover mat-icon,
+a:not([disabled]):hover svg,
+a:not([disabled]):hover mat-icon {
+  fill: var(--primary-icon-color-hover);
+  color: var(--primary-icon-color-hover);
+}
+
+nq-ayah-renderer:nth-child(1) {
+  .ayah-box {
+    padding-top: 10px;
+    padding-bottom: 25px;
+  }
+}
+
+nq-ayah-renderer:nth-child(2n) {
+  .ayah-box {
+    background: var(--alternate-background-color);
+  }
+}
+
+button.menu-trigger {
+  padding-left: 12px;
+  padding-right: 5px;
+  color: var(--primary-text-color);
+
+  mat-icon {
+    color: var(--primary-icon-color);
+  }
+
+  &.menuOpen {
+    color: var(--primary-text-color-hover);
+
+    mat-icon {
+      transform: rotateZ(180deg);
+      color: var(--primary-icon-color-hover);
+    }
+  }
+}
+
+.nq-dark-theme .mat-progress-bar-buffer.mat-progress-bar-element {
+  background: var(--secondary-background-color);
+}
+
+.cdk-overlay-container .mat-tooltip {
+  background: #3c4043e6 !important;
+  font-size: 14px;
+  padding: 6px 10px !important;
+}
+
+.nq-dark-theme .cdk-overlay-container .mat-tooltip {
+  background: #121212 !important;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+[hidden="false"] {
+  display: unset !important;
+}
+
+nq-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

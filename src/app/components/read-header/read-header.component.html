@@ -1,0 +1,33 @@
+<header [class.elevated]="headerElevated">
+  <div class="left">
+    <button class="back-btn" mat-icon-button (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1 routerLink="/">Noble Quran</h1>
+  </div>
+  <div class="right">
+    <button
+      class="menu-trigger"
+      mat-button
+      #navMenuTrigger
+      (menuClosed)="menuOpen = false"
+      (menuOpened)="menuOpen = true"
+      [matMenuTriggerFor]="navMenu"
+      [class.menuOpen]="menuOpen"
+      [class.cdk-keyboard-focused]="menuOpen"
+    >
+      {{ menuList[menuItemIndex]?.title }}
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #navMenu="matMenu" xPosition="before">
+      <button
+        *ngFor="let menuListItem of menuList"
+        [routerLink]="menuListItem.link"
+        [replaceUrl]="true"
+        mat-menu-item
+      >
+        {{ menuListItem.title }}
+      </button>
+    </mat-menu>
+  </div>
+</header>

@@ -1,0 +1,38 @@
+.mat-menu-item {
+  height: 44px !important;
+  font-size: 16px;
+  line-height: 44px !important;
+  padding-left: 24px !important;
+}
+.cdk-overlay-container .mat-menu-panel {
+  overflow-x: hidden;
+  border-radius: 8px;
+  margin-top: 8px;
+  max-height: 412px;
+  background: var(--secondary-background-color);
+}
+
+.cdk-overlay-container .mat-menu-panel::-webkit-scrollbar {
+  width: 5px;
+}
+
+.cdk-overlay-container .mat-menu-panel::-webkit-scrollbar-thumb {
+  background: #dadce0;
+  border-radius: 8px;
+}
+
+.cdk-overlay-container .mat-menu-panel::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+
+@media (max-width: 720px) {
+  .mat-menu-item {
+    height: 40px !important;
+    line-height: 40px !important;
+    padding-left: 16px !important;
+  }
+
+  .cdk-overlay-container .mat-menu-panel {
+    max-height: 415px;
+  }
+}
