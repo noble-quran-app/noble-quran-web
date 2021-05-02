@@ -10,7 +10,4 @@ if (environment.production) {
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
-  .then(() => {
-    history.scrollRestoration = 'manual';
-  })
   .catch((err) => console.error(err));

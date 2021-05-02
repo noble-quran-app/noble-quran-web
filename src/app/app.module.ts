@@ -10,15 +10,16 @@ import { MaterialModule } from './material/material.module';
 import { HomeComponent } from './pages/home/home.component';
 import { DefaultComponent } from './pages/default/default.component';
 import { SurahComponent } from './pages/surah/surah.component';
-import { ToArabicNumberPipe } from './pipes/to-arabic-number.pipe';
+import { ToArabicNumberPipe } from './pipes/arabic-decimal.pipe';
 import { AyahListBuilderComponent } from './components/ayah-list-builder/ayah-list-builder.component';
 import { AyahRendererComponent } from './components/ayah-renderer/ayah-renderer.component';
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
-import { NqIconComponent } from './components/nq-icon/nq-icon.component';
+import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
 import { JuzComponent } from './pages/juz/juz.component';
 import { ReadHeaderComponent } from './components/read-header/read-header.component';
 import { ListItemComponent } from './pages/home/list-item/list-item.component';
 import { ReadToolbarComponent } from './components/read-toolbar/read-toolbar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,13 +32,14 @@ import { ReadToolbarComponent } from './components/read-toolbar/read-toolbar.com
     AyahListBuilderComponent,
     AyahRendererComponent,
     ThemeSwitcherComponent,
-    NqIconComponent,
+    SvgIconComponent,
     ReadHeaderComponent,
     ListItemComponent,
     ReadToolbarComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     MaterialModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -46,7 +48,6 @@ import { ReadToolbarComponent } from './components/read-toolbar/read-toolbar.com
       registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -9,10 +9,10 @@
   (click)="themeService.toggleTheme()"
 >
   <ng-container *ngIf="(themeService.theme | async) == darkThemeClass">
-    <nq-icon icon="brightness_high"></nq-icon>
+    <svg-icon icon="brightness_high"></svg-icon>
   </ng-container>
 
   <ng-container *ngIf="(themeService.theme | async) != darkThemeClass">
-    <nq-icon icon="nights_stay"></nq-icon>
+    <svg-icon icon="nights_stay"></svg-icon>
   </ng-container>
 </button>

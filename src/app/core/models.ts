@@ -6,6 +6,7 @@ export interface Surah {
   place: string;
   index: number;
   range: string;
+  startsWithoutBismillah?: boolean;
 }
 
 export interface Juz {

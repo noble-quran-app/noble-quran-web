@@ -1,15 +1,22 @@
-<div class="ayah-box" *ngIf="ayah">
-  <div class="ayah-text" *ngIf="ayah.arabicText">
-    {{ ayah.arabicText }}
-    <div
-      *ngIf="ayah.numberInSurah"
-      class="ayah-end-box"
-      attr.text="{{ ayah.numberInSurah | toArabicNumber }}"
-    >
-      <nq-icon icon="ayah_end"></nq-icon>
+<ng-container *ngIf="!(settings.renderAsPage | async)">
+  <div class="ayah-renderer" *ngIf="ayah">
+    <div class="ayah-text" *ngIf="ayah.arabicText">
+      <span class="arabic-text">{{ ayah.arabicText }}</span>
+      <div class="ayah-end" [attr.text]="ayah.numberInSurah | ArabicDecimal">
+        <svg-icon class="flex" icon="ayah_end"></svg-icon>
+      </div>
+    </div>
+    <div class="translation-text" *ngIf="ayah.translation">
+      {{ ayah.translation }}
     </div>
   </div>
-  <div class="translation-text" *ngIf="ayah.translation">
-    {{ ayah.translation }}
+</ng-container>
+
+<ng-container *ngIf="settings.renderAsPage | async">
+  <div class="ayah-text inline" *ngIf="ayah">
+    <span class="arabic-text" *ngIf="ayah.arabicText">{{ ayah.arabicText }}</span>
+    <div class="ayah-end inline" [attr.text]="ayah.numberInSurah | ArabicDecimal">
+      <svg-icon class="flex" icon="ayah_end"></svg-icon>
+    </div>
   </div>
-</div>
+</ng-container>

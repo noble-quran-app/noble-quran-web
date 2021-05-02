@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DarkTheme } from 'src/app/data/theme';
+import { darkTheme } from 'src/app/data/theme';
 import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
@@ -9,5 +9,5 @@ import { ThemeService } from 'src/app/services/theme.service';
 })
 export class ThemeSwitcherComponent {
   constructor(public themeService: ThemeService) {}
-  public darkThemeClass = DarkTheme.className;
+  public darkThemeClass = darkTheme.className;
 }

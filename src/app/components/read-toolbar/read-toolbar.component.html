@@ -1,10 +1,23 @@
 <footer>
-  <button
-    style="margin: auto"
-    class="play-button"
-    mat-icon-button
-    color="primary"
-  >
-    <mat-icon> play_arrow </mat-icon>
-  </button>
+  <div class="left">
+    <button mat-icon-button (click)="settings.switchView()">
+      <mat-icon>{{
+        (settings.renderAsPage | async) ? 'reorder' : 'auto_stories'
+      }}</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>settings</mat-icon>
+    </button>
+  </div>
+  <div class="right">
+    <button mat-icon-button disabled>
+      <mat-icon>skip_previous</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon> play_arrow </mat-icon>
+    </button>
+    <button mat-icon-button disabled>
+      <mat-icon>skip_next</mat-icon>
+    </button>
+  </div>
 </footer>

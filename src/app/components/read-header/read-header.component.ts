@@ -3,15 +3,15 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'nq-read-header',
+  selector: 'read-header',
   templateUrl: './read-header.component.html',
   styleUrls: ['./read-header.component.scss'],
 })
 export class ReadHeaderComponent {
   constructor(private location: Location, private router: Router) {}
 
-  @Input('menuList') menuList: any;
-  @Input('currentMenuItemIndex') menuItemIndex: number;
+  @Input() menuList: any;
+  @Input() currentMenuItemIndex: number;
   public menuOpen = false;
 
   async goBack() {

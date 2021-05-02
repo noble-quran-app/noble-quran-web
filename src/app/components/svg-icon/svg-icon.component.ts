@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'nq-icon',
-  templateUrl: './nq-icon.component.html',
+  selector: 'svg-icon',
+  templateUrl: './svg-icon.component.html',
 })
-export class NqIconComponent {
+export class SvgIconComponent {
   constructor() {}
   @Input('icon') iconToRender: string;
 }

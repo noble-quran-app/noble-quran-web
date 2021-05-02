@@ -2,18 +2,14 @@
   <section class="section-top" #upperSection>
     <h1 class="primary-heading">
       <span>القران الكريم</span>
-      <nq-icon icon="primary_heading"></nq-icon>
+      <svg-icon class="flex" icon="primary_heading"></svg-icon>
     </h1>
     <h2 class="secondary-heading">The Noble Quran</h2>
     <div class="toolbar">
       <nq-theme-switcher></nq-theme-switcher>
     </div>
   </section>
-  <section
-    class="section-bottom"
-    #bottomSection
-    [class.expanded]="!upperSectionVisible"
-  >
+  <section class="section-bottom" #bottomSection [class.expanded]="!upperSectionVisible">
     <mat-tab-group
       #matTabsGroup
       [disablePagination]="true"

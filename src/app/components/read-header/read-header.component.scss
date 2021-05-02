@@ -10,14 +10,20 @@ header {
   justify-content: space-between;
   border-bottom: 1px solid var(--primary-border-color);
 
-  .back-btn {
-    display: none;
-    mat-icon {
-      font-size: 22px;
-    }
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ";
+    font-family: "Indopak";
+    opacity: 0;
   }
 
-  .left {
+  .back-btn {
+    display: none;
+  }
+
+  & > div {
     display: flex;
     align-items: center;
   }

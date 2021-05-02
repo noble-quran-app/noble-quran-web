@@ -6,15 +6,12 @@ import { AyahRange } from 'src/app/core/models';
 import { TitleService } from 'src/app/services/title.service';
 
 @Component({
-  selector: 'app-juz',
+  selector: 'juz-page',
   templateUrl: './juz.component.html',
   styleUrls: ['./juz.component.scss'],
 })
 export class JuzComponent implements OnInit, OnDestroy {
-  constructor(
-    private route: ActivatedRoute,
-    private titleService: TitleService
-  ) {}
+  constructor(private route: ActivatedRoute, private titleService: TitleService) {}
 
   public range: AyahRange;
   public juzId: number;

@@ -7,15 +7,11 @@ import { AyahRange } from 'src/app/core/models';
 import { TitleService } from 'src/app/services/title.service';
 
 @Component({
-  selector: 'app-surah',
+  selector: 'surah-page',
   templateUrl: './surah.component.html',
-  styleUrls: ['./surah.component.scss'],
 })
 export class SurahComponent implements OnInit, OnDestroy {
-  constructor(
-    private route: ActivatedRoute,
-    private titleService: TitleService
-  ) {}
+  constructor(private route: ActivatedRoute, private titleService: TitleService) {}
 
   public surahs = Surahs;
   public surahId: number;

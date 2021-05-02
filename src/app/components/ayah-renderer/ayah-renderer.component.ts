@@ -1,18 +1,18 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AyahReadyStateChange } from 'src/app/core/models';
 import { IdbService } from 'src/app/services/idb.service';
+import { SettingService } from 'src/app/services/setting.service';
 
 @Component({
-  selector: 'nq-ayah-renderer',
+  selector: 'ayah-renderer',
   templateUrl: './ayah-renderer.component.html',
   styleUrls: ['./ayah-renderer.component.scss'],
 })
 export class AyahRendererComponent implements OnInit {
-  constructor(private idb: IdbService) {}
+  constructor(private idb: IdbService, public settings: SettingService) {}
 
   @Input('ayahId') ayahId: number;
   @Input('ayahIndex') ayahIndex: number;
-  @Output() onStateChange = new EventEmitter<AyahReadyStateChange>();
+  @Output('onStateChange') stateChange = new EventEmitter();
   public ayah: any;
 
   async ngOnInit() {
@@ -21,18 +21,10 @@ export class AyahRendererComponent implements OnInit {
         'quran.simple',
         'en.sahih',
       ]);
-      this.onStateChange.emit({
-        ready: true,
-        error: '',
-        index: this.ayahIndex,
-      });
+
+      this.stateChange.emit([this.ayahIndex]);
     } catch (error) {
-      this.onStateChange.emit({
-        ready: false,
-        error: error.message,
-        index: this.ayahIndex,
-      });
-      console.error(error);
+      this.stateChange.emit([this.ayahIndex, error.message]);
     }
   }
 }

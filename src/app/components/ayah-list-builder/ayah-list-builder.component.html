@@ -1,14 +1,28 @@
+<read-header
+  [menuList]="menuList"
+  [currentMenuItemIndex]="currentMenuItemIndex"
+></read-header>
+
 <mat-progress-bar mode="indeterminate" *ngIf="!ready"></mat-progress-bar>
 
 <ng-container *ngIf="idb.dbReady | async">
-  <div class="content-wrapper" [hidden]="!ready">
-    <nq-ayah-renderer
+  <div
+    class="container"
+    [class.not-ready]="!ready"
+    [class.page-view]="settings.renderAsPage | async"
+  >
+    <ayah-renderer
       *ngFor="let ayah of ayahsToRender; let i = index"
       [ayahId]="ayah"
       [ayahIndex]="i + 1"
       (onStateChange)="handleAyahStateChange($event)"
-    ></nq-ayah-renderer>
+    ></ayah-renderer>
   </div>
 </ng-container>
 
-<div class="observer" #observer></div>
+<!-- Intersection Observer -->
+<div class="observer" #observer>
+  <ng-container *ngIf="!complete && ready">
+    <button mat-stroked-button (click)="appendAyahs()">Load More</button>
+  </ng-container>
+</div>

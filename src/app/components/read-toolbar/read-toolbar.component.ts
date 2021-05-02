@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SettingService } from 'src/app/services/setting.service';
 
 @Component({
   selector: 'nq-read-toolbar',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./read-toolbar.component.scss'],
 })
 export class ReadToolbarComponent implements OnInit {
-  constructor() {}
+  constructor(public settings: SettingService) {}
 
   ngOnInit(): void {}
 }

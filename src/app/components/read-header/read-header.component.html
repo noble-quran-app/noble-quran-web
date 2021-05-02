@@ -15,8 +15,8 @@
       [matMenuTriggerFor]="navMenu"
       [class.menuOpen]="menuOpen"
     >
-      {{ menuList[menuItemIndex]?.title }}
-      <mat-icon>arrow_drop_down</mat-icon>
+      {{ menuList[currentMenuItemIndex]?.title }}
+      <svg-icon icon="arrow_drop_down"></svg-icon>
     </button>
     <mat-menu #navMenu="matMenu" xPosition="before">
       <button

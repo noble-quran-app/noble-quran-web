@@ -1,3 +1,29 @@
 .observer {
-  height: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 36px;
+
+  button {
+    margin: 32px;
+    border-radius: 50px;
+  }
+}
+
+.not-ready {
+  //   background: red;
+  visibility: visible;
+  opacity: 0;
+  max-height: 0px;
+  overflow: hidden;
+}
+.page-view {
+  text-align: justify;
+  padding: 10px 36px;
+  word-spacing: 10px;
+  direction: rtl;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 2;
 }

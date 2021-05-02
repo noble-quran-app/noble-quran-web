@@ -24,6 +24,7 @@ export const Surahs = <Surah[]>[
     place: 'Mecca',
     index: 1,
     range: '1-7',
+    startsWithoutBismillah: true,
   },
   {
     englishName: 'Al-Baqara',
@@ -96,6 +97,7 @@ export const Surahs = <Surah[]>[
     place: 'Medina',
     index: 9,
     range: '1236-1364',
+    startsWithoutBismillah: true,
   },
   {
     englishName: 'Yunus',

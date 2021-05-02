@@ -1,4 +1,4 @@
-@import "~@angular/material/theming";
+@import '~@angular/material/theming';
 
 @include mat-core();
 
@@ -95,7 +95,7 @@ html.nq-dark-theme body,
   --primary-border-color: #363636;
   --secondary-border-color: #1f1f1f;
 
-  --primary-icon-color: #ffffff;
+  --primary-icon-color: #b8b8b8;
   --primary-icon-color-hover: #ffffff;
   --secondary-icon-color: #9aa0a6;
   --secondary-icon-color-hover: #e8eaed;
