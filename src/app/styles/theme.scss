@@ -44,19 +44,20 @@ html body,
   --primary-theme-color: #00866a;
 
   --primary-background-color: #ffffff;
+  --primary-background-color-hover: #00000015;
   --secondary-background-color: #fafafa;
   --secondary-background-color-hover: #5f63680a;
-  --alternate-background-color: #f9f9f9;
+  --ayah-renderer-background-color: #fafafa;
+  --ayah-renderer-background-color-current: #eaeaea;
 
-  --primary-background-color-hover: #00000015;
-
-  --header-background-color: #ffffff;
-  --header-elevated-background-color: #f9f9f9;
+  --read-header-background-color: #ffffff;
+  --read-toolbar-background-color: #ffffff;
 
   --primary-border-color: #e5e5e5;
   --secondary-border-color: #00000000;
 
-  --primary-icon-color: #5f6368;
+  --primary-icon-color: #505050;
+  --primary-icon-color-hover: #505050;
   --secondary-icon-color: #5f6368;
   --secondary-icon-color-hover: #202124;
 
@@ -65,7 +66,7 @@ html body,
 
   --primary-text-color: #202124;
   --primary-text-color-hover: #101010;
-  --tertiary-text-color: #5f6368;
+  --tertiary-text-color: #444444;
   --secondary-text-color: #5f6368;
   --secondary-text-color-hover: #202124;
 
@@ -83,19 +84,19 @@ html.nq-dark-theme body,
   --primary-theme-color: #81bfb9;
 
   --primary-background-color: #151515;
-  --secondary-background-color: #121212;
-  --secondary-background-color-hover: #221e1e;
-  --alternate-background-color: #0a0a0a;
-
   --primary-background-color-hover: #ffffff15;
+  --secondary-background-color: #121212;
+  --secondary-background-color-hover: #242424;
+  --ayah-renderer-background-color: #121212;
+  --ayah-renderer-background-color-current: #262626;
 
-  --header-background-color: #121212;
-  --header-elevated-background-color: #212121;
+  --read-header-background-color: #121212;
+  --read-toolbar-background-color: #121212;
 
   --primary-border-color: #363636;
   --secondary-border-color: #1f1f1f;
 
-  --primary-icon-color: #b8b8b8;
+  --primary-icon-color: #e8e8e8;
   --primary-icon-color-hover: #ffffff;
   --secondary-icon-color: #9aa0a6;
   --secondary-icon-color-hover: #e8eaed;

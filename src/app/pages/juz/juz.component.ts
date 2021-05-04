@@ -13,7 +13,7 @@ import { TitleService } from 'src/app/services/title.service';
 export class JuzComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private titleService: TitleService) {}
 
-  public range: AyahRange;
+  public ayahRange: AyahRange;
   public juzId: number;
   private subscription: Subscription;
   public menuList = generateMenuList.forJuz();
@@ -21,7 +21,7 @@ export class JuzComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.route.params.subscribe((params) => {
       this.juzId = parseInt(params.juzId);
-      this.range = getRangeForJuz(this.juzId);
+      this.ayahRange = getRangeForJuz(this.juzId);
       this.titleService.setTitleForJuz(this.juzId);
     });
   }

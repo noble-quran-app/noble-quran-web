@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 36px;
 
   button {
     margin: 32px;
@@ -12,18 +11,21 @@
 }
 
 .not-ready {
-  //   background: red;
   visibility: visible;
   opacity: 0;
   max-height: 0px;
   overflow: hidden;
 }
-.page-view {
-  text-align: justify;
-  padding: 10px 36px;
-  word-spacing: 10px;
-  direction: rtl;
-  max-width: 620px;
-  margin: 0 auto;
-  line-height: 2;
+
+.container {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 64px auto;
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin: 56px auto;
+  }
 }

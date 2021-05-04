@@ -25,7 +25,7 @@ export class ListItemComponent {
   @Input('secondaryText') secondaryText: string;
   @Input('metaText') metaText: string;
   @Input('index') index: number;
-  @Input('link') link: string[];
+  @Input('link') link: any[];
 
   constructor(private router: Router) {}
 

@@ -5,8 +5,7 @@
 .ayah-renderer {
   font-size: calc(var(--ar-font-size) * 1px);
   direction: rtl;
-  padding: 10px 48px 25px;
-  margin: 16px 0;
+  padding: 30px 48px 40px;
   font-family: 'Indopak';
   color: var(--primary-text-color);
   -webkit-user-select: auto;
@@ -15,7 +14,11 @@
   letter-spacing: 0;
   line-height: 1.9;
   word-spacing: 2px;
-  background: var(--secondary-background-color);
+  background: var(--ayah-renderer-background-color);
+}
+
+.ayah-renderer.playing {
+  background-color: var(--ayah-renderer-background-color-current);
 }
 
 .arabic-text {
@@ -39,7 +42,7 @@
 
   &::after {
     content: attr(text);
-    font-family: 'indopak', 'Material Icons';
+    font-family: 'Indopak';
     color: var(--primary-stroke-color);
     font-size: 20px;
     line-height: 20px;
@@ -74,6 +77,6 @@
     transform: translate(-50%, -62%);
   }
   .ayah-renderer {
-    padding: 10px 24px 25px;
+    padding: 20px 24px 25px;
   }
 }

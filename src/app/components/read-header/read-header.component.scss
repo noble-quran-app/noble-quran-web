@@ -1,38 +1,43 @@
 header {
-  position: sticky;
-  background: var(--header-background-color);
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  left: 0px;
   z-index: 1000;
-  top: 0;
   padding: 0 36px;
   min-height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--primary-border-color);
+  background: var(--read-header-background-color);
 
+  //   This is for preloading the Arabic font
   &::after {
     position: absolute;
+    height: 100%;
+    width: 100%;
     top: 0;
     left: 0;
-    content: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ";
-    font-family: "Indopak";
-    opacity: 0;
+    content: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ';
+    font-family: 'Indopak';
+    color: transparent;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .back-btn {
     display: none;
   }
 
-  & > div {
-    display: flex;
-    align-items: center;
-  }
-
-  h1,
+  a,
   button {
+    text-decoration: none;
     cursor: pointer;
     font-family: Roboto, Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     user-select: none;
     padding: 0 8px;
@@ -44,11 +49,13 @@ header {
   header {
     min-height: 56px;
     padding: 0 12px;
-    h1 {
-      display: none;
-    }
+
     .back-btn {
       display: block;
+    }
+
+    a {
+      display: none;
     }
   }
 }

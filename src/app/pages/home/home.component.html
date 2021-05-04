@@ -1,7 +1,6 @@
 <main class="home-page">
   <section class="section-top" #upperSection>
-    <h1 class="primary-heading">
-      <span>القران الكريم</span>
+    <h1 class="primary-heading" aria-labelledby="القران الكريم">
       <svg-icon class="flex" icon="primary_heading"></svg-icon>
     </h1>
     <h2 class="secondary-heading">The Noble Quran</h2>
@@ -22,9 +21,9 @@
           <home-list-item
             *ngFor="let surah of surahs"
             [link]="['/', surah.index]"
-            index="{{ surah.index }}"
-            primaryText="{{ surah.englishName }}"
-            secondaryText="{{ surah.english }}"
+            [index]="surah.index"
+            [primaryText]="surah.englishName"
+            [secondaryText]="surah.english"
           >
           </home-list-item>
         </mat-list>
@@ -34,9 +33,9 @@
           <home-list-item
             *ngFor="let juz of juzs"
             [link]="['/juz', juz.index]"
-            index="{{ juz.index }}"
-            primaryText="{{ juz.title }}"
-            secondaryText="{{ juz.subTitle }}"
+            [index]="juz.index"
+            [primaryText]="juz.title"
+            [secondaryText]="juz.subTitle"
           >
           </home-list-item>
         </mat-list>
@@ -45,8 +44,8 @@
         <mat-list>
           <home-list-item
             *ngFor="let sajda of sajdas"
+            [index]="sajda.index"
             (click)="openSnackbar('Comming soon')"
-            index="{{ sajda.index }}"
             primaryText="Ayah {{ sajda.ayahNo }}"
             secondaryText="of {{ surahs[sajda.surahNo].englishName }}"
           >

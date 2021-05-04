@@ -1,28 +1,33 @@
+<!-- Header -->
 <read-header
   [menuList]="menuList"
   [currentMenuItemIndex]="currentMenuItemIndex"
 ></read-header>
 
-<mat-progress-bar mode="indeterminate" *ngIf="!ready"></mat-progress-bar>
+<!-- Progress bar -->
+<mat-progress-bar mode="indeterminate" *ngIf="!readyToShowAyahs"></mat-progress-bar>
 
-<ng-container *ngIf="idb.dbReady | async">
-  <div
-    class="container"
-    [class.not-ready]="!ready"
-    [class.page-view]="settings.renderAsPage | async"
-  >
-    <ayah-renderer
-      *ngFor="let ayah of ayahsToRender; let i = index"
-      [ayahId]="ayah"
-      [ayahIndex]="i + 1"
-      (onStateChange)="handleAyahStateChange($event)"
-    ></ayah-renderer>
-  </div>
-</ng-container>
+<!-- All ayahs to render -->
+<div
+  *ngIf="idb.dbReady | async"
+  class="container"
+  [class.not-ready]="!readyToShowAyahs"
+  [class.page-view]="settings.renderAsPage | async"
+>
+  <ayah-renderer
+    *ngFor="let ayahId of ayahsToRender; let ayahIndex = index"
+    [ayahId]="ayahId"
+    [ayahIndex]="ayahIndex"
+    (onStateChange)="handleAyahStateChange($event)"
+  ></ayah-renderer>
+</div>
 
 <!-- Intersection Observer -->
 <div class="observer" #observer>
-  <ng-container *ngIf="!complete && ready">
+  <ng-container *ngIf="!allAyahsRendered && readyToShowAyahs">
     <button mat-stroked-button (click)="appendAyahs()">Load More</button>
   </ng-container>
 </div>
+
+<!-- Toolbar -->
+<nq-read-toolbar [ayahRange]="ayahRange"></nq-read-toolbar>

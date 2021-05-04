@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Juzs, Surahs } from '../data/home';
+import { Juzs, Surahs } from '../data/quran';
 
 @Injectable({
   providedIn: 'root',
@@ -15,9 +15,7 @@ export class TitleService {
   }
 
   setTitleForSurah(surahId: number) {
-    const newTitle = `Surah ${Surahs[surahId - 1].englishName} - ${
-      this.baseTitle
-    }`;
+    const newTitle = `Surah ${Surahs[surahId - 1].englishName} - ${this.baseTitle}`;
     this.title.setTitle(newTitle);
   }
 

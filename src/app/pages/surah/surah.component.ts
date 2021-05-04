@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { generateMenuList, getRangeForSurah } from 'src/app/core/functions';
-import { Surahs } from '../../data/home';
+import { Surahs } from '../../data/quran';
 import { Subscription } from 'rxjs';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AyahRange } from 'src/app/core/models';
@@ -15,14 +15,14 @@ export class SurahComponent implements OnInit, OnDestroy {
 
   public surahs = Surahs;
   public surahId: number;
-  public range: AyahRange;
+  public ayahRange: AyahRange;
   private subscription: Subscription;
   public menuList = generateMenuList.forSurah();
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe((params) => {
       this.surahId = parseInt(params.surahId);
-      this.range = getRangeForSurah(this.surahId);
+      this.ayahRange = getRangeForSurah(this.surahId);
       this.titleService.setTitleForSurah(this.surahId);
     });
   }

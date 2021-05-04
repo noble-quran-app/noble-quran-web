@@ -6,7 +6,8 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { Surahs, Juzs, Sajdas, TabsData } from 'src/app/data/home';
+import { Surahs, Juzs, Sajdas } from 'src/app/data/quran';
+import { TabsData } from 'src/app/data/home';
 import { Juz, Sajda, Surah } from 'src/app/core/models';
 import { TitleService } from 'src/app/services/title.service';
 import { MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs';

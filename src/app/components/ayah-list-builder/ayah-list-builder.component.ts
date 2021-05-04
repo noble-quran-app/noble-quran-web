@@ -1,9 +1,8 @@
 import { Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
 import range from 'lodash-es/range';
 import chunk from 'lodash-es/chunk';
-import { AyahRange, AyahReadyStateChange } from 'src/app/core/models';
+import { AyahRange } from 'src/app/core/models';
 import { IdbService } from 'src/app/services/idb.service';
-import { Timer } from 'src/app/core/functions';
 import { SettingService } from 'src/app/services/setting.service';
 
 @Component({
@@ -12,17 +11,16 @@ import { SettingService } from 'src/app/services/setting.service';
   styleUrls: ['./ayah-list-builder.component.scss'],
 })
 export class AyahListBuilderComponent implements OnChanges {
-  @Input() range: AyahRange;
-  @Input() menuList;
-  @Input() currentMenuItemIndex;
+  @Input() ayahRange: AyahRange;
+  @Input() menuList: any;
+  @Input() currentMenuItemIndex: number;
 
   private totalAyahs = [];
   public ayahsToRender = [];
   private appendingAyahs: boolean;
-  public ready = false;
-  public complete = false;
-  public upperSectionVisible = true;
-  private intersectionOptions = {
+  public readyToShowAyahs = false;
+  public allAyahsRendered = false;
+  readonly intersectionOptions = {
     rootMargin: '1500px',
   };
 
@@ -38,30 +36,30 @@ export class AyahListBuilderComponent implements OnChanges {
       this.appendingAyahs = false;
     }
     if (!this.totalAyahs.length) {
-      this.complete = true;
+      this.allAyahsRendered = true;
     }
   }
 
   handleAyahStateChange(state: [number, string]) {
     const [ayahIndex, error] = state;
-    if (!this.ready) {
+    if (!this.readyToShowAyahs) {
       if (error) {
         console.error(error);
         return false;
       }
-      const totalLengthOfAyahs = this.range.end - this.range.start + 1;
+      const totalLengthOfAyahs = this.ayahRange.end - this.ayahRange.start;
 
       if (ayahIndex > 5 || ayahIndex == totalLengthOfAyahs) {
-        this.ready = true;
+        this.readyToShowAyahs = true;
       }
     }
   }
 
   ngOnChanges() {
-    this.ready = false;
-    this.complete = false;
+    this.readyToShowAyahs = false;
+    this.allAyahsRendered = false;
     this.ayahsToRender = [];
-    this.totalAyahs = chunk(range(this.range.start, this.range.end + 1), 10);
+    this.totalAyahs = chunk(range(this.ayahRange.start, this.ayahRange.end + 1), 10);
     this.appendAyahs();
   }
 

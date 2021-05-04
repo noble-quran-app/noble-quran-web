@@ -1,22 +1,39 @@
 <footer>
-  <div class="left">
-    <button mat-icon-button (click)="settings.switchView()">
-      <mat-icon>{{
-        (settings.renderAsPage | async) ? 'reorder' : 'auto_stories'
-      }}</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>settings</mat-icon>
-    </button>
-  </div>
-  <div class="right">
-    <button mat-icon-button disabled>
+  <div class="center">
+    <button
+      mat-icon-button
+      aria-label="Play previous ayah"
+      (click)="_audio.skipToPreviousAyah()"
+      [disabled]="(_audio.currentAyahId | async) === ayahRange.start"
+    >
       <mat-icon>skip_previous</mat-icon>
     </button>
-    <button mat-icon-button>
-      <mat-icon> play_arrow </mat-icon>
+
+    <ng-container *ngIf="!(_audio.isCompleted | async)">
+      <mat-spinner *ngIf="_audio.isBuffering | async" [diameter]="40"></mat-spinner>
+      <button
+        mat-icon-button
+        (click)="_audio.playPause()"
+        [ngSwitch]="_audio.isPlaying | async"
+        [attr.aria-label]="(_audio.isPlaying | async) ? 'Pause' : 'Play'"
+      >
+        <mat-icon *ngSwitchCase="true"> pause </mat-icon>
+        <mat-icon *ngSwitchCase="false"> play_arrow </mat-icon>
+      </button>
+    </ng-container>
+    <button
+      mat-icon-button
+      (click)="_audio.replaySession()"
+      *ngIf="_audio.isCompleted | async"
+    >
+      <mat-icon> replay </mat-icon>
     </button>
-    <button mat-icon-button disabled>
+    <button
+      mat-icon-button
+      aria-label="Play next ayah"
+      (click)="_audio.skipToNextAyah()"
+      [disabled]="(_audio.currentAyahId | async) === ayahRange.end"
+    >
       <mat-icon>skip_next</mat-icon>
     </button>
   </div>

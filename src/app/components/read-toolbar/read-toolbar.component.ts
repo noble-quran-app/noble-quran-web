@@ -1,13 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { SettingService } from 'src/app/services/setting.service';
+import { Component, Input, OnChanges, OnDestroy } from '@angular/core';
+import { AyahRange } from 'src/app/core/models';
+import { AudioService } from 'src/app/services/audio.service';
 
 @Component({
   selector: 'nq-read-toolbar',
   templateUrl: './read-toolbar.component.html',
   styleUrls: ['./read-toolbar.component.scss'],
 })
-export class ReadToolbarComponent implements OnInit {
-  constructor(public settings: SettingService) {}
+export class ReadToolbarComponent implements OnChanges, OnDestroy {
+  @Input() ayahRange: AyahRange;
+  constructor(public _audio: AudioService) {}
 
-  ngOnInit(): void {}
+  ngOnChanges() {
+    this._audio.destroySession();
+    this._audio.startSession(this.ayahRange);
+  }
+
+  ngOnDestroy() {
+    this._audio.destroySession();
+  }
 }
