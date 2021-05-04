@@ -3,7 +3,6 @@ import {
   ElementRef,
   EventEmitter,
   Input,
-  OnChanges,
   OnDestroy,
   OnInit,
   Output,
@@ -71,6 +70,6 @@ export class AyahRendererComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.idSubscription.unsubscribe();
+    this.idSubscription?.unsubscribe();
   }
 }

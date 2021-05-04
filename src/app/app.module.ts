@@ -20,6 +20,7 @@ import { ReadHeaderComponent } from './components/read-header/read-header.compon
 import { ListItemComponent } from './pages/home/list-item/list-item.component';
 import { ReadToolbarComponent } from './components/read-toolbar/read-toolbar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SajdaComponent } from './pages/sajda/sajda.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReadHeaderComponent,
     ListItemComponent,
     ReadToolbarComponent,
+    SajdaComponent,
   ],
   imports: [
     BrowserModule,

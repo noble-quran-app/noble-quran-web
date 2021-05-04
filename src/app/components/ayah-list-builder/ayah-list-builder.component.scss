@@ -1,13 +1,18 @@
 .observer {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
+  height: 200px;
 
   button {
     margin: 32px;
     border-radius: 50px;
   }
+}
+
+.observer.all-rendered {
+  height: auto;
 }
 
 .not-ready {

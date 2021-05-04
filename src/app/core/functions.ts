@@ -1,4 +1,4 @@
-import { Juzs, Surahs } from '../data/quran';
+import { Juzs, Sajdas, Surahs } from '../data/quran';
 
 export const getRangeForSurah = (surahNumber: number) => {
   const surah = Surahs.find((surah) => surah.index == surahNumber);
@@ -10,11 +10,19 @@ export const getRangeForSurah = (surahNumber: number) => {
 };
 
 export const getRangeForJuz = (juzNumber: number) => {
-  const juz = Juzs.find((juz) => juz.index == juzNumber);
+  const juz = Juzs.find((juz) => juz.index === juzNumber);
   const [start, end] = juz?.range?.split('-');
   return {
     start: parseInt(start),
     end: parseInt(end),
+  };
+};
+
+export const getRangeForSajda = (sajdaNumber: number) => {
+  const sajda = Sajdas.find((sajda) => sajda.index === sajdaNumber);
+  return {
+    start: sajda.ayahId,
+    end: sajda.ayahId,
   };
 };
 
@@ -31,6 +39,13 @@ export const generateMenuList = {
       index,
       title,
       link: `/juz/${index}`,
+    }));
+  },
+  forSajda: () => {
+    return Sajdas.map(({ index }) => ({
+      index,
+      title: `Sajda ${index}`,
+      link: `/sajda/${index}`,
     }));
   },
 };

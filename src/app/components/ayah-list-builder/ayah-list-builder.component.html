@@ -23,7 +23,7 @@
 </div>
 
 <!-- Intersection Observer -->
-<div class="observer" #observer>
+<div class="observer" [class.all-rendered]="allAyahsRendered" #observer>
   <ng-container *ngIf="!allAyahsRendered && readyToShowAyahs">
     <button mat-stroked-button (click)="appendAyahs()">Load More</button>
   </ng-container>

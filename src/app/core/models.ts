@@ -18,10 +18,11 @@ export interface Juz {
 }
 export interface Sajda {
   surahNo: number;
-  ayahNo: number;
+  numberInSurah: number;
   juzNo: number;
   isObligatory: boolean;
   index: number;
+  ayahId: number;
 }
 
 export interface AyahRange {

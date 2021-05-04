@@ -24,6 +24,11 @@ export class TitleService {
     this.title.setTitle(newTitle);
   }
 
+  setTitleForSajda(sajdaId: number) {
+    const newTitle = `Sajda ${sajdaId} - ${this.baseTitle}`;
+    this.title.setTitle(newTitle);
+  }
+
   setTitleForDefault() {
     const newTitle = `Not found - ${this.baseTitle}`;
     this.title.setTitle(newTitle);

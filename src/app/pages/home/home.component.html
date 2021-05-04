@@ -44,10 +44,10 @@
         <mat-list>
           <home-list-item
             *ngFor="let sajda of sajdas"
+            [link]="['/sajda', sajda.index]"
             [index]="sajda.index"
-            (click)="openSnackbar('Comming soon')"
-            primaryText="Ayah {{ sajda.ayahNo }}"
-            secondaryText="of {{ surahs[sajda.surahNo].englishName }}"
+            primaryText="Ayah {{ sajda.numberInSurah }}"
+            secondaryText="of Surah {{ surahs[sajda.surahNo].englishName }}"
           >
           </home-list-item>
         </mat-list>

@@ -35,3 +35,20 @@ export const JuzMatcher = (url: UrlSegment[]): UrlMatchResult => {
   }
   return null;
 };
+
+export const SajdaMatcher = (url: UrlSegment[]): UrlMatchResult => {
+  const identifiers = ['sajda', 'sijda', 'prostration'];
+  if (
+    url.length &&
+    identifiers.includes(url[0].path) &&
+    url[1].path.match(/(^[1-9]|10|1[1-5])$/gm)
+  ) {
+    return {
+      consumed: url,
+      posParams: {
+        sajdaId: new UrlSegment(url[1].path, {}),
+      },
+    };
+  }
+  return null;
+};
