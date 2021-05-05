@@ -49,7 +49,7 @@ export class AyahListBuilderComponent implements OnChanges {
       }
       const totalLengthOfAyahs = this.ayahRange.end - this.ayahRange.start;
 
-      if (ayahIndex > 5 || ayahIndex == totalLengthOfAyahs) {
+      if (ayahIndex >= 15 || ayahIndex == totalLengthOfAyahs) {
         this.readyToShowAyahs = true;
       }
     }
@@ -59,7 +59,7 @@ export class AyahListBuilderComponent implements OnChanges {
     this.readyToShowAyahs = false;
     this.allAyahsRendered = false;
     this.ayahsToRender = [];
-    this.totalAyahs = chunk(range(this.ayahRange.start, this.ayahRange.end + 1), 10);
+    this.totalAyahs = chunk(range(this.ayahRange.start, this.ayahRange.end + 1), 20);
     this.appendAyahs();
   }
 

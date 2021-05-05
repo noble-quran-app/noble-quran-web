@@ -12,7 +12,8 @@
           "/manifest.webmanifest",
           "/*.css",
           "/*.js"
-        ]
+        ],
+        "urls": ["https://fonts.googleapis.com/**", "https://fonts.gstatic.com/**"]
       }
     },
     {
@@ -24,6 +25,17 @@
           "/assets/**",
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "quran-audio",
+      "urls": ["https://cdn.islamic.network/**", "https://cdn.alquran.cloud/**"],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxSize": 12472,
+        "maxAge": "90d"
       }
     }
   ]

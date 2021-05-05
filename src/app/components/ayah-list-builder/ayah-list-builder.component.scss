@@ -1,14 +1,21 @@
+.mat-progress-bar {
+  position: absolute;
+  top: 64px;
+  left: 0px;
+  width: 100%;
+}
+
 .observer {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
   height: 200px;
+}
 
-  button {
-    margin: 32px;
-    border-radius: 50px;
-  }
+.observer button {
+  margin: 32px;
+  border-radius: 50px;
 }
 
 .observer.all-rendered {
@@ -32,5 +39,8 @@
 @media (max-width: 600px) {
   .container {
     margin: 56px auto;
+  }
+  .mat-progress-bar {
+    top: 56px;
   }
 }
