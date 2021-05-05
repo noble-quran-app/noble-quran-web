@@ -9,28 +9,31 @@ export class TitleService {
   constructor(private title: Title) {}
 
   baseTitle = 'The Noble Quran';
+  concator = '-';
 
   setTitleForHome() {
     this.title.setTitle(this.baseTitle);
   }
 
   setTitleForSurah(surahId: number) {
-    const newTitle = `Surah ${Surahs[surahId - 1].englishName} - ${this.baseTitle}`;
+    const newTitle = `Surah ${Surahs[surahId - 1].englishName} ${this.concator} ${
+      this.baseTitle
+    }`;
     this.title.setTitle(newTitle);
   }
 
   setTitleForJuz(juzId: number) {
-    const newTitle = `${Juzs[juzId - 1].title} - ${this.baseTitle}`;
+    const newTitle = `${Juzs[juzId - 1].title} ${this.concator} ${this.baseTitle}`;
     this.title.setTitle(newTitle);
   }
 
   setTitleForSajda(sajdaId: number) {
-    const newTitle = `Sajda ${sajdaId} - ${this.baseTitle}`;
+    const newTitle = `Sajda ${sajdaId} ${this.concator} ${this.baseTitle}`;
     this.title.setTitle(newTitle);
   }
 
   setTitleForDefault() {
-    const newTitle = `Not found - ${this.baseTitle}`;
+    const newTitle = `Page not found ${this.concator} ${this.baseTitle}`;
     this.title.setTitle(newTitle);
   }
 }
