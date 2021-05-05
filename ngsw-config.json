@@ -26,16 +26,13 @@
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
       }
-    }
-  ],
-  "dataGroups": [
+    },
     {
-      "name": "quran-audio",
-      "urls": ["https://cdn.islamic.network/**", "https://cdn.alquran.cloud/**"],
-      "cacheConfig": {
-        "strategy": "performance",
-        "maxSize": 12472,
-        "maxAge": "90d"
+      "name": "media",
+      "installMode": "lazy",
+      "updateMode": "lazy",
+      "resources": {
+        "urls": ["https://cdn.islamic.network/**", "https://cdn.alquran.cloud/**"]
       }
     }
   ]
