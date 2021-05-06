@@ -6,7 +6,7 @@
       (click)="_audio.skipToPreviousAyah()"
       [disabled]="(_audio.currentAyahId | async) === ayahRange.start"
     >
-      <mat-icon>skip_previous</mat-icon>
+      <mat-icon class="icon-size-27">skip_previous</mat-icon>
     </button>
 
     <ng-container *ngIf="!(_audio.isCompleted | async)">
@@ -17,8 +17,8 @@
         [ngSwitch]="_audio.isPlaying | async"
         [attr.aria-label]="(_audio.isPlaying | async) ? 'Pause' : 'Play'"
       >
-        <mat-icon *ngSwitchCase="true"> pause </mat-icon>
-        <mat-icon *ngSwitchCase="false"> play_arrow </mat-icon>
+        <mat-icon class="icon-size-27" *ngSwitchCase="true"> pause </mat-icon>
+        <mat-icon class="icon-size-27" *ngSwitchCase="false"> play_arrow </mat-icon>
       </button>
     </ng-container>
     <button
@@ -26,7 +26,7 @@
       (click)="_audio.replaySession()"
       *ngIf="_audio.isCompleted | async"
     >
-      <mat-icon> replay </mat-icon>
+      <mat-icon class="icon-size-27"> replay </mat-icon>
     </button>
     <button
       mat-icon-button
@@ -34,7 +34,15 @@
       (click)="_audio.skipToNextAyah()"
       [disabled]="(_audio.currentAyahId | async) === ayahRange.end"
     >
-      <mat-icon>skip_next</mat-icon>
+      <mat-icon class="icon-size-27">skip_next</mat-icon>
     </button>
+  </div>
+
+  <!-- Experimetal feature for now - Auto scroll -->
+  <div hidden class="right">
+    <mat-slide-toggle
+      (change)="handleAutoScrollChange($event)"
+      color="primary"
+    ></mat-slide-toggle>
   </div>
 </footer>

@@ -7,13 +7,12 @@
   </div>
   <div class="right">
     <button
-      class="menu-trigger"
       mat-button
       #navMenuTrigger
       (menuClosed)="menuOpen = false"
       (menuOpened)="menuOpen = true"
       [matMenuTriggerFor]="navMenu"
-      [class.menuOpen]="menuOpen"
+      [class.open]="menuOpen"
     >
       {{ menuList[currentMenuItemIndex]?.title }}
       <svg-icon icon="arrow_drop_down"></svg-icon>
