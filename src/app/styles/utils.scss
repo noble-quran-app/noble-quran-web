@@ -4,7 +4,7 @@
   }
 }
 
-@for $matIconSize from 20 through 30 {
+@for $matIconSize from 20 through 32 {
   mat-icon.icon-size-#{$matIconSize} {
     font-size: #{$matIconSize}px !important;
     line-height: #{$matIconSize}px !important;

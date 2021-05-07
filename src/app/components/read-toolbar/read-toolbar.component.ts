@@ -1,6 +1,6 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { BehaviorSubject, interval, Subscription } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 import { AyahRange } from 'src/app/core/models';
 import { AudioService } from 'src/app/services/audio.service';
 
@@ -11,7 +11,6 @@ import { AudioService } from 'src/app/services/audio.service';
 })
 export class ReadToolbarComponent implements OnChanges, OnDestroy {
   constructor(public _audio: AudioService) {}
-
   @Input() ayahRange: AyahRange;
 
   private autoScrollSubscription: Subscription;
@@ -19,9 +18,7 @@ export class ReadToolbarComponent implements OnChanges, OnDestroy {
 
   handleAutoScrollChange(e: MatSlideToggleChange) {
     if (e.checked) {
-      this.autoScrollSubscription = this.autoScrollInterval.subscribe(() =>
-        window.scrollBy(0, 1)
-      );
+      this.autoScrollSubscription = this.autoScrollInterval.subscribe(() => window.scrollBy(0, 1));
     } else {
       this.autoScrollSubscription?.unsubscribe();
     }

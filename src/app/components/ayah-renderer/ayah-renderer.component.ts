@@ -32,14 +32,11 @@ export class AyahRendererComponent implements OnInit, OnDestroy {
 
   public ayah: any;
   private idSubscription: Subscription;
-  public isPlaying: boolean;
+  public isPlaying = false;
 
   async ngOnInit() {
     try {
-      this.ayah = await this.idb.getAyahWithEditons(this.ayahId, [
-        'quran.simple',
-        'en.sahih',
-      ]);
+      this.ayah = await this.idb.getAyahWithEditons(this.ayahId, ['quran.simple', 'en.sahih']);
 
       this.stateChange.emit([this.ayahIndex]);
     } catch (error) {
@@ -47,8 +44,8 @@ export class AyahRendererComponent implements OnInit, OnDestroy {
     }
 
     this.idSubscription = this.audioService.currentAyahId.subscribe((id) => {
-      this.isPlaying = id === this.ayahId;
-      this.scrollToCurrentAyah();
+      this.isPlaying = Boolean(id === this.ayahId);
+      this.isPlaying && this.scrollToCurrentAyah();
     });
   }
 

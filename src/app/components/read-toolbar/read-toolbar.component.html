@@ -1,5 +1,10 @@
 <footer>
   <div class="center">
+    <!-- 
+         <button mat-icon-button aria-label="Start auto scroll">
+           <mat-icon class="icon-size-27">text_rotate_vertical</mat-icon>
+         </button> -->
+
     <button
       mat-icon-button
       aria-label="Play previous ayah"
@@ -10,24 +15,24 @@
     </button>
 
     <ng-container *ngIf="!(_audio.isCompleted | async)">
-      <mat-spinner *ngIf="_audio.isBuffering | async" [diameter]="40"></mat-spinner>
+      <mat-spinner
+        *ngIf="(_audio.isBuffering | async) && (_audio.isPlaying | async)"
+        [diameter]="40"
+      ></mat-spinner>
       <button
         mat-icon-button
         (click)="_audio.playPause()"
         [ngSwitch]="_audio.isPlaying | async"
         [attr.aria-label]="(_audio.isPlaying | async) ? 'Pause' : 'Play'"
       >
-        <mat-icon class="icon-size-27" *ngSwitchCase="true"> pause </mat-icon>
-        <mat-icon class="icon-size-27" *ngSwitchCase="false"> play_arrow </mat-icon>
+        <mat-icon class="icon-size-28" *ngSwitchCase="true"> pause </mat-icon>
+        <mat-icon class="icon-size-28" *ngSwitchCase="false"> play_arrow </mat-icon>
       </button>
     </ng-container>
-    <button
-      mat-icon-button
-      (click)="_audio.replaySession()"
-      *ngIf="_audio.isCompleted | async"
-    >
-      <mat-icon class="icon-size-27"> replay </mat-icon>
+    <button mat-icon-button (click)="_audio.replaySession()" *ngIf="_audio.isCompleted | async">
+      <mat-icon class="icon-size-28"> replay </mat-icon>
     </button>
+
     <button
       mat-icon-button
       aria-label="Play next ayah"
@@ -36,13 +41,14 @@
     >
       <mat-icon class="icon-size-27">skip_next</mat-icon>
     </button>
-  </div>
 
-  <!-- Experimetal feature for now - Auto scroll -->
-  <div hidden class="right">
-    <mat-slide-toggle
-      (change)="handleAutoScrollChange($event)"
-      color="primary"
-    ></mat-slide-toggle>
+    <!-- <button mat-icon-button>
+      <mat-icon class="icon-size-24"> language </mat-icon>
+    </button> -->
+
+    <!-- <mat-slide-toggle
+        (change)="handleAutoScrollChange($event)"
+        color="primary"
+      ></mat-slide-toggle> -->
   </div>
 </footer>

@@ -1,6 +1,6 @@
 {
   "singleQuote": true,
-  "printWidth": 90,
+  "printWidth": 100,
   "semi": true,
   "trailingComma": "es5",
   "arrowParens": "always",
@@ -8,7 +8,6 @@
   "cursorOffset": -1,
   "embeddedLanguageFormatting": "auto",
   "endOfLine": "lf",
-  "filepath": "",
   "htmlWhitespaceSensitivity": "css",
   "insertPragma": false,
   "tabWidth": 2,

@@ -14,6 +14,7 @@
     "lib": ["ES2019", "dom"]
   },
   "angularCompilerOptions": {
+    "types": ["node"],
     "enableI18nLegacyMessageIdFormat": false
   }
 }

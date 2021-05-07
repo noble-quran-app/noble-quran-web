@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { QuranEdition } from '../core/models';
 import Localbase from 'localbase';
 import { Timer } from '../core/functions';
+import { HttpClient } from '@angular/common/http';
+import { delay, retryWhen } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +15,8 @@ export class IdbService {
 
   private db = new Localbase(this.dbName);
   public dbReady = new BehaviorSubject<boolean>(false);
+
+  constructor(private _http: HttpClient) {}
 
   async installArabicPacks() {
     const arabicEdition = 'quran.simple';
@@ -57,28 +61,15 @@ export class IdbService {
   }
 
   async validate(collectionId: string) {
-    const length = await this.db
-      .collection(collectionId)
-      .lf[collectionId].length();
+    const length = await this.db.collection(collectionId).lf[collectionId].length();
     return length === 6236;
   }
 
-  async fetchQuranEdition(edition: string): Promise<QuranEdition> {
-    return fetch(`/assets/quran/edition/${edition}.json`)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error();
-        }
-        return res.json();
-      })
-      .then((data: QuranEdition) => {
-        return data;
-      })
-      .catch(() => {
-        return new Promise((resolve) => {
-          setTimeout(() => resolve(this.fetchQuranEdition(edition)), 2000);
-        });
-      });
+  fetchQuranEdition(edition: string): Promise<QuranEdition> {
+    return this._http
+      .get<QuranEdition>(`/assets/quran/edition/${edition}.json`)
+      .pipe(retryWhen((error) => error.pipe(delay(4000))))
+      .toPromise();
   }
 
   getAyahWithEditon(ayahId: number, edition: string) {
@@ -93,7 +84,7 @@ export class IdbService {
       const result = await Promise.all(promises);
       return result.reduce((prev, curr) => Object.assign(prev, curr), {});
     } catch (error) {
-      return error?.message;
+      throw new Error('Something went wrong.');
     }
   }
 }

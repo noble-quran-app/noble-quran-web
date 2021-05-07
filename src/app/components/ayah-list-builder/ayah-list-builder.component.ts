@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnChanges, ViewChild } from '@angular/core';
 import range from 'lodash-es/range';
 import chunk from 'lodash-es/chunk';
 import { AyahRange } from 'src/app/core/models';
@@ -11,22 +11,28 @@ import { SettingService } from 'src/app/services/setting.service';
   styleUrls: ['./ayah-list-builder.component.scss'],
 })
 export class AyahListBuilderComponent implements OnChanges {
+  constructor(public idb: IdbService, public settings: SettingService) {}
+
   @Input() ayahRange: AyahRange;
   @Input() menuList: any;
   @Input() currentMenuItemIndex: number;
+  @ViewChild('observer') bottomObserver: ElementRef;
+  @HostListener('window:keydown.control.space', ['$event'])
+  themeChange(event: KeyboardEvent) {
+    event.preventDefault();
+    this.settings.toggleShowAbsoluteAyahId();
+  }
 
   private totalAyahs = [];
   public ayahsToRender = [];
   private appendingAyahs: boolean;
   public readyToShowAyahs = false;
   public allAyahsRendered = false;
+  public renderingAyahs = true;
+  public renderError = false;
   readonly intersectionOptions = {
     rootMargin: '1500px',
   };
-
-  @ViewChild('observer') bottomObserver: ElementRef;
-
-  constructor(public idb: IdbService, public settings: SettingService) {}
 
   appendAyahs() {
     if (this.totalAyahs.length && !this.appendingAyahs) {
@@ -42,17 +48,23 @@ export class AyahListBuilderComponent implements OnChanges {
 
   handleAyahStateChange(state: [number, string]) {
     const [ayahIndex, error] = state;
-    if (!this.readyToShowAyahs) {
+    if (!this.readyToShowAyahs && !this.renderError) {
       if (error) {
         console.error(error);
-        return false;
+        this.renderError = true;
+        this.renderingAyahs = false;
       }
       const totalLengthOfAyahs = this.ayahRange.end - this.ayahRange.start;
 
       if (ayahIndex >= 15 || ayahIndex == totalLengthOfAyahs) {
         this.readyToShowAyahs = true;
+        this.renderingAyahs = false;
       }
     }
+  }
+
+  reloadPage() {
+    window?.location?.reload();
   }
 
   ngOnChanges() {

@@ -143,3 +143,9 @@ svg-icon.flex {
 .nq-heading-icon {
   fill: var(--tertiary-text-color);
 }
+
+.bubble {
+  opacity: 0;
+  visibility: visible;
+  pointer-events: none;
+}

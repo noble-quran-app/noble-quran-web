@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, of } from 'rxjs';
-import { delay, switchMap } from 'rxjs/operators';
+import { BehaviorSubject, of, Subject } from 'rxjs';
+import { delay, switchMap, throttleTime } from 'rxjs/operators';
 import { getAyahAudioUrl, Timer } from '../core/functions';
 import { AyahRange } from '../core/models';
 
@@ -8,52 +8,53 @@ import { AyahRange } from '../core/models';
   providedIn: 'root',
 })
 export class AudioService {
-  private audioRef: HTMLAudioElement;
+  private ayahRange: AyahRange;
+  private audioRef: HTMLAudioElement = new Audio();
   private cachedAudioRef: HTMLAudioElement;
   private isBufferingSource = new BehaviorSubject<boolean>(false);
+  private reloadSource: Subject<null> = null;
 
   public isPlaying = new BehaviorSubject<boolean>(false);
   public isCompleted = new BehaviorSubject<boolean>(false);
-  public playbackError = new BehaviorSubject<string>('');
-  public currentAyahId = new BehaviorSubject<number>(null);
-  public ayahRange: AyahRange;
+  public playbackError = new BehaviorSubject<string>(null);
+  public currentAyahId = new BehaviorSubject<number>(-1);
 
-  public isBuffering = this.isBufferingSource.asObservable().pipe(
-    switchMap((buffering) => {
-      if (buffering) {
-        return of(true).pipe(delay(800));
-      }
-      return of(false).pipe(delay(500));
-    })
-  );
+  public isBuffering = this.isBufferingSource
+    .asObservable()
+    .pipe(switchMap((val) => of(val).pipe(delay(val ? 800 : 200))));
 
-  cacheAyah(ayahURL: string) {
+  cacheAudioInMemory(resourceUrl: string) {
     this.cachedAudioRef.pause();
-    this.cachedAudioRef.src = ayahURL;
+    this.cachedAudioRef.src = resourceUrl;
   }
 
-  setAudioSrc(ayahId: number) {
+  setAudioSrc(ayahId: number, cacheNextAudio: boolean) {
     this.isCompleted.next(false);
-    this.audioRef.src = getAyahAudioUrl(ayahId);
-    this.cacheAyah(getAyahAudioUrl(ayahId + 1));
+    if (this.audioRef && ayahId >= 1 && ayahId <= 6236) {
+      this.audioRef.src = getAyahAudioUrl(ayahId);
+
+      if (cacheNextAudio && this.currentAyahId.value !== this.ayahRange.end) {
+        this.cacheAudioInMemory(getAyahAudioUrl(ayahId + 1));
+      }
+    }
   }
 
   skipToNextAyah() {
-    if (this.currentAyahId.value !== this.ayahRange.end) {
+    if (!this.isLastAyah(this.currentAyahId.value)) {
       const nextAyahId = this.currentAyahId.value + 1;
       this.currentAyahId.next(nextAyahId);
-      this.setAudioSrc(nextAyahId);
     }
-    this.play();
   }
 
   skipToPreviousAyah() {
-    if (this.currentAyahId.value !== this.ayahRange.start) {
+    if (!this.isFirstAyah(this.currentAyahId.value)) {
       const prevAyahId = this.currentAyahId.value - 1;
       this.currentAyahId.next(prevAyahId);
-      this.setAudioSrc(prevAyahId);
     }
-    this.play();
+  }
+
+  isFirstAyah(ayahId: number) {
+    return ayahId === this.ayahRange.start;
   }
 
   isLastAyah(ayahId: number) {
@@ -61,72 +62,95 @@ export class AudioService {
   }
 
   pause() {
-    this.audioRef.pause();
     this.isPlaying.next(false);
+    this.audioRef.pause();
   }
 
   async play() {
+    this.isPlaying.next(true);
     try {
-      await this.audioRef.play();
-      this.isPlaying.next(true);
+      this.audioRef.play();
+      this.playbackError.next(null);
     } catch (error) {
       this.playbackError.next(error.message);
-      await Timer(5000);
-      this.setAudioSrc(this.currentAyahId.value);
-      this.play();
     }
   }
 
   playPause() {
-    if (this.audioRef.paused) {
+    if (!this.isPlaying.value && this.audioRef.paused) {
       this.play();
     } else {
       this.pause();
     }
   }
 
-  async replaySession() {
+  replaySession() {
     this.isCompleted.next(false);
     this.currentAyahId.next(this.ayahRange.start);
-    this.setAudioSrc(this.ayahRange.start);
-    await this.play();
+    this.setAudioSrc(this.ayahRange.start, false);
+    this.play();
+  }
+
+  async reloadCurrentAyah(timeout = 3000) {
+    try {
+      await Timer(timeout);
+      this.setAudioSrc(this.currentAyahId.value, false);
+    } catch (error) {
+      console.error(error.message);
+    }
   }
 
   startSession(ayahRange: AyahRange) {
     this.audioRef = new Audio();
     this.cachedAudioRef = new Audio();
+    this.audioRef.preload = 'auto';
+    this.reloadSource = new Subject<null>();
+
+    this.audioRef.onloadstart = () => this.isBufferingSource.next(true);
+    this.audioRef.onwaiting = () => this.isBufferingSource.next(true);
+    this.audioRef.oncanplaythrough = () => this.isBufferingSource.next(false);
 
     this.ayahRange = ayahRange;
     this.currentAyahId.next(ayahRange.start);
-    this.setAudioSrc(ayahRange.start);
 
     this.audioRef.onplay = () => {
       this.isPlaying.next(true);
       this.isBufferingSource.next(false);
     };
 
-    this.audioRef.onpause = async () => {
-      this.isBufferingSource.next(false);
-      await Timer(200);
-      if (this.audioRef.paused) {
-        this.isPlaying.next(false);
+    this.audioRef.onerror = () => {
+      this.isBufferingSource.next(true);
+      if (this.isPlaying.value) {
+        this.reloadSource.next(null);
       }
     };
-
-    this.audioRef.onwaiting = () => this.isBufferingSource.next(true);
-    this.audioRef.onloadedmetadata = () => this.isBufferingSource.next(false);
-    this.audioRef.onload = () => this.isBufferingSource.next(false);
 
     this.audioRef.onended = () => {
-      if (this.isLastAyah(this.currentAyahId.value)) {
-        this.isCompleted.next(true);
-        return false;
-      }
+      const wasLast = this.isLastAyah(this.currentAyahId.value);
+      this.isCompleted.next(wasLast);
+      wasLast && this.isPlaying.next(false);
       this.skipToNextAyah();
     };
+
+    // Reloading with throttleTime to ensure audio doesn't reload between short intervals.
+    this.reloadSource
+      .asObservable()
+      .pipe(throttleTime(3400))
+      .subscribe(() => this.isPlaying.value && this.reloadCurrentAyah(3500));
+
+    this.currentAyahId.asObservable().subscribe((id) => {
+      this.setAudioSrc(id, true);
+      this.audioRef && (this.audioRef.autoplay = this.isPlaying.value);
+    });
   }
 
   destroySession() {
+    this.reloadSource?.complete();
+    this.currentAyahId.next(-1);
+    this.isCompleted.next(false);
+    this.isPlaying.next(false);
+    this.isBufferingSource.next(false);
+
     this.audioRef?.pause();
     this.audioRef = null;
     this.cachedAudioRef = null;

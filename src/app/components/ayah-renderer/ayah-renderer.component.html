@@ -2,7 +2,7 @@
 <ng-container *ngIf="!(settings.renderAsPage | async)">
   <div
     class="ayah-renderer"
-    [class.playing]="isPlaying && audioService.isPlaying | async"
+    [class.playing]="isPlaying && (audioService.isPlaying | async)"
     *ngIf="ayah"
   >
     <div class="ayah-text" *ngIf="ayah.arabicText">
@@ -12,7 +12,8 @@
       </div>
     </div>
     <div class="translation-text" *ngIf="ayah.translation">
-      {{ ayah.numberInSurah }}. {{ ayah.translation }}
+      {{ !(settings.showAbsoluteAyahId | async) ? ayah.numberInSurah : ayahId }}.
+      {{ ayah.translation }}
     </div>
   </div>
 </ng-container>
@@ -20,7 +21,7 @@
 <ng-container *ngIf="settings.renderAsPage | async">
   <div
     class="ayah-text inline"
-    [class.playing]="isPlaying && audioService.isPlaying | async"
+    [class.playing]="isPlaying && (audioService.isPlaying | async)"
     *ngIf="ayah"
   >
     <span class="arabic-text" *ngIf="ayah.arabicText">{{ ayah.arabicText }}</span>

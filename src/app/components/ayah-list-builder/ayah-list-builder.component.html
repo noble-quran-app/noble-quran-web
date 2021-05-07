@@ -1,13 +1,23 @@
 <!-- Header -->
-<read-header
-  [menuList]="menuList"
-  [currentMenuItemIndex]="currentMenuItemIndex"
-></read-header>
+<read-header [menuList]="menuList" [currentMenuItemIndex]="currentMenuItemIndex"></read-header>
 
 <!-- Progress bar -->
-<mat-progress-bar mode="indeterminate" *ngIf="!readyToShowAyahs"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" *ngIf="renderingAyahs"></mat-progress-bar>
 
-<!-- All ayahs to render -->
+<!-- Error card -->
+<mat-card class="error-card" *ngIf="renderError">
+  <mat-card-header>
+    <mat-card-title class="fs-26">Oops!</mat-card-title>
+    <mat-card-subtitle>Something went wrong while rendering.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <button mat-stroked-button color="primary" (click)="reloadPage()">Reload page</button>
+    <!-- Will enable after integration of Google Analytics -->
+    <!-- <button mat-stroked-button color="secondary">Report</button> -->
+  </mat-card-actions>
+</mat-card>
+
+<!-- Container for AyahRendererComponents -->
 <div
   *ngIf="idb.dbReady | async"
   class="container"
@@ -25,9 +35,9 @@
 <!-- Intersection Observer -->
 <div class="observer" [class.all-rendered]="allAyahsRendered" #observer>
   <ng-container *ngIf="!allAyahsRendered && readyToShowAyahs">
-    <button mat-stroked-button (click)="appendAyahs()">Load More</button>
+    <button tabindex="-1" mat-stroked-button (click)="appendAyahs()">Load More</button>
   </ng-container>
 </div>
 
 <!-- Toolbar -->
-<nq-read-toolbar [ayahRange]="ayahRange"></nq-read-toolbar>
+<nq-read-toolbar [class.bubble]="!readyToShowAyahs" [ayahRange]="ayahRange"></nq-read-toolbar>
