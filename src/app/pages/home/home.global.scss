@@ -1,73 +1,73 @@
 .nq-dark-theme .home-page {
-  background: #080808;
+   background: #080808;
 
-  .section-bottom {
-    box-shadow: none;
-  }
+   .section-bottom {
+      box-shadow: none;
+   }
 }
 
 .home-page {
-  .primary-heading svg {
-    width: 330px;
-    margin: 8px;
-    fill: var(--primary-heading-color);
-  }
-  .toolbar button {
-    svg {
-      fill: #dddddd !important;
-    }
-    &:hover svg {
-      fill: #ffffff !important;
-    }
-  }
+   .primary-heading svg {
+      width: 330px;
+      margin: 8px;
+      fill: var(--primary-heading-color);
+   }
+   .toolbar button {
+      svg {
+         fill: #dddddd !important;
+      }
+      &:hover svg {
+         fill: #ffffff !important;
+      }
+   }
 
-  .mat-tab-group {
-    border-radius: inherit;
-  }
+   .mat-tab-group {
+      border-radius: inherit;
+   }
 
-  .mat-ink-bar {
-    transition: 150ms cubic-bezier(0.35, 0, 0.25, 1);
-  }
+   .mat-ink-bar {
+      transition: 150ms cubic-bezier(0.35, 0, 0.25, 1);
+   }
 
-  .mat-tab-header {
-    position: sticky !important;
-    top: 0;
-    height: 52px;
-    background: var(--secondary-background-color);
-    z-index: 100;
-    border-radius: inherit;
-    border-bottom: 1px solid var(--primary-border-color);
-  }
+   .mat-tab-header {
+      position: sticky !important;
+      top: 0;
+      height: 52px;
+      background: var(--secondary-background-color);
+      z-index: 100;
+      border-radius: inherit;
+      border-bottom: 1px solid var(--primary-border-color);
+   }
 
-  .mat-tab-labels {
-    height: 100%;
-  }
+   .mat-tab-labels {
+      height: 100%;
+   }
 
-  .mat-tab-label,
-  .mat-tab-link {
-    height: 100%;
-    color: var(--primary-text-color);
-    font-size: 14px;
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
-    font-weight: 500;
-    user-select: none;
-    text-transform: uppercase;
-  }
+   .mat-tab-label,
+   .mat-tab-link {
+      height: 100%;
+      color: var(--primary-text-color);
+      font-size: 14px;
+      font-family: 'Roboto', Arial, Helvetica, sans-serif;
+      font-weight: 500;
+      user-select: none;
+      text-transform: uppercase;
+   }
 
-  .mat-tab-label-active {
-    opacity: 1 !important;
-    color: var(--primary-theme-color) !important;
-  }
+   .mat-tab-label-active {
+      opacity: 1 !important;
+      color: var(--primary-theme-color) !important;
+   }
 
-  @media (max-width: 600px) {
-    .mat-tab-label,
-    .mat-tab-link {
-      width: 30%;
-      max-width: 110px;
-    }
+   @media (max-width: 600px) {
+      .mat-tab-label,
+      .mat-tab-link {
+         width: 30%;
+         max-width: 110px;
+      }
 
-    .primary-heading svg {
-      width: 260px;
-    }
-  }
+      .primary-heading svg {
+         width: 260px;
+      }
+   }
 }

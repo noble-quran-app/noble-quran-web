@@ -3,6 +3,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { interval, Subscription } from 'rxjs';
 import { AyahRange } from 'src/app/core/models';
 import { AudioService } from 'src/app/services/audio.service';
+import { NetworkService } from 'src/app/services/network.service';
 
 @Component({
   selector: 'nq-read-toolbar',
@@ -10,7 +11,7 @@ import { AudioService } from 'src/app/services/audio.service';
   styleUrls: ['./read-toolbar.component.scss'],
 })
 export class ReadToolbarComponent implements OnChanges, OnDestroy {
-  constructor(public _audio: AudioService) {}
+  constructor(public _audio: AudioService, public _net: NetworkService) {}
   @Input() ayahRange: AyahRange;
 
   private autoScrollSubscription: Subscription;

@@ -5,7 +5,6 @@ import { ThemeService } from 'src/app/services/theme.service';
 @Component({
   selector: 'nq-theme-switcher',
   templateUrl: './theme-switcher.component.html',
-  styleUrls: ['./theme-switcher.component.scss'],
 })
 export class ThemeSwitcherComponent {
   constructor(public themeService: ThemeService) {}

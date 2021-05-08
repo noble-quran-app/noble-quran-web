@@ -7,115 +7,116 @@ $noble-quran-accent: mat-palette($mat-teal);
 $noble-quran-warn: mat-palette($mat-red);
 
 $noble-quran-theme: mat-light-theme(
-  (
-    color: (
-      primary: $noble-quran-primary,
-      accent: $noble-quran-accent,
-      warn: $noble-quran-warn,
-    ),
-  )
+   (
+      color: (
+         primary: $noble-quran-primary,
+         accent: $noble-quran-accent,
+         warn: $noble-quran-warn,
+      ),
+   )
 );
 
 $dark-primary: mat-palette($mat-teal, 200);
 $dark-accent: mat-palette($mat-grey, 900);
 $dark-warn: mat-palette($mat-red, 300);
 $dark-theme: mat-dark-theme(
-  (
-    color: (
-      primary: $dark-primary,
-      accent: $dark-accent,
-      warn: $dark-warn,
-    ),
-  )
+   (
+      color: (
+         primary: $dark-primary,
+         accent: $dark-accent,
+         warn: $dark-warn,
+      ),
+   )
 );
 
 @include angular-material-theme($noble-quran-theme);
 
 .nq-dark-theme {
-  @include angular-material-color($dark-theme);
+   @include angular-material-color($dark-theme);
 }
 
 html.nq-dark-theme {
-  color-scheme: dark;
+   color-scheme: dark;
 }
 
 html body,
 .nq-light-theme {
-  --primary-theme-color: #00866a;
+   --primary-theme-color: #00866a;
 
-  --primary-background-color: #ffffff;
-  --primary-background-color-hover: #00000015;
-  --secondary-background-color: #fafafa;
-  --secondary-background-color-hover: #5f63680a;
-  --ayah-renderer-background-color: #fafafa;
-  --ayah-renderer-background-color-current: #eaeaea;
+   --primary-background-color: #ffffff;
+   --primary-background-color-hover: #00000015;
+   --secondary-background-color: #fafafa;
+   --secondary-background-color-hover: #5f63680a;
+   --ayah-renderer-background-color: #fafafa;
+   --ayah-renderer-background-color-current: #eaeaea;
+   --tooltip-background-color: #3c4043e6;
 
-  --read-header-background-color: #ffffff;
-  --read-toolbar-background-color: #ffffff;
+   --read-header-background-color: #ffffff;
+   --read-toolbar-background-color: #ffffff;
 
-  --primary-border-color: #e5e5e5;
-  --secondary-border-color: #00000000;
+   --primary-border-color: #e5e5e5;
+   --secondary-border-color: #00000000;
 
-  --primary-icon-color: #505050;
-  --primary-icon-color-hover: #505050;
-  --secondary-icon-color: #5f6368;
-  --secondary-icon-color-hover: #202124;
+   --primary-icon-color: #505050;
+   --primary-icon-color-hover: #505050;
+   --secondary-icon-color: #5f6368;
+   --secondary-icon-color-hover: #202124;
 
-  --primary-heading-color: #ffffff;
-  --secondary-heading-color: #dcdcdc;
+   --primary-heading-color: #ffffff;
+   --secondary-heading-color: #dcdcdc;
 
-  --primary-text-color: #202124;
-  --primary-text-color-hover: #101010;
-  --tertiary-text-color: #444444;
-  --secondary-text-color: #5f6368;
-  --secondary-text-color-hover: #202124;
+   --primary-text-color: #202124;
+   --primary-text-color-hover: #101010;
+   --tertiary-text-color: #444444;
+   --secondary-text-color: #5f6368;
+   --secondary-text-color-hover: #202124;
 
-  --fab-box-shadow: 0 1px 2px 0 #3c40434d, 0 2px 6px 2px #3c404326;
-  --secondary-box-shadow: 0 1px 2px 0 #3c40434d, 0 1px 3px 1px #3c404326;
+   --fab-box-shadow: 0 1px 2px 0 #3c40434d, 0 2px 6px 2px #3c404326;
+   --secondary-box-shadow: 0 1px 2px 0 #3c40434d, 0 1px 3px 1px #3c404326;
 
-  --primary-stroke-color: #8c6b12;
-  --secondary-stroke-color: #000000;
+   --primary-stroke-color: #8c6b12;
+   --secondary-stroke-color: #000000;
 
-  --banner-background: linear-gradient(135deg, #00754e, #01a295);
+   --banner-background: linear-gradient(135deg, #00754e, #01a295);
 }
 
 html.nq-dark-theme body,
 .nq-dark-theme {
-  --primary-theme-color: #81bfb9;
+   --primary-theme-color: #81bfb9;
 
-  --primary-background-color: #151515;
-  --primary-background-color-hover: #ffffff15;
-  --secondary-background-color: #121212;
-  --secondary-background-color-hover: #242424;
-  --ayah-renderer-background-color: #121212;
-  --ayah-renderer-background-color-current: #262626;
+   --primary-background-color: #151515;
+   --primary-background-color-hover: #ffffff15;
+   --secondary-background-color: #121212;
+   --secondary-background-color-hover: #242424;
+   --ayah-renderer-background-color: #121212;
+   --ayah-renderer-background-color-current: #262626;
+   --tooltip-background-color: #232323;
 
-  --read-header-background-color: #121212;
-  --read-toolbar-background-color: #121212;
+   --read-header-background-color: #121212;
+   --read-toolbar-background-color: #121212;
 
-  --primary-border-color: #363636;
-  --secondary-border-color: #1f1f1f;
+   --primary-border-color: #363636;
+   --secondary-border-color: #1f1f1f;
 
-  --primary-icon-color: #e8e8e8;
-  --primary-icon-color-hover: #ffffff;
-  --secondary-icon-color: #9aa0a6;
-  --secondary-icon-color-hover: #e8eaed;
+   --primary-icon-color: #e8e8e8;
+   --primary-icon-color-hover: #ffffff;
+   --secondary-icon-color: #9aa0a6;
+   --secondary-icon-color-hover: #e8eaed;
 
-  --primary-heading-color: #ffffff;
-  --secondary-heading-color: #dcdcdc;
+   --primary-heading-color: #ffffff;
+   --secondary-heading-color: #dcdcdc;
 
-  --primary-text-color: #e8eaed;
-  --primary-text-color-hover: #ffffff;
-  --secondary-text-color: #b4b4b4;
-  --secondary-text-color-hover: #e8eaed;
-  --tertiary-text-color: #e8eaed;
+   --primary-text-color: #e8eaed;
+   --primary-text-color-hover: #ffffff;
+   --secondary-text-color: #b4b4b4;
+   --secondary-text-color-hover: #e8eaed;
+   --tertiary-text-color: #e8eaed;
 
-  --fab-box-shadow: none;
-  --secondary-box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%),
-    0 1px 3px 1px rgb(60 64 67 / 15%);
+   --fab-box-shadow: none;
+   --secondary-box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
 
-  --secondary-stroke-color: #ececec;
-  --primary-stroke-color: #bfbfbf;
+   --secondary-stroke-color: #ececec;
+   --primary-stroke-color: #bfbfbf;
 
-  --banner-background: linear-gradient(180deg, #00ffe77a, #00796d30);
+   --banner-background: linear-gradient(180deg, #00ffe77a, #00796d30);
 }

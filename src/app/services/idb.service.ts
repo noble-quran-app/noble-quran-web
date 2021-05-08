@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { QuranEdition } from '../core/models';
 import Localbase from 'localbase';
-import { Timer } from '../core/functions';
 import { HttpClient } from '@angular/common/http';
 import { delay, retryWhen } from 'rxjs/operators';
 
@@ -31,7 +30,7 @@ export class IdbService {
         return { arabicText, numberInSurah, _key: (index + 1).toString() };
       });
       await this.db.collection(arabicEdition).set(mappedData, { keys: true });
-      await Timer(6000);
+      await this.db.collection(arabicEdition).doc('metadata').set(data.edition);
     } catch (error) {
       console.error(error);
     }
@@ -48,7 +47,7 @@ export class IdbService {
         _key: (index + 1).toString(),
       }));
       await this.db.collection(translation).set(mappedData, { keys: true });
-      await Timer(6000);
+      await this.db.collection(translation).doc('metadata').set(data.edition);
     }
   }
 
@@ -61,8 +60,9 @@ export class IdbService {
   }
 
   async validate(collectionId: string) {
+    const noOfAyahsInQuran = 6236;
     const length = await this.db.collection(collectionId).lf[collectionId].length();
-    return length === 6236;
+    return length === noOfAyahsInQuran + 1;
   }
 
   fetchQuranEdition(edition: string): Promise<QuranEdition> {

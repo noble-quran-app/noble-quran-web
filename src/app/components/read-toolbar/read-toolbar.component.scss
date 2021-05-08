@@ -1,42 +1,81 @@
 footer {
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  min-height: 64px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 36px;
-  background: var(--read-toolbar-background-color);
-  border-top: 1px solid var(--primary-border-color);
-  z-index: 1000;
+   position: fixed;
+   bottom: 0px;
+   left: 0px;
+   min-height: 64px;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 0 36px;
+   background: var(--read-toolbar-background-color);
+   border-top: 1px solid var(--primary-border-color);
+   z-index: 1000;
 
-  .mat-progress-spinner {
-    display: unset;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+   .offline-indicatior {
+      height: 10px;
+      width: 10px;
+      background: #e85858;
+      display: block;
+      border-radius: 50%;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      left: 30px;
+      transform: translate(0%, -50%);
 
-  .center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-  }
+      &:hover::after {
+         opacity: 1;
+      }
 
-  .right {
-    margin-left: auto;
-  }
+      &::after {
+         content: "You're Offline";
+         position: absolute;
+         width: max-content;
+         padding: 6px 8px;
+         background: var(--tooltip-background-color);
+         border-radius: 4px;
+         color: #fff;
+         font-size: 14px;
+         top: 50%;
+         left: 25px;
+         transform: translateY(-50%);
+         pointer-events: none;
+         opacity: 0;
+         transition: 0.15s ease-in-out;
+      }
+   }
+
+   .mat-progress-spinner {
+      display: unset;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+   }
+
+   .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+   }
+
+   .right {
+      margin-left: auto;
+   }
 }
 
 @media (max-width: 600px) {
-  footer {
-    min-height: 56px;
-    padding: 0 12px;
-  }
+   footer {
+      min-height: 56px;
+      padding: 0 12px;
+
+      .offline-indicatior,
+      .offline-indicatior::after {
+         left: 20px;
+      }
+   }
 }

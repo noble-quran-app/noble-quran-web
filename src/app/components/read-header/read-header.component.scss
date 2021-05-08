@@ -1,61 +1,61 @@
 header {
-  position: fixed;
-  width: 100%;
-  top: 0px;
-  left: 0px;
-  z-index: 1000;
-  padding: 0 36px;
-  min-height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--primary-border-color);
-  background: var(--read-header-background-color);
+   position: fixed;
+   width: 100%;
+   top: 0px;
+   left: 0px;
+   z-index: 1000;
+   padding: 0 36px;
+   min-height: 64px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   border-bottom: 1px solid var(--primary-border-color);
+   background: var(--read-header-background-color);
 
-  //   This is for preloading the Arabic font
-  &::after {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    content: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ';
-    font-family: 'Indopak';
-    color: transparent;
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+   //   This is for preloading the Arabic font
+   &::after {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      content: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ';
+      font-family: 'Indopak';
+      color: transparent;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
 
-  .back-btn {
-    display: none;
-  }
+   .back-btn {
+      display: none;
+   }
 
-  a,
-  button {
-    text-decoration: none;
-    cursor: pointer;
-    font-family: Roboto, Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    user-select: none;
-    padding: 0 8px;
-    color: var(--primary-text-color);
-  }
+   a,
+   button {
+      text-decoration: none;
+      cursor: pointer;
+      font-family: Roboto, Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      user-select: none;
+      padding: 0 8px;
+      color: var(--primary-text-color);
+   }
 }
 
 @media (max-width: 600px) {
-  header {
-    min-height: 56px;
-    padding: 0 12px;
+   header {
+      min-height: 56px;
+      padding: 0 12px;
 
-    .back-btn {
-      display: block;
-    }
+      .back-btn {
+         display: block;
+      }
 
-    a {
-      display: none;
-    }
-  }
+      a {
+         display: none;
+      }
+   }
 }

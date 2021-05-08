@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, of, Subject } from 'rxjs';
+import { BehaviorSubject, of, Subject, Subscription } from 'rxjs';
 import { delay, switchMap, throttleTime } from 'rxjs/operators';
 import { getAyahAudioUrl, Timer } from '../core/functions';
 import { AyahRange } from '../core/models';
+import { NetworkService } from './network.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AudioService {
+  constructor(private _net: NetworkService) {}
+
   private ayahRange: AyahRange;
   private audioRef: HTMLAudioElement = new Audio();
   private cachedAudioRef: HTMLAudioElement;
   private isBufferingSource = new BehaviorSubject<boolean>(false);
   private reloadSource: Subject<null> = null;
+  private netSubscription: Subscription;
 
   public isPlaying = new BehaviorSubject<boolean>(false);
   public isCompleted = new BehaviorSubject<boolean>(false);
@@ -142,6 +146,12 @@ export class AudioService {
       this.setAudioSrc(id, true);
       this.audioRef && (this.audioRef.autoplay = this.isPlaying.value);
     });
+
+    this.netSubscription = this._net.isOnline.subscribe((isOnline) => {
+      if (isOnline && this.isBufferingSource.value) {
+        this.reloadSource.next(null);
+      }
+    });
   }
 
   destroySession() {
@@ -154,5 +164,7 @@ export class AudioService {
     this.audioRef?.pause();
     this.audioRef = null;
     this.cachedAudioRef = null;
+
+    this.netSubscription?.unsubscribe();
   }
 }

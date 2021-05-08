@@ -1,4 +1,5 @@
 <footer>
+  <div class="offline-indicatior" *ngIf="!(_net.isOnline | async)"></div>
   <div class="center">
     <!-- 
          <button mat-icon-button aria-label="Start auto scroll">

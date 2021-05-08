@@ -1,14 +1,14 @@
 @for $fontSize from 14 through 32 {
-  .fs-#{$fontSize} {
-    font-size: #{$fontSize}px !important;
-  }
+   .fs-#{$fontSize} {
+      font-size: #{$fontSize}px !important;
+   }
 }
 
 @for $matIconSize from 20 through 32 {
-  mat-icon.icon-size-#{$matIconSize} {
-    font-size: #{$matIconSize}px !important;
-    line-height: #{$matIconSize}px !important;
-    height: #{$matIconSize}px !important;
-    width: #{$matIconSize}px !important;
-  }
+   mat-icon.icon-size-#{$matIconSize} {
+      font-size: #{$matIconSize}px !important;
+      line-height: #{$matIconSize}px !important;
+      height: #{$matIconSize}px !important;
+      width: #{$matIconSize}px !important;
+   }
 }
