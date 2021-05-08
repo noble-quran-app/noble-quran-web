@@ -1,8 +1,8 @@
 import { Component, HostListener } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 import { ThemeService } from './services/theme.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { IdbService } from './services/idb.service';
+import { ToastService } from './services/toast.service';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +13,8 @@ export class AppComponent {
   constructor(
     private themeService: ThemeService,
     private swUpdate: SwUpdate,
-    private snackBar: MatSnackBar,
-    private idb: IdbService
+    private idb: IdbService,
+    private toast: ToastService
   ) {}
 
   @HostListener('window:keydown.control.x', ['$event'])
@@ -30,12 +30,9 @@ export class AppComponent {
 
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(() => {
-        this.snackBar
-          .open('New version is available.', 'Update', {
-            duration: 15000,
-          })
-          .onAction()
-          .subscribe(() => window.location.reload());
+        this.toast
+          .openWithAction('New version is available.', 'Update', 15000)
+          .subscribe(() => location.reload());
       });
     }
   }
