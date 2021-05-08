@@ -73,10 +73,11 @@ export class AudioService {
   async play() {
     this.isPlaying.next(true);
     try {
-      this.audioRef.play();
+      await this.audioRef.play();
       this.playbackError.next(null);
     } catch (error) {
       this.playbackError.next(error.message);
+      this.reloadSource.next(null);
     }
   }
 
@@ -99,6 +100,9 @@ export class AudioService {
     try {
       await Timer(timeout);
       this.setAudioSrc(this.currentAyahId.value, false);
+      if (this.isPlaying.value) {
+        this.play();
+      }
     } catch (error) {
       console.error(error.message);
     }
@@ -120,6 +124,7 @@ export class AudioService {
     this.audioRef.onplay = () => {
       this.isPlaying.next(true);
       this.isBufferingSource.next(false);
+      this.playbackError.next(null);
     };
 
     this.audioRef.onerror = () => {
