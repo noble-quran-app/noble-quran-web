@@ -1,6 +1,6 @@
+@import './fonts.scss';
 @import './theme.scss';
 @import './utils.scss';
-@import '../pages/home/home.global.scss';
 
 * {
   margin: 0;
@@ -80,6 +80,20 @@ button.mat-menu-trigger:not(.mat-icon-button) {
 .nq-dark-theme .cdk-overlay-container .mat-tooltip {
   //   background: #121212 !important;
   background: #232323 !important;
+}
+
+snack-bar-container {
+  background: #323232 !important;
+  color: #f0f0f0 !important;
+  button {
+    color: #0fb5a7 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .mat-snack-bar-handset .mat-snack-bar-container {
+    margin: 12px !important;
+  }
 }
 
 .mat-menu-item {

@@ -48,7 +48,7 @@
     height: 100%;
     color: var(--primary-text-color);
     font-size: 14px;
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
     font-weight: 500;
     user-select: none;
     text-transform: uppercase;
@@ -69,19 +69,5 @@
     .primary-heading svg {
       width: 260px;
     }
-  }
-}
-
-snack-bar-container {
-  background: #323232 !important;
-  color: #f0f0f0 !important;
-  button {
-    color: #0fb5a7 !important;
-  }
-}
-
-@media (max-width: 600px) {
-  .mat-snack-bar-handset .mat-snack-bar-container {
-    margin: 12px !important;
   }
 }

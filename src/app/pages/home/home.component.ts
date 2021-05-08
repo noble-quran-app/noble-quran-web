@@ -1,4 +1,12 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import { Surahs, Juzs, Sajdas } from 'src/app/data/quran';
 import { TabsData } from 'src/app/data/home';
 import { Juz, Sajda, Surah } from 'src/app/core/models';
@@ -10,7 +18,8 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  styleUrls: ['./home.component.scss','./home.global.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(

@@ -8,14 +8,14 @@ import { Theme } from '../core/models';
   providedIn: 'root',
 })
 export class ThemeService {
-  constructor(private metaService: Meta) {}
+  constructor(private meta: Meta) {}
 
   private themeStorage = 'theme';
   public theme = new BehaviorSubject<string>(lightTheme.id);
 
   setTheme(theme: Theme): void {
     document.querySelector('html').className = theme.className;
-    this.metaService.updateTag({
+    this.meta.updateTag({
       name: 'theme-color',
       content: theme.appbar_background_color,
     });
