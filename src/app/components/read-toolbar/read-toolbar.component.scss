@@ -8,7 +8,7 @@ footer {
    align-items: center;
    justify-content: space-between;
    padding: 0 36px;
-   background: var(--read-toolbar-background-color);
+   background: var(--toolbar-background);
    border-top: 1px solid var(--primary-border-color);
    z-index: 1000;
 
@@ -33,7 +33,7 @@ footer {
          position: absolute;
          width: max-content;
          padding: 6px 8px;
-         background: var(--tooltip-background-color);
+         background: var(--tooltip-background);
          border-radius: 4px;
          color: #fff;
          font-size: 14px;

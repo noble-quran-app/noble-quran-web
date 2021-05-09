@@ -14,11 +14,11 @@
    letter-spacing: 0;
    line-height: 1.9;
    word-spacing: 2px;
-   background: var(--ayah-renderer-background-color);
+   background: var(--ayah-renderer-background);
 }
 
 .ayah-renderer.playing {
-   background-color: var(--ayah-renderer-background-color-current);
+   background-color: var(--active-ayah-renderer-background);
 }
 
 .arabic-text {

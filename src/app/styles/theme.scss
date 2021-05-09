@@ -43,16 +43,17 @@ html body,
 .nq-light-theme {
    --primary-theme-color: #00866a;
 
-   --primary-background-color: #ffffff;
-   --primary-background-color-hover: #00000015;
-   --secondary-background-color: #fafafa;
-   --secondary-background-color-hover: #5f63680a;
-   --ayah-renderer-background-color: #fafafa;
-   --ayah-renderer-background-color-current: #eaeaea;
-   --tooltip-background-color: #3c4043e6;
+   --primary-background: #ffffff;
+   --primary-background-hover: #00000015;
+   --secondary-background: #fafafa;
+   --secondary-background-hover: #5f63680a;
+   --ayah-renderer-background: #fafafa;
+   --active-ayah-renderer-background: #eaeaea;
+   --tooltip-background: #3c4043e6;
+   --mat-menu-panel-background: #ffffff;
 
-   --read-header-background-color: #ffffff;
-   --read-toolbar-background-color: #ffffff;
+   --header-background: #ffffff;
+   --toolbar-background: #ffffff;
 
    --primary-border-color: #e5e5e5;
    --secondary-border-color: #00000000;
@@ -84,16 +85,17 @@ html.nq-dark-theme body,
 .nq-dark-theme {
    --primary-theme-color: #81bfb9;
 
-   --primary-background-color: #151515;
-   --primary-background-color-hover: #ffffff15;
-   --secondary-background-color: #121212;
-   --secondary-background-color-hover: #242424;
-   --ayah-renderer-background-color: #121212;
-   --ayah-renderer-background-color-current: #262626;
-   --tooltip-background-color: #232323;
+   --primary-background: #151515;
+   --primary-background-hover: #ffffff15;
+   --secondary-background: #121212;
+   --secondary-background-hover: #242424;
+   --ayah-renderer-background: #121212;
+   --active-ayah-renderer-background: #262626;
+   --tooltip-background: #232323;
+   --mat-menu-panel-background: #252525;
 
-   --read-header-background-color: #121212;
-   --read-toolbar-background-color: #121212;
+   --header-background: #121212;
+   --toolbar-background: #121212;
 
    --primary-border-color: #363636;
    --secondary-border-color: #1f1f1f;

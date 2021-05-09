@@ -13,7 +13,7 @@
 }
 
 body {
-   background: var(--secondary-background-color);
+   background: var(--secondary-background);
    overflow-x: hidden;
    overflow-y: scroll;
 }
@@ -52,7 +52,7 @@ button.mat-menu-trigger:not(.mat-icon-button) {
 
    &.open {
       color: var(--primary-text-color-hover);
-      background: var(--primary-background-color-hover);
+      background: var(--primary-background-hover);
 
       mat-icon,
       svg {
@@ -64,17 +64,17 @@ button.mat-menu-trigger:not(.mat-icon-button) {
 }
 
 .mat-progress-bar-buffer.mat-progress-bar-element {
-   background: var(--secondary-background-color);
+   background: var(--secondary-background);
 }
 
 .cdk-overlay-container .mat-tooltip {
-   background: var(--tooltip-background-color) !important;
+   background: var(--tooltip-background) !important;
    font-size: 14px;
    padding: 6px 10px !important;
 }
 
 .list-item-active {
-   background: var(--primary-background-color-hover) !important;
+   background: var(--primary-background-hover) !important;
 }
 
 snack-bar-container {
@@ -103,7 +103,7 @@ snack-bar-container {
    border-radius: 8px;
    margin-top: 8px;
    max-height: 412px;
-   background: var(--primary-background-color);
+   background: var(--mat-menu-panel-background);
 }
 
 .cdk-overlay-container .mat-menu-panel {

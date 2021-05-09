@@ -1,10 +1,10 @@
-<span #positionDetector></span>
-<ng-container *ngIf="!(settings.renderAsPage | async)">
-  <div
-    class="ayah-renderer"
-    [class.playing]="isPlaying && (audioService.isPlaying | async)"
-    *ngIf="ayah"
-  >
+<div
+  #positionDetector
+  class="ayah-renderer"
+  [class.playing]="isPlaying && (audioService.isPlaying | async)"
+  [hidden]="!ayah"
+>
+  <ng-container *ngIf="ayah">
     <div class="ayah-text" *ngIf="ayah.arabicText">
       <span class="arabic-text">{{ ayah.arabicText }}</span>
       <div class="ayah-end" [attr.text]="ayah.numberInSurah | ArabicDecimal">
@@ -15,18 +15,5 @@
       {{ !(settings.showAbsoluteAyahId | async) ? ayah.numberInSurah : ayahId }}.
       {{ ayah.translation }}
     </div>
-  </div>
-</ng-container>
-
-<ng-container *ngIf="settings.renderAsPage | async">
-  <div
-    class="ayah-text inline"
-    [class.playing]="isPlaying && (audioService.isPlaying | async)"
-    *ngIf="ayah"
-  >
-    <span class="arabic-text" *ngIf="ayah.arabicText">{{ ayah.arabicText }}</span>
-    <div class="ayah-end inline" [attr.text]="ayah.numberInSurah | ArabicDecimal">
-      <svg-icon class="flex" icon="ayah_end"></svg-icon>
-    </div>
-  </div>
-</ng-container>
+  </ng-container>
+</div>
