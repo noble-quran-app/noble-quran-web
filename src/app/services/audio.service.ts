@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, of, Subject, Subscription } from 'rxjs';
-import { delay, switchMap, throttleTime } from 'rxjs/operators';
+import { asyncScheduler, BehaviorSubject, of, Subject, Subscription } from 'rxjs';
+import { delay, switchMap, tap, throttleTime } from 'rxjs/operators';
 import { getAyahAudioUrl, Timer } from '../core/functions';
 import { AyahRange } from '../core/models';
 import { NetworkService } from './network.service';
+
+export type AudioServiceAction = 'play_pause' | 'skip_to_next' | 'skip_to_previous' | 'replayAll';
 
 @Injectable({
   providedIn: 'root',
@@ -11,12 +13,13 @@ import { NetworkService } from './network.service';
 export class AudioService {
   constructor(private _net: NetworkService) {}
 
-  private ayahRange: AyahRange;
-  private audioRef: HTMLAudioElement = new Audio();
-  private cachedAudioRef: HTMLAudioElement;
+  private ayahRange: AyahRange = null;
+  private audioRef: HTMLAudioElement = null;
+  private cachedAudioRef: HTMLAudioElement = null;
   private isBufferingSource = new BehaviorSubject<boolean>(false);
   private reloadSource: Subject<null> = null;
-  private netSubscription: Subscription;
+  private netSubscription: Subscription = null;
+  private sessionExists: boolean = false;
 
   public isPlaying = new BehaviorSubject<boolean>(false);
   public isCompleted = new BehaviorSubject<boolean>(false);
@@ -27,12 +30,15 @@ export class AudioService {
     .asObservable()
     .pipe(switchMap((val) => of(val).pipe(delay(val ? 800 : 200))));
 
-  cacheAudioInMemory(resourceUrl: string) {
-    this.cachedAudioRef.pause();
-    this.cachedAudioRef.src = resourceUrl;
+  private cacheAudioInMemory(resourceUrl: string) {
+    console.log('Cache Outer');
+    if (this.sessionExists) {
+      console.log('Cache Inner', resourceUrl);
+      this.cachedAudioRef.src = resourceUrl;
+    }
   }
 
-  setAudioSrc(ayahId: number, cacheNextAudio: boolean) {
+  private setAudioSrc(ayahId: number, cacheNextAudio: boolean) {
     this.isCompleted.next(false);
     if (this.audioRef && ayahId >= 1 && ayahId <= 6236) {
       this.audioRef.src = getAyahAudioUrl(ayahId);
@@ -43,34 +49,34 @@ export class AudioService {
     }
   }
 
-  skipToNextAyah() {
-    if (!this.isLastAyah(this.currentAyahId.value)) {
+  private skipToNextAyah() {
+    if (!this.isLastAyah(this.currentAyahId.value) && this.sessionExists) {
       const nextAyahId = this.currentAyahId.value + 1;
       this.currentAyahId.next(nextAyahId);
     }
   }
 
-  skipToPreviousAyah() {
-    if (!this.isFirstAyah(this.currentAyahId.value)) {
+  private skipToPreviousAyah() {
+    if (!this.isFirstAyah(this.currentAyahId.value) && this.sessionExists) {
       const prevAyahId = this.currentAyahId.value - 1;
       this.currentAyahId.next(prevAyahId);
     }
   }
 
-  isFirstAyah(ayahId: number) {
+  private isFirstAyah(ayahId: number) {
     return ayahId === this.ayahRange.start;
   }
 
-  isLastAyah(ayahId: number) {
+  private isLastAyah(ayahId: number) {
     return ayahId === this.ayahRange.end;
   }
 
-  pause() {
+  private pause() {
     this.isPlaying.next(false);
     this.audioRef.pause();
   }
 
-  async play() {
+  private async play() {
     this.isPlaying.next(true);
     try {
       await this.audioRef.play();
@@ -81,22 +87,22 @@ export class AudioService {
     }
   }
 
-  playPause() {
-    if (!this.isPlaying.value && this.audioRef.paused) {
+  private playPause() {
+    if (!this.isPlaying.value && this.audioRef.paused && this.sessionExists) {
       this.play();
     } else {
       this.pause();
     }
   }
 
-  replaySession() {
+  private replaySession() {
     this.isCompleted.next(false);
     this.currentAyahId.next(this.ayahRange.start);
     this.setAudioSrc(this.ayahRange.start, false);
     this.play();
   }
 
-  async reloadCurrentAyah(timeout = 3000) {
+  private async reloadCurrentAyah(timeout = 3000) {
     try {
       await Timer(timeout);
       this.setAudioSrc(this.currentAyahId.value, false);
@@ -108,10 +114,44 @@ export class AudioService {
     }
   }
 
-  startSession(ayahRange: AyahRange) {
+  private cacheNextAudio() {
+    console.log('cacheNextAudio()');
+    // const nextAyahId = this.currentAyahId.value + 1;
+    // this.cacheAudioInMemory(getAyahAudioUrl(nextAyahId));
+  }
+
+  public action(type: AudioServiceAction) {
+    if (this.sessionExists) {
+      switch (type) {
+        case 'play_pause':
+          this.playPause();
+          break;
+
+        case 'skip_to_previous':
+          this.skipToPreviousAyah();
+          break;
+
+        case 'skip_to_next':
+          this.skipToNextAyah();
+          break;
+
+        case 'replayAll':
+          this.replaySession();
+          break;
+
+        default:
+          throw 'Not a valid action';
+      }
+    } else {
+      throw "Session doesn't exists";
+    }
+  }
+
+  public startSession(ayahRange: AyahRange) {
     this.audioRef = new Audio();
     this.cachedAudioRef = new Audio();
     this.audioRef.preload = 'auto';
+    this.cachedAudioRef.muted = true;
     this.reloadSource = new Subject<null>();
 
     this.audioRef.onloadstart = () => this.isBufferingSource.next(true);
@@ -141,34 +181,52 @@ export class AudioService {
       this.skipToNextAyah();
     };
 
+    // Handling errors while caching next audio
+    this.cachedAudioRef.onerror = () => this.cacheNextAudio();
+
     // Reloading with throttleTime to ensure audio doesn't reload between short intervals.
     this.reloadSource
       .asObservable()
       .pipe(throttleTime(3400))
       .subscribe(() => this.isPlaying.value && this.reloadCurrentAyah(3500));
 
-    this.currentAyahId.asObservable().subscribe((id) => {
-      this.setAudioSrc(id, true);
-      this.audioRef && (this.audioRef.autoplay = this.isPlaying.value);
-    });
+    this.currentAyahId
+      .asObservable()
+      .pipe(
+        tap(() => {
+          this.audioRef && this.audioRef.pause();
+          this.isBufferingSource.next(true);
+        }),
+        throttleTime(1800, asyncScheduler, {
+          leading: true,
+          trailing: true,
+        })
+      )
+      .subscribe((id) => {
+        this.setAudioSrc(id, true);
+        this.audioRef && (this.audioRef.autoplay = this.isPlaying.value);
+      });
 
     this.netSubscription = this._net.isOnline.subscribe((isOnline) => {
       if (isOnline && this.isBufferingSource.value) {
         this.reloadSource.next(null);
       }
     });
+
+    this.sessionExists = true;
   }
 
-  destroySession() {
+  public destroySession() {
+    this.sessionExists = false;
+    this.audioRef?.pause();
+    this.audioRef = null;
+    this.cachedAudioRef = null;
+
     this.reloadSource?.complete();
     this.currentAyahId.next(-1);
     this.isCompleted.next(false);
     this.isPlaying.next(false);
     this.isBufferingSource.next(false);
-
-    this.audioRef?.pause();
-    this.audioRef = null;
-    this.cachedAudioRef = null;
 
     this.netSubscription?.unsubscribe();
   }
