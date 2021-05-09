@@ -31,9 +31,7 @@ export class AudioService {
     .pipe(switchMap((val) => of(val).pipe(delay(val ? 800 : 200))));
 
   private cacheAudioInMemory(resourceUrl: string) {
-    console.log('Cache Outer');
     if (this.sessionExists) {
-      console.log('Cache Inner', resourceUrl);
       this.cachedAudioRef.src = resourceUrl;
     }
   }
@@ -115,9 +113,8 @@ export class AudioService {
   }
 
   private cacheNextAudio() {
-    console.log('cacheNextAudio()');
-    // const nextAyahId = this.currentAyahId.value + 1;
-    // this.cacheAudioInMemory(getAyahAudioUrl(nextAyahId));
+    const nextAyahId = this.currentAyahId.value + 1;
+    this.cacheAudioInMemory(getAyahAudioUrl(nextAyahId));
   }
 
   public action(type: AudioServiceAction) {
