@@ -18,6 +18,10 @@ body {
    overflow-y: scroll;
 }
 
+::selection {
+   background: var(--selection-background);
+}
+
 button:not([disabled]) svg,
 button:not([disabled]) mat-icon {
    height: 24px;

@@ -4,6 +4,7 @@ import { QuranEdition } from '../core/models';
 import Localbase from 'localbase';
 import { HttpClient } from '@angular/common/http';
 import { delay, retryWhen } from 'rxjs/operators';
+import { UpdateService } from './update.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,17 +12,19 @@ import { delay, retryWhen } from 'rxjs/operators';
 export class IdbService {
   private dbName = 'NobleQuran';
   private translations = ['en.sahih'];
-
   private db = new Localbase(this.dbName);
+
   public dbReady = new BehaviorSubject<boolean>(false);
+  public isInstalling = new BehaviorSubject<boolean>(false);
+  public isUpdating = new BehaviorSubject<boolean>(false);
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient, private update: UpdateService) {}
 
-  async installArabicPacks() {
+  async installArabicPacks(forceInstall: boolean) {
     const arabicEdition = 'quran.simple';
 
     try {
-      if (await this.validate(arabicEdition)) {
+      if ((await this.validate(arabicEdition)) && !forceInstall) {
         return true;
       }
       const data = await this.fetchQuranEdition(arabicEdition);
@@ -36,9 +39,9 @@ export class IdbService {
     }
   }
 
-  async installTranslationPacks() {
+  async installTranslationPacks(forceInstall: boolean) {
     for (let translation of this.translations) {
-      if (await this.validate(translation)) {
+      if ((await this.validate(translation)) && !forceInstall) {
         return true;
       }
       const data = await this.fetchQuranEdition(translation);
@@ -51,12 +54,41 @@ export class IdbService {
     }
   }
 
-  async init() {
-    this.db.config.debug = false;
-    await this.installArabicPacks();
-    await this.installTranslationPacks();
+  async installAllEditions(forceInstall = false) {
+    this.isInstalling.next(true);
+    await this.installArabicPacks(forceInstall);
+    await this.installTranslationPacks(forceInstall);
+    this.isInstalling.next(false);
+  }
 
+  async initialize() {
+    this.db.config.debug = false;
+
+    if (this.update.updatePending()) {
+      this.isUpdating.next(true);
+
+      await this.updateEditons();
+      this.dbReady.next(true);
+
+      this.isUpdating.next(false);
+      this.update.setPendingStatus(false);
+      return;
+    }
+
+    this.isInstalling.next(true);
+    await this.installAllEditions();
+    this.isInstalling.next(false);
     this.dbReady.next(true);
+  }
+
+  async updateEditons() {
+    if (!this.isInstalling.value) {
+      this.dbReady.next(false);
+      await this.db.delete();
+      await this.installAllEditions(true);
+    } else {
+      console.error("Cant't update while installing.");
+    }
   }
 
   async validate(collectionId: string) {

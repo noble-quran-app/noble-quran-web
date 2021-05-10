@@ -1,9 +1,8 @@
 import { Component, HostListener } from '@angular/core';
-import { SwUpdate } from '@angular/service-worker';
 import { ThemeService } from './services/theme.service';
 import { IdbService } from './services/idb.service';
-import { ToastService } from './services/toast.service';
 import { NetworkService } from './services/network.service';
+import { UpdateService } from './services/update.service';
 
 @Component({
   selector: 'app-root',
@@ -12,31 +11,22 @@ import { NetworkService } from './services/network.service';
 })
 export class AppComponent {
   constructor(
-    private themeService: ThemeService,
-    private swUpdate: SwUpdate,
+    private theme: ThemeService,
     private idb: IdbService,
-    private toast: ToastService,
-    private network: NetworkService
+    private network: NetworkService,
+    private update: UpdateService
   ) {}
 
   @HostListener('window:keydown.control.x', ['$event'])
   themeChange(event: KeyboardEvent) {
     event.preventDefault();
-    this.themeService.toggleTheme();
+    this.theme.toggleTheme();
   }
 
   ngOnInit() {
-    this.idb.init();
-    this.network.init();
-    this.themeService.init();
-    history.scrollRestoration = 'manual';
-
-    if (this.swUpdate.isEnabled) {
-      this.swUpdate.available.subscribe(() => {
-        this.toast
-          .openWithAction('New version is available.', 'Update', 15000)
-          .subscribe(() => location.reload());
-      });
-    }
+    this.idb.initialize();
+    this.network.initialize();
+    this.theme.initialize();
+    this.update.initialize();
   }
 }

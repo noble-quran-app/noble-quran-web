@@ -43,7 +43,7 @@ export class ThemeService {
     }
   }
 
-  init() {
+  initialize() {
     const storedTheme = localStorage.getItem(this.themeStorage);
     if (!storedTheme) {
       this.setTheme(lightTheme);

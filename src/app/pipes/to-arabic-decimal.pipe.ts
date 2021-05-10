@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'ArabicDecimal',
+  name: 'toArabicDecimal',
 })
 export class ToArabicNumberPipe implements PipeTransform {
   transform(number: number, operation = 0): string {

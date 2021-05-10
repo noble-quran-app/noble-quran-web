@@ -30,20 +30,16 @@ export class AudioService {
     .asObservable()
     .pipe(switchMap((val) => of(val).pipe(delay(val ? 800 : 200))));
 
-  private cacheAudioInMemory(resourceUrl: string) {
+  private cacheAudioInMemory(audioUrl: string) {
     if (this.sessionExists) {
-      this.cachedAudioRef.src = resourceUrl;
+      this.cachedAudioRef.src = audioUrl;
     }
   }
 
-  private setAudioSrc(ayahId: number, cacheNextAudio: boolean) {
+  private setAudioSrc(ayahId: number) {
     this.isCompleted.next(false);
     if (this.audioRef && ayahId >= 1 && ayahId <= 6236) {
       this.audioRef.src = getAyahAudioUrl(ayahId);
-
-      if (cacheNextAudio && this.currentAyahId.value !== this.ayahRange.end) {
-        this.cacheAudioInMemory(getAyahAudioUrl(ayahId + 1));
-      }
     }
   }
 
@@ -96,14 +92,14 @@ export class AudioService {
   private replaySession() {
     this.isCompleted.next(false);
     this.currentAyahId.next(this.ayahRange.start);
-    this.setAudioSrc(this.ayahRange.start, false);
+    this.setAudioSrc(this.ayahRange.start);
     this.play();
   }
 
   private async reloadCurrentAyah(timeout = 3000) {
     try {
       await Timer(timeout);
-      this.setAudioSrc(this.currentAyahId.value, false);
+      this.setAudioSrc(this.currentAyahId.value);
       if (this.isPlaying.value) {
         this.play();
       }
@@ -113,8 +109,10 @@ export class AudioService {
   }
 
   private cacheNextAudio() {
-    const nextAyahId = this.currentAyahId.value + 1;
-    this.cacheAudioInMemory(getAyahAudioUrl(nextAyahId));
+    if (this.currentAyahId.value !== this.ayahRange.end) {
+      const nextAyahId = this.currentAyahId.value + 1;
+      this.cacheAudioInMemory(getAyahAudioUrl(nextAyahId));
+    }
   }
 
   public action(type: AudioServiceAction) {
@@ -153,7 +151,10 @@ export class AudioService {
 
     this.audioRef.onloadstart = () => this.isBufferingSource.next(true);
     this.audioRef.onwaiting = () => this.isBufferingSource.next(true);
-    this.audioRef.oncanplaythrough = () => this.isBufferingSource.next(false);
+    this.audioRef.oncanplaythrough = () => {
+      this.isBufferingSource.next(false);
+      this.cacheNextAudio();
+    };
 
     this.ayahRange = ayahRange;
     this.currentAyahId.next(ayahRange.start);
@@ -191,7 +192,7 @@ export class AudioService {
       .asObservable()
       .pipe(
         tap(() => {
-          this.audioRef && this.audioRef.pause();
+          this.audioRef && !this.audioRef.paused && this.audioRef.pause();
           this.isBufferingSource.next(true);
         }),
         throttleTime(1800, asyncScheduler, {
@@ -200,7 +201,7 @@ export class AudioService {
         })
       )
       .subscribe((id) => {
-        this.setAudioSrc(id, true);
+        this.setAudioSrc(id);
         this.audioRef && (this.audioRef.autoplay = this.isPlaying.value);
       });
 

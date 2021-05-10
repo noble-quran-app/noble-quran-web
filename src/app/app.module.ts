@@ -10,7 +10,7 @@ import { MaterialModule } from './material/material.module';
 import { HomeComponent } from './pages/home/home.component';
 import { DefaultComponent } from './pages/default/default.component';
 import { SurahComponent } from './pages/surah/surah.component';
-import { ToArabicNumberPipe } from './pipes/arabic-decimal.pipe';
+import { ToArabicNumberPipe } from './pipes/to-arabic-decimal.pipe';
 import { AyahListBuilderComponent } from './components/ayah-list-builder/ayah-list-builder.component';
 import { AyahRendererComponent } from './components/ayah-renderer/ayah-renderer.component';
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
