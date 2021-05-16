@@ -1,6 +1,5 @@
-import { Component, Input, OnChanges, OnDestroy } from '@angular/core';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { interval, Subscription } from 'rxjs';
+import { Component, Input } from '@angular/core';
+import { OnChanges, OnDestroy } from '@angular/core';
 import { AyahRange } from 'src/app/core/models';
 import { AudioService } from 'src/app/services/audio.service';
 import { NetworkService } from 'src/app/services/network.service';
@@ -12,18 +11,8 @@ import { NetworkService } from 'src/app/services/network.service';
 })
 export class ReadToolbarComponent implements OnChanges, OnDestroy {
   constructor(public _audio: AudioService, public _net: NetworkService) {}
+
   @Input() ayahRange: AyahRange;
-
-  private autoScrollSubscription: Subscription;
-  private autoScrollInterval = interval(25);
-
-  handleAutoScrollChange(e: MatSlideToggleChange) {
-    if (e.checked) {
-      this.autoScrollSubscription = this.autoScrollInterval.subscribe(() => window.scrollBy(0, 1));
-    } else {
-      this.autoScrollSubscription?.unsubscribe();
-    }
-  }
 
   ngOnChanges() {
     this._audio.destroySession();
@@ -32,6 +21,5 @@ export class ReadToolbarComponent implements OnChanges, OnDestroy {
 
   ngOnDestroy() {
     this._audio.destroySession();
-    this?.autoScrollSubscription?.unsubscribe();
   }
 }

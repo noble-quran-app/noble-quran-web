@@ -1,24 +1,29 @@
-import {
-  Component,
-  ElementRef,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { OnChanges, OnDestroy, OnInit } from '@angular/core';
 import range from 'lodash-es/range';
 import chunk from 'lodash-es/chunk';
 import { AyahRange } from 'src/app/core/models';
 import { IdbService } from 'src/app/services/idb.service';
 import { SettingService } from 'src/app/services/setting.service';
 import { AudioService } from 'src/app/services/audio.service';
-import { fromEvent, Subscription } from 'rxjs';
+import { fromEvent } from 'rxjs';
 import { tap, throttleTime } from 'rxjs/operators';
+import { SubSink } from 'subsink';
 
-const ListBuilderHotKeys = ['Space', 'ArrowLeft', 'ArrowRight'];
+const HotKeys = {
+  spacebar: 'Space',
+  arrowLeft: 'ArrowLeft',
+  arrowRight: 'ArrowRight',
+  d: 'KeyD',
+  pageDown: 'PageDown',
+  pageUp: 'PageUp',
+
+  // arrowDown: 'ArrowDown',
+  // arrowUp: 'ArrowUp',
+};
+
 const ObserverArgs = {
-  rootMargin: '1500px',
+  rootMargin: '500px',
 };
 
 @Component({
@@ -45,8 +50,8 @@ export class AyahListBuilderComponent implements OnInit, OnChanges, OnDestroy {
   public renderError = false;
 
   private totalAyahs = [];
-  private keyDownSubscription: Subscription = null;
   private observer: IntersectionObserver = null;
+  private subs = new SubSink();
 
   observerCallback = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => entry.isIntersecting && this.appendAyahs());
@@ -72,7 +77,7 @@ export class AyahListBuilderComponent implements OnInit, OnChanges, OnDestroy {
       }
       const totalLengthOfAyahs = this.ayahRange.end - this.ayahRange.start;
 
-      if ([15, totalLengthOfAyahs].includes(ayahIndex)) {
+      if ([8, totalLengthOfAyahs].includes(ayahIndex)) {
         this.readyToShowAyahs = true;
         this.renderingAyahs = false;
       }
@@ -84,29 +89,39 @@ export class AyahListBuilderComponent implements OnInit, OnChanges, OnDestroy {
   handleKeyDown = (ev: KeyboardEvent) => {
     if (this.readyToShowAyahs) {
       switch (ev.code) {
-        case 'Space':
-          this.audio.action('play_pause');
+        case HotKeys.spacebar:
+          this.audio.playPause();
           break;
-        case 'ArrowLeft':
-          this.audio.action('skip_to_previous');
+        case HotKeys.arrowLeft:
+          this.audio.skipToPreviousAyah();
           break;
-        case 'ArrowRight':
-          this.audio.action('skip_to_next');
+        case HotKeys.arrowRight:
+          this.audio.skipToNextAyah();
           break;
-        case 'KeyD':
+        case HotKeys.d:
           ev.shiftKey && this.settings.toggleShowAbsoluteAyahId();
+          break;
+        case HotKeys.pageUp:
+          window.scrollBy(0, -80);
+          break;
+        case HotKeys.pageDown:
+          window.scrollBy(0, 80);
           break;
       }
     }
   };
 
   ngOnInit() {
-    this.keyDownSubscription = fromEvent(document, 'keydown')
-      .pipe(
-        tap((ev: KeyboardEvent) => ListBuilderHotKeys.includes(ev.code) && ev.preventDefault()),
-        throttleTime(100)
-      )
-      .subscribe(this.handleKeyDown);
+    this.subs.add(
+      fromEvent(document, 'keydown')
+        .pipe(
+          tap(
+            (ev: KeyboardEvent) => Object.values(HotKeys).includes(ev.code) && ev.preventDefault()
+          ),
+          throttleTime(100)
+        )
+        .subscribe(this.handleKeyDown)
+    );
   }
 
   ngAfterViewInit() {
@@ -115,15 +130,16 @@ export class AyahListBuilderComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges() {
+    this.renderingAyahs = true;
     this.readyToShowAyahs = false;
     this.allAyahsRendered = false;
     this.ayahsToRender = [];
-    this.totalAyahs = chunk(range(this.ayahRange.start, this.ayahRange.end + 1), 20);
+    this.totalAyahs = chunk(range(this.ayahRange.start, this.ayahRange.end + 1), 5);
     this.appendAyahs();
   }
 
   ngOnDestroy() {
-    this.keyDownSubscription?.unsubscribe();
     this.observer?.disconnect();
+    this.subs.unsubscribe();
   }
 }

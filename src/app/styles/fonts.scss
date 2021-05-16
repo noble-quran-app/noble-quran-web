@@ -1,5 +1,5 @@
 @font-face {
-   font-family: 'Myriad';
+   font-family: 'myriad';
    font-style: normal;
    font-weight: 400;
    src: url('/assets/static/fonts/myriad.ttf');
@@ -7,9 +7,17 @@
 }
 
 @font-face {
-   font-family: 'Indopak';
+   font-family: 'indopak';
    font-style: normal;
    font-weight: 400;
    src: url('/assets/static/fonts/indopak.woff2');
+   font-display: swap;
+}
+
+@font-face {
+   font-family: 'me_quran';
+   font-style: normal;
+   font-weight: 400;
+   src: url('/assets/static/fonts/me_quran.ttf');
    font-display: swap;
 }

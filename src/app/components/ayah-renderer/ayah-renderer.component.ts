@@ -1,17 +1,9 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { OnDestroy, OnInit } from '@angular/core';
 import { AudioService } from 'src/app/services/audio.service';
 import { IdbService } from 'src/app/services/idb.service';
 import { SettingService } from 'src/app/services/setting.service';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'ayah-renderer',
@@ -30,23 +22,25 @@ export class AyahRendererComponent implements OnInit, OnDestroy {
     public audioService: AudioService
   ) {}
 
+  private subs = new SubSink();
+
   public ayah: any;
-  private idSubscription: Subscription;
   public isPlaying = false;
 
   async ngOnInit() {
     try {
-      this.ayah = await this.idb.getAyahWithEditons(this.ayahId, ['quran.simple', 'en.sahih']);
-
+      this.ayah = await this.idb.getAyahWithEditons(this.ayahId, ['quran-simple', 'en.sahih']);
       this.stateChange.emit([this.ayahIndex]);
     } catch (error) {
       this.stateChange.emit([this.ayahIndex, error.message]);
     }
 
-    this.idSubscription = this.audioService.currentAyahId.subscribe((id) => {
-      this.isPlaying = Boolean(id === this.ayahId);
-      this.isPlaying && this.scrollToCurrentAyah();
-    });
+    this.subs.add(
+      this.audioService.currentAyahId.subscribe((id) => {
+        this.isPlaying = Boolean(id === this.ayahId);
+        this.isPlaying && this.scrollToCurrentAyah();
+      })
+    );
   }
 
   scrollToCurrentAyah() {
@@ -67,6 +61,6 @@ export class AyahRendererComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.idSubscription?.unsubscribe();
+    this.subs.unsubscribe();
   }
 }

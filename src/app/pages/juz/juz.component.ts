@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { generateMenuList, getRangeForJuz } from 'src/app/core/functions';
 import { AyahRange } from 'src/app/core/models';
 import { TitleService } from 'src/app/services/title.service';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'juz-page',
@@ -13,20 +13,23 @@ import { TitleService } from 'src/app/services/title.service';
 export class JuzComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private titleService: TitleService) {}
 
+  private subs = new SubSink();
+
   public ayahRange: AyahRange;
   public juzId: number;
-  private subscription: Subscription;
   public menuList = generateMenuList.forJuz();
 
   ngOnInit() {
-    this.subscription = this.route.params.subscribe((params) => {
-      this.juzId = parseInt(params.juzId);
-      this.ayahRange = getRangeForJuz(this.juzId);
-      this.titleService.setTitleForJuz(this.juzId);
-    });
+    this.subs.add(
+      this.route.params.subscribe((params) => {
+        this.juzId = parseInt(params.juzId);
+        this.ayahRange = getRangeForJuz(this.juzId);
+        this.titleService.setTitleForJuz(this.juzId);
+      })
+    );
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subs.unsubscribe();
   }
 }

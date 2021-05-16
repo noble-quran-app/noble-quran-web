@@ -21,16 +21,17 @@ export class IdbService {
   constructor(private _http: HttpClient, private update: UpdateService) {}
 
   async installArabicPacks(forceInstall: boolean) {
-    const arabicEdition = 'quran.simple';
+    const arabicEdition = 'quran-simple';
 
     try {
       if ((await this.validate(arabicEdition)) && !forceInstall) {
         return true;
       }
       const data = await this.fetchQuranEdition(arabicEdition);
-      const mappedData = data.ayahs.map((ayah, index) => {
-        const [arabicText, numberInSurah] = ayah;
-        return { arabicText, numberInSurah, _key: (index + 1).toString() };
+      const mappedData = data.ayahs.map((ayah: any) => {
+        const { text: arabicText, number, ...rest } = ayah;
+        const mappedAyah = { ...rest, arabicText, _key: number.toString() };
+        return mappedAyah;
       });
       await this.db.collection(arabicEdition).set(mappedData, { keys: true });
       await this.db.collection(arabicEdition).doc('metadata').set(data.edition);

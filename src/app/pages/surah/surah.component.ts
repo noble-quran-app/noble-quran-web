@@ -1,10 +1,10 @@
 import { ActivatedRoute } from '@angular/router';
 import { generateMenuList, getRangeForSurah } from 'src/app/core/functions';
 import { Surahs } from '../../data/quran';
-import { Subscription } from 'rxjs';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AyahRange } from 'src/app/core/models';
 import { TitleService } from 'src/app/services/title.service';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'surah-page',
@@ -13,21 +13,24 @@ import { TitleService } from 'src/app/services/title.service';
 export class SurahComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private titleService: TitleService) {}
 
+  private subs = new SubSink();
+
   public surahs = Surahs;
   public surahId: number;
   public ayahRange: AyahRange;
-  private subscription: Subscription;
   public menuList = generateMenuList.forSurah();
 
   ngOnInit() {
-    this.subscription = this.route.params.subscribe((params) => {
-      this.surahId = parseInt(params.surahId);
-      this.ayahRange = getRangeForSurah(this.surahId);
-      this.titleService.setTitleForSurah(this.surahId);
-    });
+    this.subs.add(
+      this.route.params.subscribe((params) => {
+        this.surahId = parseInt(params.surahId);
+        this.ayahRange = getRangeForSurah(this.surahId);
+        this.titleService.setTitleForSurah(this.surahId);
+      })
+    );
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subs.unsubscribe();
   }
 }

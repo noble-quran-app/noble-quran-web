@@ -1,24 +1,17 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, OnDestroy, OnInit } from '@angular/core';
 import { Surahs, Juzs, Sajdas } from 'src/app/data/quran';
 import { TabsData } from 'src/app/data/home';
 import { Juz, Sajda, Surah } from 'src/app/core/models';
 import { TitleService } from 'src/app/services/title.service';
 import { MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss','./home.global.scss'],
+  styleUrls: ['./home.component.scss', './home.global.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -38,7 +31,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   sajdas = <Sajda[]>Sajdas;
   upperSectionVisible: boolean;
 
-  private routeSubscription: Subscription;
+  private subs = new SubSink();
   private activeRoute: string;
   private intersectionOptions = { rootMargin: '-86px 0px 0px 0px' };
 
@@ -70,9 +63,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.upperSectionVisible = window.pageYOffset < 420;
     this.titleService.setTitleForHome();
-    this.routeSubscription = this.route.url.subscribe((url: UrlSegment[]) => {
-      this.activeRoute = url.length ? `/${url[0].path}` : '/';
-    });
+    this.subs.add(
+      this.route.url.subscribe((url: UrlSegment[]) => {
+        this.activeRoute = url.length ? `/${url[0].path}` : '/';
+      })
+    );
   }
 
   ngAfterViewInit() {
@@ -81,6 +76,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.routeSubscription.unsubscribe();
+    this.subs.unsubscribe();
   }
 }

@@ -10,6 +10,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 const MaterialComponents = [
   MatCardModule,
@@ -21,6 +22,7 @@ const MaterialComponents = [
   MatRippleModule,
   MatTooltipModule,
   MatSnackBarModule,
+  MatSlideToggleModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
 ];

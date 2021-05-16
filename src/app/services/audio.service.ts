@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { asyncScheduler, BehaviorSubject, of, Subject, Subscription } from 'rxjs';
+import { asyncScheduler, BehaviorSubject, of, Subject } from 'rxjs';
 import { delay, switchMap, tap, throttleTime } from 'rxjs/operators';
+import { SubSink } from 'subsink';
 import { getAyahAudioUrl, Timer } from '../core/functions';
 import { AyahRange } from '../core/models';
 import { NetworkService } from './network.service';
-
-export type AudioServiceAction = 'play_pause' | 'skip_to_next' | 'skip_to_previous' | 'replayAll';
 
 @Injectable({
   providedIn: 'root',
@@ -18,8 +17,8 @@ export class AudioService {
   private cachedAudioRef: HTMLAudioElement = null;
   private isBufferingSource = new BehaviorSubject<boolean>(false);
   private reloadSource: Subject<null> = null;
-  private netSubscription: Subscription = null;
   private sessionExists: boolean = false;
+  private subs = new SubSink();
 
   public isPlaying = new BehaviorSubject<boolean>(false);
   public isCompleted = new BehaviorSubject<boolean>(false);
@@ -43,14 +42,14 @@ export class AudioService {
     }
   }
 
-  private skipToNextAyah() {
+  public skipToNextAyah() {
     if (!this.isLastAyah(this.currentAyahId.value) && this.sessionExists) {
       const nextAyahId = this.currentAyahId.value + 1;
       this.currentAyahId.next(nextAyahId);
     }
   }
 
-  private skipToPreviousAyah() {
+  public skipToPreviousAyah() {
     if (!this.isFirstAyah(this.currentAyahId.value) && this.sessionExists) {
       const prevAyahId = this.currentAyahId.value - 1;
       this.currentAyahId.next(prevAyahId);
@@ -66,34 +65,42 @@ export class AudioService {
   }
 
   private pause() {
-    this.isPlaying.next(false);
-    this.audioRef.pause();
-  }
-
-  private async play() {
-    this.isPlaying.next(true);
-    try {
-      await this.audioRef.play();
-      this.playbackError.next(null);
-    } catch (error) {
-      this.playbackError.next(error.message);
-      this.reloadSource.next(null);
+    if (this.sessionExists) {
+      this.isPlaying.next(false);
+      this.audioRef.pause();
     }
   }
 
-  private playPause() {
-    if (!this.isPlaying.value && this.audioRef.paused && this.sessionExists) {
+  public async play() {
+    if (this.sessionExists) {
+      this.isPlaying.next(true);
+      try {
+        await this.audioRef.play();
+        this.playbackError.next(null);
+      } catch (error) {
+        this.playbackError.next(error.message);
+        this.reloadSource.next(null);
+      }
+    }
+  }
+
+  public playPause() {
+    if (this.sessionExists) {
+      if (!this.isPlaying.value && this.audioRef.paused && this.sessionExists) {
+        this.play();
+      } else {
+        this.pause();
+      }
+    }
+  }
+
+  public replaySession() {
+    if (this.sessionExists) {
+      this.isCompleted.next(false);
+      this.currentAyahId.next(this.ayahRange.start);
+      this.setAudioSrc(this.ayahRange.start);
       this.play();
-    } else {
-      this.pause();
     }
-  }
-
-  private replaySession() {
-    this.isCompleted.next(false);
-    this.currentAyahId.next(this.ayahRange.start);
-    this.setAudioSrc(this.ayahRange.start);
-    this.play();
   }
 
   private async reloadCurrentAyah(timeout = 3000) {
@@ -112,33 +119,6 @@ export class AudioService {
     if (this.currentAyahId.value !== this.ayahRange.end) {
       const nextAyahId = this.currentAyahId.value + 1;
       this.cacheAudioInMemory(getAyahAudioUrl(nextAyahId));
-    }
-  }
-
-  public action(type: AudioServiceAction) {
-    if (this.sessionExists) {
-      switch (type) {
-        case 'play_pause':
-          this.playPause();
-          break;
-
-        case 'skip_to_previous':
-          this.skipToPreviousAyah();
-          break;
-
-        case 'skip_to_next':
-          this.skipToNextAyah();
-          break;
-
-        case 'replayAll':
-          this.replaySession();
-          break;
-
-        default:
-          throw 'Not a valid action';
-      }
-    } else {
-      throw "Session doesn't exists";
     }
   }
 
@@ -205,11 +185,13 @@ export class AudioService {
         this.audioRef && (this.audioRef.autoplay = this.isPlaying.value);
       });
 
-    this.netSubscription = this._net.isOnline.subscribe((isOnline) => {
-      if (isOnline && this.isBufferingSource.value) {
-        this.reloadSource.next(null);
-      }
-    });
+    this.subs.add(
+      this._net.isOnline.subscribe((isOnline) => {
+        if (isOnline && this.isBufferingSource.value) {
+          this.reloadSource.next(null);
+        }
+      })
+    );
 
     this.sessionExists = true;
   }
@@ -226,6 +208,6 @@ export class AudioService {
     this.isPlaying.next(false);
     this.isBufferingSource.next(false);
 
-    this.netSubscription?.unsubscribe();
+    this.subs.unsubscribe();
   }
 }
