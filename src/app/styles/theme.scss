@@ -43,18 +43,20 @@ html body,
 .nq-light-theme {
    --primary-theme-color: #00866a;
 
-   --primary-background: #ffffff;
-   --primary-background-hover: #00000015;
-   --secondary-background: #fafafa;
-   --secondary-background-hover: #5f63680a;
-   --ayah-renderer-background: #fafafa;
-   --active-ayah-renderer-background: #eaeaea;
-   --tooltip-background: #3c4043e6;
-   --mat-menu-panel-background: #ffffff;
-   --selection-background: #b8b8b880;
+   --primary-background-color: #ffffff;
+   --primary-background-color-hover: #00000015;
+   --secondary-background-color: #fafafa;
+   --secondary-background-color-hover: #5f63680a;
+   --ayah-renderer-background-color: #fafafa;
+   --active-ayah-renderer-background-color: #eaeaea;
+   --mat-menu-panel-background-color: #ffffff;
+   --selection-background-color: #b8b8b880;
 
-   --header-background: #ffffff;
-   --toolbar-background: #ffffff;
+   --tooltip-background-color: #3c4043e6;
+   --tooltip-color: #e6e6e6;
+
+   --header-background-color: #ffffff;
+   --toolbar-background-color: #ffffff;
 
    --primary-border-color: #e5e5e5;
    --secondary-border-color: #00000000;
@@ -86,20 +88,22 @@ html.nq-dark-theme body,
 .nq-dark-theme {
    --primary-theme-color: #81bfb9;
 
-   --primary-background: #151515;
-   --primary-background-hover: #ffffff15;
-   --secondary-background: #121212;
-   --secondary-background-hover: #242424;
-   --ayah-renderer-background: #121212;
-   --active-ayah-renderer-background: #262626;
-   --tooltip-background: #232323;
-   --mat-menu-panel-background: #252525;
-   --selection-background: #5d5d5d80;
+   --primary-background-color: #151515;
+   --primary-background-color-hover: #ffffff15;
+   --secondary-background-color: #1c1d20;
+   --secondary-background-color-hover: #242424;
+   --ayah-renderer-background-color: #1c1d20;
+   --active-ayah-renderer-background-color: #262626;
+   --mat-menu-panel-background-color: #3c4043;
+   --selection-background-color: #5d5d5d80;
 
-   --header-background: #121212;
-   --toolbar-background: #121212;
+   --tooltip-background-color: #e6e6e6;
+   --tooltip-color: #202124;
 
-   --primary-border-color: #363636;
+   --header-background-color: #1c1d20;
+   --toolbar-background-color: #1c1d20;
+
+   --primary-border-color: #474747;
    --secondary-border-color: #1f1f1f;
 
    --primary-icon-color: #e8e8e8;

@@ -1,5 +1,5 @@
 .nq-dark-theme .home-page {
-   background: #080808;
+   background: #141414;
 
    .section-bottom {
       box-shadow: none;
@@ -31,9 +31,9 @@
 
    .mat-tab-header {
       position: sticky !important;
-      top: 0;
+      top: -1px;
       height: 52px;
-      background: var(--secondary-background);
+      background: var(--secondary-background-color);
       z-index: 100;
       border-radius: inherit;
       border-bottom: 1px solid var(--primary-border-color);

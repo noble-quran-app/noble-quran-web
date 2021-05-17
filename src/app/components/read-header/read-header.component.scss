@@ -10,7 +10,7 @@ header {
    align-items: center;
    justify-content: space-between;
    border-bottom: 1px solid var(--primary-border-color);
-   background: var(--header-background);
+   background: var(--header-background-color);
 
    //   This is for preloading the Arabic font
    &::after {

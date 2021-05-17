@@ -13,13 +13,13 @@
 }
 
 body {
-   background: var(--secondary-background);
+   background: var(--secondary-background-color);
    overflow-x: hidden;
    overflow-y: scroll;
 }
 
 ::selection {
-   background: var(--selection-background);
+   background: var(--selection-background-color);
 }
 
 button:not([disabled]) svg,
@@ -56,7 +56,7 @@ button.mat-menu-trigger:not(.mat-icon-button) {
 
    &.open {
       color: var(--primary-text-color-hover);
-      background: var(--primary-background-hover);
+      background: var(--primary-background-color-hover);
 
       mat-icon,
       svg {
@@ -68,17 +68,18 @@ button.mat-menu-trigger:not(.mat-icon-button) {
 }
 
 .mat-progress-bar-buffer.mat-progress-bar-element {
-   background: var(--secondary-background);
+   background: var(--secondary-background-color);
 }
 
 .cdk-overlay-container .mat-tooltip {
-   background: var(--tooltip-background) !important;
    font-size: 14px;
    padding: 6px 10px !important;
+   color: var(--tooltip-color) !important;
+   background: var(--tooltip-background-color) !important;
 }
 
 .list-item-active {
-   background: var(--primary-background-hover) !important;
+   background: var(--primary-background-color-hover) !important;
 }
 
 snack-bar-container {
@@ -107,7 +108,7 @@ snack-bar-container {
    border-radius: 8px;
    margin-top: 8px;
    max-height: 412px;
-   background: var(--mat-menu-panel-background);
+   background: var(--mat-menu-panel-background-color);
 }
 
 .cdk-overlay-container .mat-menu-panel {
