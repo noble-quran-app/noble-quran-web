@@ -5,7 +5,7 @@
 .ayah-renderer {
    font-size: calc(var(--ar-font-size) * 1px);
    direction: rtl;
-   padding: 30px 48px 30px;
+   padding: 25px 48px 35px;
    font-family: 'Indopak';
    color: var(--primary-text-color);
    -webkit-user-select: auto;
@@ -77,6 +77,6 @@
       transform: translate(-50%, -62%);
    }
    .ayah-renderer {
-      padding: 20px 24px 15px;
+      padding: 18px 24px 20px;
    }
 }

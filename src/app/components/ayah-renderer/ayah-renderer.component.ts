@@ -1,5 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { OnDestroy, OnInit } from '@angular/core';
+import { merge, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { AudioService } from 'src/app/services/audio.service';
 import { IdbService } from 'src/app/services/idb.service';
 import { SettingService } from 'src/app/services/setting.service';
@@ -40,6 +42,10 @@ export class AyahRendererComponent implements OnInit, OnDestroy {
         this.isPlaying = Boolean(id === this.ayahId);
         this.isPlaying && this.scrollToCurrentAyah();
       })
+    );
+
+    this.subs.add(
+      this.audioService.isPlaying.subscribe((playing) => playing && this.scrollToCurrentAyah())
     );
   }
 
