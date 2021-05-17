@@ -11,5 +11,5 @@ export const darkTheme: Theme = {
   id: 'dark-theme',
   className: 'nq-dark-theme',
   primary_theme_color: '#81bfb9',
-  appbar_background_color: '#1c1d20',
+  appbar_background_color: '#1c1d1e',
 };
