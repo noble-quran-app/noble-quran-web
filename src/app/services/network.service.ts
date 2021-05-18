@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, fromEvent, interval } from 'rxjs';
-import { delay, retryWhen, scan } from 'rxjs/operators';
+import { BehaviorSubject, fromEvent, interval, of } from 'rxjs';
+import { delay, retryWhen, scan, switchMap } from 'rxjs/operators';
 import { SubSink } from 'subsink';
 
 @Injectable({
@@ -11,31 +11,44 @@ export class NetworkService {
   constructor(private http: HttpClient) {}
 
   private subs = new SubSink();
+  private isChecking = new BehaviorSubject<boolean>(false);
 
   public isOnline = new BehaviorSubject<boolean>(navigator.onLine);
 
   checkForConnectivity(retryCount: number) {
-    this.http
-      .get('/assets/dynamic/status.json', {
-        params: {
-          cache_clear: new Date().getTime().toString(),
-        },
-      })
-      .pipe(
-        retryWhen((err) =>
-          err.pipe(
-            delay(2000),
-            scan((acc) => {
-              if (acc >= retryCount) throw err;
-              return acc + 1;
-            }, 0)
+    if (!this.isChecking.value) {
+      this.isChecking.next(true);
+      this.http
+        .get('/assets/dynamic/status.json', {
+          params: {
+            cache_burst: new Date().getTime().toString(),
+          },
+        })
+        .pipe(
+          retryWhen((err) =>
+            err.pipe(
+              delay(2000),
+              scan((acc) => {
+                if (acc >= retryCount) throw err;
+                return acc + 1;
+              }, 0)
+            )
           )
         )
-      )
-      .subscribe(
-        () => this.isOnline.next(true),
-        () => this.isOnline.next(false)
-      );
+        .subscribe(
+          () => {
+            this.isOnline.next(true);
+            this.isChecking.next(false);
+          },
+          () => {
+            this.isOnline.next(false);
+            this.isChecking.next(false);
+          },
+          () => {
+            this.isChecking.next(false);
+          }
+        );
+    }
   }
 
   initialize() {
@@ -56,7 +69,7 @@ export class NetworkService {
     );
 
     this.subs.add(
-      interval(10000).subscribe(() => {
+      interval(3000).subscribe(() => {
         // Regular check if offline
         if (!this.isOnline.value) {
           this.checkForConnectivity(0);
