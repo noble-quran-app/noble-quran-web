@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { generateMenuList, getRangeForJuz } from 'src/app/core/functions';
 import { AyahRange } from 'src/app/core/models';
+import { AudioService } from 'src/app/services/audio.service';
 import { TitleService } from 'src/app/services/title.service';
 import { SubSink } from 'subsink';
 
@@ -11,7 +12,11 @@ import { SubSink } from 'subsink';
   styleUrls: ['./juz.component.scss'],
 })
 export class JuzComponent implements OnInit, OnDestroy {
-  constructor(private route: ActivatedRoute, private titleService: TitleService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private titleService: TitleService,
+    private audio: AudioService
+  ) {}
 
   private subs = new SubSink();
 
@@ -27,6 +32,10 @@ export class JuzComponent implements OnInit, OnDestroy {
         this.titleService.setTitleForJuz(this.juzId);
       })
     );
+
+    this.audio.setMediaMetadata({
+      title: `Juz ${this.juzId}`,
+    });
   }
 
   ngOnDestroy() {

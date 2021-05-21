@@ -5,13 +5,18 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AyahRange } from 'src/app/core/models';
 import { TitleService } from 'src/app/services/title.service';
 import { SubSink } from 'subsink';
+import { AudioService } from 'src/app/services/audio.service';
 
 @Component({
   selector: 'surah-page',
   templateUrl: './surah.component.html',
 })
 export class SurahComponent implements OnInit, OnDestroy {
-  constructor(private route: ActivatedRoute, private titleService: TitleService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private titleService: TitleService,
+    private audio: AudioService
+  ) {}
 
   private subs = new SubSink();
 
@@ -28,6 +33,10 @@ export class SurahComponent implements OnInit, OnDestroy {
         this.titleService.setTitleForSurah(this.surahId);
       })
     );
+
+    this.audio.setMediaMetadata({
+      title: `Surah ${this.surahs[this.surahId].englishName}`,
+    });
   }
 
   ngOnDestroy() {

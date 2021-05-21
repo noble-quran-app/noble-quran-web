@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { generateMenuList, getRangeForSajda } from 'src/app/core/functions';
 import { AyahRange } from 'src/app/core/models';
+import { AudioService } from 'src/app/services/audio.service';
 import { TitleService } from 'src/app/services/title.service';
 import { SubSink } from 'subsink';
 
@@ -11,7 +12,11 @@ import { SubSink } from 'subsink';
   styleUrls: ['./sajda.component.scss'],
 })
 export class SajdaComponent implements OnInit, OnDestroy {
-  constructor(private route: ActivatedRoute, private titleService: TitleService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private titleService: TitleService,
+    private audio: AudioService
+  ) {}
 
   private subs = new SubSink();
 
@@ -27,6 +32,10 @@ export class SajdaComponent implements OnInit, OnDestroy {
         this.titleService.setTitleForSajda(this.sajdaId);
       })
     );
+
+    this.audio.setMediaMetadata({
+      title: `Sajda ${this.sajdaId}`,
+    });
   }
 
   ngOnDestroy() {

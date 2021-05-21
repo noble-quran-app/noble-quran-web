@@ -5,6 +5,16 @@ import { SubSink } from 'subsink';
 import { getAyahAudioUrl, Timer } from '../core/functions';
 import { AyahRange } from '../core/models';
 import { NetworkService } from './network.service';
+import { random } from 'lodash-es';
+
+export const QuranCover = (idx?: number): MediaImage => {
+  idx = idx ?? random(1, 5, false);
+
+  return {
+    src: `/assets/static/images/quran/${idx}.jpg`,
+    type: 'image/jpg',
+  };
+};
 
 @Injectable({
   providedIn: 'root',
@@ -64,7 +74,26 @@ export class AudioService {
     return ayahId === this.ayahRange.end;
   }
 
-  private pause() {
+  private async reloadCurrentAyah(timeout = 3000) {
+    try {
+      await Timer(timeout);
+      this.setAudioSrc(this.currentAyahId.value);
+      if (this.isPlaying.value) {
+        this.play();
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  private cacheNextAudio() {
+    if (this.currentAyahId.value !== this.ayahRange.end) {
+      const nextAyahId = this.currentAyahId.value + 1;
+      this.cacheAudioInMemory(getAyahAudioUrl(nextAyahId));
+    }
+  }
+
+  public pause() {
     if (this.sessionExists) {
       this.isPlaying.next(false);
       this.audioRef.pause();
@@ -103,24 +132,16 @@ export class AudioService {
     }
   }
 
-  private async reloadCurrentAyah(timeout = 3000) {
-    try {
-      await Timer(timeout);
-      this.setAudioSrc(this.currentAyahId.value);
-      if (this.isPlaying.value) {
-        this.play();
-      }
-    } catch (error) {
-      console.error(error.message);
-    }
+  public relativeSeek(difference: number) {
+    this.audioRef.currentTime = this.audioRef.currentTime + difference;
   }
 
-  private cacheNextAudio() {
-    if (this.currentAyahId.value !== this.ayahRange.end) {
-      const nextAyahId = this.currentAyahId.value + 1;
-      this.cacheAudioInMemory(getAyahAudioUrl(nextAyahId));
-    }
+  public absoluteSeek(time: number) {
+    this.audioRef.currentTime = time;
   }
+
+  public seekForward = () => this.relativeSeek(+5);
+  public seekBackward = () => this.relativeSeek(-5);
 
   public startSession(ayahRange: AyahRange) {
     this.audioRef = new Audio();
@@ -128,6 +149,8 @@ export class AudioService {
     this.audioRef.preload = 'auto';
     this.cachedAudioRef.muted = true;
     this.reloadSource = new Subject<null>();
+
+    this.audioRef.volume = 0.01;
 
     this.audioRef.onloadstart = () => this.isBufferingSource.next(true);
     this.audioRef.onwaiting = () => this.isBufferingSource.next(true);
@@ -158,6 +181,8 @@ export class AudioService {
       wasLast && this.isPlaying.next(false);
       this.skipToNextAyah();
     };
+
+    this.audioRef.onpause = () => this.isPlaying.next(false);
 
     // Handling errors while caching next audio
     this.cachedAudioRef.onerror = () => this.cacheNextAudio();
@@ -209,5 +234,33 @@ export class AudioService {
     this.isBufferingSource.next(false);
 
     this.subs.unsubscribe();
+
+    // Clearing current media session
+    navigator.mediaSession && (navigator.mediaSession.playbackState = 'none');
   }
+
+  /** set metadata for media session */
+  public setMediaMetadata(options: MediaSessionOptions) {
+    if (navigator.mediaSession) {
+      navigator.mediaSession.setActionHandler('seekforward', this.seekForward);
+      navigator.mediaSession.setActionHandler('seekbackward', this.seekBackward);
+
+      // navigator.mediaSession.setActionHandler('pause', this.pause);
+      // navigator.mediaSession.setActionHandler('play', this.play);
+      // navigator.mediaSession.setActionHandler('stop', this.destroySession);
+
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: options.title,
+        artwork: options.artwork ?? [QuranCover()],
+        artist: options.artist ?? 'Mishary bin Rashid Alafasy',
+      });
+    }
+  }
+}
+
+interface MediaSessionOptions {
+  title: string;
+  artwork?: MediaImage[];
+  artist?: string;
+  album?: string;
 }
