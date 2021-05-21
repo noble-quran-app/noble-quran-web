@@ -21,6 +21,7 @@ import { ListItemComponent } from './pages/home/list-item/list-item.component';
 import { ReadToolbarComponent } from './components/read-toolbar/read-toolbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SajdaComponent } from './pages/sajda/sajda.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { SajdaComponent } from './pages/sajda/sajda.component';
     SajdaComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     HttpClientModule,
     MaterialModule,
@@ -47,7 +49,7 @@ import { SajdaComponent } from './pages/sajda/sajda.component';
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
-      registrationStrategy: 'registerWhenStable:30000',
+      registrationStrategy: 'registerWhenStable:10000',
     }),
   ],
   bootstrap: [AppComponent],

@@ -2,10 +2,11 @@ import { Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/co
 import { AfterViewInit, OnDestroy, OnInit } from '@angular/core';
 import { Surahs, Juzs, Sajdas } from 'src/app/data/quran';
 import { TabsData } from 'src/app/data/home';
-import { Juz, Sajda, Surah } from 'src/app/core/models';
+import { Juz, Sajda, Surah, QuranVideo } from 'src/app/core/models';
 import { TitleService } from 'src/app/services/title.service';
 import { MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { QuranVideos } from '../../data/videos';
 import { SubSink } from 'subsink';
 
 @Component({
@@ -23,13 +24,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('upperSection') upperSection: ElementRef;
   @ViewChild('bottomSection') bottomSection: ElementRef;
-  @ViewChild('matTabsGroup')
-  matTabGroup: MatTabGroup;
+  @ViewChild('matTabsGroup') matTabGroup: MatTabGroup;
 
-  surahs = <Surah[]>Surahs;
-  juzs = <Juz[]>Juzs;
-  sajdas = <Sajda[]>Sajdas;
-  upperSectionVisible: boolean;
+  public surahs = <Surah[]>Surahs;
+  public juzs = <Juz[]>Juzs;
+  public sajdas = <Sajda[]>Sajdas;
+
+  public upperSectionVisible: boolean;
 
   private subs = new SubSink();
   private activeRoute: string;
@@ -45,7 +46,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  observer = new IntersectionObserver((entries) => {
+  private observer = new IntersectionObserver((entries) => {
     this.matTabGroup.realignInkBar();
     entries.forEach((e) => {
       this.upperSectionVisible = e.isIntersecting;

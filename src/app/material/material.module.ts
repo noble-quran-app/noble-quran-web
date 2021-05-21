@@ -11,6 +11,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const MaterialComponents = [
   MatCardModule,
@@ -20,6 +21,7 @@ const MaterialComponents = [
   MatIconModule,
   MatButtonModule,
   MatRippleModule,
+  MatDialogModule,
   MatTooltipModule,
   MatSnackBarModule,
   MatSlideToggleModule,

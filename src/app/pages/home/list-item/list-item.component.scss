@@ -26,9 +26,9 @@ mat-list-item {
    color: var(--secondary-text-color);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
    .mat-list-item {
-      margin: 0 4px;
+      margin: 0 0px;
 
       &:hover {
          background: unset;

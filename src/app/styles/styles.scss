@@ -1,6 +1,7 @@
 @import './fonts.scss';
 @import './theme.scss';
 @import './utils.scss';
+@import './shared.scss';
 
 * {
    margin: 0;
@@ -12,14 +13,38 @@
    font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
+html {
+   font-size: 10px;
+}
+
 body {
    background: var(--secondary-background-color);
    overflow-x: hidden;
-   overflow-y: scroll;
+   //    overflow-y: scroll;
+}
+
+body::after {
+   content: 'favorite';
+   font-family: 'Material Icons';
+   height: 40px;
+   width: 40px;
+   font-size: 36px;
+   position: fixed;
+   color: #e72b2b;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: -5;
+   opacity: 0;
+   visibility: visible;
 }
 
 ::selection {
    background: var(--selection-background-color);
+}
+
+a {
+   text-decoration: none;
 }
 
 button:not([disabled]) svg,
@@ -126,6 +151,16 @@ snack-bar-container {
    }
 }
 
+.video-dialog .mat-dialog-container {
+   overflow: hidden !important;
+   padding: 0px !important;
+   border-radius: 0px !important;
+   background: #000 !important;
+}
+.video-spinner circle {
+   stroke: #fff !important;
+}
+
 @media (max-width: 720px) {
    .mat-menu-item {
       height: 40px !important;
@@ -163,4 +198,8 @@ svg-icon.flex {
    opacity: 0;
    visibility: visible;
    pointer-events: none;
+}
+
+.text-align-center {
+   text-align: center;
 }

@@ -7,7 +7,7 @@ export const Surahs = <Surah[]>[
     ayahs: 7,
     english: 'The Opening',
     place: 'Mecca',
-    index: 1,
+    id: 1,
     range: '1-7',
     startsWithoutBismillah: true,
   },
@@ -17,7 +17,7 @@ export const Surahs = <Surah[]>[
     ayahs: 286,
     english: 'The Cow',
     place: 'Medina',
-    index: 2,
+    id: 2,
     range: '8-293',
   },
   {
@@ -26,7 +26,7 @@ export const Surahs = <Surah[]>[
     ayahs: 200,
     english: 'The Family of Imran',
     place: 'Medina',
-    index: 3,
+    id: 3,
     range: '294-493',
   },
   {
@@ -35,7 +35,7 @@ export const Surahs = <Surah[]>[
     ayahs: 176,
     english: 'Women',
     place: 'Medina',
-    index: 4,
+    id: 4,
     range: '494-669',
   },
   {
@@ -44,7 +44,7 @@ export const Surahs = <Surah[]>[
     ayahs: 120,
     english: 'The Food',
     place: 'Medina',
-    index: 5,
+    id: 5,
     range: '670-789',
   },
   {
@@ -53,7 +53,7 @@ export const Surahs = <Surah[]>[
     ayahs: 165,
     english: 'The Cattle',
     place: 'Mecca',
-    index: 6,
+    id: 6,
     range: '790-954',
   },
   {
@@ -62,7 +62,7 @@ export const Surahs = <Surah[]>[
     ayahs: 206,
     english: 'The Elevated Place',
     place: 'Mecca',
-    index: 7,
+    id: 7,
     range: '955-1160',
   },
   {
@@ -71,7 +71,7 @@ export const Surahs = <Surah[]>[
     ayahs: 75,
     english: 'The Spoils of War',
     place: 'Medina',
-    index: 8,
+    id: 8,
     range: '1161-1235',
   },
   {
@@ -80,7 +80,7 @@ export const Surahs = <Surah[]>[
     ayahs: 129,
     english: 'Repentance',
     place: 'Medina',
-    index: 9,
+    id: 9,
     range: '1236-1364',
     startsWithoutBismillah: true,
   },
@@ -90,7 +90,7 @@ export const Surahs = <Surah[]>[
     ayahs: 109,
     english: 'Yunus',
     place: 'Mecca',
-    index: 10,
+    id: 10,
     range: '1365-1473',
   },
   {
@@ -99,7 +99,7 @@ export const Surahs = <Surah[]>[
     ayahs: 123,
     english: 'Hud',
     place: 'Mecca',
-    index: 11,
+    id: 11,
     range: '1474-1596',
   },
   {
@@ -108,7 +108,7 @@ export const Surahs = <Surah[]>[
     ayahs: 111,
     english: 'Yusuf',
     place: 'Mecca',
-    index: 12,
+    id: 12,
     range: '1597-1707',
   },
   {
@@ -117,7 +117,7 @@ export const Surahs = <Surah[]>[
     ayahs: 43,
     english: 'The Thunder',
     place: 'Medina',
-    index: 13,
+    id: 13,
     range: '1708-1750',
   },
   {
@@ -126,7 +126,7 @@ export const Surahs = <Surah[]>[
     ayahs: 52,
     english: 'Ibrahim',
     place: 'Mecca',
-    index: 14,
+    id: 14,
     range: '1751-1802',
   },
   {
@@ -135,7 +135,7 @@ export const Surahs = <Surah[]>[
     ayahs: 99,
     english: 'The Rock',
     place: 'Mecca',
-    index: 15,
+    id: 15,
     range: '1803-1901',
   },
   {
@@ -144,7 +144,7 @@ export const Surahs = <Surah[]>[
     ayahs: 128,
     english: 'The Bee',
     place: 'Mecca',
-    index: 16,
+    id: 16,
     range: '1902-2029',
   },
   {
@@ -153,7 +153,7 @@ export const Surahs = <Surah[]>[
     ayahs: 111,
     english: 'The Night Journey',
     place: 'Mecca',
-    index: 17,
+    id: 17,
     range: '2030-2140',
   },
   {
@@ -162,7 +162,7 @@ export const Surahs = <Surah[]>[
     ayahs: 110,
     english: 'The Cave',
     place: 'Mecca',
-    index: 18,
+    id: 18,
     range: '2141-2250',
   },
   {
@@ -171,7 +171,7 @@ export const Surahs = <Surah[]>[
     ayahs: 98,
     english: 'Marium',
     place: 'Mecca',
-    index: 19,
+    id: 19,
     range: '2251-2348',
   },
   {
@@ -180,7 +180,7 @@ export const Surahs = <Surah[]>[
     ayahs: 135,
     english: 'Ta Ha',
     place: 'Mecca',
-    index: 20,
+    id: 20,
     range: '2349-2483',
   },
   {
@@ -189,7 +189,7 @@ export const Surahs = <Surah[]>[
     ayahs: 112,
     english: 'The Prophets',
     place: 'Mecca',
-    index: 21,
+    id: 21,
     range: '2484-2595',
   },
   {
@@ -198,7 +198,7 @@ export const Surahs = <Surah[]>[
     ayahs: 78,
     english: 'The Pilgrimage',
     place: 'Medina',
-    index: 22,
+    id: 22,
     range: '2596-2673',
   },
   {
@@ -207,7 +207,7 @@ export const Surahs = <Surah[]>[
     ayahs: 118,
     english: 'The Believers',
     place: 'Mecca',
-    index: 23,
+    id: 23,
     range: '2674-2791',
   },
   {
@@ -216,7 +216,7 @@ export const Surahs = <Surah[]>[
     ayahs: 64,
     english: 'The Light',
     place: 'Medina',
-    index: 24,
+    id: 24,
     range: '2792-2855',
   },
   {
@@ -225,7 +225,7 @@ export const Surahs = <Surah[]>[
     ayahs: 77,
     english: 'The Criterion',
     place: 'Mecca',
-    index: 25,
+    id: 25,
     range: '2856-2932',
   },
   {
@@ -234,7 +234,7 @@ export const Surahs = <Surah[]>[
     ayahs: 227,
     english: 'The Poets',
     place: 'Mecca',
-    index: 26,
+    id: 26,
     range: '2933-3159',
   },
   {
@@ -243,7 +243,7 @@ export const Surahs = <Surah[]>[
     ayahs: 93,
     english: 'The Ant',
     place: 'Mecca',
-    index: 27,
+    id: 27,
     range: '3160-3252',
   },
   {
@@ -252,7 +252,7 @@ export const Surahs = <Surah[]>[
     ayahs: 88,
     english: 'The Narrative',
     place: 'Mecca',
-    index: 28,
+    id: 28,
     range: '3253-3340',
   },
   {
@@ -261,7 +261,7 @@ export const Surahs = <Surah[]>[
     ayahs: 69,
     english: 'The Spider',
     place: 'Mecca',
-    index: 29,
+    id: 29,
     range: '3341-3409',
   },
   {
@@ -270,7 +270,7 @@ export const Surahs = <Surah[]>[
     ayahs: 60,
     english: 'The Romans',
     place: 'Mecca',
-    index: 30,
+    id: 30,
     range: '3410-3469',
   },
   {
@@ -279,7 +279,7 @@ export const Surahs = <Surah[]>[
     ayahs: 34,
     english: 'Luqman',
     place: 'Mecca',
-    index: 31,
+    id: 31,
     range: '3470-3503',
   },
   {
@@ -288,7 +288,7 @@ export const Surahs = <Surah[]>[
     ayahs: 30,
     english: 'The Adoration',
     place: 'Mecca',
-    index: 32,
+    id: 32,
     range: '3504-3533',
   },
   {
@@ -297,7 +297,7 @@ export const Surahs = <Surah[]>[
     ayahs: 73,
     english: 'The Allies',
     place: 'Medina',
-    index: 33,
+    id: 33,
     range: '3534-3606',
   },
   {
@@ -306,7 +306,7 @@ export const Surahs = <Surah[]>[
     ayahs: 54,
     english: 'Saba',
     place: 'Mecca',
-    index: 34,
+    id: 34,
     range: '3607-3660',
   },
   {
@@ -315,7 +315,7 @@ export const Surahs = <Surah[]>[
     ayahs: 45,
     english: 'The Originator',
     place: 'Mecca',
-    index: 35,
+    id: 35,
     range: '3661-3705',
   },
   {
@@ -324,7 +324,7 @@ export const Surahs = <Surah[]>[
     ayahs: 83,
     english: 'Ya Seen',
     place: 'Mecca',
-    index: 36,
+    id: 36,
     range: '3706-3788',
   },
   {
@@ -333,7 +333,7 @@ export const Surahs = <Surah[]>[
     ayahs: 182,
     english: 'The Rangers',
     place: 'Mecca',
-    index: 37,
+    id: 37,
     range: '3789-3970',
   },
   {
@@ -342,7 +342,7 @@ export const Surahs = <Surah[]>[
     ayahs: 88,
     english: 'Suad',
     place: 'Mecca',
-    index: 38,
+    id: 38,
     range: '3971-4058',
   },
   {
@@ -351,7 +351,7 @@ export const Surahs = <Surah[]>[
     ayahs: 75,
     english: 'The Companies',
     place: 'Mecca',
-    index: 39,
+    id: 39,
     range: '4059-4133',
   },
   {
@@ -360,7 +360,7 @@ export const Surahs = <Surah[]>[
     ayahs: 85,
     english: 'The All-Forgiving',
     place: 'Mecca',
-    index: 40,
+    id: 40,
     range: '4134-4218',
   },
   {
@@ -369,7 +369,7 @@ export const Surahs = <Surah[]>[
     ayahs: 54,
     english: 'Ha Mim',
     place: 'Mecca',
-    index: 41,
+    id: 41,
     range: '4219-4272',
   },
   {
@@ -378,7 +378,7 @@ export const Surahs = <Surah[]>[
     ayahs: 53,
     english: 'The Counsel',
     place: 'Mecca',
-    index: 42,
+    id: 42,
     range: '4273-4325',
   },
   {
@@ -387,7 +387,7 @@ export const Surahs = <Surah[]>[
     ayahs: 89,
     english: 'The Embellishment',
     place: 'Mecca',
-    index: 43,
+    id: 43,
     range: '4326-4414',
   },
   {
@@ -396,7 +396,7 @@ export const Surahs = <Surah[]>[
     ayahs: 59,
     english: 'The Evident Smoke',
     place: 'Mecca',
-    index: 44,
+    id: 44,
     range: '4415-4473',
   },
   {
@@ -405,7 +405,7 @@ export const Surahs = <Surah[]>[
     ayahs: 37,
     english: 'The Kneeling',
     place: 'Mecca',
-    index: 45,
+    id: 45,
     range: '4474-4510',
   },
   {
@@ -414,7 +414,7 @@ export const Surahs = <Surah[]>[
     ayahs: 35,
     english: 'The Sandhills',
     place: 'Mecca',
-    index: 46,
+    id: 46,
     range: '4511-4545',
   },
   {
@@ -423,7 +423,7 @@ export const Surahs = <Surah[]>[
     ayahs: 38,
     english: 'Muhammad',
     place: 'Medina',
-    index: 47,
+    id: 47,
     range: '4546-4583',
   },
   {
@@ -432,7 +432,7 @@ export const Surahs = <Surah[]>[
     ayahs: 29,
     english: 'The Victory',
     place: 'Medina',
-    index: 48,
+    id: 48,
     range: '4584-4612',
   },
   {
@@ -441,7 +441,7 @@ export const Surahs = <Surah[]>[
     ayahs: 18,
     english: 'The Chambers',
     place: 'Medina',
-    index: 49,
+    id: 49,
     range: '4613-4630',
   },
   {
@@ -450,7 +450,7 @@ export const Surahs = <Surah[]>[
     ayahs: 45,
     english: 'Qaf',
     place: 'Mecca',
-    index: 50,
+    id: 50,
     range: '4631-4675',
   },
   {
@@ -459,7 +459,7 @@ export const Surahs = <Surah[]>[
     ayahs: 60,
     english: 'The Scatterers',
     place: 'Mecca',
-    index: 51,
+    id: 51,
     range: '4676-4735',
   },
   {
@@ -468,7 +468,7 @@ export const Surahs = <Surah[]>[
     ayahs: 49,
     english: 'The Mountain',
     place: 'Mecca',
-    index: 52,
+    id: 52,
     range: '4736-4784',
   },
   {
@@ -477,7 +477,7 @@ export const Surahs = <Surah[]>[
     ayahs: 62,
     english: 'The Star',
     place: 'Mecca',
-    index: 53,
+    id: 53,
     range: '4785-4846',
   },
   {
@@ -486,7 +486,7 @@ export const Surahs = <Surah[]>[
     ayahs: 55,
     english: 'The Moon',
     place: 'Mecca',
-    index: 54,
+    id: 54,
     range: '4847-4901',
   },
   {
@@ -495,7 +495,7 @@ export const Surahs = <Surah[]>[
     ayahs: 78,
     english: 'The Beneficient',
     place: 'Medina',
-    index: 55,
+    id: 55,
     range: '4902-4979',
   },
   {
@@ -504,7 +504,7 @@ export const Surahs = <Surah[]>[
     ayahs: 96,
     english: 'The Great Event',
     place: 'Mecca',
-    index: 56,
+    id: 56,
     range: '4980-5075',
   },
   {
@@ -513,7 +513,7 @@ export const Surahs = <Surah[]>[
     ayahs: 29,
     english: 'The Iron',
     place: 'Medina',
-    index: 57,
+    id: 57,
     range: '5076-5104',
   },
   {
@@ -522,7 +522,7 @@ export const Surahs = <Surah[]>[
     ayahs: 22,
     english: 'The Pleading One',
     place: 'Medina',
-    index: 58,
+    id: 58,
     range: '5105-5126',
   },
   {
@@ -531,7 +531,7 @@ export const Surahs = <Surah[]>[
     ayahs: 24,
     english: 'The Banishment',
     place: 'Manidah',
-    index: 59,
+    id: 59,
     range: '5127-5150',
   },
   {
@@ -540,7 +540,7 @@ export const Surahs = <Surah[]>[
     ayahs: 13,
     english: 'The Examined One',
     place: 'Medina',
-    index: 60,
+    id: 60,
     range: '5151-5163',
   },
   {
@@ -549,7 +549,7 @@ export const Surahs = <Surah[]>[
     ayahs: 14,
     english: 'The Ranks',
     place: 'Medina',
-    index: 61,
+    id: 61,
     range: '5164-5177',
   },
   {
@@ -558,7 +558,7 @@ export const Surahs = <Surah[]>[
     ayahs: 11,
     english: 'Friday',
     place: 'Medina',
-    index: 62,
+    id: 62,
     range: '5178-5188',
   },
   {
@@ -567,7 +567,7 @@ export const Surahs = <Surah[]>[
     ayahs: 11,
     english: 'The Hypocrites',
     place: 'Medina',
-    index: 63,
+    id: 63,
     range: '5189-5199',
   },
   {
@@ -576,7 +576,7 @@ export const Surahs = <Surah[]>[
     ayahs: 18,
     english: 'Loss and Gain',
     place: 'Medina',
-    index: 64,
+    id: 64,
     range: '5200-5217',
   },
   {
@@ -585,7 +585,7 @@ export const Surahs = <Surah[]>[
     ayahs: 12,
     english: 'The Divorce',
     place: 'Medina',
-    index: 65,
+    id: 65,
     range: '5218-5229',
   },
   {
@@ -594,7 +594,7 @@ export const Surahs = <Surah[]>[
     ayahs: 12,
     english: 'The Prohibition',
     place: 'Medina',
-    index: 66,
+    id: 66,
     range: '5230-5241',
   },
   {
@@ -603,7 +603,7 @@ export const Surahs = <Surah[]>[
     ayahs: 30,
     english: 'The Kingdom',
     place: 'Mecca',
-    index: 67,
+    id: 67,
     range: '5242-5271',
   },
   {
@@ -612,7 +612,7 @@ export const Surahs = <Surah[]>[
     ayahs: 52,
     english: 'The Pen',
     place: 'Mecca',
-    index: 68,
+    id: 68,
     range: '5272-5323',
   },
   {
@@ -621,7 +621,7 @@ export const Surahs = <Surah[]>[
     ayahs: 52,
     english: 'The Sure Calamity',
     place: 'Mecca',
-    index: 69,
+    id: 69,
     range: '5324-5375',
   },
   {
@@ -630,7 +630,7 @@ export const Surahs = <Surah[]>[
     ayahs: 44,
     english: 'The Ways of Ascent',
     place: 'Mecca',
-    index: 70,
+    id: 70,
     range: '5376-5419',
   },
   {
@@ -639,7 +639,7 @@ export const Surahs = <Surah[]>[
     ayahs: 28,
     english: 'Nuh',
     place: 'Mecca',
-    index: 71,
+    id: 71,
     range: '5420-5447',
   },
   {
@@ -648,7 +648,7 @@ export const Surahs = <Surah[]>[
     ayahs: 28,
     english: 'The Jinn',
     place: 'Mecca',
-    index: 72,
+    id: 72,
     range: '5448-5475',
   },
   {
@@ -657,7 +657,7 @@ export const Surahs = <Surah[]>[
     ayahs: 20,
     english: 'The Wrapped Up',
     place: 'Mecca',
-    index: 73,
+    id: 73,
     range: '5476-5495',
   },
   {
@@ -666,7 +666,7 @@ export const Surahs = <Surah[]>[
     ayahs: 56,
     english: 'The Clothed One',
     place: 'Mecca',
-    index: 74,
+    id: 74,
     range: '5496-5551',
   },
   {
@@ -675,7 +675,7 @@ export const Surahs = <Surah[]>[
     ayahs: 40,
     english: 'The Resurrection',
     place: 'Mecca',
-    index: 75,
+    id: 75,
     range: '5552-5591',
   },
   {
@@ -684,7 +684,7 @@ export const Surahs = <Surah[]>[
     ayahs: 31,
     english: 'The Man',
     place: 'Medina',
-    index: 76,
+    id: 76,
     range: '5592-5622',
   },
   {
@@ -693,7 +693,7 @@ export const Surahs = <Surah[]>[
     ayahs: 50,
     english: 'The Emissaries',
     place: 'Mecca',
-    index: 77,
+    id: 77,
     range: '5623-5672',
   },
   {
@@ -702,7 +702,7 @@ export const Surahs = <Surah[]>[
     ayahs: 40,
     english: 'The Great Event',
     place: 'Mecca',
-    index: 78,
+    id: 78,
     range: '5673-5712',
   },
   {
@@ -711,7 +711,7 @@ export const Surahs = <Surah[]>[
     ayahs: 46,
     english: 'Those Who Pull Out',
     place: 'Mecca',
-    index: 79,
+    id: 79,
     range: '5713-5758',
   },
   {
@@ -720,7 +720,7 @@ export const Surahs = <Surah[]>[
     ayahs: 42,
     english: 'He Frowned',
     place: 'Mecca',
-    index: 80,
+    id: 80,
     range: '5759-5800',
   },
   {
@@ -729,7 +729,7 @@ export const Surahs = <Surah[]>[
     ayahs: 29,
     english: 'The Covering Up',
     place: 'Mecca',
-    index: 81,
+    id: 81,
     range: '5801-5829',
   },
   {
@@ -738,7 +738,7 @@ export const Surahs = <Surah[]>[
     ayahs: 19,
     english: 'The Cleaving Asund',
     place: 'Mecca',
-    index: 82,
+    id: 82,
     range: '5830-5848',
   },
   {
@@ -747,7 +747,7 @@ export const Surahs = <Surah[]>[
     ayahs: 36,
     english: 'The Defrauders',
     place: 'Mecca',
-    index: 83,
+    id: 83,
     range: '5849-5884',
   },
   {
@@ -756,7 +756,7 @@ export const Surahs = <Surah[]>[
     ayahs: 25,
     english: 'The Bursting Asund',
     place: 'Mecca',
-    index: 84,
+    id: 84,
     range: '5885-5909',
   },
   {
@@ -765,7 +765,7 @@ export const Surahs = <Surah[]>[
     ayahs: 22,
     english: 'The Mansions of the Stars',
     place: 'Mecca',
-    index: 85,
+    id: 85,
     range: '5910-5931',
   },
   {
@@ -774,7 +774,7 @@ export const Surahs = <Surah[]>[
     ayahs: 17,
     english: 'The Night Comer',
     place: 'Mecca',
-    index: 86,
+    id: 86,
     range: '5932-5948',
   },
   {
@@ -783,7 +783,7 @@ export const Surahs = <Surah[]>[
     ayahs: 19,
     english: 'The Most High',
     place: 'Mecca',
-    index: 87,
+    id: 87,
     range: '5949-5967',
   },
   {
@@ -792,7 +792,7 @@ export const Surahs = <Surah[]>[
     ayahs: 26,
     english: 'The Overwhelming',
     place: 'Mecca',
-    index: 88,
+    id: 88,
     range: '5968-5993',
   },
   {
@@ -801,7 +801,7 @@ export const Surahs = <Surah[]>[
     ayahs: 30,
     english: 'The Daybreak',
     place: 'Mecca',
-    index: 89,
+    id: 89,
     range: '5994-6023',
   },
   {
@@ -810,7 +810,7 @@ export const Surahs = <Surah[]>[
     ayahs: 20,
     english: 'The City',
     place: 'Mecca',
-    index: 90,
+    id: 90,
     range: '6024-6043',
   },
   {
@@ -819,7 +819,7 @@ export const Surahs = <Surah[]>[
     ayahs: 15,
     english: 'The Sun',
     place: 'Mecca',
-    index: 91,
+    id: 91,
     range: '6044-6058',
   },
   {
@@ -828,7 +828,7 @@ export const Surahs = <Surah[]>[
     ayahs: 21,
     english: 'The Night',
     place: 'Mecca',
-    index: 92,
+    id: 92,
     range: '6059-6079',
   },
   {
@@ -837,7 +837,7 @@ export const Surahs = <Surah[]>[
     ayahs: 11,
     english: 'The Early Hours',
     place: 'Mecca',
-    index: 93,
+    id: 93,
     range: '6080-6090',
   },
   {
@@ -846,7 +846,7 @@ export const Surahs = <Surah[]>[
     ayahs: 8,
     english: 'The Expansion',
     place: 'Mecca',
-    index: 94,
+    id: 94,
     range: '6091-6098',
   },
   {
@@ -855,7 +855,7 @@ export const Surahs = <Surah[]>[
     ayahs: 8,
     english: 'The Fig',
     place: 'Mecca',
-    index: 95,
+    id: 95,
     range: '6099-6106',
   },
   {
@@ -864,7 +864,7 @@ export const Surahs = <Surah[]>[
     ayahs: 19,
     english: 'The Clot',
     place: 'Mecca',
-    index: 96,
+    id: 96,
     range: '6107-6125',
   },
   {
@@ -873,7 +873,7 @@ export const Surahs = <Surah[]>[
     ayahs: 5,
     english: 'The Majesty',
     place: 'Mecca',
-    index: 97,
+    id: 97,
     range: '6126-6130',
   },
   {
@@ -882,7 +882,7 @@ export const Surahs = <Surah[]>[
     ayahs: 8,
     english: 'The Clear Evidence',
     place: 'Medina',
-    index: 98,
+    id: 98,
     range: '6131-6138',
   },
   {
@@ -891,7 +891,7 @@ export const Surahs = <Surah[]>[
     ayahs: 8,
     english: 'The Shaking',
     place: 'Medina',
-    index: 99,
+    id: 99,
     range: '6139-6146',
   },
   {
@@ -900,7 +900,7 @@ export const Surahs = <Surah[]>[
     ayahs: 11,
     english: 'The Assaulters',
     place: 'Mecca',
-    index: 100,
+    id: 100,
     range: '6147-6157',
   },
   {
@@ -909,7 +909,7 @@ export const Surahs = <Surah[]>[
     ayahs: 11,
     english: 'The Terrible Calam',
     place: 'Mecca',
-    index: 101,
+    id: 101,
     range: '6158-6168',
   },
   {
@@ -918,7 +918,7 @@ export const Surahs = <Surah[]>[
     ayahs: 8,
     english: 'The Multiplication',
     place: 'Mecca',
-    index: 102,
+    id: 102,
     range: '6169-6176',
   },
   {
@@ -927,7 +927,7 @@ export const Surahs = <Surah[]>[
     ayahs: 3,
     english: 'Time',
     place: 'Mecca',
-    index: 103,
+    id: 103,
     range: '6177-6179',
   },
   {
@@ -936,7 +936,7 @@ export const Surahs = <Surah[]>[
     ayahs: 9,
     english: 'The Slanderer',
     place: 'Mecca',
-    index: 104,
+    id: 104,
     range: '6180-6188',
   },
   {
@@ -945,7 +945,7 @@ export const Surahs = <Surah[]>[
     ayahs: 5,
     english: 'The Elephant',
     place: 'Mecca',
-    index: 105,
+    id: 105,
     range: '6189-6193',
   },
   {
@@ -954,7 +954,7 @@ export const Surahs = <Surah[]>[
     ayahs: 4,
     english: 'The Qureaish',
     place: 'Mecca',
-    index: 106,
+    id: 106,
     range: '6194-6197',
   },
   {
@@ -963,7 +963,7 @@ export const Surahs = <Surah[]>[
     ayahs: 7,
     english: 'The Daily Necessary',
     place: 'Mecca',
-    index: 107,
+    id: 107,
     range: '6198-6204',
   },
   {
@@ -972,7 +972,7 @@ export const Surahs = <Surah[]>[
     ayahs: 3,
     english: 'The Heavenly Fount',
     place: 'Mecca',
-    index: 108,
+    id: 108,
     range: '6205-6207',
   },
   {
@@ -981,7 +981,7 @@ export const Surahs = <Surah[]>[
     ayahs: 6,
     english: 'The Unbelievers',
     place: 'Mecca',
-    index: 109,
+    id: 109,
     range: '6208-6213',
   },
   {
@@ -990,7 +990,7 @@ export const Surahs = <Surah[]>[
     ayahs: 3,
     english: 'The Help',
     place: 'Medina',
-    index: 110,
+    id: 110,
     range: '6214-6216',
   },
   {
@@ -999,7 +999,7 @@ export const Surahs = <Surah[]>[
     ayahs: 5,
     english: 'The Palm Fiber',
     place: 'Mecca',
-    index: 111,
+    id: 111,
     range: '6217-6221',
   },
   {
@@ -1008,7 +1008,7 @@ export const Surahs = <Surah[]>[
     ayahs: 4,
     english: 'The Unity',
     place: 'Mecca',
-    index: 112,
+    id: 112,
     range: '6222-6225',
   },
   {
@@ -1017,7 +1017,7 @@ export const Surahs = <Surah[]>[
     ayahs: 5,
     english: 'The Dawn',
     place: 'Mecca',
-    index: 113,
+    id: 113,
     range: '6226-6230',
   },
   {
@@ -1026,7 +1026,7 @@ export const Surahs = <Surah[]>[
     ayahs: 6,
     english: 'The Men',
     place: 'Mecca',
-    index: 114,
+    id: 114,
     range: '6231-6236',
   },
 ];

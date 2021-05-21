@@ -11,4 +11,8 @@ export const TabsData = [
     textLabel: 'Sajda',
     path: '/sajda',
   },
+  {
+    textLabel: 'Videos',
+    path: '/videos',
+  },
 ];

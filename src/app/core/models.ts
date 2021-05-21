@@ -4,7 +4,7 @@ export interface Surah {
   ayahs: number;
   english: string;
   place: string;
-  index: number;
+  id: number;
   range: string;
   startsWithoutBismillah?: boolean;
 }
@@ -49,4 +49,19 @@ export interface Edition {
   englishName: string;
   format: string;
   type: string;
+}
+
+export interface QuranVideo {
+  description: string;
+  videoId: string;
+  surahId: number;
+  thumbnails: {
+    large: string;
+    medium: string;
+    small: string;
+  };
+  reciter: {
+    name: string;
+    full_name: string;
+  };
 }

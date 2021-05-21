@@ -1,0 +1,32 @@
+<header class="header fixed">
+  <div class="left">
+    <a routerLink="/">Noble Quran</a>
+  </div>
+
+  <div class="middle"></div>
+
+  <div class="right">
+    <nq-theme-switcher></nq-theme-switcher>
+  </div>
+</header>
+
+<main class="header-gap">
+  <section class="videos">
+    <div
+      matRipple
+      *ngFor="let video of quranVideos"
+      class="video-container"
+      (click)="openVideoDialog(video.videoId)"
+    >
+      <div class="video-container-left">
+        <!-- <img [src]=" //asmalik.site" loading="lazy" alt="video.title" /> -->
+        <img [src]="video.thumbnails.medium" loading="lazy" alt="video.title" />
+      </div>
+      <div class="video-container-right">
+        <h2 class="video-title">Surah {{ surahs[video.surahId - 1].englishName }}</h2>
+        <p class="video-subtitle" [title]="video.reciter.full_name">{{ video.reciter.name }}</p>
+        <p class="video-description">{{ video.description }}</p>
+      </div>
+    </div>
+  </section>
+</main>
