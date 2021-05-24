@@ -23,20 +23,28 @@ body {
    //    overflow-y: scroll;
 }
 
-body::after {
-   content: 'favorite';
-   font-family: 'Material Icons';
-   height: 40px;
-   width: 40px;
-   font-size: 36px;
-   position: fixed;
-   color: #e72b2b;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   z-index: -5;
-   opacity: 0;
-   visibility: visible;
+body[loading] {
+   &::after,
+   &::before {
+      visibility: visible;
+      position: fixed;
+      left: 50%;
+      transform: translate(-50%, -50%);
+   }
+   &::before {
+      top: 50%;
+      content: 'favorite';
+      font-family: 'Material Icons';
+      font-size: 56px;
+      color: #0c887c;
+   }
+   &::after {
+      top: 58%;
+      font-size: 11px;
+      font-weight: 500;
+      content: 'Made with love';
+      color: #5f5f5f;
+   }
 }
 
 ::selection {
