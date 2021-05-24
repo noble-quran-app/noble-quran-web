@@ -10,6 +10,4 @@ Please feel free to fork and contribute, I know you have good ideas and I would 
 # Want to try now?
 Project is avalible at:
 
-1) [noblequran.netlify.app](https://noblequran.netlify.app)
-
-2) [noble-quran.web.app](https://noble-quran.web.app)
+[noblequran.netlify.app](https://noblequran.netlify.app)
