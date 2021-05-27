@@ -35,7 +35,7 @@ export class SurahComponent implements OnInit, OnDestroy {
     );
 
     this.audio.setMediaMetadata({
-      title: `Surah ${this.surahs[this.surahId].englishName}`,
+      title: `Surah ${this.surahs[this.surahId - 1].englishName}`,
     });
   }
 
