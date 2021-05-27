@@ -18,8 +18,8 @@
 </mat-card>
 
 <!-- Container for AyahRendererComponents -->
+<!-- *ngIf="idb.dbReady | async" -->
 <div
-  *ngIf="idb.dbReady | async"
   class="container"
   [class.not-ready]="!readyToShowAyahs"
   [class.page-view]="settings.renderAsPage | async"
@@ -40,4 +40,4 @@
 </div>
 
 <!-- Toolbar -->
-<nq-read-toolbar [class.bubble]="!readyToShowAyahs" [ayahRange]="ayahRange"></nq-read-toolbar>
+<nq-read-toolbar *ngIf="readyToShowAyahs" [ayahRange]="ayahRange"></nq-read-toolbar>

@@ -100,12 +100,19 @@ export class IdbService {
 
   fetchQuranEdition(edition: string): Promise<QuranEdition> {
     return this._http
-      .get<QuranEdition>(`/assets/quran/edition/${edition}.json`)
+      .get<QuranEdition>(`/assets/quran/edition/${edition}/index.json`)
       .pipe(retryWhen((error) => error.pipe(delay(4000))))
       .toPromise();
   }
 
   getAyahWithEditon(ayahId: number, edition: string) {
+    if (!this.dbReady.value) {
+      return this._http
+        .get(`/assets/quran/edition/${edition}/ayahs/${ayahId}.json`)
+        .pipe(retryWhen((error) => error.pipe(delay(4000))))
+        .toPromise();
+    }
+
     return this.db.collection(edition).doc(ayahId.toString()).get();
   }
 
