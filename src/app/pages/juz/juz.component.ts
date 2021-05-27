@@ -30,12 +30,11 @@ export class JuzComponent implements OnInit, OnDestroy {
         this.juzId = parseInt(params.juzId);
         this.ayahRange = getRangeForJuz(this.juzId);
         this.titleService.setTitleForJuz(this.juzId);
+        this.audio.setMediaMetadata({
+          title: `Juz ${this.juzId}`,
+        });
       })
     );
-
-    this.audio.setMediaMetadata({
-      title: `Juz ${this.juzId}`,
-    });
   }
 
   ngOnDestroy() {

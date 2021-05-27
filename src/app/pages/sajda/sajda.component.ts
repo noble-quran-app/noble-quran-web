@@ -30,12 +30,11 @@ export class SajdaComponent implements OnInit, OnDestroy {
         this.sajdaId = parseInt(params.sajdaId);
         this.ayahRange = getRangeForSajda(this.sajdaId);
         this.titleService.setTitleForSajda(this.sajdaId);
+        this.audio.setMediaMetadata({
+          title: `Sajda ${this.sajdaId}`,
+        });
       })
     );
-
-    this.audio.setMediaMetadata({
-      title: `Sajda ${this.sajdaId}`,
-    });
   }
 
   ngOnDestroy() {

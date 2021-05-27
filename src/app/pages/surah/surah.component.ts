@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { generateMenuList, getRangeForSurah } from 'src/app/core/functions';
 import { Surahs } from '../../data/quran';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { AyahRange } from 'src/app/core/models';
 import { TitleService } from 'src/app/services/title.service';
 import { SubSink } from 'subsink';
@@ -31,12 +31,11 @@ export class SurahComponent implements OnInit, OnDestroy {
         this.surahId = parseInt(params.surahId);
         this.ayahRange = getRangeForSurah(this.surahId);
         this.titleService.setTitleForSurah(this.surahId);
+        this.audio.setMediaMetadata({
+          title: `Surah ${this.surahs[this.surahId - 1].englishName}`,
+        });
       })
     );
-
-    this.audio.setMediaMetadata({
-      title: `Surah ${this.surahs[this.surahId - 1].englishName}`,
-    });
   }
 
   ngOnDestroy() {
