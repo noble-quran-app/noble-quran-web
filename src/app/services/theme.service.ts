@@ -44,7 +44,7 @@ export class ThemeService {
   }
 
   initialize() {
-    document.body.removeAttribute('loading');
+    document.querySelectorAll('.splash').forEach((el) => el.parentElement.removeChild(el));
     const storedTheme = localStorage.getItem(this.themeStorage);
     if (!storedTheme) {
       this.setTheme(lightTheme);

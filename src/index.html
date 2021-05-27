@@ -17,9 +17,49 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="manifest" href="manifest.webmanifest" />
     <meta name="theme-color" content="#ffffff" />
+    <style class="splash">
+      #splash {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: -10;
+        overflow: hidden;
+      }
+
+      #splash-icon {
+        height: 76px;
+        width: 76px;
+        fill: #0c887c;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      #splash-text {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 12px;
+        font-weight: 500;
+        color: #555555;
+        user-select: none;
+      }
+    </style>
   </head>
-  <body loading>
+  <body>
     <app-root></app-root>
     <noscript>Please enable JavaScript to continue using this application.</noscript>
+    <main class="splash" id="splash">
+      <svg id="splash-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        />
+      </svg>
+      <h4 id="splash-text">Made with love</h4>
+    </main>
   </body>
 </html>
