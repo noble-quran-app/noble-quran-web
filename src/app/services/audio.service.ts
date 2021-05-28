@@ -174,7 +174,7 @@ export class AudioService {
 
     this.audioRef.onended = () => {
       if (this.isLastAyah(this.currentAyahId.value)) {
-        this.isCompleted.next(false);
+        this.isCompleted.next(true);
         this.isPlaying.next(false);
         return null;
       }
@@ -186,7 +186,6 @@ export class AudioService {
 
     // Reloading with throttleTime to ensure audio doesn't reload between short intervals.
     this.reloadSource
-      .asObservable()
       .pipe(throttleTime(3400))
       .subscribe(() => this.isPlaying.value && this.reloadCurrentAyah(3500));
 
