@@ -134,7 +134,7 @@ export class AyahListBuilderComponent implements OnInit, OnChanges, OnDestroy {
     this.readyToShowAyahs = false;
     this.allAyahsRendered = false;
     this.ayahsToRender = [];
-    this.totalAyahs = chunk(range(this.ayahRange.start, this.ayahRange.end + 1), 5);
+    this.totalAyahs = chunk(range(this.ayahRange.start, this.ayahRange.end + 1), 10);
     this.appendAyahs();
   }
 
