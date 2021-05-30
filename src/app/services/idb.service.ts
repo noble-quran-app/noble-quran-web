@@ -5,6 +5,7 @@ import Localbase from 'localbase';
 import { HttpClient } from '@angular/common/http';
 import { delay, retryWhen } from 'rxjs/operators';
 import { UpdateService } from './update.service';
+import { Timer } from '../core/functions';
 
 @Injectable({
   providedIn: 'root',
@@ -65,6 +66,8 @@ export class IdbService {
   async initialize() {
     this.db.config.debug = false;
 
+    await Timer(60000);
+
     if (this.update.updatePending()) {
       this.isUpdating.next(true);
 
@@ -100,7 +103,7 @@ export class IdbService {
 
   fetchQuranEdition(edition: string): Promise<QuranEdition> {
     return this._http
-      .get<QuranEdition>(`/assets/quran/edition/${edition}/index.json`)
+      .get<QuranEdition>(`//noblequranstorage.web.app/assets/quran/edition/${edition}/index.json`)
       .pipe(retryWhen((error) => error.pipe(delay(4000))))
       .toPromise();
   }
@@ -108,7 +111,7 @@ export class IdbService {
   getAyahWithEditon(ayahId: number, edition: string) {
     if (!this.dbReady.value) {
       return this._http
-        .get(`/assets/quran/edition/${edition}/ayahs/${ayahId}.json`)
+        .get(`//noblequranstorage.web.app/assets/quran/edition/${edition}/ayahs/${ayahId}.json`)
         .pipe(retryWhen((error) => error.pipe(delay(4000))))
         .toPromise();
     }

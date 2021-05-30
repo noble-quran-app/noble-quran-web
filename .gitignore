@@ -14,6 +14,8 @@
 /.vscode
 /backups
 
+# Storage
+/storage
 
 # dependencies
 /node_modules
