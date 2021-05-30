@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { generateMenuList, getRangeForSurah } from 'src/app/core/functions';
 import { Surahs } from '../../data/quran';
-import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AyahRange } from 'src/app/core/models';
 import { TitleService } from 'src/app/services/title.service';
 import { SubSink } from 'subsink';
@@ -9,9 +9,9 @@ import { AudioService } from 'src/app/services/audio.service';
 
 @Component({
   selector: 'surah-page',
-  templateUrl: './surah.component.html',
+  templateUrl: './surah-page.component.html',
 })
-export class SurahComponent implements OnInit, OnDestroy {
+export class SurahPageComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private titleService: TitleService,

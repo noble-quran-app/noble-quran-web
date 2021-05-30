@@ -1,0 +1,69 @@
+<main class="home-page">
+  <!-- Section top -->
+  <section class="section-top" #upperSection>
+    <h1 class="primary-heading" aria-labelledby="The Noble Quran in Arabic">
+      <svg-icon class="flex" icon="primary_heading"></svg-icon>
+    </h1>
+    <h2 class="secondary-heading">The Noble Quran</h2>
+    <div class="toolbar">
+      <theme-picker></theme-picker>
+    </div>
+  </section>
+
+  <!-- Bottom Section -->
+  <section class="section-bottom" #bottomSection [class.expanded]="!upperSectionVisible">
+    <mat-tab-group
+      #matTabsGroup
+      [disablePagination]="true"
+      animationDuration="0ms"
+      mat-align-tabs="center"
+      (selectedTabChange)="handleTabChange($event)"
+    >
+      <mat-tab label="Surah">
+        <mat-list>
+          <mat-list-item
+            [routerLink]="['/', surah.id]"
+            class="list-item"
+            *ngFor="let surah of surahs"
+          >
+            <div mat-list-icon>{{ surah.id }}.</div>
+            <div class="primary-text" mat-line>
+              {{ surah.englishName }}
+            </div>
+            <div class="secondary-text" mat-line>{{ surah.english }}</div>
+          </mat-list-item>
+        </mat-list>
+      </mat-tab>
+      <mat-tab label="Juz">
+        <mat-list>
+          <mat-list-item
+            [routerLink]="['/juz', juz.index]"
+            class="list-item"
+            *ngFor="let juz of juzs"
+          >
+            <div mat-list-icon>{{ juz.index }}.</div>
+            <div class="primary-text" mat-line>
+              {{ juz.title }}
+            </div>
+            <div class="secondary-text" mat-line>{{ juz.subTitle }}</div>
+          </mat-list-item>
+        </mat-list>
+      </mat-tab>
+      <mat-tab label="Sajda">
+        <mat-list>
+          <mat-list-item
+            [routerLink]="['/sajda', sajda.index]"
+            class="list-item"
+            *ngFor="let sajda of sajdas"
+          >
+            <div mat-list-icon>{{ sajda.index }}.</div>
+            <div class="primary-text" mat-line>Ayah {{ sajda.numberInSurah }}</div>
+            <div class="secondary-text" mat-line>
+              of Surah {{ surahs[sajda.surahNo].englishName }}
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-tab>
+    </mat-tab-group>
+  </section>
+</main>

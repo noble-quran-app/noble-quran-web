@@ -1,2 +1,3 @@
-User-Agent: *
-Allow: /
+Sitemap: https://noblequran.netlify.app/sitemap.xml
+User-agent: *
+Disallow:

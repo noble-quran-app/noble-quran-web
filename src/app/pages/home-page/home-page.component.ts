@@ -1,21 +1,21 @@
 import { Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AfterViewInit, OnDestroy, OnInit } from '@angular/core';
 import { Surahs, Juzs, Sajdas } from 'src/app/data/quran';
-import { TabsData } from 'src/app/data/home';
-import { Juz, Sajda, Surah, QuranVideo } from 'src/app/core/models';
+import { Juz, Sajda, Surah } from 'src/app/core/models';
 import { TitleService } from 'src/app/services/title.service';
 import { MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
-import { QuranVideos } from '../../data/videos';
 import { SubSink } from 'subsink';
+import { TabsData } from 'src/app/data/home';
+import { Timer } from 'src/app/core/functions';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss', './home.global.scss'],
+  templateUrl: './home-page.component.html',
+  styleUrls: ['./home-page.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private titleService: TitleService,
     private router: Router,
@@ -40,10 +40,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     const routeToNavigate = TabsData.find((tab) => {
       return tab.textLabel.toLowerCase() == e.tab.textLabel.toLowerCase();
     });
-    await this.router.navigate([routeToNavigate.path], { replaceUrl: true });
-    if (!this.upperSectionVisible) {
+    !this.upperSectionVisible &&
       window.scrollTo(0, this.upperSection.nativeElement.offsetHeight - 80);
-    }
+    await Timer(300);
+    await this.router.navigate([routeToNavigate.path], { replaceUrl: true });
+    !this.upperSectionVisible &&
+      window.scrollTo(0, this.upperSection.nativeElement.offsetHeight - 80);
   }
 
   private observer = new IntersectionObserver((entries) => {
@@ -55,7 +57,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   selectCorrectTab(url: string) {
     const correctIndex = TabsData.findIndex((i) => i.path == url);
-
     if (this?.matTabGroup?.selectedIndex !== correctIndex) {
       this.matTabGroup.selectedIndex = correctIndex;
     }
@@ -66,13 +67,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.titleService.setTitleForHome();
     this.subs.add(
       this.route.url.subscribe((url: UrlSegment[]) => {
-        this.activeRoute = url.length ? `/${url[0].path}` : '/';
+        this.activeRoute = window.location.pathname;
       })
     );
   }
 
   ngAfterViewInit() {
     this.observer.observe(this.upperSection.nativeElement);
+    console.log(this.activeRoute);
     this.selectCorrectTab(this.activeRoute);
   }
 

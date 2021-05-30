@@ -5,7 +5,7 @@ import { AudioService } from 'src/app/services/audio.service';
 import { NetworkService } from 'src/app/services/network.service';
 
 @Component({
-  selector: 'nq-read-toolbar',
+  selector: 'read-toolbar',
   templateUrl: './read-toolbar.component.html',
   styleUrls: ['./read-toolbar.component.scss'],
 })

@@ -32,7 +32,7 @@ export class TitleService {
     this.title.setTitle(newTitle);
   }
 
-  setTitleForDefault() {
+  setTitleForPageNotFound() {
     const newTitle = `Page not found ${this.concator} ${this.baseTitle}`;
     this.title.setTitle(newTitle);
   }

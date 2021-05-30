@@ -1,32 +1,48 @@
 import { NgModule } from '@angular/core';
 import { NoPreloading, RouterModule, Routes } from '@angular/router';
 import { HomeMatcher, JuzMatcher, SajdaMatcher, SurahMatcher } from './core/routematch';
-import { DefaultComponent } from './pages/default/default.component';
-import { HomeComponent } from './pages/home/home.component';
-import { JuzComponent } from './pages/juz/juz.component';
-import { SajdaComponent } from './pages/sajda/sajda.component';
-import { SurahComponent } from './pages/surah/surah.component';
+
+function hideSplash() {
+  if (document.querySelector('.splash')) {
+    const splashNodes = Array.from(document.querySelectorAll('.splash'));
+    splashNodes.forEach((el) => el.parentElement.removeChild(el));
+  }
+}
 
 const routes: Routes = [
   {
     matcher: HomeMatcher,
-    component: HomeComponent,
+    pathMatch: 'full',
+    loadChildren: () =>
+      import('./pages/home-page/home-page.module')
+        .then((m) => m.HomePageModule)
+        .finally(hideSplash),
   },
   {
     matcher: SurahMatcher,
-    component: SurahComponent,
+    loadChildren: () =>
+      import('./pages/surah-page/surah-page.module')
+        .then((m) => m.SurahPageModule)
+        .finally(hideSplash),
   },
   {
     matcher: JuzMatcher,
-    component: JuzComponent,
+    loadChildren: () =>
+      import('./pages/juz-page/juz-page.module').then((m) => m.JuzPageModule).finally(hideSplash),
   },
   {
     matcher: SajdaMatcher,
-    component: SajdaComponent,
+    loadChildren: () =>
+      import('./pages/sajda-page/sajda-page.module')
+        .then((m) => m.SajdaPageModule)
+        .finally(hideSplash),
   },
   {
     path: '**',
-    component: DefaultComponent,
+    loadChildren: () =>
+      import('./pages/default-page/default-page.module')
+        .then((m) => m.PageNotFoundModule)
+        .finally(hideSplash),
   },
 ];
 
@@ -35,6 +51,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'enabled',
       preloadingStrategy: NoPreloading,
+      relativeLinkResolution: 'corrected',
+      scrollOffset: [0, 0],
+      // anchorScrolling: 'enabled',
     }),
   ],
   exports: [RouterModule],
