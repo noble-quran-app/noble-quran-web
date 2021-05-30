@@ -5,6 +5,7 @@ import { ThemeService } from 'src/app/services/theme.service';
 @Component({
   selector: 'theme-picker',
   templateUrl: './theme-picker.component.html',
+  styleUrls: ['./theme-picker.component.scss'],
 })
 export class ThemePickerComponent {
   constructor(public themeService: ThemeService) {}

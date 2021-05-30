@@ -39,7 +39,7 @@ export interface Theme {
 
 export interface QuranEdition {
   edition: Edition;
-  ayahs: string[];
+  ayahs: any;
 }
 
 export interface Edition {

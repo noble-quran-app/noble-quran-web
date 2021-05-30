@@ -74,7 +74,6 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.observer.observe(this.upperSection.nativeElement);
-    console.log(this.activeRoute);
     this.selectCorrectTab(this.activeRoute);
   }
 

@@ -77,7 +77,7 @@ export class AyahListBuilderComponent implements OnInit, OnChanges, OnDestroy {
       }
       const totalLengthOfAyahs = this.ayahRange.end - this.ayahRange.start;
 
-      if ([8, totalLengthOfAyahs].includes(ayahIndex)) {
+      if ([5, totalLengthOfAyahs].includes(ayahIndex)) {
         this.readyToShowAyahs = true;
         this.renderingAyahs = false;
       }
@@ -113,15 +113,15 @@ export class AyahListBuilderComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit() {
     this.subs.add(
-      fromEvent(document, 'keydown')
+      fromEvent<KeyboardEvent>(document, 'keydown')
         .pipe(
-          tap(
-            (ev: KeyboardEvent) => Object.values(HotKeys).includes(ev.code) && ev.preventDefault()
-          ),
+          tap((e) => Object.values(HotKeys).includes(e.code) && e.preventDefault()),
           throttleTime(100)
         )
         .subscribe(this.handleKeyDown)
     );
+
+    this.idb.initialize();
   }
 
   ngAfterViewInit() {

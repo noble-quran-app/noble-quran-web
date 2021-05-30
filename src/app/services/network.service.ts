@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, fromEvent, interval, of } from 'rxjs';
+import { BehaviorSubject, fromEvent, interval } from 'rxjs';
 import { delay, retryWhen, scan, switchMap } from 'rxjs/operators';
 import { SubSink } from 'subsink';
 
@@ -12,6 +12,7 @@ export class NetworkService {
 
   private subs = new SubSink();
   private isChecking = new BehaviorSubject<boolean>(false);
+  private isInitialized = false;
 
   public isOnline = new BehaviorSubject<boolean>(navigator.onLine);
 
@@ -52,7 +53,12 @@ export class NetworkService {
   }
 
   initialize() {
+    if (this.isInitialized) {
+      return false;
+    }
+
     // First time check
+    this.isInitialized = true;
     this.checkForConnectivity(0);
 
     this.subs.add(

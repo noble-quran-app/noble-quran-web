@@ -14,6 +14,7 @@ export class IdbService {
   private dbName = 'NobleQuran';
   private translations = ['en.sahih'];
   private db = new Localbase(this.dbName);
+  private initialized = false;
 
   public dbReady = new BehaviorSubject<boolean>(false);
   public isInstalling = new BehaviorSubject<boolean>(false);
@@ -21,13 +22,18 @@ export class IdbService {
 
   constructor(private _http: HttpClient, private update: UpdateService) {}
 
-  async installArabicPacks(forceInstall: boolean) {
+  async installArabicPack(forceInstall: boolean) {
     const arabicEdition = 'quran-simple';
 
     try {
       if ((await this.validate(arabicEdition)) && !forceInstall) {
         return true;
       }
+
+      if (!forceInstall) {
+        await Timer(60000);
+      }
+
       const data = await this.fetchQuranEdition(arabicEdition);
       const mappedData = data.ayahs.map((ayah: any) => {
         const { text: arabicText, number, ...rest } = ayah;
@@ -58,15 +64,18 @@ export class IdbService {
 
   async installAllEditions(forceInstall = false) {
     this.isInstalling.next(true);
-    await this.installArabicPacks(forceInstall);
+    await this.installArabicPack(forceInstall);
     await this.installTranslationPacks(forceInstall);
     this.isInstalling.next(false);
   }
 
   async initialize() {
-    this.db.config.debug = false;
+    if (this.initialized) {
+      return false;
+    }
 
-    await Timer(60000);
+    this.initialized = true;
+    this.db.config.debug = false;
 
     if (this.update.updatePending()) {
       this.isUpdating.next(true);
@@ -86,6 +95,7 @@ export class IdbService {
   }
 
   async updateEditons() {
+    await Timer(10000);
     if (!this.isInstalling.value) {
       this.dbReady.next(false);
       await this.db.delete();
@@ -101,9 +111,13 @@ export class IdbService {
     return length === noOfAyahsInQuran + 1;
   }
 
+  storage(resource: string) {
+    return `https://noblequranstorage.web.app/${resource}`;
+  }
+
   fetchQuranEdition(edition: string): Promise<QuranEdition> {
     return this._http
-      .get<QuranEdition>(`//noblequranstorage.web.app/assets/quran/edition/${edition}/index.json`)
+      .get<QuranEdition>(this.storage(`assets/quran/edition/${edition}/index.json`))
       .pipe(retryWhen((error) => error.pipe(delay(4000))))
       .toPromise();
   }
@@ -111,7 +125,7 @@ export class IdbService {
   getAyahWithEditon(ayahId: number, edition: string) {
     if (!this.dbReady.value) {
       return this._http
-        .get(`//noblequranstorage.web.app/assets/quran/edition/${edition}/ayahs/${ayahId}.json`)
+        .get(this.storage(`assets/quran/edition/${edition}/ayahs/${ayahId}.json`))
         .pipe(retryWhen((error) => error.pipe(delay(4000))))
         .toPromise();
     }

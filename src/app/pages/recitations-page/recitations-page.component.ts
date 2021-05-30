@@ -7,10 +7,10 @@ import { VideoDialogComponent } from './video-dialog/video-dialog.component';
 
 @Component({
   selector: 'app-recitations',
-  templateUrl: './recitations.component.html',
-  styleUrls: ['./recitations.component.scss'],
+  templateUrl: './recitations-page.component.html',
+  styleUrls: ['./recitations-page.component.scss'],
 })
-export class RecitationsComponent implements OnInit {
+export class RecitationsPageComponent implements OnInit {
   public surahs = <Surah[]>Surahs;
   public quranVideos = <QuranVideo[]>QuranVideos;
 
