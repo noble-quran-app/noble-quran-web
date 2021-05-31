@@ -10,7 +10,7 @@ import { TabsData } from 'src/app/data/home';
 import { Timer } from 'src/app/core/functions';
 
 @Component({
-  selector: 'app-home',
+  selector: 'home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
   encapsulation: ViewEncapsulation.None,
@@ -60,6 +60,14 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this?.matTabGroup?.selectedIndex !== correctIndex) {
       this.matTabGroup.selectedIndex = correctIndex;
     }
+  }
+
+  backToTop() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   }
 
   ngOnInit() {

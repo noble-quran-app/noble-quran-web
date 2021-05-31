@@ -6,6 +6,7 @@ import { ThemePickerModule } from 'src/app/components/theme-picker/theme-picker.
 import { HomePageComponent } from './home-page.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
     ThemePickerModule,
     MatTabsModule,
     MatListModule,
+    MatTooltipModule,
   ],
   declarations: [HomePageComponent],
 })

@@ -66,4 +66,12 @@
       </mat-tab>
     </mat-tab-group>
   </section>
+  <button
+    class="back-to-top"
+    matTooltip="Back to top"
+    [class.visible]="!upperSectionVisible"
+    (click)="backToTop()"
+  >
+    <svg-icon icon="arrow_upward"></svg-icon>
+  </button>
 </main>

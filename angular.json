@@ -69,7 +69,11 @@
                 }
               ],
               "commonChunk": false,
-              "optimization": true,
+              "optimization": {
+                "fonts": true,
+                "scripts": true,
+                "styles": true
+              },
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,

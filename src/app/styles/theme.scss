@@ -54,6 +54,12 @@ html body,
    --selection-background-color: #b8b8b880;
    --video-card-highlight-color: #0000001a;
 
+   --fab-background-color: #ffffff;
+   --fab-background-color-hover: #fafafa;
+   --fab-icon-color: #5f6368;
+   --fab-icon-color-hover: #202124;
+   --fab-box-shadow: 0 1px 2px 0 #3c40434d, 0 2px 6px 2px #3c404326;
+
    --tooltip-background-color: #3c4043e6;
    --tooltip-color: #e6e6e6;
 
@@ -77,7 +83,6 @@ html body,
    --secondary-text-color: #5f6368;
    --secondary-text-color-hover: #202124;
 
-   --fab-box-shadow: 0 1px 2px 0 #3c40434d, 0 2px 6px 2px #3c404326;
    --secondary-box-shadow: 0 1px 2px 0 #3c40434d, 0 1px 3px 1px #3c404326;
 
    --primary-stroke-color: #8c6b12;
@@ -91,7 +96,7 @@ html.nq-dark-theme body,
    --primary-theme-color: #81bfb9;
 
    --primary-background-color: #151515;
-   --primary-background-color-hover: #ffffff15;
+   --primary-background-color-hover: #e8eaed0a;
    --secondary-background-color: #1c1d1e;
    --secondary-background-color-hover: #242424;
    --ayah-renderer-background-color: #1c1d1e;
@@ -99,6 +104,12 @@ html.nq-dark-theme body,
    --mat-menu-panel-background-color: #2d2f2f;
    --selection-background-color: #5d5d5d80;
    --video-card-highlight-color: #ffffff1a;
+
+   --fab-background-color: #3c4043;
+   --fab-background-color-hover: #3e4144;
+   --fab-icon-color: #9aa0a6;
+   --fab-icon-color-hover: #f5f5f5;
+   --fab-box-shadow: 0 1px 2px 0 #181818;
 
    --tooltip-background-color: #e6e6e6;
    --tooltip-color: #202124;
@@ -123,7 +134,6 @@ html.nq-dark-theme body,
    --secondary-text-color-hover: #e8eaed;
    --tertiary-text-color: #e8eaed;
 
-   --fab-box-shadow: none;
    --secondary-box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
 
    --secondary-stroke-color: #ececec;
