@@ -18,12 +18,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/static/icons/favicon-16x16.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Poppins:wght@400;500&family=Jost:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Jost:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="manifest" href="manifest.webmanifest" />
-    <style class="remove-on-app-load">
+    <style class="unmount-on-load">
       #splash-overlay {
         position: fixed;
         top: 0;
@@ -40,29 +40,44 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        max-width: 200px;
       }
 
       #splash-icon {
         height: 76px;
         width: 76px;
         fill: #0c887c;
-        padding: 12px;
       }
 
       #splash-text {
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 500;
-        color: #555555;
+        font-weight: 500;
+        color: #5a5a5a;
         user-select: none;
+        text-align: center;
+        font-family: 'Roboto', Arial, Helvetica, sans-serif;
+        line-height: 1.4;
+        display: block;
+        margin-top: 16px;
+      }
+
+      #preload-fonts {
+        font-family: 'Material Icons';
+        opacity: 0;
+        pointer-events: none;
+        visibility: visible;
+        font-size: 24px;
       }
     </style>
   </head>
   <body>
     <noble-quran-app></noble-quran-app>
-    <noscript class="remove-on-app-load"
-      >Please enable JavaScript to continue using this application.</noscript
-    >
-    <main class="remove-on-app-load" id="splash-overlay" aria-label="Splash screen">
+    <main class="unmount-on-load" id="splash-overlay" aria-label="Splash screen">
       <div id="splash-container">
         <svg id="splash-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path
@@ -70,6 +85,10 @@
           />
         </svg>
         <h4 id="splash-text">Made with love</h4>
+        <i aria-hidden="true" id="preload-fonts">pending</i>
+        <noscript id="splash-text"
+          >Please enable JavaScript to continue using this application.</noscript
+        >
       </div>
     </main>
   </body>
