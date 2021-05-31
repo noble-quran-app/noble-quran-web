@@ -79,9 +79,11 @@ html body,
 
    --primary-text-color: #202124;
    --primary-text-color-hover: #101010;
-   --tertiary-text-color: #444444;
    --secondary-text-color: #5f6368;
    --secondary-text-color-hover: #202124;
+   --tertiary-text-color: #444444;
+
+   --secondary-spinner-color: #a9a9a9;
 
    --secondary-box-shadow: 0 1px 2px 0 #3c40434d, 0 1px 3px 1px #3c404326;
 
@@ -133,6 +135,8 @@ html.nq-dark-theme body,
    --secondary-text-color: #b4b4b4;
    --secondary-text-color-hover: #e8eaed;
    --tertiary-text-color: #e8eaed;
+
+   --secondary-spinner-color: #7b7b7b;
 
    --secondary-box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
 

@@ -187,3 +187,9 @@ svg-icon.flex {
 .text-align-center {
    text-align: center;
 }
+
+.secondary-spinner {
+   circle {
+      stroke: var(--secondary-spinner-color) !important;
+   }
+}

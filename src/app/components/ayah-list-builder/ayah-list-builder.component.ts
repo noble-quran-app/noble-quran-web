@@ -71,8 +71,8 @@ export class AyahListBuilderComponent implements OnInit, OnChanges, OnDestroy {
     const [ayahIndex, error] = state;
     if (!this.readyToShowAyahs && !this.renderError) {
       if (error) {
-        console.error(error);
         this.renderError = true;
+        console.error(error);
         this.renderingAyahs = false;
       }
       const totalLengthOfAyahs = this.ayahRange.end - this.ayahRange.start;

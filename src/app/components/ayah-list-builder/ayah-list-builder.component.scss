@@ -5,34 +5,14 @@
    width: 100%;
 }
 
-.error-card {
-   max-width: 290px;
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
+.observer {
    display: flex;
    align-items: center;
    justify-content: center;
    flex-direction: column;
-}
-
-.error-card .mat-card-subtitle,
-.error-card .mat-card-title {
-   margin-bottom: 20px;
-   text-align: center;
-}
-
-.error-card button {
-   margin: 0 8px 16px;
-}
-
-.observer {
-   display: flex;
-   align-items: center;
-   justify-content: flex-start;
-   flex-direction: column;
-   height: 200px;
+   height: 100px;
+   padding-bottom: 32px;
+   cursor: pointer;
 }
 
 .observer button {
@@ -41,7 +21,8 @@
 }
 
 .observer.all-rendered {
-   height: auto;
+   height: 1px;
+   padding: 0px;
 }
 
 .not-ready {
@@ -56,6 +37,44 @@
    width: 100%;
    max-width: 100%;
    margin: 64px auto;
+}
+
+// Error card
+.mat-card {
+   max-width: 400px;
+   width: calc(100% - 32px);
+   height: 250px;
+   border-radius: 8px;
+   margin: 0 auto;
+   padding: 16px;
+   border: 1px solid var(--primary-border-color);
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+}
+
+.mat-card .mat-card-title {
+   font-size: 2.6rem;
+}
+
+.mat-card .mat-card-subtitle {
+   font-size: 1.5rem;
+   max-width: 25ch;
+}
+
+.mat-card .mat-card-subtitle,
+.mat-card .mat-card-title {
+   text-align: center;
+   margin-bottom: 12px;
+}
+
+.mat-card button {
+   margin: 12px 8px 16px;
 }
 
 @media (max-width: 600px) {

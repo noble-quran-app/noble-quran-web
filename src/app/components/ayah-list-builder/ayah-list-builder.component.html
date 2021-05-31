@@ -2,20 +2,20 @@
 <read-header [menuList]="menuList" [currentMenuItemIndex]="currentMenuItemIndex"></read-header>
 
 <!-- Progress bar -->
-<mat-progress-bar mode="indeterminate" *ngIf="renderingAyahs"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" *ngIf="renderingAyahs && !renderError"></mat-progress-bar>
 
-<!-- Error card -->
-<mat-card class="error-card" *ngIf="renderError">
-  <mat-card-header>
-    <mat-card-title class="fs-26">Oops!</mat-card-title>
-    <mat-card-subtitle>Something went wrong while rendering.</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-actions>
-    <button mat-stroked-button color="primary" (click)="reloadPage()">Reload page</button>
+<!-- mat card -->
+<div class="mat-card" *ngIf="renderError">
+  <div class="mat-card-header">
+    <h2 class="mat-card-title">Oops!</h2>
+    <p class="mat-card-subtitle">Something went wrong while loading this page.</p>
+  </div>
+  <div class="mat-card-actions">
+    <button mat-stroked-button color="primary" (click)="reloadPage()">Reload App</button>
     <!-- Will enable after integration of Google Analytics -->
     <!-- <button mat-stroked-button color="secondary">Report</button> -->
-  </mat-card-actions>
-</mat-card>
+  </div>
+</div>
 
 <!-- Container for AyahRendererComponents -->
 <!-- *ngIf="idb.dbReady | async" -->
@@ -30,13 +30,14 @@
     [ayahIndex]="ayahIndex"
     (onStateChange)="handleAyahStateChange($event)"
   ></ayah-renderer>
-</div>
 
-<!-- Intersection Observer -->
-<div class="observer" [class.all-rendered]="allAyahsRendered" #observer>
-  <ng-container *ngIf="!allAyahsRendered && readyToShowAyahs">
-    <button tabindex="-1" mat-stroked-button (click)="appendAyahs()">Load More</button>
-  </ng-container>
+  <!-- Intersection Observer -->
+  <div class="observer" [class.all-rendered]="allAyahsRendered" #observer (click)="appendAyahs()">
+    <ng-container *ngIf="!allAyahsRendered && readyToShowAyahs">
+      <!-- <button tabindex="-1" mat-stroked-button (click)="appendAyahs()">Load More</button> -->
+      <mat-spinner diameter="30" class="secondary-spinner" title="Load more ayahs"></mat-spinner>
+    </ng-container>
+  </div>
 </div>
 
 <!-- Toolbar -->
