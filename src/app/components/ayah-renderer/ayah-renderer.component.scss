@@ -3,8 +3,8 @@
 }
 
 .ayah-renderer {
-    font-size: calc(var(--ar-font-size) * 1px);
-    direction: rtl;
+   font-size: calc(var(--ar-font-size) * 1px);
+   direction: rtl;
    padding: 25px 48px 35px;
    font-family: 'Indopak';
    color: var(--primary-text-color);
@@ -39,17 +39,31 @@
    height: 45px;
    width: 45px;
    transform: translate(-8%, 35%);
+   margin-right: 4px;
+
+   &::before {
+      position: absolute;
+      top: 50%;
+      color: var(--primary-stroke-color);
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: '\06DD';
+      font-family: noor;
+      font-size: 2.6rem;
+      font-weight: 500;
+   }
 
    &::after {
       content: attr(text);
       font-family: 'Indopak';
-      color: var(--primary-stroke-color);
-      font-size: 20px;
+      color: var(--primary-text-color);
+      font-size: 2.4rem;
       line-height: 20px;
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -58%);
+      transform: translate(-50%, -50%);
+      //   font-weight: 600;
    }
 }
 
