@@ -91,7 +91,9 @@ mat-list-item {
    width: auto;
    //    margin: 0 8px;
    height: 64px !important;
-   &:hover {
+
+   &:hover,
+   &:focus {
       background: var(--primary-background-color-hover);
    }
 }
@@ -225,7 +227,8 @@ mat-list-item {
       transform: scale(1);
    }
 
-   .back-to-top:hover {
+   .back-to-top:hover,
+   .back-to-top:focus {
       background: var(--fab-background-color-hover);
 
       svg {

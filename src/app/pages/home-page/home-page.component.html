@@ -1,10 +1,12 @@
 <main class="home-page">
   <!-- Section top -->
   <section class="section-top" #upperSection>
-    <h1 class="primary-heading" aria-labelledby="The Noble Quran in Arabic">
+    <h1 class="primary-heading" aria-label="Primary heading The Noble Quran">
       <svg-icon class="flex" icon="primary_heading"></svg-icon>
     </h1>
-    <h2 class="secondary-heading">The Noble Quran</h2>
+    <h2 class="secondary-heading" aria-label="Secondary heading The Noble Quran">
+      The Noble Quran
+    </h2>
     <div class="toolbar">
       <theme-picker></theme-picker>
     </div>
@@ -67,6 +69,8 @@
     </mat-tab-group>
   </section>
   <button
+    aria-label="Back to top"
+    name="Back to top button"
     class="back-to-top"
     matTooltip="Back to top"
     [class.visible]="!upperSectionVisible"
