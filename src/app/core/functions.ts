@@ -57,3 +57,10 @@ export const Timer = (time: number) => {
 export const getAyahAudioUrl = (id: number) => {
   return `https://cdn.islamic.network/quran/audio/64/ar.alafasy/${id}.mp3`;
 };
+
+export const removeElements = () => {
+  if (document.querySelector('.remove-on-app-load')) {
+    const splashNodes = Array.from(document.querySelectorAll('.remove-on-app-load'));
+    splashNodes.forEach((el) => el.parentElement.removeChild(el));
+  }
+};

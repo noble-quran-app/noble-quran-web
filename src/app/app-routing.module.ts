@@ -1,13 +1,7 @@
 import { NgModule } from '@angular/core';
+import { removeElements } from './core/functions';
 import { NoPreloading, RouterModule, Routes } from '@angular/router';
 import { HomeMatcher, JuzMatcher, SajdaMatcher, SurahMatcher } from './core/routematch';
-
-function hideSplash() {
-  if (document.querySelector('.splash')) {
-    const splashNodes = Array.from(document.querySelectorAll('.splash'));
-    splashNodes.forEach((el) => el.parentElement.removeChild(el));
-  }
-}
 
 const routes: Routes = [
   {
@@ -16,33 +10,35 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/home-page/home-page.module')
         .then((m) => m.HomePageModule)
-        .finally(hideSplash),
+        .finally(removeElements),
   },
   {
     matcher: SurahMatcher,
     loadChildren: () =>
       import('./pages/surah-page/surah-page.module')
         .then((m) => m.SurahPageModule)
-        .finally(hideSplash),
+        .finally(removeElements),
   },
   {
     matcher: JuzMatcher,
     loadChildren: () =>
-      import('./pages/juz-page/juz-page.module').then((m) => m.JuzPageModule).finally(hideSplash),
+      import('./pages/juz-page/juz-page.module')
+        .then((m) => m.JuzPageModule)
+        .finally(removeElements),
   },
   {
     matcher: SajdaMatcher,
     loadChildren: () =>
       import('./pages/sajda-page/sajda-page.module')
         .then((m) => m.SajdaPageModule)
-        .finally(hideSplash),
+        .finally(removeElements),
   },
   {
     path: '**',
     loadChildren: () =>
       import('./pages/default-page/default-page.module')
         .then((m) => m.PageNotFoundModule)
-        .finally(hideSplash),
+        .finally(removeElements),
   },
 ];
 
