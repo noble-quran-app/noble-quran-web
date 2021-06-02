@@ -1,6 +1,6 @@
 # The Noble Quran
 
-I made this app so that everyone can read Noble Quran for free and without ads.
+I made this app so that everyone can read Quran for free and without ads.
 
 It's currently under development.
 
