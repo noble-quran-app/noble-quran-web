@@ -23,7 +23,7 @@
     />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="manifest" href="manifest.webmanifest" />
-    <style class="unmount-on-load">
+    <style class="unmount">
       #splash-overlay {
         position: fixed;
         top: 0;
@@ -53,20 +53,20 @@
         fill: #0c887c;
       }
 
-      #splash-text {
+      .splash-text {
         font-size: 14px;
         font-weight: 500;
         font-weight: 500;
         color: #5a5a5a;
         user-select: none;
         text-align: center;
-        font-family: 'Roboto', Arial, Helvetica, sans-serif;
+        font-family: 'Roboto';
         line-height: 1.4;
         display: block;
         margin-top: 16px;
       }
 
-      #preload-fonts {
+      #preload {
         font-family: 'Material Icons';
         opacity: 0;
         pointer-events: none;
@@ -77,16 +77,16 @@
   </head>
   <body>
     <noble-quran-app></noble-quran-app>
-    <main class="unmount-on-load" id="splash-overlay" aria-label="Splash screen">
+    <main class="unmount" id="splash-overlay" aria-label="Splash screen">
       <div id="splash-container">
         <svg id="splash-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path
             d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
           />
         </svg>
-        <h4 id="splash-text">Made with love</h4>
-        <i aria-hidden="true" id="preload-fonts">pending</i>
-        <noscript id="splash-text"
+        <i aria-hidden="true" id="preload">pending</i>
+        <h4 class="splash-text">Made with love</h4>
+        <noscript class="splash-text"
           >Please enable JavaScript to continue using this application.</noscript
         >
       </div>

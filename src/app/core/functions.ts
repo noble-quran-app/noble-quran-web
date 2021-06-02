@@ -59,8 +59,8 @@ export const getAyahAudioUrl = (id: number) => {
 };
 
 export const removeElements = () => {
-  if (document.querySelector('.unmount-on-load')) {
-    const splashNodes = Array.from(document.querySelectorAll('.unmount-on-load'));
+  if (document.querySelector('.unmount')) {
+    const splashNodes = Array.from(document.querySelectorAll('.unmount'));
     splashNodes.forEach((el) => el.parentElement.removeChild(el));
   }
 };

@@ -41,6 +41,7 @@ export class AyahListBuilderComponent implements OnInit, OnChanges, OnDestroy {
   @Input() ayahRange: AyahRange;
   @Input() menuList: any;
   @Input() currentMenuItemIndex: number;
+  @Input() type: string | undefined;
   @ViewChild('observer') observerRef: ElementRef;
 
   public ayahsToRender = [];

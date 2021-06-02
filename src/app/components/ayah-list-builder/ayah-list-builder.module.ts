@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { AyahListBuilderComponent } from './ayah-list-builder.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-// import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { ReadHeaderModule } from '../read-header/read-header.module';
 import { ReadToolbarModule } from '../read-toolbar/read-toolbar.module';
@@ -14,7 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    // MatCardModule,
     MatButtonModule,
     CommonModule,
     ReadHeaderModule,
