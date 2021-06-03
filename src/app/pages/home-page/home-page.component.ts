@@ -3,11 +3,9 @@ import { AfterViewInit, OnDestroy, OnInit } from '@angular/core';
 import { Surahs, Juzs, Sajdas } from 'src/app/data/quran';
 import { Juz, Sajda, Surah } from 'src/app/core/models';
 import { TitleService } from 'src/app/services/title.service';
-import { MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs';
-import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { MatTabNav } from '@angular/material/tabs';
+import { NavigationEnd, Router } from '@angular/router';
 import { SubSink } from 'subsink';
-import { TabsData } from 'src/app/data/home';
-import { Timer } from 'src/app/core/functions';
 
 @Component({
   selector: 'home-page',
@@ -16,73 +14,49 @@ import { Timer } from 'src/app/core/functions';
   encapsulation: ViewEncapsulation.None,
 })
 export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
-  constructor(
-    private titleService: TitleService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private titleService: TitleService, private router: Router) {}
 
   @ViewChild('upperSection') upperSection: ElementRef;
-  @ViewChild('bottomSection') bottomSection: ElementRef;
-  @ViewChild('matTabsGroup') matTabGroup: MatTabGroup;
+  @ViewChild('tabNavBar') NavBar: MatTabNav;
 
   public surahs = <Surah[]>Surahs;
   public juzs = <Juz[]>Juzs;
   public sajdas = <Sajda[]>Sajdas;
-
   public upperSectionVisible: boolean;
+  public sections = [
+    { path: '/', label: 'Surah' },
+    { path: '/juz', label: 'Juz' },
+    { path: '/sajda', label: 'Sajda' },
+  ];
+  public activeSection = this.sections[0];
 
   private subs = new SubSink();
-  private activeRoute: string;
   private intersectionOptions = { rootMargin: '-86px 0px 0px 0px' };
 
-  async handleTabChange(e: MatTabChangeEvent) {
-    const routeToNavigate = TabsData.find((tab) => {
-      return tab.textLabel.toLowerCase() == e.tab.textLabel.toLowerCase();
-    });
-    !this.upperSectionVisible &&
-      window.scrollTo(0, this.upperSection.nativeElement.offsetHeight - 80);
-    await Timer(300);
-    await this.router.navigate([routeToNavigate.path], { replaceUrl: true });
-    !this.upperSectionVisible &&
-      window.scrollTo(0, this.upperSection.nativeElement.offsetHeight - 80);
-  }
-
-  private observer = new IntersectionObserver((entries) => {
-    this.matTabGroup.realignInkBar();
-    entries.forEach((e) => {
-      this.upperSectionVisible = e.isIntersecting;
-    });
+  private observer = new IntersectionObserver(([entry]) => {
+    this.upperSectionVisible = entry.isIntersecting;
+    this.NavBar._alignInkBarToSelectedTab();
   }, this.intersectionOptions);
 
-  selectCorrectTab(url: string) {
-    const correctIndex = TabsData.findIndex((i) => i.path == url);
-    if (this?.matTabGroup?.selectedIndex !== correctIndex) {
-      this.matTabGroup.selectedIndex = correctIndex;
-    }
-  }
-
   backToTop() {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
+    window.scrollTo(0, 0);
   }
 
   ngOnInit() {
-    this.upperSectionVisible = window.pageYOffset < 420;
     this.titleService.setTitleForHome();
+    this.upperSectionVisible = window.pageYOffset < 420;
+    this.activeSection = this.sections.find((s) => s.path === this.router.routerState.snapshot.url);
     this.subs.add(
-      this.route.url.subscribe((url: UrlSegment[]) => {
-        this.activeRoute = window.location.pathname;
+      this.router.events.subscribe((evt) => {
+        if (evt instanceof NavigationEnd) {
+          this.activeSection = this.sections.find((section) => section.path === evt.url);
+        }
       })
     );
   }
 
   ngAfterViewInit() {
     this.observer.observe(this.upperSection.nativeElement);
-    this.selectCorrectTab(this.activeRoute);
   }
 
   ngOnDestroy() {

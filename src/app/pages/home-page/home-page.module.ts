@@ -7,11 +7,19 @@ import { HomePageComponent } from './home-page.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { SurahListComponent } from './surah-list/surah-list.component';
+import { JuzListComponent } from './juz-list/juz-list.component';
+import { SajdaListComponent } from './sajda-list/sajda-list.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomePageComponent,
+    children: [
+      { path: '', component: SurahListComponent },
+      { path: 'juz', component: JuzListComponent },
+      { path: 'sajda', component: SajdaListComponent },
+    ],
   },
 ];
 
@@ -25,6 +33,6 @@ const routes: Routes = [
     MatListModule,
     MatTooltipModule,
   ],
-  declarations: [HomePageComponent],
+  declarations: [HomePageComponent, SurahListComponent, JuzListComponent, SajdaListComponent],
 })
 export class HomePageModule {}

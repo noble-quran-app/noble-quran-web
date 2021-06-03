@@ -4,8 +4,9 @@ import { HomeMatcher, JuzMatcher, SajdaMatcher, SurahMatcher } from './matchers'
 
 export const routes: Routes = [
   {
-    matcher: HomeMatcher,
-    pathMatch: 'full',
+    // matcher: HomeMatcher,
+    path: '',
+    // pathMatch: 'full',
     loadChildren: () =>
       import('../pages/home-page/home-page.module')
         .then((m) => m.HomePageModule)

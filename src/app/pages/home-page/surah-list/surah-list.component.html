@@ -1,0 +1,15 @@
+<mat-list>
+  <a
+    mat-list-item
+    class="list-item"
+    *ngFor="let surah of surahs"
+    [routerLink]="['/', surah.id]"
+    attr.aria-label="Surah {{ surah.englishName }} - The Noble Quran"
+  >
+    <div mat-list-icon>{{ surah.id }}.</div>
+    <div class="primary-text" mat-line>
+      {{ surah.englishName }}
+    </div>
+    <div class="secondary-text" mat-line>{{ surah.english }}</div>
+  </a>
+</mat-list>

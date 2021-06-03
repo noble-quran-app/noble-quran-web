@@ -13,61 +13,29 @@
   </section>
 
   <!-- Bottom Section -->
-  <section class="section-bottom" #bottomSection [class.expanded]="!upperSectionVisible">
-    <mat-tab-group
-      #matTabsGroup
-      [disablePagination]="true"
-      animationDuration="0ms"
+  <section class="section-bottom" [class.expanded]="!upperSectionVisible">
+    <!-- Tab NavBar -->
+    <nav
+      #tabNavBar
+      mat-tab-nav-bar
+      focusOnNavigation
+      aria-label="Quran Indexes"
       mat-align-tabs="center"
-      (selectedTabChange)="handleTabChange($event)"
     >
-      <mat-tab label="Surah">
-        <mat-list>
-          <mat-list-item
-            [routerLink]="['/', surah.id]"
-            class="list-item"
-            *ngFor="let surah of surahs"
-          >
-            <div mat-list-icon>{{ surah.id }}.</div>
-            <div class="primary-text" mat-line>
-              {{ surah.englishName }}
-            </div>
-            <div class="secondary-text" mat-line>{{ surah.english }}</div>
-          </mat-list-item>
-        </mat-list>
-      </mat-tab>
-      <mat-tab label="Juz">
-        <mat-list>
-          <mat-list-item
-            [routerLink]="['/juz', juz.index]"
-            class="list-item"
-            *ngFor="let juz of juzs"
-          >
-            <div mat-list-icon>{{ juz.index }}.</div>
-            <div class="primary-text" mat-line>
-              {{ juz.title }}
-            </div>
-            <div class="secondary-text" mat-line>{{ juz.subTitle }}</div>
-          </mat-list-item>
-        </mat-list>
-      </mat-tab>
-      <mat-tab label="Sajda">
-        <mat-list>
-          <mat-list-item
-            [routerLink]="['/sajda', sajda.index]"
-            class="list-item"
-            *ngFor="let sajda of sajdas"
-          >
-            <div mat-list-icon>{{ sajda.index }}.</div>
-            <div class="primary-text" mat-line>Ayah {{ sajda.numberInSurah }}</div>
-            <div class="secondary-text" mat-line>
-              of Surah {{ surahs[sajda.surahNo].englishName }}
-            </div>
-          </mat-list-item>
-        </mat-list>
-      </mat-tab>
-    </mat-tab-group>
+      <a
+        mat-tab-link
+        *ngFor="let section of sections"
+        [routerLink]="section.path"
+        [replaceUrl]="true"
+        [active]="section.path == activeSection.path"
+        >{{ section.label }}</a
+      >
+    </nav>
+    <!-- Tab Views -->
+    <router-outlet></router-outlet>
   </section>
+
+  <!-- Back to top button -->
   <button
     aria-label="Back to top"
     name="Back to top button"

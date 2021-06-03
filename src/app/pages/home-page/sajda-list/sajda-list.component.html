@@ -1,0 +1,13 @@
+<mat-list>
+  <a
+    mat-list-item
+    class="list-item"
+    *ngFor="let sajda of sajdas"
+    [routerLink]="['/sajda', sajda.index]"
+    attr.aria-label="Sajda {{ sajda.index }} - The Noble Quran"
+  >
+    <div mat-list-icon>{{ sajda.index }}.</div>
+    <div class="primary-text" mat-line>Ayah {{ sajda.numberInSurah }}</div>
+    <div class="secondary-text" mat-line>of Surah {{ surahs[sajda.surahNo].englishName }}</div>
+  </a>
+</mat-list>

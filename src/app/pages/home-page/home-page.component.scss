@@ -166,7 +166,8 @@ mat-list-item {
    .mat-tab-header {
       position: sticky !important;
       top: -1px;
-      height: 52px;
+      box-sizing: content-box;
+      //   height: 53px;
       background: var(--secondary-background-color);
       z-index: 100;
       border-radius: inherit;
@@ -209,6 +210,7 @@ mat-list-item {
       right: 40px;
       bottom: 40px;
       border-radius: 50%;
+      transform: scale(0.5);
       transition: all 120ms ease-in-out;
       opacity: 0;
       pointer-events: none;

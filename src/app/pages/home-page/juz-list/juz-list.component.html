@@ -1,0 +1,15 @@
+<mat-list>
+  <a
+    mat-list-item
+    class="list-item"
+    *ngFor="let juz of juzs"
+    [routerLink]="['/juz', juz.index]"
+    attr.aria-label="Juz {{ juz.index }} - The Noble Quran"
+  >
+    <div mat-list-icon>{{ juz.index }}.</div>
+    <div class="primary-text" mat-line>
+      {{ juz.title }}
+    </div>
+    <div class="secondary-text" mat-line>{{ juz.subTitle }}</div>
+  </a>
+</mat-list>
