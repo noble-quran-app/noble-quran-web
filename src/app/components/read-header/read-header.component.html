@@ -2,7 +2,7 @@
   <div class="left">
     <a routerLink="/"> Noble Quran </a>
     <button class="back-btn" mat-icon-button (click)="goBack()">
-      <mat-icon>arrow_back</mat-icon>
+      <material-icon>arrow_back</material-icon>
     </button>
   </div>
   <div class="right">
@@ -15,7 +15,7 @@
       [class.open]="menuOpen"
     >
       {{ menuList[currentMenuItemIndex]?.title }}
-      <svg-icon icon="arrow_drop_down"></svg-icon>
+      <material-icon>arrow_drop_down</material-icon>
     </button>
     <mat-menu #navMenu="matMenu" xPosition="before">
       <button

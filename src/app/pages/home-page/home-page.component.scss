@@ -19,6 +19,9 @@
 
 .primary-heading {
    font-size: 80px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
    font-weight: 100;
    color: var(--primary-heading-color);
    direction: rtl;
@@ -139,13 +142,11 @@ mat-list-item {
       fill: var(--primary-heading-color);
    }
    .toolbar button {
-      svg,
-      mat-icon {
+      material-icon {
          fill: #dddddd !important;
          color: #dddddd !important;
       }
-      &:hover svg,
-      &:hover mat-icon {
+      &:hover material-icon {
          fill: #ffffff !important;
          color: #ffffff !important;
       }
@@ -211,31 +212,28 @@ mat-list-item {
       bottom: 40px;
       border-radius: 50%;
       transform: scale(0.5);
-      transition: all 120ms ease-in-out;
-      opacity: 0;
-      pointer-events: none;
+      animation: scaleUp 120ms ease-in-out forwards;
       transform: scale(0.5);
 
-      svg {
-         height: 26px;
-         width: 26px;
-         fill: var(--fab-icon-color);
+      @keyframes scaleUp {
+         to {
+            transform: scale(1);
+         }
       }
-   }
 
-   .back-to-top.visible {
-      opacity: 1;
-      pointer-events: all;
-      transform: scale(1);
+      material-icon {
+         font-size: 26px;
+         transition: all 120ms ease-in-out;
+         color: var(--fab-icon-color);
+      }
    }
 
    .back-to-top:hover,
    .back-to-top:focus {
       background: var(--fab-background-color-hover);
 
-      svg {
-         transition: all 120ms ease-in-out;
-         fill: var(--fab-icon-color-hover);
+      material-icon {
+         color: var(--fab-icon-color-hover);
       }
    }
 

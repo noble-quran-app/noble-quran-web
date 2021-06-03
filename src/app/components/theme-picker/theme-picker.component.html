@@ -1,8 +1,7 @@
 <button
   mat-ripple
-  matRippleColor="#ffffff30"
   class="theme-picker"
-  tabindex="-1"
+  matRippleColor="#ffffff30"
   [matTooltip]="
     (themeService.theme | async) == darkThemeClass
       ? 'Switch to light theme'
@@ -12,10 +11,10 @@
   (click)="themeService.toggleTheme()"
 >
   <ng-container *ngIf="(themeService.theme | async) == darkThemeClass">
-    <svg-icon icon="brightness_high"></svg-icon>
+    <material-icon>brightness_high</material-icon>
   </ng-container>
 
   <ng-container *ngIf="(themeService.theme | async) != darkThemeClass">
-    <svg-icon icon="nights_stay"></svg-icon>
+    <material-icon>nights_stay</material-icon>
   </ng-container>
 </button>

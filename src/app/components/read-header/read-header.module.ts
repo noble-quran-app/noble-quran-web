@@ -1,21 +1,13 @@
 import { NgModule } from '@angular/core';
 import { ReadHeaderComponent } from './read-header.component';
-import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
-import { SvgIconModule } from '../svg-icon/svg-icon.module';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { MaterialIconModule } from '../material-icon/material-icon.module';
 
 @NgModule({
-  imports: [
-    MatIconModule,
-    MatMenuModule,
-    RouterModule,
-    SvgIconModule,
-    CommonModule,
-    MatButtonModule,
-  ],
+  imports: [MaterialIconModule, MatMenuModule, RouterModule, CommonModule, MatButtonModule],
   exports: [ReadHeaderComponent],
   declarations: [ReadHeaderComponent],
 })

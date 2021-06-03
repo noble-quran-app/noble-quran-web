@@ -3,7 +3,7 @@
   <div class="center">
     <!-- 
          <button mat-icon-button aria-label="Start auto scroll">
-           <mat-icon class="icon-size-27">text_rotate_vertical</mat-icon>
+           <material-icon class="icon-size-27">text_rotate_vertical</material-icon>
          </button> -->
 
     <button
@@ -12,7 +12,7 @@
       (click)="_audio.skipToPreviousAyah()"
       [disabled]="(_audio.currentAyahId | async) === ayahRange.start"
     >
-      <mat-icon class="icon-size-27">skip_previous</mat-icon>
+      <material-icon [size]="27">skip_previous</material-icon>
     </button>
 
     <ng-container *ngIf="!(_audio.isCompleted | async)">
@@ -26,12 +26,12 @@
         [ngSwitch]="_audio.isPlaying | async"
         [attr.aria-label]="(_audio.isPlaying | async) ? 'Pause' : 'Play'"
       >
-        <mat-icon class="icon-size-28" *ngSwitchCase="true"> pause </mat-icon>
-        <mat-icon class="icon-size-28" *ngSwitchCase="false"> play_arrow </mat-icon>
+        <material-icon [size]="28" *ngSwitchCase="true"> pause </material-icon>
+        <material-icon [size]="28" *ngSwitchCase="false"> play_arrow </material-icon>
       </button>
     </ng-container>
     <button mat-icon-button (click)="_audio.replaySession()" *ngIf="_audio.isCompleted | async">
-      <mat-icon class="icon-size-28"> replay </mat-icon>
+      <material-icon [size]="28"> replay </material-icon>
     </button>
 
     <button
@@ -40,11 +40,11 @@
       (click)="_audio.skipToNextAyah()"
       [disabled]="(_audio.currentAyahId | async) === ayahRange.end"
     >
-      <mat-icon class="icon-size-27">skip_next</mat-icon>
+      <material-icon [size]="27">skip_next</material-icon>
     </button>
 
     <!-- <button mat-icon-button>
-      <mat-icon class="icon-size-24"> language </mat-icon>
+      <material-icon class="icon-size-24"> language </material-icon>
     </button> -->
 
     <!-- <mat-slide-toggle (change)="autoScrollChange($event)" color="primary"></mat-slide-toggle> -->

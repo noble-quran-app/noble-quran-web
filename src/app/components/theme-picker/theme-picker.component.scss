@@ -9,6 +9,7 @@
    border-radius: 50%;
 }
 
-.theme-picker:hover {
+.theme-picker:hover,
+.theme-picker:focus {
    background: rgba(255, 255, 255, 0.09);
 }

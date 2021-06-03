@@ -32,9 +32,8 @@ a {
 }
 
 button:not([disabled]) svg,
-button:not([disabled]) mat-icon {
-   height: 24px;
-   width: 24px;
+button:not([disabled]) mat-icon,
+button:not([disabled]) material-icon {
    fill: var(--primary-icon-color);
    color: var(--primary-icon-color);
    &:hover {
@@ -45,6 +44,7 @@ button:not([disabled]) mat-icon {
 
 button:not([disabled]):hover svg,
 button:not([disabled]):hover mat-icon,
+button:not([disabled]):hover material-icon,
 a:not([disabled]):hover svg,
 a:not([disabled]):hover mat-icon {
    fill: var(--primary-icon-color-hover);
@@ -58,7 +58,8 @@ button.mat-menu-trigger:not(.mat-icon-button) {
    color: var(--primary-text-color) !important;
 
    mat-icon,
-   nq-icon {
+   nq-icon,
+   material-icon {
       fill: var(--primary-icon-color);
       color: var(--primary-icon-color);
    }
@@ -67,6 +68,7 @@ button.mat-menu-trigger:not(.mat-icon-button) {
       color: var(--primary-text-color-hover);
       background: var(--primary-background-color-hover);
 
+      material-icon,
       mat-icon,
       svg {
          transform: rotateZ(180deg);
