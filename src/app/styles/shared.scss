@@ -45,6 +45,14 @@
    padding-top: 64px;
 }
 
+.primary-text {
+   line-height: 24px;
+   color: var(--primary-text-color);
+}
+.secondary-text {
+   color: var(--secondary-text-color);
+}
+
 @media (max-width: 600px) {
    .header {
       min-height: 56px;

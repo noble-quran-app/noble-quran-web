@@ -1,6 +1,5 @@
 export interface Surah {
   englishName: string;
-  arabicName: string;
   ayahs: number;
   english: string;
   place: string;
@@ -64,4 +63,8 @@ export interface QuranVideo {
     name: string;
     full_name: string;
   };
+}
+export interface TabData {
+  label: string;
+  path: string;
 }

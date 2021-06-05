@@ -3,7 +3,6 @@ import { Surah, Juz, Sajda } from '../core/models';
 export const Surahs = <Surah[]>[
   {
     englishName: 'Al-Faatiha',
-    arabicName: 'الفاتِحَةُ',
     ayahs: 7,
     english: 'The Opening',
     place: 'Mecca',
@@ -13,7 +12,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Baqara',
-    arabicName: 'البَقَرة',
     ayahs: 286,
     english: 'The Cow',
     place: 'Medina',
@@ -22,7 +20,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Aal-i-Imraan',
-    arabicName: 'آلعِمران',
     ayahs: 200,
     english: 'The Family of Imran',
     place: 'Medina',
@@ -31,7 +28,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'An-Nisaa',
-    arabicName: 'النِّســاء',
     ayahs: 176,
     english: 'Women',
     place: 'Medina',
@@ -40,7 +36,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Maaida',
-    arabicName: 'المَـائِدة',
     ayahs: 120,
     english: 'The Food',
     place: 'Medina',
@@ -49,7 +44,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: "Al-An'aam",
-    arabicName: 'الأنْعـام',
     ayahs: 165,
     english: 'The Cattle',
     place: 'Mecca',
@@ -58,7 +52,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: "Al-A'raaf",
-    arabicName: 'الأعراف',
     ayahs: 206,
     english: 'The Elevated Place',
     place: 'Mecca',
@@ -67,7 +60,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Anfaal',
-    arabicName: 'الأنْفـال',
     ayahs: 75,
     english: 'The Spoils of War',
     place: 'Medina',
@@ -76,7 +68,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'At-Tawba',
-    arabicName: 'التـَّوْبَة',
     ayahs: 129,
     english: 'Repentance',
     place: 'Medina',
@@ -86,7 +77,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Yunus',
-    arabicName: 'يُونُس',
     ayahs: 109,
     english: 'Yunus',
     place: 'Mecca',
@@ -95,7 +85,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Hud',
-    arabicName: 'هُود',
     ayahs: 123,
     english: 'Hud',
     place: 'Mecca',
@@ -104,7 +93,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Yusuf',
-    arabicName: 'يُوسُف',
     ayahs: 111,
     english: 'Yusuf',
     place: 'Mecca',
@@ -113,7 +101,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: "Ar-Ra'd",
-    arabicName: 'الرَّعد',
     ayahs: 43,
     english: 'The Thunder',
     place: 'Medina',
@@ -122,7 +109,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Ibrahim',
-    arabicName: 'اِبراهيم',
     ayahs: 52,
     english: 'Ibrahim',
     place: 'Mecca',
@@ -131,7 +117,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Hijr',
-    arabicName: 'الحِجْر',
     ayahs: 99,
     english: 'The Rock',
     place: 'Mecca',
@@ -140,7 +125,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'An-Nahl',
-    arabicName: 'النًّحل',
     ayahs: 128,
     english: 'The Bee',
     place: 'Mecca',
@@ -149,7 +133,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Israa',
-    arabicName: 'الاِسْرآء',
     ayahs: 111,
     english: 'The Night Journey',
     place: 'Mecca',
@@ -158,7 +141,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Kahf',
-    arabicName: 'الكَهْف',
     ayahs: 110,
     english: 'The Cave',
     place: 'Mecca',
@@ -167,7 +149,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Maryam',
-    arabicName: 'مَريَم',
     ayahs: 98,
     english: 'Marium',
     place: 'Mecca',
@@ -176,7 +157,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Taa-Haa',
-    arabicName: 'طه',
     ayahs: 135,
     english: 'Ta Ha',
     place: 'Mecca',
@@ -185,7 +165,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Anbiyaa',
-    arabicName: 'الأنْبيآء',
     ayahs: 112,
     english: 'The Prophets',
     place: 'Mecca',
@@ -194,7 +173,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Hajj',
-    arabicName: 'الحَجّ',
     ayahs: 78,
     english: 'The Pilgrimage',
     place: 'Medina',
@@ -203,7 +181,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Muminoon',
-    arabicName: 'المؤمِنون',
     ayahs: 118,
     english: 'The Believers',
     place: 'Mecca',
@@ -212,7 +189,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'An-Noor',
-    arabicName: 'النّور',
     ayahs: 64,
     english: 'The Light',
     place: 'Medina',
@@ -221,7 +197,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Furqaan',
-    arabicName: 'الفُرقان',
     ayahs: 77,
     english: 'The Criterion',
     place: 'Mecca',
@@ -230,7 +205,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: "Ash-Shu'araa",
-    arabicName: 'الشُّـعَراء',
     ayahs: 227,
     english: 'The Poets',
     place: 'Mecca',
@@ -239,7 +213,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'An-Naml',
-    arabicName: 'النَّـمْل',
     ayahs: 93,
     english: 'The Ant',
     place: 'Mecca',
@@ -248,7 +221,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Qasas',
-    arabicName: 'القَصَص',
     ayahs: 88,
     english: 'The Narrative',
     place: 'Mecca',
@@ -257,7 +229,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Ankaboot',
-    arabicName: 'العَنْـكَبُوت',
     ayahs: 69,
     english: 'The Spider',
     place: 'Mecca',
@@ -266,7 +237,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Ar-Room',
-    arabicName: 'الرُّوم',
     ayahs: 60,
     english: 'The Romans',
     place: 'Mecca',
@@ -275,7 +245,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Luqman',
-    arabicName: 'لُقْمان',
     ayahs: 34,
     english: 'Luqman',
     place: 'Mecca',
@@ -284,7 +253,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'As-Sajda',
-    arabicName: 'السَّـجْدة',
     ayahs: 30,
     english: 'The Adoration',
     place: 'Mecca',
@@ -293,7 +261,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Ahzaab',
-    arabicName: 'الأحزاب',
     ayahs: 73,
     english: 'The Allies',
     place: 'Medina',
@@ -302,7 +269,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Saba',
-    arabicName: 'ســَبَأ',
     ayahs: 54,
     english: 'Saba',
     place: 'Mecca',
@@ -311,7 +277,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Faatir',
-    arabicName: 'فاطِر',
     ayahs: 45,
     english: 'The Originator',
     place: 'Mecca',
@@ -320,7 +285,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Yaseen',
-    arabicName: 'يــس',
     ayahs: 83,
     english: 'Ya Seen',
     place: 'Mecca',
@@ -329,7 +293,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'As-Saaffaat',
-    arabicName: 'الصّــافّات',
     ayahs: 182,
     english: 'The Rangers',
     place: 'Mecca',
@@ -338,7 +301,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Saad',
-    arabicName: 'ص',
     ayahs: 88,
     english: 'Suad',
     place: 'Mecca',
@@ -347,7 +309,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Az-Zumar',
-    arabicName: 'الزُّمَر',
     ayahs: 75,
     english: 'The Companies',
     place: 'Mecca',
@@ -356,7 +317,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Ghaafir',
-    arabicName: 'المُؤْمِن',
     ayahs: 85,
     english: 'The All-Forgiving',
     place: 'Mecca',
@@ -365,7 +325,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Fussilat',
-    arabicName: 'فُصِّلَت',
     ayahs: 54,
     english: 'Ha Mim',
     place: 'Mecca',
@@ -374,7 +333,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Ash-Shura',
-    arabicName: 'الشُّوری',
     ayahs: 53,
     english: 'The Counsel',
     place: 'Mecca',
@@ -383,7 +341,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Az-Zukhruf',
-    arabicName: 'الزُّخْرُف',
     ayahs: 89,
     english: 'The Embellishment',
     place: 'Mecca',
@@ -392,7 +349,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Ad-Dukhaan',
-    arabicName: 'الدُّخان',
     ayahs: 59,
     english: 'The Evident Smoke',
     place: 'Mecca',
@@ -401,7 +357,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Jaathiya',
-    arabicName: 'الجاثِية',
     ayahs: 37,
     english: 'The Kneeling',
     place: 'Mecca',
@@ -410,7 +365,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Ahqaf',
-    arabicName: 'الأحقاف',
     ayahs: 35,
     english: 'The Sandhills',
     place: 'Mecca',
@@ -419,7 +373,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Muhammad',
-    arabicName: 'مُحَمّد',
     ayahs: 38,
     english: 'Muhammad',
     place: 'Medina',
@@ -428,7 +381,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Fath',
-    arabicName: 'الفَتْح',
     ayahs: 29,
     english: 'The Victory',
     place: 'Medina',
@@ -437,7 +389,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Hujuraat',
-    arabicName: 'الحُجُرات',
     ayahs: 18,
     english: 'The Chambers',
     place: 'Medina',
@@ -446,7 +397,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Qaaf',
-    arabicName: 'ق',
     ayahs: 45,
     english: 'Qaf',
     place: 'Mecca',
@@ -455,7 +405,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Adh-Dhaariyat',
-    arabicName: 'الذ ّارِيات',
     ayahs: 60,
     english: 'The Scatterers',
     place: 'Mecca',
@@ -464,7 +413,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'At-Tur',
-    arabicName: 'الطُّور',
     ayahs: 49,
     english: 'The Mountain',
     place: 'Mecca',
@@ -473,7 +421,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'An-Najm',
-    arabicName: 'النَّجْم',
     ayahs: 62,
     english: 'The Star',
     place: 'Mecca',
@@ -482,7 +429,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Qamar',
-    arabicName: 'القَمَر',
     ayahs: 55,
     english: 'The Moon',
     place: 'Mecca',
@@ -491,7 +437,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Ar-Rahmaan',
-    arabicName: 'الرَّحمن',
     ayahs: 78,
     english: 'The Beneficient',
     place: 'Medina',
@@ -500,7 +445,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Waaqia',
-    arabicName: 'الواقِعَة',
     ayahs: 96,
     english: 'The Great Event',
     place: 'Mecca',
@@ -509,7 +453,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Hadid',
-    arabicName: 'الحَديد',
     ayahs: 29,
     english: 'The Iron',
     place: 'Medina',
@@ -518,7 +461,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Mujaadila',
-    arabicName: 'المُجادَلة',
     ayahs: 22,
     english: 'The Pleading One',
     place: 'Medina',
@@ -527,7 +469,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Hashr',
-    arabicName: 'الحَشْر',
     ayahs: 24,
     english: 'The Banishment',
     place: 'Manidah',
@@ -536,7 +477,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Mumtahana',
-    arabicName: 'المُمتَحَنة',
     ayahs: 13,
     english: 'The Examined One',
     place: 'Medina',
@@ -545,7 +485,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'As-Saff',
-    arabicName: 'الصَّف',
     ayahs: 14,
     english: 'The Ranks',
     place: 'Medina',
@@ -554,7 +493,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: "Al-Jumu'a",
-    arabicName: 'الجُّمُعة',
     ayahs: 11,
     english: 'Friday',
     place: 'Medina',
@@ -563,7 +501,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Munaafiqoon',
-    arabicName: 'المُنافِقُون',
     ayahs: 11,
     english: 'The Hypocrites',
     place: 'Medina',
@@ -572,7 +509,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'At-Taghaabun',
-    arabicName: 'التَّغابُن',
     ayahs: 18,
     english: 'Loss and Gain',
     place: 'Medina',
@@ -581,7 +517,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'At-Talaaq',
-    arabicName: 'الطَّلاق',
     ayahs: 12,
     english: 'The Divorce',
     place: 'Medina',
@@ -590,7 +525,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'At-Tahrim',
-    arabicName: 'التَّحْريم',
     ayahs: 12,
     english: 'The Prohibition',
     place: 'Medina',
@@ -599,7 +533,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Mulk',
-    arabicName: 'المُلْك',
     ayahs: 30,
     english: 'The Kingdom',
     place: 'Mecca',
@@ -608,7 +541,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Qalam',
-    arabicName: 'القَلـََم',
     ayahs: 52,
     english: 'The Pen',
     place: 'Mecca',
@@ -617,7 +549,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Haaqqa',
-    arabicName: 'الحَاقّـَة',
     ayahs: 52,
     english: 'The Sure Calamity',
     place: 'Mecca',
@@ -626,7 +557,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: "Al-Ma'aarij",
-    arabicName: 'المَعارِج',
     ayahs: 44,
     english: 'The Ways of Ascent',
     place: 'Mecca',
@@ -635,7 +565,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Nooh',
-    arabicName: 'نُوح',
     ayahs: 28,
     english: 'Nuh',
     place: 'Mecca',
@@ -644,7 +573,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Jinn',
-    arabicName: 'الجِنّ',
     ayahs: 28,
     english: 'The Jinn',
     place: 'Mecca',
@@ -653,7 +581,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Muzzammil',
-    arabicName: 'المُزَّمّـِل',
     ayahs: 20,
     english: 'The Wrapped Up',
     place: 'Mecca',
@@ -662,7 +589,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Muddaththir',
-    arabicName: 'المُدَّثــِّر',
     ayahs: 56,
     english: 'The Clothed One',
     place: 'Mecca',
@@ -671,7 +597,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Qiyaama',
-    arabicName: 'القِيامَة',
     ayahs: 40,
     english: 'The Resurrection',
     place: 'Mecca',
@@ -680,7 +605,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Insaan',
-    arabicName: 'الإنسان',
     ayahs: 31,
     english: 'The Man',
     place: 'Medina',
@@ -689,7 +613,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Mursalaat',
-    arabicName: 'المُرسَلات',
     ayahs: 50,
     english: 'The Emissaries',
     place: 'Mecca',
@@ -698,7 +621,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'An-Naba',
-    arabicName: 'النـَّبأ',
     ayahs: 40,
     english: 'The Great Event',
     place: 'Mecca',
@@ -707,7 +629,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: "An-Naazi'aat",
-    arabicName: 'النـّازِعات',
     ayahs: 46,
     english: 'Those Who Pull Out',
     place: 'Mecca',
@@ -716,7 +637,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Abasa',
-    arabicName: 'عَبَس',
     ayahs: 42,
     english: 'He Frowned',
     place: 'Mecca',
@@ -725,7 +645,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'At-Takwir',
-    arabicName: 'التـَّكْوير',
     ayahs: 29,
     english: 'The Covering Up',
     place: 'Mecca',
@@ -734,7 +653,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Infitaar',
-    arabicName: 'الإنفِطار',
     ayahs: 19,
     english: 'The Cleaving Asund',
     place: 'Mecca',
@@ -743,7 +661,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Mutaffifin',
-    arabicName: 'المُطـَفِّفين',
     ayahs: 36,
     english: 'The Defrauders',
     place: 'Mecca',
@@ -752,7 +669,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Inshiqaaq',
-    arabicName: 'الإنشِقاق',
     ayahs: 25,
     english: 'The Bursting Asund',
     place: 'Mecca',
@@ -761,7 +677,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Burooj',
-    arabicName: 'البُروج',
     ayahs: 22,
     english: 'The Mansions of the Stars',
     place: 'Mecca',
@@ -770,7 +685,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'At-Taariq',
-    arabicName: 'الطّارق',
     ayahs: 17,
     english: 'The Night Comer',
     place: 'Mecca',
@@ -779,7 +693,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: "Al-A'laa",
-    arabicName: 'الأعلی',
     ayahs: 19,
     english: 'The Most High',
     place: 'Mecca',
@@ -788,7 +701,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Ghaashiya',
-    arabicName: 'الغاشِيَة',
     ayahs: 26,
     english: 'The Overwhelming',
     place: 'Mecca',
@@ -797,7 +709,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Fajr',
-    arabicName: 'الفَجْر',
     ayahs: 30,
     english: 'The Daybreak',
     place: 'Mecca',
@@ -806,7 +717,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Balad',
-    arabicName: 'البَـلـَد',
     ayahs: 20,
     english: 'The City',
     place: 'Mecca',
@@ -815,7 +725,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Ash-Shams',
-    arabicName: 'الشــَّمْس',
     ayahs: 15,
     english: 'The Sun',
     place: 'Mecca',
@@ -824,7 +733,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Lail',
-    arabicName: 'اللـَّيل',
     ayahs: 21,
     english: 'The Night',
     place: 'Mecca',
@@ -833,7 +741,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Ad-Dhuhaa',
-    arabicName: 'الضُّحی',
     ayahs: 11,
     english: 'The Early Hours',
     place: 'Mecca',
@@ -842,7 +749,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Ash-Sharh',
-    arabicName: 'الإنشـِراح',
     ayahs: 8,
     english: 'The Expansion',
     place: 'Mecca',
@@ -851,7 +757,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'At-Tin',
-    arabicName: 'التـِّين',
     ayahs: 8,
     english: 'The Fig',
     place: 'Mecca',
@@ -860,7 +765,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Alaq',
-    arabicName: 'العَلـَق',
     ayahs: 19,
     english: 'The Clot',
     place: 'Mecca',
@@ -869,7 +773,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Qadr',
-    arabicName: 'القـَدر',
     ayahs: 5,
     english: 'The Majesty',
     place: 'Mecca',
@@ -878,7 +781,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Bayyina',
-    arabicName: 'البَيِّنَة',
     ayahs: 8,
     english: 'The Clear Evidence',
     place: 'Medina',
@@ -887,7 +789,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Az-Zalzala',
-    arabicName: 'الزِّلزال',
     ayahs: 8,
     english: 'The Shaking',
     place: 'Medina',
@@ -896,7 +797,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Aadiyaat',
-    arabicName: 'العـَاديات',
     ayahs: 11,
     english: 'The Assaulters',
     place: 'Mecca',
@@ -905,7 +805,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: "Al-Qaari'a",
-    arabicName: 'القارِعَة',
     ayahs: 11,
     english: 'The Terrible Calam',
     place: 'Mecca',
@@ -914,7 +813,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'At-Takaathur',
-    arabicName: 'التَكاثـُر',
     ayahs: 8,
     english: 'The Multiplication',
     place: 'Mecca',
@@ -923,7 +821,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Asr',
-    arabicName: 'العَصْر',
     ayahs: 3,
     english: 'Time',
     place: 'Mecca',
@@ -932,7 +829,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Humaza',
-    arabicName: 'الهُمَزَة',
     ayahs: 9,
     english: 'The Slanderer',
     place: 'Mecca',
@@ -941,7 +837,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Fil',
-    arabicName: 'الفيل',
     ayahs: 5,
     english: 'The Elephant',
     place: 'Mecca',
@@ -950,7 +845,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Quraish',
-    arabicName: 'قـُرَيْش',
     ayahs: 4,
     english: 'The Qureaish',
     place: 'Mecca',
@@ -959,7 +853,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: "Al-Maa'un",
-    arabicName: 'الماعُون',
     ayahs: 7,
     english: 'The Daily Necessary',
     place: 'Mecca',
@@ -968,7 +861,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Kawthar',
-    arabicName: 'الكـَوْثَر',
     ayahs: 3,
     english: 'The Heavenly Fount',
     place: 'Mecca',
@@ -977,7 +869,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Kaafiroon',
-    arabicName: 'الكافِرون',
     ayahs: 6,
     english: 'The Unbelievers',
     place: 'Mecca',
@@ -986,7 +877,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'An-Nasr',
-    arabicName: 'النـَّصر',
     ayahs: 3,
     english: 'The Help',
     place: 'Medina',
@@ -995,7 +885,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Masad',
-    arabicName: 'تَبَّت',
     ayahs: 5,
     english: 'The Palm Fiber',
     place: 'Mecca',
@@ -1004,7 +893,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Ikhlaas',
-    arabicName: 'الإخـْلاص',
     ayahs: 4,
     english: 'The Unity',
     place: 'Mecca',
@@ -1013,7 +901,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'Al-Falaq',
-    arabicName: 'الفـَلَق',
     ayahs: 5,
     english: 'The Dawn',
     place: 'Mecca',
@@ -1022,7 +909,6 @@ export const Surahs = <Surah[]>[
   },
   {
     englishName: 'An-Naas',
-    arabicName: 'النـَّاس',
     ayahs: 6,
     english: 'The Men',
     place: 'Mecca',

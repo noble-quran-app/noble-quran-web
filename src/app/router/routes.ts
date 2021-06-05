@@ -1,12 +1,10 @@
 import { Routes } from '@angular/router';
 import { removeElements } from '../core/functions';
-import { HomeMatcher, JuzMatcher, SajdaMatcher, SurahMatcher } from './matchers';
+import { JuzMatcher, SajdaMatcher, SurahMatcher } from './matchers';
 
 export const routes: Routes = [
   {
-    // matcher: HomeMatcher,
     path: '',
-    // pathMatch: 'full',
     loadChildren: () =>
       import('../pages/home-page/home-page.module')
         .then((m) => m.HomePageModule)
