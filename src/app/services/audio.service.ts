@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { asyncScheduler, BehaviorSubject, of, Subject } from 'rxjs';
+import { asyncScheduler, BehaviorSubject, of, Subject, Subscription } from 'rxjs';
 import { delay, switchMap, tap, throttleTime } from 'rxjs/operators';
 import { SubSink } from 'subsink';
 import { getAyahAudioUrl, Timer } from '../core/functions';
@@ -29,6 +29,7 @@ export class AudioService {
   private reloadSource: Subject<null> = null;
   private sessionExists: boolean = false;
   private subs = new SubSink();
+  private idSubscription: Subscription;
 
   public isPlaying = new BehaviorSubject<boolean>(false);
   public isCompleted = new BehaviorSubject<boolean>(false);
@@ -103,6 +104,19 @@ export class AudioService {
 
   public async play() {
     if (this.sessionExists) {
+      // id subscription for audio src
+      if (!this.idSubscription) {
+        this.idSubscription = this.currentAyahId
+          .pipe(
+            tap(() => {
+              this.audioRef && !this.audioRef.paused && this.audioRef.pause();
+              this.isBufferingSource.next(true);
+            }),
+            throttleTime(1800, asyncScheduler, { leading: true, trailing: true })
+          )
+          .subscribe((id) => this.setAudioSrc(id));
+      }
+
       this.isPlaying.next(true);
       try {
         await this.audioRef.play();
@@ -145,6 +159,7 @@ export class AudioService {
     this.audioRef.preload = 'auto';
     this.cachedAudioRef.muted = true;
     this.reloadSource = new Subject<null>();
+    this.idSubscription = null;
 
     /** for debugging */
     // console.log(this.audioRef)
@@ -190,18 +205,6 @@ export class AudioService {
       .subscribe(() => this.isPlaying.value && this.reloadCurrentAyah(3500));
 
     this.subs.add(
-      this.currentAyahId
-        .pipe(
-          tap(() => {
-            this.audioRef && !this.audioRef.paused && this.audioRef.pause();
-            this.isBufferingSource.next(true);
-          }),
-          throttleTime(1800, asyncScheduler, { leading: true, trailing: true })
-        )
-        .subscribe((id) => this.setAudioSrc(id))
-    );
-
-    this.subs.add(
       this._net.isOnline.subscribe((isOnline) => {
         if (isOnline && this.isBufferingSource.value) {
           this.reloadSource.next(null);
@@ -227,6 +230,7 @@ export class AudioService {
     this.isPlaying?.next(false);
     this.isBufferingSource?.next(false);
 
+    this.idSubscription?.unsubscribe();
     this.subs.unsubscribe();
   }
 
