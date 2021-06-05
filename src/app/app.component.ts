@@ -10,7 +10,7 @@ import { UpdateService } from './services/update.service';
 export class AppComponent {
   constructor(private theme: ThemeService, private update: UpdateService) {}
 
-  @HostListener('window:keydown.control.x', ['$event'])
+  @HostListener('document:keydown.control.x', ['$event'])
   themeChange(event: KeyboardEvent) {
     event.preventDefault();
     this.theme.toggleTheme();

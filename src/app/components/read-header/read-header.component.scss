@@ -8,6 +8,14 @@ header {
       pointer-events: none;
    }
 
+   &::before {
+      position: absolute;
+      content: '\06DD';
+      font-family: 'Noor';
+      color: transparent;
+      pointer-events: none;
+   }
+
    .back-btn {
       display: none;
    }
