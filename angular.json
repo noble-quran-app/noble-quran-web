@@ -49,7 +49,9 @@
               "src/favicon.ico",
               "src/assets",
               "src/manifest.webmanifest",
-              "src/robots.txt"
+              "src/robots.txt",
+              "src/base.js",
+              "src/base.css"
             ],
             "styles": ["src/app/styles/styles.scss"],
             "scripts": [],

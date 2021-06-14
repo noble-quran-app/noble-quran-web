@@ -1,11 +1,11 @@
 {
-  "name": "Noble Quran",
+  "name": "The Noble Quran",
   "short_name": "Noble Quran",
   "orientation": "portrait",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "display": "standalone",
-  "description": "Read Noble Quran without any ads.",
+  "description": "Noble Quran is a free and open source web app to read Quran offline and without ads.",
   "scope": "/",
   "start_url": "/",
   "icons": [

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, ExtraOptions, PreloadAllModules } from '@angular/router';
-import { routes } from './routes';
+import { routes } from './app-routes';
 
 const routerConfig: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
@@ -12,4 +12,4 @@ const routerConfig: ExtraOptions = {
   imports: [RouterModule.forRoot(routes, routerConfig)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class RoutingModule {}

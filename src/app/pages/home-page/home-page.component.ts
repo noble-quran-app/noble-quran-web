@@ -34,11 +34,7 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
   }, obsOptions);
 
   backToTop() {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
+    window.scrollTo(0, 0);
   }
 
   async changeTab(e: Event, tab: TabData) {

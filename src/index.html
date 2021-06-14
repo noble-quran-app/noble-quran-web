@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
+   <base href="/" />
    <meta charset="utf-8" />
    <title>The Noble Quran</title>
-   <base href="/" />
    <meta name="viewport" content="width=device-width, initial-scale=1" />
    <meta name="theme-color" content="#ffffff" />
    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
    <meta name="description"
-      content="Noble Quran is a free and open source web app to read Quran offline and without ads." />
+      content="The Noble Quran is a free and open source web app to read Quran offline and without ads." />
    <meta name="keywords" content="Quran,Noble Quran,Quran Website,Quran App,Read Quran" />
    <link rel="icon" type="image/x-icon" href="favicon.ico" />
    <link rel="apple-touch-icon" sizes="180x180" href="assets/static/icons/apple-touch-icon.png" />
@@ -21,68 +21,13 @@
       rel="stylesheet" />
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
    <link rel="manifest" href="manifest.webmanifest" />
-   <style class="unmount">
-      #splash-overlay {
-         position: fixed;
-         top: 0;
-         left: 0;
-         height: 100vh;
-         width: 100vw;
-         z-index: -10;
-         z-index: 1000000;
-         overflow: hidden;
-         background: white;
-      }
-
-      #splash-container {
-         height: 90vh;
-         width: 100%;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         flex-direction: column;
-         animation: splash-animation 500ms forwards;
-      }
-
-      .splash-text {
-         font-size: 19px;
-         font-weight: 450;
-         color: #616060;
-         user-select: none;
-         text-align: center;
-         font-family: 'Jost';
-         line-height: 1.4;
-         display: block;
-         margin-top: 8px;
-      }
-
-
-      #preload {
-         font-family: 'Material Icons';
-         opacity: 0;
-         height: 0px;
-         pointer-events: none;
-         visibility: visible;
-         font-size: 24px;
-      }
-
-      @keyframes splash-animation {
-         from {
-            opacity: 0;
-            transform: scale(0.9);
-         }
-
-         to {
-            opacity: 1;
-            transform: scale(1);
-         }
-      }
-   </style>
+   <link class="splash" rel="stylesheet" href="base.css">
+   <script class="splash" src="base.js"></script>
 </head>
 
 <body>
    <noble-quran-app></noble-quran-app>
-   <main class="unmount" id="splash-overlay" aria-label="Splash screen">
+   <main class="splash" id="splash-overlay" aria-label="Splash screen">
       <div id="splash-container">
          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M58.2423 44.2238L58.8434 63.7268L101.402 40.6486L92.9651 25.2293L58.2423 44.2238Z"

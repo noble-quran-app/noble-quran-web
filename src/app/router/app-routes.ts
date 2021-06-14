@@ -1,6 +1,9 @@
 import { Routes } from '@angular/router';
-import { removeElements } from '../core/functions';
-import { JuzMatcher, SajdaMatcher, SurahMatcher } from './matchers';
+import { JuzMatcher, SajdaMatcher, SurahMatcher } from './route-matchers';
+
+const dispathRouteLoadEvent = () => {
+  document.dispatchEvent(new CustomEvent('routeloaded'));
+};
 
 export const routes: Routes = [
   {
@@ -8,34 +11,34 @@ export const routes: Routes = [
     loadChildren: () =>
       import('../pages/home-page/home-page.module')
         .then((m) => m.HomePageModule)
-        .finally(removeElements),
+        .finally(dispathRouteLoadEvent),
   },
   {
     matcher: SurahMatcher,
     loadChildren: () =>
       import('../pages/surah-page/surah-page.module')
         .then((m) => m.SurahPageModule)
-        .finally(removeElements),
+        .finally(dispathRouteLoadEvent),
   },
   {
     matcher: JuzMatcher,
     loadChildren: () =>
       import('../pages/juz-page/juz-page.module')
         .then((m) => m.JuzPageModule)
-        .finally(removeElements),
+        .finally(dispathRouteLoadEvent),
   },
   {
     matcher: SajdaMatcher,
     loadChildren: () =>
       import('../pages/sajda-page/sajda-page.module')
         .then((m) => m.SajdaPageModule)
-        .finally(removeElements),
+        .finally(dispathRouteLoadEvent),
   },
   {
     path: '**',
     loadChildren: () =>
       import('../pages/default-page/default-page.module')
         .then((m) => m.PageNotFoundModule)
-        .finally(removeElements),
+        .finally(dispathRouteLoadEvent),
   },
 ];
