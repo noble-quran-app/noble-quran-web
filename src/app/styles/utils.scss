@@ -21,3 +21,8 @@
       color: var(--primary-text-color);
    }
 }
+
+.no-scroll,
+[no-scroll] {
+   overflow: hidden !important;
+}

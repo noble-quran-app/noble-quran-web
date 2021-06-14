@@ -1,96 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>The Noble Quran</title>
-    <base href="/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta
-      name="description"
-      content="Noble Quran is a free and open source web app to read Quran offline and without ads."
-    />
-    <meta name="keywords" content="Quran,Noble Quran,Quran Website,Quran App,Read Quran" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/static/icons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/static/icons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/static/icons/favicon-16x16.png" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Jost:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="manifest" href="manifest.webmanifest" />
-    <style class="unmount">
+
+<head>
+   <meta charset="utf-8" />
+   <title>The Noble Quran</title>
+   <base href="/" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="theme-color" content="#ffffff" />
+   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+   <meta name="description"
+      content="Noble Quran is a free and open source web app to read Quran offline and without ads." />
+   <meta name="keywords" content="Quran,Noble Quran,Quran Website,Quran App,Read Quran" />
+   <link rel="icon" type="image/x-icon" href="favicon.ico" />
+   <link rel="apple-touch-icon" sizes="180x180" href="assets/static/icons/apple-touch-icon.png" />
+   <link rel="icon" type="image/png" sizes="32x32" href="assets/static/icons/favicon-32x32.png" />
+   <link rel="icon" type="image/png" sizes="16x16" href="assets/static/icons/favicon-16x16.png" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" />
+   <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Jost:wght@400;450;500&display=swap"
+      rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+   <link rel="manifest" href="manifest.webmanifest" />
+   <style class="unmount">
       #splash-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100vw;
-        z-index: -10;
-        overflow: hidden;
-        background: #ffffff;
+         position: fixed;
+         top: 0;
+         left: 0;
+         height: 100vh;
+         width: 100vw;
+         z-index: -10;
+         z-index: 1000000;
+         overflow: hidden;
+         background: white;
       }
 
       #splash-container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        max-width: 200px;
-      }
-
-      #splash-icon {
-        height: 76px;
-        width: 76px;
-        fill: #0c887c;
+         height: 90vh;
+         width: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-direction: column;
+         animation: splash-animation 500ms forwards;
       }
 
       .splash-text {
-        font-size: 14px;
-        font-weight: 500;
-        font-weight: 500;
-        color: #5a5a5a;
-        user-select: none;
-        text-align: center;
-        font-family: 'Roboto';
-        line-height: 1.4;
-        display: block;
-        margin-top: 16px;
+         font-size: 19px;
+         font-weight: 450;
+         color: #616060;
+         user-select: none;
+         text-align: center;
+         font-family: 'Jost';
+         line-height: 1.4;
+         display: block;
+         margin-top: 8px;
       }
 
+
       #preload {
-        font-family: 'Material Icons';
-        opacity: 0;
-        height: 0px;
-        pointer-events: none;
-        visibility: visible;
-        font-size: 24px;
+         font-family: 'Material Icons';
+         opacity: 0;
+         height: 0px;
+         pointer-events: none;
+         visibility: visible;
+         font-size: 24px;
       }
-    </style>
-  </head>
-  <body>
-    <noble-quran-app></noble-quran-app>
-    <main class="unmount" id="splash-overlay" aria-label="Splash screen">
+
+      @keyframes splash-animation {
+         from {
+            opacity: 0;
+            transform: scale(0.9);
+         }
+
+         to {
+            opacity: 1;
+            transform: scale(1);
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <noble-quran-app></noble-quran-app>
+   <main class="unmount" id="splash-overlay" aria-label="Splash screen">
       <div id="splash-container">
-        <svg id="splash-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path
-            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-          />
-        </svg>
-        <i aria-hidden="true" id="preload">pending</i>
-        <h4 class="splash-text">Made with love</h4>
-        <noscript class="splash-text"
-          >Please enable JavaScript to continue using this application.</noscript
-        >
+         <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M58.2423 44.2238L58.8434 63.7268L101.402 40.6486L92.9651 25.2293L58.2423 44.2238Z"
+               fill="#DFD1CC" />
+            <path
+               d="M0 52.3583L8.22553 36.3402L60.2032 62.5698L60.0464 82.663C42.4263 73.7303 24.8067 64.7978 14.799 59.747C4.79123 54.6962 2.3955 53.5271 0 52.3583Z"
+               fill="#AD715A" />
+            <path d="M59.814 62.8223L110.908 33.9653L119.31 50.3594L79.8557 72.7384L59.814 62.8223Z" fill="#5A3E28" />
+            <path d="M60.0101 82.6179L34.8616 95.1741L26.7188 79.317L40.1091 72.4777L60.0101 82.6179Z" fill="#925D4E" />
+            <path d="M59.8983 62.7902L59.9848 82.6056L85.0512 94.9902L93.1034 79.2744L59.8983 62.7902Z"
+               fill="#925D4E" />
+            <path d="M17.1094 40.8582L24.9462 25.3683L60.0277 43.246L60.0488 62.7043L17.1094 40.8582Z" fill="#EAE1DE" />
+         </svg>
+         <i aria-hidden="true" id="preload">pending</i>
+         <h4 class="splash-text">The Noble Quran</h4>
+         <noscript class="splash-text">Please enable JavaScript to continue using this application.</noscript>
       </div>
-    </main>
-  </body>
+   </main>
+</body>
+
 </html>
