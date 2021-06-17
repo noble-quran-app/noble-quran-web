@@ -5,7 +5,7 @@ const dispathRouteLoadEvent = () => {
   document.dispatchEvent(new CustomEvent('routeloaded'));
 };
 
-export const routes: Routes = [
+export const AppRoutes: Routes = [
   {
     path: '',
     loadChildren: () =>
