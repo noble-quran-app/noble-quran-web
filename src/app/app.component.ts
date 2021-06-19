@@ -1,11 +1,13 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Router, Scroll } from '@angular/router';
+import { Router, Scroll, Event } from '@angular/router';
 import { fromEvent } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { filter, take } from 'rxjs/operators';
 import { ScrollPosition } from './core/models';
 import { ThemeService } from './services/theme.service';
 import { UpdateService } from './services/update.service';
+
+const staticRoutes = ['/', '/juz', '/sajda'];
 
 @Component({
   selector: 'noble-quran-app',
@@ -33,15 +35,17 @@ export class AppComponent implements OnInit {
     this.theme.initialize();
     this.update.initialize();
 
-    this.router.events.subscribe((event) => {
-      if (event instanceof Scroll && event?.position?.length) {
-        this.framesTracker = window.requestAnimationFrame(() => {
-          this.restoreScroll(event.position);
-        });
-      }
-    });
+    this.router.events
+      .pipe(filter((event: Event): event is Scroll => event instanceof Scroll))
+      .subscribe(({ routerEvent, position }) => {
+        if (position?.length && staticRoutes.includes(routerEvent.url)) {
+          this.framesTracker = window.requestAnimationFrame(() => {
+            this.restoreScroll(position);
+          });
+        }
+      });
 
-    fromEvent(document, 'splashcomplete')
+    fromEvent(document, 'splash')
       .pipe(take(1))
       .subscribe(() => {
         this.splashCompleted = true;

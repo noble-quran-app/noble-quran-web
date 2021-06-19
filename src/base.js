@@ -18,7 +18,7 @@ function removeSplash(removeNow) {
       }
     }
 
-    document.dispatchEvent(new CustomEvent('splashcomplete'));
+    document.dispatchEvent(new CustomEvent('splash'));
     document.removeEventListener('routeloaded', removeSplash);
     return;
   }
