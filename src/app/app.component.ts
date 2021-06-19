@@ -1,8 +1,9 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router, Scroll } from '@angular/router';
-import { fromEvent, interval, Subscription } from 'rxjs';
+import { fromEvent } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { ScrollPosition } from './core/models';
 import { ThemeService } from './services/theme.service';
 import { UpdateService } from './services/update.service';
 
@@ -20,10 +21,10 @@ export class AppComponent implements OnInit {
   ) {}
 
   public splashCompleted = false;
-  private scrollSubscription: Subscription;
+  private framesTracker: number;
 
   @HostListener('document:keydown.control.x', ['$event'])
-  themeChange(event: KeyboardEvent) {
+  toggleTheme(event: KeyboardEvent) {
     event.preventDefault();
     this.theme.toggleTheme();
   }
@@ -32,28 +33,25 @@ export class AppComponent implements OnInit {
     this.theme.initialize();
     this.update.initialize();
 
-    this.router.events.subscribe((e) => {
-      if (e instanceof Scroll) {
-        this.restoreScrollPosition(e.position);
+    this.router.events.subscribe((event) => {
+      if (event instanceof Scroll && event?.position?.length) {
+        this.framesTracker = window.requestAnimationFrame(() => {
+          this.restoreScroll(event.position);
+        });
       }
     });
 
     fromEvent(document, 'splashcomplete')
       .pipe(take(1))
-      .subscribe(() => (this.splashCompleted = true));
+      .subscribe(() => {
+        this.splashCompleted = true;
+      });
   }
 
-  restoreScrollPosition(position: [number, number]) {
-    if (position && position.length) {
-      this.scrollSubscription = interval(1)
-        .pipe(take(3000))
-        .subscribe(() => {
-          if (window.pageXOffset !== position[0] || window.pageYOffset !== position[1]) {
-            this.viewportScroller.scrollToPosition(position);
-          } else if (this.scrollSubscription) {
-            this.scrollSubscription.unsubscribe();
-          }
-        });
+  restoreScroll(position: ScrollPosition) {
+    if (window.pageYOffset !== position[1]) {
+      window.cancelAnimationFrame(this.framesTracker);
+      this.viewportScroller.scrollToPosition(position);
     }
   }
 }

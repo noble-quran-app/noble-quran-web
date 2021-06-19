@@ -57,6 +57,14 @@
       &.expanded {
          width: 100%;
          border-radius: 0;
+         padding-top: 56px;
+
+         .mat-tab-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+         }
       }
    }
 
@@ -69,12 +77,10 @@
    }
 
    .mat-tab-header {
-      position: sticky !important;
-      top: -1px;
-      box-sizing: content-box;
-      background: var(--secondary-background-color);
       z-index: 100;
       border-radius: inherit;
+      box-sizing: content-box;
+      background: var(--secondary-background-color);
       border-bottom: 1px solid var(--primary-border-color);
    }
 

@@ -68,3 +68,5 @@ export interface TabData {
   label: string;
   path: string;
 }
+
+export type ScrollPosition = [number, number];
