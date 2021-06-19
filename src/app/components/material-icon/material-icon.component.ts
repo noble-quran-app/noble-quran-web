@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'material-icon',
@@ -7,4 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class MaterialIconComponent {
   @Input('size') size: number = 24;
+
+  @HostBinding('style.font-size.px') get invalid() {
+    return this.size;
+  }
 }

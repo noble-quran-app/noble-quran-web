@@ -3,7 +3,6 @@ span,
    font-family: 'Material Icons';
    font-weight: normal;
    font-style: normal;
-   line-height: 1;
    letter-spacing: normal;
    text-transform: none;
    display: inline-block;
@@ -12,4 +11,11 @@ span,
    direction: ltr;
    -webkit-font-feature-settings: 'liga';
    -webkit-font-smoothing: antialiased;
+   height: 1em;
+   width: 1em;
+   line-height: 1em;
+}
+
+span {
+   font-size: inherit;
 }

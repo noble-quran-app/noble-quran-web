@@ -75,6 +75,7 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Setting current tab according to url path
     this.activeTab = this.tabsData.find((s) => s.path === this.router.routerState.snapshot.url);
+    this.cdr.detectChanges();
 
     // Setting current tab according to url path on route change
     this.subs.add(
