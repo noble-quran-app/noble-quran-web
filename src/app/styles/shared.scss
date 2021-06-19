@@ -38,7 +38,7 @@
    }
 }
 
-.header-gap {
+.header-spacer {
    display: block;
    width: 100%;
    max-width: 100%;
@@ -55,11 +55,11 @@
 
 @media (max-width: 600px) {
    .header {
-      min-height: 56px;
-      padding: 0 12px;
+      min-height: 60px;
+      padding: 0 13px;
    }
 
-   .header-gap {
-      padding-top: 56px;
+   .header-spacer {
+      padding-top: 60px;
    }
 }

@@ -1,17 +1,9 @@
 header {
-   //   This is for preloading the Arabic font
+   // For preloading Arabic font
    &::after {
       position: absolute;
       content: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ';
       font-family: 'Indopak';
-      color: transparent;
-      pointer-events: none;
-   }
-
-   &::before {
-      position: absolute;
-      content: '\06DD';
-      font-family: 'Noor';
       color: transparent;
       pointer-events: none;
    }
@@ -25,11 +17,16 @@ header {
       text-decoration: none;
       cursor: pointer;
       font-family: Roboto, Arial, Helvetica, sans-serif;
-      font-size: 15px;
+      font-size: 1.6rem;
       font-weight: 500;
       user-select: none;
-      padding: 0 8px;
+      padding: 0 0.8rem;
       color: var(--primary-text-color);
+   }
+
+   .left a {
+      font-family: Jost, Arial, Helvetica, sans-serif;
+      font-size: 1.7rem;
    }
 }
 
@@ -39,7 +36,7 @@ header {
          display: block;
       }
 
-      a {
+      .left a {
          display: none;
       }
    }

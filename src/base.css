@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  animation: splash-animation 350ms forwards;
+  animation: splash-animation 250ms forwards;
 }
 
 .splash-text {
