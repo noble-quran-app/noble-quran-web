@@ -124,7 +124,14 @@ snack-bar-container {
 
 .cdk-overlay-container .mat-menu-panel {
    &::-webkit-scrollbar {
-      width: 8px;
+      width: 6px;
+   }
+
+   @media (max-width: 600px) {
+      &::-webkit-scrollbar {
+         width: 0px;
+         display: none !important;
+      }
    }
 
    &::-webkit-scrollbar-thumb {
@@ -149,22 +156,19 @@ snack-bar-container {
 
 @media (max-width: 720px) {
    .mat-menu-item {
-      height: 40px !important;
-      line-height: 40px !important;
+      height: 48px !important;
+      line-height: 48px !important;
       padding-left: 16px !important;
    }
 
    .cdk-overlay-container .mat-menu-panel {
-      max-height: 415px;
+      max-height: 400px;
+      min-width: 165px;
    }
 }
 
-[hidden] {
+[hidden]:not([hidden='false']) {
    display: none !important;
-}
-
-[hidden='false'] {
-   display: unset !important;
 }
 
 svg-icon {
