@@ -32,16 +32,16 @@ $dark-theme: mat.define-dark-theme(
 
 @include mat.all-component-themes($noble-quran-theme);
 
-.nq-dark-theme {
+.dark-theme {
    @include mat.all-component-colors($dark-theme);
 }
 
-html.nq-dark-theme {
+html.dark-theme {
    color-scheme: dark;
 }
 
 html body,
-.nq-light-theme {
+.light-theme {
    --primary-theme-color: #00866a;
 
    --primary-background-color: #ffffff;
@@ -93,8 +93,8 @@ html body,
    --banner-background: linear-gradient(135deg, #00754e, #01a295);
 }
 
-html.nq-dark-theme body,
-.nq-dark-theme {
+html.dark-theme body,
+.dark-theme {
    --primary-theme-color: #5ee0d4;
 
    --primary-background-color: #151515;

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="/" />
+    <meta charset="utf-8" />
+    <title>The Noble Quran</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="application-name" content="Noble Quran" />
+    <meta name="description" content="The Noble Quran is a free and open source web app to read Quran offline and without ads." />
+    <meta name="keywords" content="Quran,Noble Quran,Quran Website,Quran App,Read Quran" />
+
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="msapplication-config" content="browserconfig.xml" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/icons/favicon-48x48.png" />
+
+    <meta name="msapplication-TileColor" content="#00000000" />
+    <meta name="apple-mobile-web-app-title" content="Noble Quran" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
+    <link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#169286" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Jost:wght@400;450;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script class="splash" src="base.js"></script>
+    <style class="splash">
+      #splash-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 1000000;
+        overflow: hidden;
+        background: var(--primary-background-color);
+      }
+
+      #splash-container {
+        height: 90vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        animation: splash-animation 250ms forwards;
+      }
+
+      .splash-text {
+        font-size: 19px;
+        font-weight: 450;
+        color: var(--secondary-text-color, #3f3f3f);
+        user-select: none;
+        text-align: center;
+        font-family: 'Jost';
+        line-height: 1.4;
+        display: block;
+        margin-top: 8px;
+      }
+
+      #preload {
+        font-family: 'Material Icons';
+        opacity: 0;
+        height: 0px;
+        pointer-events: none;
+        visibility: visible;
+        font-size: 24px;
+      }
+
+      @keyframes splash-animation {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <noble-quran-app></noble-quran-app>
+    <main class="splash" id="splash-overlay" aria-label="Splash screen">
+      <div id="splash-container">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M58.2423 44.2238L58.8434 63.7268L101.402 40.6486L92.9651 25.2293L58.2423 44.2238Z" fill="#CFD8D6" />
+          <path d="M0 52.3583L8.22553 36.3402L60.2032 62.5698L60.0464 82.663C42.4263 73.7303 24.8067 64.7978 14.799 59.747C4.79123 54.6962 2.3955 53.5271 0 52.3583Z" fill="#2BAB9F" />
+          <path d="M59.814 62.8223L110.908 33.9653L119.31 50.3594L79.8557 72.7384L59.814 62.8223Z" fill="#15746B" />
+          <path d="M60.0101 82.6179L34.8616 95.1741L26.7188 79.317L40.1091 72.4777L60.0101 82.6179Z" fill="#087B71" />
+          <path d="M59.8983 62.7902L59.9848 82.6056L85.0512 94.9902L93.1034 79.2744L59.8983 62.7902Z" fill="#169286" />
+          <path d="M17.1094 40.8582L24.9462 25.3683L60.0277 43.246L60.0488 62.7043L17.1094 40.8582Z" fill="#E3EBE9" />
+        </svg>
+
+        <i aria-hidden="true" id="preload">pending</i>
+        <h4 class="splash-text">The Noble Quran</h4>
+        <noscript class="splash-text">Please enable JavaScript to continue using this application.</noscript>
+      </div>
+    </main>
+  </body>
+</html>

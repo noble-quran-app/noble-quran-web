@@ -12,7 +12,7 @@ import { getFromStorage } from '../core/utils';
   providedIn: 'root',
 })
 export class IdbService {
-  private dbName = 'NobleQuran';
+  private dbName = 'OfflineStorage';
   private translations = ['en.sahih'];
   private db = new Localbase(this.dbName);
   private initialized = false;
@@ -38,8 +38,7 @@ export class IdbService {
       const data = await this.fetchQuranEdition(arabicEdition);
       const mappedData = data.ayahs.map((ayah: any) => {
         const { text: arabicText, number, ...rest } = ayah;
-        const mappedAyah = { ...rest, arabicText, _key: number.toString() };
-        return mappedAyah;
+        return { ...rest, arabicText, _key: number.toString() };
       });
       await this.db.collection(arabicEdition).set(mappedData, { keys: true });
       await this.db.collection(arabicEdition).doc('metadata').set(data.edition);

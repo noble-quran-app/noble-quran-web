@@ -18,6 +18,12 @@
       "options": {
         "tabWidth": 3
       }
+    },
+    {
+      "files": "index.html",
+      "options": {
+        "printWidth": 1000
+      }
     }
   ]
 }
