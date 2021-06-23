@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { asyncScheduler, BehaviorSubject, of, Subject, Subscription } from 'rxjs';
 import { delay, switchMap, tap, throttleTime } from 'rxjs/operators';
 import { SubSink } from 'subsink';
-import { getAyahAudioUrl, Timer } from '../core/functions';
+import { getAyahAudioUrl } from '../core/functions';
+import { asyncTimer } from '../core/utils';
 import { AyahRange } from '../core/models';
 import { NetworkService } from './network.service';
 import { random } from 'lodash-es';
@@ -78,7 +79,7 @@ export class AudioService {
 
   private async reloadCurrentAyah(timeout = 3000) {
     try {
-      await Timer(timeout);
+      await asyncTimer(timeout);
       this.setAudioSrc(this.currentAyahId.value);
       if (this.isPlaying.value) {
         this.play();

@@ -9,6 +9,7 @@ import { AudioService } from 'src/app/services/audio.service';
 import { fromEvent } from 'rxjs';
 import { tap, throttleTime } from 'rxjs/operators';
 import { SubSink } from 'subsink';
+import { asyncTimer } from 'src/app/core/utils';
 
 const HotKeys = {
   spacebar: 'Space',
@@ -68,7 +69,7 @@ export class AyahListBuilderComponent implements OnInit, OnChanges, OnDestroy {
     this.totalAyahs.shift();
   };
 
-  handleAyahStateChange(state: [number, string]) {
+  async handleAyahStateChange(state: [number, string]) {
     const [ayahIndex, error] = state;
     if (!this.readyToShowAyahs && !this.renderError) {
       if (error) {
@@ -79,6 +80,7 @@ export class AyahListBuilderComponent implements OnInit, OnChanges, OnDestroy {
       const totalLengthOfAyahs = this.ayahRange.end - this.ayahRange.start;
 
       if ([5, totalLengthOfAyahs].includes(ayahIndex)) {
+        await asyncTimer(200);
         this.readyToShowAyahs = true;
         this.renderingAyahs = false;
       }

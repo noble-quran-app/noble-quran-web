@@ -5,7 +5,7 @@ import Localbase from 'localbase';
 import { HttpClient } from '@angular/common/http';
 import { delay, retryWhen } from 'rxjs/operators';
 import { UpdateService } from './update.service';
-import { Timer } from '../core/functions';
+import { asyncTimer } from '../core/utils';
 import { getFromStorage } from '../core/utils';
 
 @Injectable({
@@ -32,7 +32,7 @@ export class IdbService {
       }
 
       if (!forceInstall) {
-        await Timer(60000);
+        await asyncTimer(60000);
       }
 
       const data = await this.fetchQuranEdition(arabicEdition);
@@ -96,7 +96,7 @@ export class IdbService {
   }
 
   async updateEditons() {
-    await Timer(10000);
+    await asyncTimer(10000);
     if (!this.isInstalling.value) {
       this.dbReady.next(false);
       await this.db.delete();

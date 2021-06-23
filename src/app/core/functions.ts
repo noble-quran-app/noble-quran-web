@@ -50,10 +50,6 @@ export const generateMenuList = {
   },
 };
 
-export const Timer = (time: number) => {
-  return new Promise<null>((res) => setTimeout(() => res(null), time));
-};
-
 export const getAyahAudioUrl = (id: number) => {
   return `https://cdn.islamic.network/quran/audio/64/ar.alafasy/${id}.mp3`;
 };
