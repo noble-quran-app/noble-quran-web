@@ -12,7 +12,6 @@ const staticRoutes = ['/', '/juz', '/sajda'];
 @Component({
   selector: 'noble-quran-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   constructor(

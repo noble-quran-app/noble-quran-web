@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, fromEvent, interval } from 'rxjs';
-import { delay, retryWhen, scan, switchMap } from 'rxjs/operators';
+import { BehaviorSubject, fromEvent } from 'rxjs';
+import { delay, retryWhen, scan } from 'rxjs/operators';
 import { SubSink } from 'subsink';
+import { getFromStorage } from '../core/utils';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +21,7 @@ export class NetworkService {
     if (!this.isChecking.value) {
       this.isChecking.next(true);
       this.http
-        .get('/assets/dynamic/status.json', {
+        .get(getFromStorage('status.json'), {
           params: {
             cache_burst: new Date().getTime().toString(),
           },
@@ -61,27 +62,9 @@ export class NetworkService {
     this.isInitialized = true;
     this.checkForConnectivity(0);
 
-    this.subs.add(
-      fromEvent(window, 'offline').subscribe(() => {
-        this.isOnline.next(false);
-      })
-    );
+    this.subs.add(fromEvent(window, 'offline').subscribe(() => this.isOnline.next(false)));
 
-    this.subs.add(
-      fromEvent(window, 'online').subscribe(() => {
-        // Check when back online
-        this.checkForConnectivity(3);
-      })
-    );
-
-    this.subs.add(
-      interval(3000).subscribe(() => {
-        // Regular check if offline
-        if (!this.isOnline.value) {
-          this.checkForConnectivity(0);
-        }
-      })
-    );
+    this.subs.add(fromEvent(window, 'online').subscribe(() => this.checkForConnectivity(10)));
   }
 
   destroy() {

@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { delay, retryWhen } from 'rxjs/operators';
 import { UpdateService } from './update.service';
 import { Timer } from '../core/functions';
+import { getFromStorage } from '../core/utils';
 
 @Injectable({
   providedIn: 'root',
@@ -111,13 +112,9 @@ export class IdbService {
     return length === noOfAyahsInQuran + 1;
   }
 
-  storage(resource: string) {
-    return `https://noblequranstorage.web.app/${resource}`;
-  }
-
   fetchQuranEdition(edition: string): Promise<QuranEdition> {
     return this._http
-      .get<QuranEdition>(this.storage(`assets/quran/edition/${edition}/index.json`))
+      .get<QuranEdition>(getFromStorage(`quran/${edition}/index.json`))
       .pipe(retryWhen((error) => error.pipe(delay(4000))))
       .toPromise();
   }
@@ -125,7 +122,7 @@ export class IdbService {
   getAyahWithEditon(ayahId: number, edition: string) {
     if (!this.dbReady.value) {
       return this._http
-        .get(this.storage(`assets/quran/edition/${edition}/ayahs/${ayahId}.json`))
+        .get(getFromStorage(`quran/${edition}/ayahs/${ayahId}.json`))
         .pipe(retryWhen((error) => error.pipe(delay(4000))))
         .toPromise();
     }

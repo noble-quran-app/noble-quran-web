@@ -11,7 +11,7 @@ export const randomQuranImage = (idx?: number): MediaImage => {
   idx = idx ?? random(1, 5, false);
 
   return {
-    src: `/assets/static/images/quran/${idx}.jpg`,
+    src: `/assets/images/quran-cover-${idx}.jpg`,
     type: 'image/jpg',
   };
 };
