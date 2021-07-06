@@ -6,16 +6,16 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
+import { find } from 'lodash-es';
+import { SubSink } from 'subsink';
 import { AfterViewInit, OnDestroy, OnInit } from '@angular/core';
 import { Surahs, Juzs, Sajdas } from 'src/app/data/quran';
 import { TabData } from 'src/app/core/models';
 import { TitleService } from 'src/app/services/title.service';
 import { MatTabNav } from '@angular/material/tabs';
 import { NavigationEnd, Router } from '@angular/router';
-import { SubSink } from 'subsink';
 import { obsOptions, TabsData } from 'src/app/data/home';
 import { ViewportScroller } from '@angular/common';
-import { find } from 'lodash-es';
 
 @Component({
   selector: 'home-page',
@@ -67,21 +67,24 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
     this.cdr.detectChanges();
   }
 
+  /** Sets current tab according to URL */
+  setActiveTab(url: string) {
+    this.activeTab = find(this.tabsData, (tab) => tab.path === url);
+  }
+
   ngOnInit() {
     this.titleService.setTitleForHome();
 
     this.upperSectionVisible = window.pageYOffset <= 420;
     this.cdr.detectChanges();
 
-    // Setting current tab according to url path
-    this.activeTab = this.tabsData.find((s) => s.path === this.router.routerState.snapshot.url);
+    this.setActiveTab(this.router.routerState.snapshot.url);
     this.cdr.detectChanges();
 
-    // Setting current tab according to url path on route change
     this.subs.add(
       this.router.events.subscribe((event) => {
         if (event instanceof NavigationEnd) {
-          this.activeTab = find(this.tabsData, (tabs) => tabs.path === event.url);
+          this.setActiveTab(event.url);
         }
       })
     );
