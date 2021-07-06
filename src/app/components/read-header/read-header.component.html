@@ -1,32 +1,21 @@
 <header class="header fixed">
-  <div class="left">
-    <a routerLink="/"> Noble Quran </a>
-    <button class="back-btn" mat-icon-button (click)="goBack()">
-      <material-icon>arrow_back</material-icon>
-    </button>
-  </div>
-  <div class="right">
-    <button
-      mat-button
-      #navMenuTrigger
-      (menuClosed)="menuOpen = false"
-      (menuOpened)="menuOpen = true"
-      [matMenuTriggerFor]="navMenu"
-      [class.open]="menuOpen"
-    >
-      {{ menuList[currentMenuItemIndex]?.title }}
-      <material-icon>arrow_drop_down</material-icon>
-    </button>
-    <mat-menu #navMenu="matMenu" xPosition="before">
-      <button
-        *ngFor="let menuListItem of menuList"
-        [routerLink]="menuListItem.link"
-        routerLinkActive="list-item-active"
-        [replaceUrl]="true"
-        mat-menu-item
-      >
-        {{ menuListItem.title }}
+   <div class="left">
+      <a routerLink="/"> Noble Quran </a>
+      <button class="back-btn" mat-icon-button (click)="navigator.navigateToHome()">
+         <material-icon>arrow_back</material-icon>
       </button>
-    </mat-menu>
-  </div>
+   </div>
+   <div class="right">
+      <button mat-button #navMenuTrigger (menuClosed)="menuOpen = false" (menuOpened)="menuOpen = true"
+         [matMenuTriggerFor]="navMenu" [class.open]="menuOpen">
+         {{ menuList[currentMenuItemIndex]?.title }}
+         <material-icon>arrow_drop_down</material-icon>
+      </button>
+      <mat-menu #navMenu="matMenu" xPosition="before">
+         <button *ngFor="let menuListItem of menuList" [routerLink]="menuListItem.link"
+            routerLinkActive="list-item-active" [replaceUrl]="true" mat-menu-item>
+            {{ menuListItem.title }}
+         </button>
+      </mat-menu>
+   </div>
 </header>

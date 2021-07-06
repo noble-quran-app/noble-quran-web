@@ -5,3 +5,11 @@ export const getFromStorage = (resource: string) => {
 export const asyncTimer = (time: number) => {
   return new Promise<null>((res) => setTimeout(() => res(null), time));
 };
+
+export const isStandalone = () => {
+  if (!window.matchMedia) {
+    return false;
+  }
+
+  return window.matchMedia('(display-mode: standalone)').matches;
+};
