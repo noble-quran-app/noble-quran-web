@@ -5,11 +5,11 @@ import { AudioService } from 'src/app/services/audio.service';
 import { NetworkService } from 'src/app/services/network.service';
 
 @Component({
-  selector: 'read-toolbar',
-  templateUrl: './read-toolbar.component.html',
-  styleUrls: ['./read-toolbar.component.scss'],
+  selector: 'read-footer',
+  templateUrl: './read-footer.component.html',
+  styleUrls: ['./read-footer.component.scss'],
 })
-export class ReadToolbarComponent implements OnInit, OnChanges, OnDestroy {
+export class ReadFooterComponent implements OnInit, OnChanges, OnDestroy {
   constructor(public _audio: AudioService, public _net: NetworkService) {}
 
   @Input() ayahRange: AyahRange;
