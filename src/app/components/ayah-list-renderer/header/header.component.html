@@ -13,21 +13,22 @@
     <button
       mat-button
       #navMenuTrigger
+      [class.open]="menuOpen"
       (menuClosed)="menuOpen = false"
       (menuOpened)="menuOpen = true"
       [matMenuTriggerFor]="navMenu"
-      [class.open]="menuOpen"
     >
       {{ menuList[currentMenuItemIndex]?.title }}
       <material-icon>arrow_drop_down</material-icon>
     </button>
     <mat-menu #navMenu="matMenu" xPosition="before">
       <button
-        *ngFor="let menuListItem of menuList"
+        mat-menu-item
+        [replaceUrl]="true"
+        [disableRipple]="true"
         [routerLink]="menuListItem.link"
         routerLinkActive="list-item-active"
-        [replaceUrl]="true"
-        mat-menu-item
+        *ngFor="let menuListItem of menuList"
       >
         {{ menuListItem.title }}
       </button>

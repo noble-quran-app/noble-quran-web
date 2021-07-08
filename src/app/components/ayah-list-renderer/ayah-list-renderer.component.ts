@@ -28,11 +28,11 @@ const ObserverArgs = {
 };
 
 @Component({
-  selector: 'ayah-list-builder',
-  templateUrl: './ayah-list-builder.component.html',
-  styleUrls: ['./ayah-list-builder.component.scss'],
+  selector: 'ayah-list-renderer',
+  templateUrl: './ayah-list-renderer.component.html',
+  styleUrls: ['./ayah-list-renderer.component.scss'],
 })
-export class AyahListBuilderComponent implements OnInit, OnChanges, OnDestroy {
+export class AyahListRendererComponent implements OnInit, OnChanges, OnDestroy {
   constructor(
     public idb: IdbService,
     public settings: SettingService,

@@ -5,8 +5,8 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'read-header',
-  templateUrl: './read-header.component.html',
-  styleUrls: ['./read-header.component.scss'],
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
 })
 export class ReadHeaderComponent implements OnDestroy {
   constructor(public navigator: NavigationService) {}

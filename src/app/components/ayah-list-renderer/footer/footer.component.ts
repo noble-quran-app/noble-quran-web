@@ -6,8 +6,8 @@ import { NetworkService } from 'src/app/services/network.service';
 
 @Component({
   selector: 'read-footer',
-  templateUrl: './read-footer.component.html',
-  styleUrls: ['./read-footer.component.scss'],
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.scss'],
 })
 export class ReadFooterComponent implements OnInit, OnChanges, OnDestroy {
   constructor(public _audio: AudioService, public _net: NetworkService) {}

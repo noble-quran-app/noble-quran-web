@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
-import { AyahListBuilderComponent } from './ayah-list-builder.component';
+import { AyahListRendererComponent } from './ayah-list-renderer.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CommonModule } from '@angular/common';
-import { ReadHeaderModule } from '../read-header/read-header.module';
-import { ReadToolbarModule } from '../read-footer/read-footer.module';
+import { ReadHeaderModule } from './header/header.module';
+import { ReadToolbarModule } from './footer/footer.module';
 import { AyahRendererModule } from '../ayah-renderer/ayah-renderer.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [AyahListBuilderComponent],
+  declarations: [AyahListRendererComponent],
   imports: [
     MatProgressBarModule,
     MatProgressSpinnerModule,
@@ -19,7 +19,6 @@ import { MatButtonModule } from '@angular/material/button';
     ReadToolbarModule,
     AyahRendererModule,
   ],
-  exports: [AyahListBuilderComponent],
-  providers: [],
+  exports: [AyahListRendererComponent],
 })
-export class AyahListBuilderModule {}
+export class AyahListRendererModule {}
