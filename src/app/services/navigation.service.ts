@@ -29,7 +29,7 @@ export class NavigationService {
   }
 
   navigateToHome() {
-    if (this.router.navigated && isStandalone()) {
+    if (this.router.navigated) {
       this.location.back();
     } else {
       this.router.navigate(['/']);
