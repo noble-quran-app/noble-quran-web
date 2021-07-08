@@ -1,13 +1,19 @@
 {
+  "$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/web-manifest.json",
   "name": "The Noble Quran",
   "short_name": "Noble Quran",
-  "orientation": "portrait",
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "dir": "ltr",
+  "lang": "en-US",
   "display": "standalone",
+  "theme_color": "#ffffff",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "prefer_related_applications": false,
   "description": "Noble Quran is a free and open source web app to read Quran offline and without ads.",
   "scope": "/",
   "start_url": "/",
+  "shortcuts": [],
+  "related_applications": [],
   "icons": [
     {
       "src": "assets/icons/icon_x48.png",
