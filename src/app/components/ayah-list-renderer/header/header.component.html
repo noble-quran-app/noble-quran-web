@@ -1,10 +1,10 @@
 <header class="header fixed">
   <div class="left">
-    <!-- Only visible on medium screens -->
-    <a href="/" class="home-link" [class.faded]="faded | async" (click)="navigateToHome($event)">
+    <!-- hidden on small screens -->
+    <a href="/" class="home-link" (click)="navigateToHome($event)">
       Noble Quran
     </a>
-    <!-- Only visible on small screens -->
+    <!-- visible on small screens -->
     <button class="back-btn" mat-icon-button (click)="navigator.navigateToHome()">
       <material-icon>arrow_back</material-icon>
     </button>
