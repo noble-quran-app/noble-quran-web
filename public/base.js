@@ -1,4 +1,4 @@
-var loadStartedAt = new Date().getTime(),
+var loadStartedAt = Date.now(),
   html = document.querySelector('html'),
   storedTheme = localStorage.getItem('theme');
 
@@ -21,7 +21,7 @@ function removeSplash() {
 }
 
 function onRouteLoad() {
-  var currentTime = new Date().getTime();
+  var currentTime = Date.now();
   var timeGap = 1500 - (currentTime - loadStartedAt);
   setTimeout(removeSplash, timeGap);
 }
