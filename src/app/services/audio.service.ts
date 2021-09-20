@@ -4,17 +4,19 @@ import { delay, switchMap, tap, throttleTime } from 'rxjs/operators';
 import { SubSink } from 'subsink';
 import { getAyahAudioUrl } from '../core/functions';
 import { asyncTimer } from '../core/utils';
-import { AyahRange } from '../core/models';
+import { AyahRange, MediaSessionOptions } from '../core/models';
 import { NetworkService } from './network.service';
 import { random } from 'lodash-es';
 
 export const randomQuranImage = (idx?: number): MediaImage => {
   idx = idx ?? random(1, 5, false);
 
-  return {
+  const mediaImage: MediaImage = {
     src: `/assets/images/quran-cover-${idx}.jpg`,
     type: 'image/jpg',
   };
+
+  return mediaImage;
 };
 
 @Injectable({
@@ -256,11 +258,4 @@ export class AudioService {
       navigator.mediaSession.metadata = newMetaData;
     }
   }
-}
-
-interface MediaSessionOptions {
-  title: string;
-  artwork?: MediaImage[];
-  artist?: string;
-  album?: string;
 }

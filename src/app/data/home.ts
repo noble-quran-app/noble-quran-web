@@ -6,4 +6,4 @@ export const TabsData: TabData[] = [
   { path: '/sajda', label: 'Sajda' },
 ];
 
-export const obsOptions = { rootMargin: '-85px 0px 0px 0px' };
+export const obsOptions: IntersectionObserverInit = { rootMargin: '-85px 0px 0px 0px' };

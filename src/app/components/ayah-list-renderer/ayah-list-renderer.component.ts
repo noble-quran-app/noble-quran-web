@@ -12,15 +12,12 @@ import { SubSink } from 'subsink';
 import { asyncTimer } from 'src/app/core/utils';
 
 const HotKeys = {
-  spacebar: 'Space',
+  d: 'KeyD',
+  space: 'Space',
+  pageUp: 'PageUp',
+  pageDown: 'PageDown',
   arrowLeft: 'ArrowLeft',
   arrowRight: 'ArrowRight',
-  d: 'KeyD',
-  pageDown: 'PageDown',
-  pageUp: 'PageUp',
-
-  // arrowDown: 'ArrowDown',
-  // arrowUp: 'ArrowUp',
 };
 
 const ObserverArgs = {
@@ -89,28 +86,32 @@ export class AyahListRendererComponent implements OnInit, OnChanges, OnDestroy {
 
   reloadPage = () => window.location.reload();
 
+  handleKeyDownPrevention = (ev: KeyboardEvent) => {
+    if (
+      Object.values(HotKeys).includes(ev.code) &&
+      this.readyToShowAyahs &&
+      !ev.altKey &&
+      !ev.ctrlKey &&
+      !ev.shiftKey
+    ) {
+      ev.preventDefault();
+    }
+  };
+
   handleKeyDown = (ev: KeyboardEvent) => {
-    if (this.readyToShowAyahs) {
-      switch (ev.code) {
-        case HotKeys.spacebar:
-          this.audio.playPause();
-          break;
-        case HotKeys.arrowLeft:
-          this.audio.skipToPreviousAyah();
-          break;
-        case HotKeys.arrowRight:
-          this.audio.skipToNextAyah();
-          break;
-        case HotKeys.d:
-          ev.shiftKey && this.settings.toggleShowAbsoluteAyahId();
-          break;
-        case HotKeys.pageUp:
-          window.scrollBy(0, -80);
-          break;
-        case HotKeys.pageDown:
-          window.scrollBy(0, 80);
-          break;
-      }
+    switch (ev.code) {
+      case HotKeys.space:
+        this.audio.playPause();
+        break;
+      case HotKeys.arrowLeft:
+        this.audio.skipToPreviousAyah();
+        break;
+      case HotKeys.arrowRight:
+        this.audio.skipToNextAyah();
+        break;
+      case HotKeys.d:
+        ev.shiftKey && this.settings.toggleShowAbsoluteAyahId();
+        break;
     }
   };
 
@@ -118,7 +119,7 @@ export class AyahListRendererComponent implements OnInit, OnChanges, OnDestroy {
     this.subs.add(
       fromEvent<KeyboardEvent>(document, 'keydown')
         .pipe(
-          tap((e) => Object.values(HotKeys).includes(e.code) && e.preventDefault()),
+          tap((e) => this.handleKeyDownPrevention(e)),
           throttleTime(100)
         )
         .subscribe(this.handleKeyDown)

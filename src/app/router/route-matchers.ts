@@ -1,6 +1,6 @@
 import { UrlMatchResult, UrlSegment } from '@angular/router';
 
-export const SurahMatcher = (url: UrlSegment[]): UrlMatchResult => {
+export const SurahPageMatcher = (url: UrlSegment[]): UrlMatchResult => {
   try {
     if (url.length && url[0].path.match(/^([1-9][0-9]?|10[0-9]|11[0-4])$/gm)) {
       return {
@@ -16,7 +16,7 @@ export const SurahMatcher = (url: UrlSegment[]): UrlMatchResult => {
   }
 };
 
-export const JuzMatcher = (url: UrlSegment[]): UrlMatchResult => {
+export const JuzPageMatcher = (url: UrlSegment[]): UrlMatchResult => {
   try {
     const identifiers = ['juz', 'para', 'sipara'];
     if (
@@ -37,7 +37,7 @@ export const JuzMatcher = (url: UrlSegment[]): UrlMatchResult => {
   }
 };
 
-export const SajdaMatcher = (url: UrlSegment[]): UrlMatchResult => {
+export const SajdaPageMatcher = (url: UrlSegment[]): UrlMatchResult => {
   try {
     const identifiers = ['sajda', 'sijda', 'prostration'];
     if (

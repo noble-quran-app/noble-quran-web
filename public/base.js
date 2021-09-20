@@ -26,13 +26,13 @@ function onRouteLoad() {
   setTimeout(removeSplash, timeGap);
 }
 
-function onContentLoaded() {
+function onLoadStart() {
   // Remove Splash when on PWA
   if (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) {
     removeSplash();
   }
-  document.removeEventListener('DOMContentLoaded', onContentLoaded);
+  document.removeEventListener('DOMContentLoaded', onLoadStart);
 }
 
-document.addEventListener('DOMContentLoaded', onContentLoaded);
-document.addEventListener('routeloaded', onRouteLoad);
+window.addEventListener('loadstart', onLoadStart);
+window.addEventListener('routeloaded', onRouteLoad);

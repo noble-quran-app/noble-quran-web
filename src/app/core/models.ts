@@ -70,3 +70,10 @@ export interface TabData {
 }
 
 export type ScrollPosition = [number, number];
+
+export interface MediaSessionOptions {
+  title: string;
+  artwork?: MediaImage[];
+  artist?: string;
+  album?: string;
+}

@@ -32,7 +32,7 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
     public viewportScroller: ViewportScroller
   ) {}
 
-  @ViewChild('upperSection') upperSection: ElementRef;
+  @ViewChild('upperSection') upperSection: ElementRef<HTMLElement>;
   @ViewChild('tabNavBar') tabNavBar: MatTabNav;
 
   public surahs = Surahs;
@@ -40,7 +40,7 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
   public sajdas = Sajdas;
   public tabsData = TabsData;
   public activeTab = this.tabsData[0];
-  public upperSectionVisible: boolean;
+  public upperSectionVisible = true;
 
   private subs = new SubSink();
 
@@ -73,9 +73,7 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.titleService.setTitleForHome();
-
-    this.upperSectionVisible = window.pageYOffset <= 420;
+    this.upperSectionVisible = window.pageYOffset >= 0 && window.pageYOffset <= 365;
     this.cdr.detectChanges();
 
     this.setActiveTab(this.router.routerState.snapshot.url);
@@ -88,6 +86,8 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       })
     );
+
+    this.titleService.setTitleForHome();
   }
 
   ngAfterViewInit() {
