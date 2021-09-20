@@ -11,7 +11,7 @@
 /local-tests
 
 /.firebase
-/.vscode
+/.vscode/notes.txt
 /backups
 
 # Storage

@@ -1,12 +1,14 @@
 var loadStartedAt = Date.now(),
-  html = document.querySelector('html'),
+  documentElement = document.documentElement,
   storedTheme = localStorage.getItem('theme');
+
+documentElement.setAttribute('no-scroll', '');
 
 try {
   var className = JSON.parse(storedTheme)['className'];
-  className && html.classList.add(className);
+  className && documentElement.classList.add(className);
 } catch (error) {
-  html.classList.add('light-theme');
+  documentElement.classList.add('light-theme');
 }
 
 function removeSplash() {
@@ -16,8 +18,9 @@ function removeSplash() {
       splashNodes[index].parentElement.removeChild(splashNodes[index]);
     }
   }
-  document.dispatchEvent(new CustomEvent('splash'));
-  document.removeEventListener('routeloaded', removeSplash);
+  window.dispatchEvent(new CustomEvent('splashcomplete'));
+  window.removeEventListener('routeloaded', removeSplash);
+  documentElement.removeAttribute('no-scroll');
 }
 
 function onRouteLoad() {
@@ -27,7 +30,7 @@ function onRouteLoad() {
 }
 
 function onLoadStart() {
-  // Remove Splash when on PWA
+  // Remove Splash immediately when on PWA
   if (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) {
     removeSplash();
   }

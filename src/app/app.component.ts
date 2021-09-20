@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    fromEvent(document, 'splash')
+    fromEvent(window, 'splashcomplete')
       .pipe(take(1))
       .subscribe(() => {
         this.splashCompleted = true;

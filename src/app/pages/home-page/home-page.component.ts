@@ -16,6 +16,8 @@ import { MatTabNav } from '@angular/material/tabs';
 import { NavigationEnd, Router } from '@angular/router';
 import { obsOptions, TabsData } from 'src/app/data/home';
 import { ViewportScroller } from '@angular/common';
+import { fromEvent } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'home-page',
@@ -88,6 +90,10 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
     );
 
     this.titleService.setTitleForHome();
+
+    fromEvent(window, 'splashcomplete')
+      .pipe(take(1))
+      .subscribe(() => this.tabNavBar._alignInkBarToSelectedTab());
   }
 
   ngAfterViewInit() {
