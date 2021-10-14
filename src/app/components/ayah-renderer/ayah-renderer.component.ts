@@ -29,7 +29,7 @@ export class AyahRendererComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     try {
-      this.ayah = await this.idb.getAyahWithEditons(this.ayahId, ['quran-simple', 'en.sahih']);
+      this.ayah = await this.idb.getAyahWithEditions(this.ayahId, ['quran-simple', 'en.sahih']);
       this.stateChange.emit([this.ayahIndex]);
     } catch (error) {
       this.stateChange.emit([this.ayahIndex, error.message]);

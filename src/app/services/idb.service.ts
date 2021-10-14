@@ -80,7 +80,7 @@ export class IdbService {
     if (this.update.updatePending()) {
       this.isUpdating.next(true);
 
-      await this.updateEditons();
+      await this.updateEditions();
       this.dbReady.next(true);
 
       this.isUpdating.next(false);
@@ -94,7 +94,7 @@ export class IdbService {
     this.dbReady.next(true);
   }
 
-  async updateEditons() {
+  async updateEditions() {
     await asyncTimer(10000);
     if (!this.isInstalling.value) {
       this.dbReady.next(false);
@@ -118,7 +118,7 @@ export class IdbService {
       .toPromise();
   }
 
-  getAyahWithEditon(ayahId: number, edition: string) {
+  getAyahWithEdition(ayahId: number, edition: string) {
     if (!this.dbReady.value) {
       return this._http
         .get(getFromStorage(`quran/${edition}/ayahs/${ayahId}.json`))
@@ -129,10 +129,10 @@ export class IdbService {
     return this.db.collection(edition).doc(ayahId.toString()).get();
   }
 
-  async getAyahWithEditons(ayahId: number, editions: string[]) {
+  async getAyahWithEditions(ayahId: number, editions: string[]) {
     try {
       const promises = editions.map((edition) => {
-        return this.getAyahWithEditon(ayahId, edition);
+        return this.getAyahWithEdition(ayahId, edition);
       });
       const result = await Promise.all(promises);
       return result.reduce((prev, curr) => Object.assign(prev, curr), {});
