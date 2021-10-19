@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ScrollPosition } from '../core/models';
-import { asyncTimer, isStandalone } from '../core';
+import { asyncTimer } from '../utils';
 import { Router, Scroll, Event } from '@angular/router';
 import { ViewportScroller, Location } from '@angular/common';
 

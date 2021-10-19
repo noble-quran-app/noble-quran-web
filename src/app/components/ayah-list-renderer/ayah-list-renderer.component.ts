@@ -1,15 +1,22 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { OnChanges, OnDestroy, OnInit } from '@angular/core';
-import range from 'lodash-es/range';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import chunk from 'lodash-es/chunk';
-import { AyahRange } from 'src/app/core/models';
-import { IdbService } from 'src/app/services/idb.service';
-import { SettingService } from 'src/app/services/setting.service';
-import { AudioService } from 'src/app/services/audio.service';
+import range from 'lodash-es/range';
 import { fromEvent } from 'rxjs';
 import { tap, throttleTime } from 'rxjs/operators';
 import { SubSink } from 'subsink';
-import { asyncTimer } from 'src/app/core/utils';
+import { AyahRange } from '../../core/models';
+import { AudioService } from '../../services/audio.service';
+import { IdbService } from '../../services/idb.service';
+import { SettingService } from '../../services/setting.service';
+import { asyncTimer } from '../../utils';
 
 const HotKeys = {
   d: 'KeyD',

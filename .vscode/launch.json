@@ -7,10 +7,36 @@
     {
       "type": "pwa-chrome",
       "request": "launch",
-      "name": "Launch Chrome against localhost",
+      "name": "Launch Chrome",
       "url": "http://localhost:4200",
       "webRoot": "${workspaceFolder}",
       "userDataDir": false
+    },
+    {
+      "type": "pwa-chrome",
+      "request": "attach",
+      "port": 9222,
+      "name": "Attach to Chrome",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}/"
+    },
+    {
+      "type": "pwa-chrome",
+      "request": "launch",
+      "name": "Launch Brave",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}",
+      "runtimeExecutable": "C:\\Program Files\\BraveSoftware\\Brave-Browser-Nightly\\Application\\brave.exe",
+      "userDataDir": false
+    },
+    {
+      "type": "pwa-chrome",
+      "request": "attach",
+      "port": 9222,
+      "name": "Attach to Brave",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}/",
+      "runtimeExecutable": "C:\\Program Files\\BraveSoftware\\Brave-Browser-Nightly\\Application\\brave.exe"
     }
   ]
 }

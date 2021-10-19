@@ -3,7 +3,7 @@ import { asyncScheduler, BehaviorSubject, of, Subject, Subscription } from 'rxjs
 import { delay, switchMap, tap, throttleTime } from 'rxjs/operators';
 import { SubSink } from 'subsink';
 import { getAyahAudioUrl } from '../core/functions';
-import { asyncTimer } from '../core/utils';
+import { asyncTimer } from '../utils';
 import { AyahRange, MediaSessionOptions } from '../core/models';
 import { NetworkService } from './network.service';
 import { random } from 'lodash-es';

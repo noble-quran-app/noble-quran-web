@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, fromEvent } from 'rxjs';
-import { delay, retryWhen, scan } from 'rxjs/operators';
 import { SubSink } from 'subsink';
-import { getFromStorage } from '../core/utils';
+import { retryTimes, storageURL } from '../utils';
 
 @Injectable({
   providedIn: 'root',
@@ -18,56 +17,41 @@ export class NetworkService {
   public isOnline = new BehaviorSubject<boolean>(navigator.onLine);
 
   checkForConnectivity(retryCount: number) {
+    const next = () => {
+      this.isOnline.next(true);
+      this.isChecking.next(false);
+    };
+
+    const error = () => {
+      this.isOnline.next(false);
+      this.isChecking.next(false);
+    };
+
+    const complete = () => {
+      this.isChecking.next(false);
+    };
+
     if (!this.isChecking.value) {
       this.isChecking.next(true);
       this.http
-        .get(getFromStorage('status.json'), {
-          params: {
-            cache_burst: new Date().getTime().toString(),
-          },
-        })
-        .pipe(
-          retryWhen((err) =>
-            err.pipe(
-              delay(2000),
-              scan((acc) => {
-                if (acc >= retryCount) throw err;
-                return acc + 1;
-              }, 0)
-            )
-          )
-        )
-        .subscribe(
-          () => {
-            this.isOnline.next(true);
-            this.isChecking.next(false);
-          },
-          () => {
-            this.isOnline.next(false);
-            this.isChecking.next(false);
-          },
-          () => {
-            this.isChecking.next(false);
-          }
-        );
+        .get(storageURL(`status.json?cache_burst=${Date.now()}`))
+        .pipe(retryTimes(retryCount, 2000))
+        .subscribe({ next, error, complete });
     }
   }
 
   initialize() {
-    if (this.isInitialized) {
-      return false;
-    }
+    if (this.isInitialized) return;
 
     // First time check
     this.isInitialized = true;
     this.checkForConnectivity(0);
 
     this.subs.add(fromEvent(window, 'offline').subscribe(() => this.isOnline.next(false)));
-
-    this.subs.add(fromEvent(window, 'online').subscribe(() => this.checkForConnectivity(10)));
+    this.subs.add(fromEvent(window, 'online').subscribe(() => this.checkForConnectivity(5)));
   }
 
-  destroy() {
+  dispose() {
     this.subs.unsubscribe();
   }
 }

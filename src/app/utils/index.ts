@@ -1,5 +1,7 @@
-export const getFromStorage = (resource: string) => {
-  return 'https://noblequranstorage.web.app' + `/${resource}`.replace(/\/+/g, '/');
+export * from './rxjs';
+
+export const storageURL = (path: string) => {
+  return 'https://noblequranstorage.web.app' + `/${path}`.replace(/\/+/g, '/');
 };
 
 export const asyncTimer = (time: number) => {
@@ -7,9 +9,6 @@ export const asyncTimer = (time: number) => {
 };
 
 export const isStandalone = () => {
-  if (!window.matchMedia) {
-    return false;
-  }
-
+  if (!window.matchMedia) return false;
   return window.matchMedia('(display-mode: standalone)').matches;
 };
