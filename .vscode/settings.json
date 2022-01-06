@@ -12,6 +12,7 @@
     "localbase",
     "Mishary",
     "msapplication",
+    "ngsw",
     "prefetch",
     "Rashid",
     "routeloaded",
@@ -23,6 +24,7 @@
     "splashcomplete",
     "subsink",
     "Surahs",
+    "UNPATCHED",
     "webp"
   ]
 }
