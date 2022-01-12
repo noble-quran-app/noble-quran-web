@@ -8,6 +8,6 @@
   >
     <div mat-list-icon>{{ sajda.index }}.</div>
     <div class="primary-text" mat-line>Ayah {{ sajda.numberInSurah }}</div>
-    <div class="secondary-text" mat-line>of Surah {{ surahs[sajda.surahNo].englishName }}</div>
+    <div class="secondary-text" mat-line>of Surah {{ surahs[sajda.surahNo - 1].englishName }}</div>
   </a>
 </mat-list>
