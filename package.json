@@ -1,6 +1,6 @@
 {
   "name": "noble-quran",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "license": "MIT",
   "main": "./src/main.ts",
   "scripts": {
@@ -43,11 +43,18 @@
   "devDependencies": {
     "@angular-devkit/architect": "0.1301.2",
     "@angular-devkit/build-angular": "^13.1.2",
+    "@angular-eslint/builder": "13.0.1",
+    "@angular-eslint/eslint-plugin": "13.0.1",
+    "@angular-eslint/eslint-plugin-template": "13.0.1",
+    "@angular-eslint/schematics": "13.0.1",
+    "@angular-eslint/template-parser": "13.0.1",
     "@angular/cli": "^13.1.2",
     "@angular/compiler-cli": "^13.1.1",
     "@types/lodash-es": "^4.17.5",
     "@types/node": "^12.20.33",
-    "codelyzer": "^6.0.0",
+    "@typescript-eslint/eslint-plugin": "5.3.0",
+    "@typescript-eslint/parser": "5.3.0",
+    "eslint": "^8.2.0",
     "fuzzy": "^0.1.3",
     "inquirer": "^6.2.2",
     "inquirer-autocomplete-prompt": "^1.4.0",
